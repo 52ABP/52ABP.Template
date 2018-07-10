@@ -8,19 +8,24 @@ const routes: Routes = [
   {
     path: 'app',
     component: AppComponent,
-    canActivate: [AppRouteGuard],
-    canActivateChild: [AppRouteGuard],
+    // canActivate: [AppRouteGuard],
+    // canActivateChild: [AppRouteGuard],
     children: [
       {
         path: 'home',
         component: HomeComponent,
-        canActivate: [AppRouteGuard],
+        // canActivate: [AppRouteGuard],
       },
       {
-        path: 'admin',
-        loadChildren: 'app/admin/admin.module#AdminModule',
-        canActivate: [AppRouteGuard],
+        path: 'main',
+        loadChildren: 'app/main/main.module#MainModule',
+        // canActivate: [AppRouteGuard],
       },
+      // {
+      //   path: 'admin',
+      //   loadChildren: 'app/admin/admin.module#AdminModule',
+      //   canActivate: [AppRouteGuard],
+      // },
       {
         path: '**',
         redirectTo: 'main',

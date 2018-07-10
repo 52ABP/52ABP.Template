@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@appshared/shared.module';
+
 
 import { LayoutDefaultComponent } from './default/default.component';
 import { LayoutFullScreenComponent } from './fullscreen/fullscreen.component';
@@ -32,6 +32,7 @@ const HEADERCOMPONENTS = [
 
 // passport
 import { LayoutPassportComponent } from './passport/passport.component';
+import { SharedModule } from '@shared/shared.module';
 const PASSPORT = [LayoutPassportComponent];
 
 @NgModule({
@@ -40,4 +41,4 @@ const PASSPORT = [LayoutPassportComponent];
   declarations: [...COMPONENTS, ...HEADERCOMPONENTS, ...PASSPORT],
   exports: [...COMPONENTS, ...PASSPORT],
 })
-export class LayoutModule {}
+export class LayoutModule { }

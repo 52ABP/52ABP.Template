@@ -11,7 +11,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
           {
             path: 'dashboard',
             component: DashboardComponent,
-            data: { permission: '' },
           },
         ],
       },
@@ -19,4 +18,4 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   ],
   exports: [RouterModule],
 })
-export class MainRoutingModule {}
+export class MainRoutingModule { }
