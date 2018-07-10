@@ -13,7 +13,6 @@ import { AbpModule } from 'abp-ng2-module/dist/src/abp.module';
 import { ServiceProxyModule } from '@shared/service-proxies/service-proxy.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { SharedModule } from '@appshared/shared.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AbpHttpInterceptor } from 'abp-ng2-module/dist/src/abpHttpInterceptor';
 import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
@@ -21,6 +20,7 @@ import { APP_INITIALIZER } from '@angular/core';
 import { LOCALE_ID } from '@angular/core';
 import { DelonModule } from 'delon.module';
 import { RootRoutingModule } from 'root-routing.module';
+import { SharedModule } from '@shared/shared.module';
 
 export function appInitializerFactory(injector: Injector) {
   return () => {
@@ -68,7 +68,7 @@ export function getCurrentLanguage(): string {
     /** 导入 ng-zorro-antd 模块 **/
     NgZorroAntdModule,
     /** 必须导入 ng-zorro 才能导入此项 */
-    // SharedModule.forRoot(),
+    SharedModule.forRoot(),
   ],
   declarations: [RootComponent],
   providers: [
@@ -84,7 +84,6 @@ export function getCurrentLanguage(): string {
       provide: LOCALE_ID,
       useFactory: getCurrentLanguage,
     },
-    AppSessionService,
   ],
   bootstrap: [RootComponent],
 })
