@@ -11,8 +11,7 @@ import { HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-app',
-  templateUrl: './app.component.html',
-  styles: [],
+  templateUrl: './app.component.html'
 })
 export class AppComponent extends AppComponentBase
   implements OnInit, AfterViewInit {
@@ -54,7 +53,7 @@ export class AppComponent extends AppComponentBase
         body: userNotification.notification.data.message,
         icon: abp.appPath + 'assets/app-logo-small.png',
         timeout: 6000,
-        onClick: function() {
+        onClick: function () {
           window.focus();
           this.close();
         },

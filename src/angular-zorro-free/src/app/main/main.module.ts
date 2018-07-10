@@ -26,4 +26,4 @@ import { LocalizationService } from 'abp-ng2-module/dist/src/localization/locali
   declarations: [DashboardComponent],
   providers: [LocalizationService],
 })
-export class MainModule {}
+export class MainModule { }
