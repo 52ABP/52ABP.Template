@@ -28,20 +28,8 @@ import { CoreModule } from '@core/core.module';
 
     AbpModule,
     NgZorroAntdModule,
-
-
   ],
-  declarations: [
-    AppComponent,
-    HomeComponent
-  ],
-  providers: [
-    LocalizationService
-  ],
-<<<<<<< HEAD
   declarations: [AppComponent, HomeComponent],
   providers: [LocalizationService],
-=======
->>>>>>> 2eaedc7a537c7b6980f036717d873fb797a46f72
 })
-export class AppModule { }
+export class AppModule {}
