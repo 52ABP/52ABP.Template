@@ -5,6 +5,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { environment } from './environments/environment';
 
 import { preloaderFinished } from '@delon/theme';
+
 preloaderFinished();
 
 import { hmrBootstrap } from './hmr';

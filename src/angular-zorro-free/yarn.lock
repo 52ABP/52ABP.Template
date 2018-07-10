@@ -175,7 +175,7 @@
   dependencies:
     tslib "^1.9.0"
 
-"@angular/router@^6.0.0", "@angular/router@^6.0.3":
+"@angular/router@^6.0.0", "@angular/router@^6.0.7":
   version "6.0.7"
   resolved "https://registry.yarnpkg.com/@angular/router/-/router-6.0.7.tgz#53ce5dba1bb0f033687caca1451a12489a615415"
   dependencies:

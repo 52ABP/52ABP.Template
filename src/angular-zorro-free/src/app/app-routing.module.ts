@@ -5,29 +5,25 @@ import { AppComponent } from '@app/app.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'app',
     component: AppComponent,
+    canActivate: [AppRouteGuard],
+    canActivateChild: [AppRouteGuard],
     children: [
-      // { path: 'home', component: HomeComponent, canActivate: [AppRouteGuard] },
-      // {
-      //   path: 'users',
-      //   component: UsersComponent,
-      //   data: { permission: 'Pages.Users' },
-      //   canActivate: [AppRouteGuard],
-      // },
-      // {
-      //   path: 'roles',
-      //   component: RolesComponent,
-      //   data: { permission: 'Pages.Roles' },
-      //   canActivate: [AppRouteGuard],
-      // },
-      // {
-      //   path: 'tenants',
-      //   component: TenantsComponent,
-      //   data: { permission: 'Pages.Tenants' },
-      //   canActivate: [AppRouteGuard],
-      // },
-      // { path: 'about', component: AboutComponent },
+      {
+        path: 'main',
+        loadChildren: 'app/main/main.module#MainModule',
+        canActivate: [AppRouteGuard],
+      },
+      {
+        path: 'admin',
+        loadChildren: 'app/admin/admin.module#AdminModule',
+        canActivate: [AppRouteGuard],
+      },
+      {
+        path: '**',
+        redirectTo: 'main',
+      },
     ],
   },
 ];
