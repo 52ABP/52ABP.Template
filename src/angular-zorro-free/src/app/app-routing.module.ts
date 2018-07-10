@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppRouteGuard } from '@shared/auth/auth-route-guard';
 import { AppComponent } from '@app/app.component';
+import { HomeComponent } from '@app/home/home.component';
 
 const routes: Routes = [
   {
@@ -11,8 +12,8 @@ const routes: Routes = [
     canActivateChild: [AppRouteGuard],
     children: [
       {
-        path: 'main',
-        loadChildren: 'app/main/main.module#MainModule',
+        path: 'home',
+        component: HomeComponent,
         canActivate: [AppRouteGuard],
       },
       {
@@ -32,4 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

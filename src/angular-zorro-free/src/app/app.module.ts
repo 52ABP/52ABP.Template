@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { MainModule } from './main/main.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,7 +23,7 @@ import { LocalizationService } from 'abp-ng2-module/dist/src/localization/locali
     MainModule,
     AppRoutingModule,
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeComponent],
   providers: [LocalizationService],
 })
 export class AppModule {}
