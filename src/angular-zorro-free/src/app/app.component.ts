@@ -7,6 +7,7 @@ import { SettingsService, TitleService } from '@delon/theme';
 import { Router } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-app',
