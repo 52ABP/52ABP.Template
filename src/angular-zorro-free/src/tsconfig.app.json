@@ -3,39 +3,22 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "module": "es2015",
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "paths": {
-      "@shared": [
-        "app/shared"
-      ],
-      "@shared/*": [
-        "app/shared/*"
-      ],
-      "@core": [
-        "app/core"
-      ],
-      "@core/*": [
-        "app/core/*"
-      ],
-      "@testing": [
-        "testing"
-      ],
-      "@testing/*": [
-        "testing/*"
-      ],
-      "@env": [
-        "environments"
-      ],
-      "@env/*": [
-        "environments/*"
-      ]
+      "@appshared": ["app/shared"],
+      "@appshared/*": ["app/shared/*"],
+      "@core": ["app/core"],
+      "@core/*": ["app/core/*"],
+      "@testing": ["testing"],
+      "@testing/*": ["testing/*"],
+      "@env": ["environments"],
+      "@env/*": ["environments/*"],
+      "@abp/*": ["../node_modules/abp-ng2-module/dist/src/*"],
+      "@app/*": ["./app/*"],
+      "@shared": ["shared"],
+      "@shared/*": ["shared/*"]
     },
     "baseUrl": "./"
   },
-  "exclude": [
-    "src/test.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["src/test.ts", "**/*.spec.ts"]
 }

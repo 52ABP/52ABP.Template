@@ -13,7 +13,7 @@ import {
 } from '@delon/theme';
 import { DelonAuthModule } from '@delon/auth';
 import { CoreModule } from '@core/core.module';
-import { SharedModule } from '@shared/shared.module';
+import { SharedModule } from '@appshared/shared.module';
 
 
 import { DelonModule } from '../app/delon.module';
