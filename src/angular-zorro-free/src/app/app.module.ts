@@ -19,10 +19,9 @@ import { LocalizationService } from 'abp-ng2-module/dist/src/localization/locali
 
     AbpModule,
     NgZorroAntdModule,
-    MainModule,
     AppRoutingModule,
   ],
   declarations: [AppComponent],
   providers: [LocalizationService],
 })
-export class AppModule {}
+export class AppModule { }
