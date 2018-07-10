@@ -88,4 +88,4 @@ export function getCurrentLanguage(): string {
   ],
   bootstrap: [RootComponent],
 })
-export class RootModule {}
+export class RootModule { }
