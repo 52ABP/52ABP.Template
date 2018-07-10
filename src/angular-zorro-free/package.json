@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o",
+    "start": "ng serve --host 0.0.0.0 --port 8080 -o",
     "build": "ng build --prod --build-optimizer",
     "test": "ng test",
     "lint": "npm run lint:ts && npm run lint:style",
@@ -14,7 +14,7 @@
     "lint:style": "stylelint \"{src}/**/*.less\" --syntax less",
     "lint-staged": "lint-staged",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
-    "hmr": "ng serve -c=hmr"
+    "hmr": "ng serve --host 0.0.0.0 --port 4200 4201 --hmr -e=hmr"
   },
   "private": true,
   "dependencies": {
