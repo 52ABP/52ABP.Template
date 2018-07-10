@@ -34,9 +34,7 @@ export class AppComponent extends AppComponentBase
     injector: Injector,
     private settings: SettingsService,
     private router: Router,
-    private titleSrv: TitleService,
-    private modalService: NzModalService,
-    private notifyService: NzNotificationService
+    private titleSrv: TitleService
   ) {
     super(injector);
   }
@@ -45,11 +43,6 @@ export class AppComponent extends AppComponentBase
     this.router.events
       .pipe(filter(evt => evt instanceof NavigationEnd))
       .subscribe(() => this.titleSrv.setTitle());
-
-    // 覆盖abp自带的通知和mssage
-    AppConsts.overrideAbpMessage(this.modalService);
-    AppConsts.overrideAbpNotify(this.notifyService);
-
 
     // 注册通知信息
     SignalRAspNetCoreHelper.initSignalR();
