@@ -48,12 +48,7 @@ export class AppConsts {
                 nzMask: true,
             });
         }
-        // abp.message.confirm = (message: string, callback?: (result: boolean) => void) => {
-
-        // }
-        // abp.message.confirm = (message: string, title?: string, callback?: (result: boolean) => void) => {
-
-        // }
+        abp.message.confirm = AppConsts.confirm;
     }
 
     static overrideAbpNotify(notify: NzNotificationService) {
@@ -70,6 +65,39 @@ export class AppConsts {
         }
         abp.notify.success = (message: string, title?: string, options?: any) => {
             (<any>abp).nzNotify.success(message, title, options);
+        }
+    }
+
+    // msg confirm
+    private static confirm(message: string, callback?: (result: boolean) => void): any;
+    private static confirm(message: string, title?: string, callback?: (result: boolean) => void, ): any;
+    private static confirm(
+        message: string,
+        titleOrCallBack?: string | ((result: boolean) => void),
+        callback?: (result: boolean) => void,
+    ): any {
+        if (typeof titleOrCallBack === 'string') {
+            (<any>abp).nzModal.confirm({
+                nzTitle: titleOrCallBack,
+                nzContent: message,
+                nzOnOk() {
+                    if (callback) callback(true);
+                },
+                nzOnCancel() {
+                    if (callback) callback(false);
+                },
+            });
+        } else {
+            (<any>abp).nzModal.confirm({
+                nzTitle: '确认操作',
+                nzContent: message,
+                nzOnOk() {
+                    if (callback) callback(true);
+                },
+                nzOnCancel() {
+                    if (callback) callback(false);
+                },
+            });
         }
     }
 }
