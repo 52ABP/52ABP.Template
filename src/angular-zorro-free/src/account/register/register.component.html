@@ -1,0 +1,71 @@
+﻿<div [@routerTransition]>
+    <form nz-form #registerForm="ngForm" method="post" (ngSubmit)="save()" role="form">
+        <!-- <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert> -->
+        <h3>{{l('Register')}}</h3>
+
+        <div nz-form-item>
+            <div nz-form-control>
+                <!-- <nz-input [(ngModel)]="model.userName" name="UserName" required maxlength="32" [nzPlaceHolder]="l('UserName')" [nzSize]="'large'">
+                    <ng-template #prefix>
+                        <i class="anticon anticon-user"></i>
+                    </ng-template>
+                </nz-input> -->
+            </div>
+        </div>
+
+        <div nz-form-item>
+            <div nz-form-control>
+                <!-- <nz-input [(ngModel)]="model.password" [nzPlaceHolder]="l('Password')" [nzType]="'password'" [nzSize]="'large'" name="Password"
+                    required maxlength="32">
+                    <ng-template #prefix>
+                        <i class="anticon anticon-lock"></i>
+                    </ng-template>
+                </nz-input> -->
+            </div>
+        </div>
+        <div nz-form-item>
+            <div nz-form-control>
+                <!-- <nz-input [(ngModel)]="model.emailAddress" name="EmailAddress" required maxlength="255" [nzType]="'email'" [nzPlaceHolder]="l('EmailAddress')"
+                    [nzSize]="'large'">
+                    <ng-template #prefix>
+                        <i class="anticon anticon-mail"></i>
+                    </ng-template>
+                </nz-input> -->
+            </div>
+        </div>
+        <div nz-form-item>
+            <div nz-form-control>
+                <!-- <nz-input [(ngModel)]="model.name" name="Name" required maxlength="32" [nzPlaceHolder]="l('Name')" [nzSize]="'large'">
+                    <ng-template #prefix>
+                        <i class="anticon anticon-book"></i>
+                    </ng-template>
+                </nz-input> -->
+            </div>
+        </div>
+        <div nz-form-item>
+            <div nz-form-control>
+                <!-- <nz-input [(ngModel)]="model.surname" name="Surname" required maxlength="32" [nzPlaceHolder]="l('Surname')" [nzSize]="'large'">
+                    <ng-template #prefix>
+                        <i class="anticon anticon-book"></i>
+                    </ng-template>
+                </nz-input> -->
+            </div>
+        </div>
+
+
+
+        <div nz-form-item>
+
+            <!-- <button nz-button [nzType]="'default'" [disabled]="saving" [routerLink]="['../login']" class="login">
+                <i class="anticon anticon-rollback"></i>
+                <span>{{l("Back")}}</span>
+            </button>
+
+            <button nz-button [nzType]="'primary'" [nzLoading]="saving" [disabled]="!registerForm.form.valid" class="submit">
+                <span>{{l("Submit")}}</span>
+            </button> -->
+
+        </div>
+    </form>
+
+</div>

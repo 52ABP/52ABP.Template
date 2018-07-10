@@ -1,0 +1,30 @@
+﻿<div class="container">
+  <div class="top">
+    <div class="head">
+      <a [routerLink]="['/']">
+        <img class="logo" src="/assets/img/logo-color.svg">
+        <span class="title">52Abp.com - YoyoCmsTemplate </span>
+      </a>
+    </div>
+    <p class="desc">武林中最有影响力的《葵花宝典》；欲练神功，挥刀自宫</p>
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <br>
+  <account-languages></account-languages>
+
+  <global-footer [links]="links">
+    Copyright
+    <i class="anticon anticon-copyright"></i> {{currentYear}}
+    <b>Version </b>{{versionText}}
+    <a href="//52abp.com/" target="_blank">52abp社区</a>出品
+  </global-footer>
+
+
+
+
+
+
+
+</div>

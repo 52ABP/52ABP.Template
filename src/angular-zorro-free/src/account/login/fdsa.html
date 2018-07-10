@@ -1,0 +1,30 @@
+<nz-form-item>
+  <nz-form-control>
+    <nz-input-group nzPrefixIcon="anticon anticon-user">
+      <input type="text" nz-input formControlName="userName" placeholder="Username" [(ngModel)]="loginService.authenticateModel.userNameOrEmailAddress">
+    </nz-input-group>
+    <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors">Please input your username!</nz-form-explain>
+  </nz-form-control>
+</nz-form-item>
+<nz-form-item>
+  <nz-form-control>
+    <nz-input-group nzPrefixIcon="anticon anticon-lock">
+      <input type="password" nz-input formControlName="password" placeholder="Password" [(ngModel)]="loginService.authenticateModel.password">
+    </nz-input-group>
+    <nz-form-explain *ngIf="validateForm.get('password').dirty && validateForm.get('password').errors">Please input your Password!</nz-form-explain>
+  </nz-form-control>
+</nz-form-item>
+<nz-form-item>
+  <nz-form-control>
+    <label nz-checkbox formControlName="remember" [(ngModel)]="loginService.rememberMe">
+      <span>Remember me</span>
+    </label>
+    <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
+    <button nz-button class="login-form-button" [nzType]="'primary'" (click)="login()">Log in</button>
+
+    <div class="other">
+      Or
+      <a *ngIf="isSelfRegistrationAllowed" class="register" [routerLink]="['../register']">{{l("Register")}}</a>
+    </div>
+  </nz-form-control>
+</nz-form-item>

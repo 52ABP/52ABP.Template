@@ -1,0 +1,48 @@
+@import '../../styles.less';
+:host {
+    display: block;
+    width: 20%;
+    margin: 0 auto;
+    ::ng-deep {
+        .ant-form-item {
+            margin-bottom: 24px;
+        }
+        h3 {
+            width: 50%;
+            text-align: center;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        .submit {
+            width: 40%;
+            float: right;
+        }
+        .login {
+            width: 40%;
+        }
+    }
+}
+
+::ng-deep {
+    .register-password-cdk {
+        .success,
+        .warning,
+        .error {
+            transition: color .3s;
+        }
+        .success {
+            color: @success-color;
+        }
+        .warning {
+            color: @warning-color;
+        }
+        .error {
+            color: @error-color;
+        }
+        .progress-pass>.progress {
+            .ant-progress-bg {
+                background-color: @warning-color;
+            }
+        }
+    }
+}

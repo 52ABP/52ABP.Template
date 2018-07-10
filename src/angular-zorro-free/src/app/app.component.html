@@ -1,3 +1,19 @@
-<p>
-  app works!
-</p>
+<div class="wrapper">
+  <!-- <div class="router-progress-bar" *ngIf="isFetching"></div> -->
+  <!--<top-bar class="header"></top-bar>-->
+  <div class="aside" id="left_content">
+    <aside id="leftsidebar" class="aside-inner">
+      <!-- <sidebar-user-area></sidebar-user-area> -->
+      <!-- <sidebar-logo></sidebar-logo>
+          <sidebar-nav></sidebar-nav>
+          <sidebar-footer></sidebar-footer> -->
+    </aside>
+  </div>
+  <div class="head_content">
+    <top-bar class="header"></top-bar>
+  </div>
+  <section class="content">
+    <!-- <reuse-tab></reuse-tab> -->
+    <router-outlet></router-outlet>
+  </section>
+</div>

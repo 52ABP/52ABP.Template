@@ -43,8 +43,9 @@ export class AppComponent extends AppComponentBase
       .pipe(filter(evt => evt instanceof NavigationEnd))
       .subscribe(() => this.titleSrv.setTitle());
 
+    // 注册通知信息
     SignalRAspNetCoreHelper.initSignalR();
-
+    // 触发通知事件
     abp.event.on('abp.notifications.received', userNotification => {
       abp.notifications.showUiNotifyForUserNotification(userNotification);
 
