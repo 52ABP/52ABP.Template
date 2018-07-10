@@ -13,6 +13,7 @@ import { LayoutModule } from '@app/layout/layout.module';
 import { AppSharedModule } from '@app/app-shared';
 import { DelonModule } from 'delon.module';
 import { CoreModule } from '@core/core.module';
+import { HomeComponent } from '@app/home/home.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,12 @@ import { CoreModule } from '@core/core.module';
 
 
   ],
-  declarations: [AppComponent],
-  providers: [LocalizationService],
+  declarations: [
+    AppComponent,
+    HomeComponent
+  ],
+  providers: [
+    LocalizationService
+  ],
 })
 export class AppModule { }

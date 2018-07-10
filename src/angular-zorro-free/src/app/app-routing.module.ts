@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppRouteGuard } from '@shared/auth/auth-route-guard';
 import { AppComponent } from '@app/app.component';
+import { HomeComponent } from '@app/home/home.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,11 @@ const routes: Routes = [
     // canActivate: [AppRouteGuard],
     // canActivateChild: [AppRouteGuard],
     children: [
+      {
+        path: 'home',
+        component: HomeComponent,
+        // canActivate: [AppRouteGuard],
+      },
       {
         path: 'main',
         loadChildren: 'app/main/main.module#MainModule',
