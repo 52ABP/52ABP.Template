@@ -17,6 +17,7 @@ export class AppConsts {
         encrptedAuthTokenName: 'enc_auth_token'
     };
 
+    // 重写abp的msg
     static overrideAbpMessage(nzModal: NzModalService) {
         if ((<any>abp).nzModal) {
             return;
@@ -55,6 +56,7 @@ export class AppConsts {
         abp.message.confirm = AppConsts.confirm;
     }
 
+    // 重写abp的notify
     static overrideAbpNotify(notify: NzNotificationService) {
         if ((<any>abp).nzNotify) {
             return;
