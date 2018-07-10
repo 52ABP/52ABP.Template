@@ -19,7 +19,7 @@ import { AbpHttpInterceptor } from 'abp-ng2-module/dist/src/abpHttpInterceptor';
 import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
 import { APP_INITIALIZER } from '@angular/core';
 import { LOCALE_ID } from '@angular/core';
-import { DelonModule } from '@app/delon.module';
+import { DelonModule } from 'delon.module';
 
 export function appInitializerFactory(injector: Injector) {
   return () => {

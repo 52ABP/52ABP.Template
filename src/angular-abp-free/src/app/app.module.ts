@@ -35,41 +35,38 @@ import { RightSideBarComponent } from '@app/layout/right-sidebar.component';
 import { MaterialInput } from '@shared/directives/material-input.directive';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomeComponent,
-        AboutComponent,
-        TenantsComponent,
-		CreateTenantComponent,
-		EditTenantComponent,
-        UsersComponent,
-		CreateUserComponent,
-		EditUserComponent,
-      	RolesComponent,        
-		CreateRoleComponent,
-		EditRoleComponent,
-        TopBarComponent,
-        TopBarLanguageSwitchComponent,
-        SideBarUserAreaComponent,
-        SideBarNavComponent,
-        SideBarFooterComponent,
-        RightSideBarComponent
-    
-    ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        HttpClientModule,
-        JsonpModule,
-        ModalModule.forRoot(),
-        AbpModule,
-        AppRoutingModule,
-        ServiceProxyModule,
-        SharedModule,
-        NgxPaginationModule
-    ],
-    providers: [
-
-    ]
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AboutComponent,
+    TenantsComponent,
+    CreateTenantComponent,
+    EditTenantComponent,
+    UsersComponent,
+    CreateUserComponent,
+    EditUserComponent,
+    RolesComponent,
+    CreateRoleComponent,
+    EditRoleComponent,
+    TopBarComponent,
+    TopBarLanguageSwitchComponent,
+    SideBarUserAreaComponent,
+    SideBarNavComponent,
+    SideBarFooterComponent,
+    RightSideBarComponent
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    JsonpModule,
+    ModalModule.forRoot(),
+    AbpModule,
+    AppRoutingModule,
+    ServiceProxyModule,
+    SharedModule,
+    NgxPaginationModule
+  ],
+  providers: []
 })
-export class AppModule { }
+export class AppModule {}
