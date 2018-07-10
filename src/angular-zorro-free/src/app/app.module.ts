@@ -1,3 +1,4 @@
+import { MainModule } from './main/main.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,14 +13,13 @@ import { LocalizationService } from 'abp-ng2-module/dist/src/localization/locali
 @NgModule({
   imports: [
     CommonModule,
-    AppRoutingModule,
 
     FormsModule,
     ReactiveFormsModule,
 
     AbpModule,
     NgZorroAntdModule,
-
+    MainModule,
     AppRoutingModule,
   ],
   declarations: [AppComponent],
