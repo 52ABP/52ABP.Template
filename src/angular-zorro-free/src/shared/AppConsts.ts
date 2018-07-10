@@ -18,6 +18,10 @@ export class AppConsts {
     };
 
     static overrideAbpMessage(nzModal: NzModalService) {
+        if ((<any>abp).nzModal) {
+            return;
+        }
+
         (<any>abp).nzModal = nzModal;
         abp.message.info = (message: string, title?: string) => {
             (<any>abp).nzModal.info({
@@ -52,6 +56,10 @@ export class AppConsts {
     }
 
     static overrideAbpNotify(notify: NzNotificationService) {
+        if ((<any>abp).nzNotify) {
+            return;
+        }
+
         (<any>abp).nzNotify = notify;
 
         abp.notify.info = (message: string, title?: string, options?: any) => {
