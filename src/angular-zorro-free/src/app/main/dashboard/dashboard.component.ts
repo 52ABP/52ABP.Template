@@ -13,14 +13,20 @@ export class DashboardComponent extends AppComponentBase
     super(injector);
   }
 
-  getDashboardStatisticsData(datePeriod): void {}
+  getDashboardStatisticsData(datePeriod): void { }
 
   ngAfterViewInit(): void {
     const self = this;
     setTimeout(() => {
-      self.msg.warn('hello', '你好');
+      self.msg.confirm('hello', "你好", (res) => {
+        if (res) {
+          console.log("true");
+        } else {
+          console.log("false");
+        }
+      });
     }, 1000);
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 }
