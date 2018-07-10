@@ -12,7 +12,6 @@ import { LocalizationService } from 'abp-ng2-module/dist/src/localization/locali
 @NgModule({
   imports: [
     CommonModule,
-    AppRoutingModule,
 
     FormsModule,
     ReactiveFormsModule,
@@ -25,4 +24,4 @@ import { LocalizationService } from 'abp-ng2-module/dist/src/localization/locali
   declarations: [AppComponent],
   providers: [LocalizationService],
 })
-export class AppModule {}
+export class AppModule { }

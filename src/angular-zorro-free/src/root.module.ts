@@ -21,6 +21,7 @@ import { APP_INITIALIZER } from '@angular/core';
 import { LOCALE_ID } from '@angular/core';
 import { DelonModule } from 'delon.module';
 import { RootRoutingModule } from 'root-routing.module';
+import { AppModule } from '@app/app.module';
 
 export function appInitializerFactory(injector: Injector) {
   return () => {
@@ -69,6 +70,7 @@ export function getCurrentLanguage(): string {
     NgZorroAntdModule,
     /** 必须导入 ng-zorro 才能导入此项 */
     // SharedModule.forRoot(),
+    AppModule
   ],
   declarations: [RootComponent],
   providers: [
@@ -88,4 +90,4 @@ export function getCurrentLanguage(): string {
   ],
   bootstrap: [RootComponent],
 })
-export class RootModule {}
+export class RootModule { }
