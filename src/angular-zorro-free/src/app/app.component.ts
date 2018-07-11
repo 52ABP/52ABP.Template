@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { HostBinding } from '@angular/core';
+import { NzModalService, NzNotificationService } from "ng-zorro-antd";
+import { AppConsts } from '@shared/AppConsts';
 
 @Component({
   selector: 'app-app',
@@ -32,7 +34,7 @@ export class AppComponent extends AppComponentBase
     injector: Injector,
     private settings: SettingsService,
     private router: Router,
-    private titleSrv: TitleService,
+    private titleSrv: TitleService
   ) {
     super(injector);
   }

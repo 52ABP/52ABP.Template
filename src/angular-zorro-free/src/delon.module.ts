@@ -9,7 +9,6 @@ import {
   ModuleWithProviders,
 } from '@angular/core';
 import { RouteReuseStrategy } from '@angular/router';
-import { throwIfAlreadyLoaded } from '@core/module-import-guard';
 
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { AlainThemeModule } from '@delon/theme';
@@ -61,7 +60,7 @@ export class DelonModule {
     @SkipSelf()
     parentModule: DelonModule,
   ) {
-    throwIfAlreadyLoaded(parentModule, 'DelonModule');
+
   }
 
   static forRoot(): ModuleWithProviders {
