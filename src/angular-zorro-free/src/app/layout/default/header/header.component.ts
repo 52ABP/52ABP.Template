@@ -1,9 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { SettingsService } from '@delon/theme';
 
 @Component({
   selector: 'layout-header',
-  templateUrl: './header.component.html'
+  templateUrl: './header.component.html',
+  encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent {
   searchToggleStatus: boolean;
@@ -13,6 +14,7 @@ export class HeaderComponent {
   toggleCollapsedSideabar() {
     let collapsed = !this.settings.layout.collapsed;
     this.settings.setLayout('collapsed', collapsed);
+    abp.event.trigger('abp.theme-setting.collapsed', collapsed);
   }
 
   searchToggleChange() {

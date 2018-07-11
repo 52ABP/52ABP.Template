@@ -1,0 +1,12 @@
+<nz-dropdown nzTrigger="click" class="user-block clearfix">
+  <div nz-dropdown class="user-block-dropdown">
+    <nz-avatar class="avatar" [nzIcon]="'user'"></nz-avatar>
+    <div class="info">
+      <strong>{{shownLoginName}}</strong>
+      <p class="text-truncate mb0">{{emailAddress}}</p>
+    </div>
+  </div>
+  <ul nz-menu>
+    <li nz-menu-item (click)="logout()">{{l('Logout')}}</li>
+  </ul>
+</nz-dropdown>

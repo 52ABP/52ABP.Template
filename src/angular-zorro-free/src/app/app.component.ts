@@ -16,7 +16,8 @@ import { MenuItem } from '@shared/layout/menu-item';
 
 @Component({
   selector: 'app-app',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.less']
 })
 export class AppComponent extends AppComponentBase implements OnInit, AfterViewInit {
   @HostBinding('class.layout-fixed')
@@ -35,7 +36,7 @@ export class AppComponent extends AppComponentBase implements OnInit, AfterViewI
   // 全局的菜单
   Menums = [
     // 首页
-    new MenuItem(this.l("Home"), "", "anticon anticon-team", "/app/home"),
+    new MenuItem(this.l("HomePage"), "", "anticon anticon-home", "/app/home"),
     // 租户
     new MenuItem(this.l("Tenants"), "Pages.Administration.Tenants", "anticon anticon-team", "/app/tenants"),
     // 角色
@@ -43,7 +44,7 @@ export class AppComponent extends AppComponentBase implements OnInit, AfterViewI
     // 用户
     new MenuItem(this.l("Users"), "Pages.Administration.Users", "anticon anticon-user", "/app/users"),
     // 关于我们
-    new MenuItem(this.l("About"), "", "anticon anticon-global", "/app/about"),
+    new MenuItem(this.l("About"), "", "anticon anticon-info-circle-o", "/app/about"),
   ]
 
   constructor(

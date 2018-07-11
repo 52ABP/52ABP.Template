@@ -8,24 +8,9 @@ import { AppComponentBase } from '@shared/app-component-base';
   selector: 'layout-sidebar',
   templateUrl: './sidebar.component.html'
 })
-export class SidebarComponent extends AppComponentBase implements OnInit {
-  shownLoginName: string = "";
-  emailAddress: string = "";
+export class SidebarComponent {
 
   constructor(
-    injector: Injector,
-    private authService: AppAuthService
   ) {
-    super(injector);
-  }
-
-  ngOnInit() {
-    this.shownLoginName = this.appSession.getShownLoginName();
-    this.emailAddress = this.appSession.user.emailAddress;
-  }
-
-
-  logout() {
-    this.authService.logout();
   }
 }

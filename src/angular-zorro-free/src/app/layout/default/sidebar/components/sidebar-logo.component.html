@@ -1,0 +1,6 @@
+<div class="logo" id="logo_container" [ngStyle]="{'background-color':logoBgColor}">
+  <a>
+    <img class="expanded" *ngIf="!settings.layout.collapsed" src="/assets/img/logo-full.svg" style="max-height:40px;" />
+    <img class="collapsed" *ngIf="settings.layout.collapsed" src="/assets/img/logo.svg" style="max-height:30px;" />
+  </a>
+</div>

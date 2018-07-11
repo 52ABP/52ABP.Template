@@ -1,4 +1,4 @@
-<ul nz-menu [nzMode]="'inline'" [nzInlineCollapsed]="settings.layout.collapsed" [nzTheme]="themeValue">
+<ul nz-menu [nzMode]="'inline'" [nzInlineCollapsed]="collapsed" [nzTheme]="themeValue">
   <ng-template ngFor let-menuItem [ngForOf]="list" let-mainMenuItemIndex="index">
     <li *ngIf="!menuItem.items" nz-menu-item routerLinkActive="ant-menu-item-selected">
       <a [routerLink]="[menuItem.link]">

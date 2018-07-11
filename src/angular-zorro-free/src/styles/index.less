@@ -1,1 +1,20 @@
 // 建议所有项目自定义样式放在该文件夹下
+@media (min-width: @screen-md-min) {
+    .content {
+        margin-left: (@aside-wd + @content-padding);
+    }
+    .aside-collapsed {
+        .sidebar {
+            width: @aside-collapsed-wd;
+        }
+        .content {
+            margin-left: (@aside-collapsed-wd + @content-padding);
+        } // 顶部工具栏的宽度
+        .head_content>.header {
+            margin-left: (@aside-collapsed-wd);
+        }
+    } // 顶部工具栏的宽度
+    .head_content>.header {
+        margin-left: (@aside-wd);
+    }
+}

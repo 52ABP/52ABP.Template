@@ -18,7 +18,9 @@ const COMPONENTS = [
   LayoutFullScreenComponent,
   HeaderComponent,
   SidebarComponent,
-  SideBarNavComponent
+  SideBarNavComponent,
+  SideBarLogoComponent,
+  SidebarUserComponent
 ];
 
 const HEADERCOMPONENTS = [
@@ -35,12 +37,20 @@ const HEADERCOMPONENTS = [
 import { LayoutPassportComponent } from './passport/passport.component';
 import { SharedModule } from '@shared/shared.module';
 import { SideBarNavComponent } from '@app/layout/default/sidebar/components/sidebar-nav.component';
+import { SideBarLogoComponent } from '@app/layout/default/sidebar/components/sidebar-logo.component';
+import { SidebarUserComponent } from '@app/layout/default/sidebar/components/sidebar-user.component';
 const PASSPORT = [LayoutPassportComponent];
 
 @NgModule({
   imports: [SharedModule],
   providers: [],
-  declarations: [...COMPONENTS, ...HEADERCOMPONENTS, ...PASSPORT],
-  exports: [...COMPONENTS, ...PASSPORT],
+  declarations: [
+    ...COMPONENTS,
+    ...HEADERCOMPONENTS,
+    ...PASSPORT],
+  exports: [
+    ...COMPONENTS,
+    ...PASSPORT
+  ],
 })
 export class LayoutModule { }

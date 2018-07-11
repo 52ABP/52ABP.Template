@@ -14,7 +14,7 @@ export class SideBarNavComponent extends AppComponentBase implements OnInit {
 
     //菜单是通过MenuService中获取，设置菜单的位置在src/app/app.component.ts中。之所以这么干是因为在其他组件中需要获得菜单信息，因此将菜单数据放到服务中，以便共享给其他组件使用
     list: Menu[];
-    isCollapsed: boolean = false;
+    collapsed: boolean = false;
     themeValue: string = 'light';
 
     constructor(
@@ -29,6 +29,10 @@ export class SideBarNavComponent extends AppComponentBase implements OnInit {
 
     ngOnInit() {
         // event.on
+        abp.event.on('abp.theme-setting.collapsed', collapsed => {
+            this.collapsed = collapsed;
+        });
+
         abp.event.on('abp.theme-setting.changed', themeName => {
             switch (themeName) {
                 case 'A':
@@ -43,13 +47,18 @@ export class SideBarNavComponent extends AppComponentBase implements OnInit {
                     break;
             }
         });
+
+        const self = this;
+
+        setTimeout(() => {
+            self.collapsed = self.settings.layout.collapsed;
+        }, 1);
     }
 
     showMenuItem(menuItem): boolean {
         if (menuItem.permissionName) {
             return this.permission.isGranted(menuItem.permissionName);
         }
-
         return true;
     }
 }
