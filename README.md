@@ -81,9 +81,6 @@
 │  ├─assets
 │  │  │  .gitkeep
 │  │  │  appconfig.json #与后端交互配置的 端口号和域名
-│  │     
-│  │    
-│  │              
 │  ├─environments          # 环境变量配置
 │  ├─shared
 │  │  │  │  shared.module.ts  # 整个项目通用贡献的模块
