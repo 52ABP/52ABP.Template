@@ -8,6 +8,7 @@ import { MessageService } from '@abp/message/message.service';
 import { LocalizationService } from '@abp/localization/localization.service';
 import { AbpMultiTenancyService } from '@abp/multi-tenancy/abp-multi-tenancy.service';
 import { AppSessionService } from '@shared/session/app-session.service';
+import { ModalHelper } from '@delon/theme';
 
 export abstract class AppComponentBase {
   localizationSourceName = AppConsts.localization.defaultLocalizationSourceName;
@@ -21,6 +22,7 @@ export abstract class AppComponentBase {
   multiTenancy: AbpMultiTenancyService;
   appSession: AppSessionService;
   elementRef: ElementRef;
+  modalHelper: ModalHelper;
 
   constructor(injector: Injector) {
     this.localization = injector.get(LocalizationService);
@@ -32,6 +34,7 @@ export abstract class AppComponentBase {
     this.multiTenancy = injector.get(AbpMultiTenancyService);
     this.appSession = injector.get(AppSessionService);
     this.elementRef = injector.get(ElementRef);
+    this.modalHelper = injector.get(ModalHelper);
   }
 
   l(key: string, ...args: any[]): string {

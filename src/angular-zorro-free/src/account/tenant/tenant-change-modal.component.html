@@ -1,36 +1,69 @@
-﻿<!-- <div bsModal #tenantChangeModal="bs-modal" (onShown)="onShown()" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="tenantChangeModal" aria-hidden="true" [config]="{backdrop: 'static'}">
-    <div class="modal-dialog">
+﻿<!-- <div>
+  <nz-card [nzBordered]="false">
+    <ng-template #title>
+      <h4>
+        <span>{{l("ChangeTenant")}}</span>
+      </h4>
+    </ng-template>
 
-        <div #modalContent class="modal-content">
+    <ng-template #body>
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="save()">
 
-            <form *ngIf="active" #changeTenantForm="ngForm" novalidate (ngSubmit)="save()">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6" nzFor="email" nzHasFeedback nzRequired>{{l("TenancyName")}}</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback [nzValidateStatus]="getFormControl('tenancyName')">
+            <input nz-input name="tenancyName" type="text" [(ngModel)]="tenancyName" />
+            <nz-form-explain *ngIf="getFormControl('tenancyName').dirty&&getFormControl('password').hasError('required')">{{l('CanNotNull')}}</nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
 
-                <div class="modal-header">
-                    <button type="button" class="close" (click)="close()" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">
-                        <span>{{l("ChangeTenant")}}</span>
-                    </h4>
-                </div>
 
-                <div class="modal-body">
-                    <div class="form-group form-float">
-                        <div class="form-line">
-                            <input #tenancyNameInput materialInput  type="text" name="TenancyName" class="form-control" [ngClass]="{'edited':tenancyName}" [(ngModel)]="tenancyName" maxlength="64">
-                            <label class="form-label">{{l("TenancyName")}}</label>
-                        </div>
-                    </div>
-                    <span class="help-block">{{l("LeaveEmptyToSwitchToHost")}}</span>
-                </div>
-
-                <div class="modal-footer">
-                    <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">{{l("Cancel")}}</button>
-                    <button type="submit" class="btn btn-primary waves-effect" [disabled]="!changeTenantForm.form.valid">{{l("Save")}}</button>
-                </div>
-
-            </form>
-
+        <br> -->
+<!-- 功能按钮 -->
+<!-- <div style="border-top:1px solid #e8e8e8;width: 100%;">
+          <br>
+          <div style="float:right;">
+            <button nz-button [nzType]="'default'" [nzSize]="'large'" type="button" [disabled]="saving" (click)="close()">
+              {{l("Cancel")}}
+            </button>
+            <button nz-button [nzType]="'primary'" [nzSize]="'large'" type="submit" [disabled]="!validateForm.valid">
+              {{l("Save")}}
+            </button>
+          </div>
         </div>
-    </div>
+      </form>
+    </ng-template>
+  </nz-card>
 </div> -->
+
+
+<nz-card [nzTitle]="l('ChangeTenant')" [nzBordered]="false">
+
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="save()">
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="email" nzHasFeedback nzRequired>{{l("TenancyName")}}</nz-form-label>
+      <nz-form-control [nzSpan]="14" nzHasFeedback [nzValidateStatus]="getFormControl('tenancyName')">
+        <input nz-input formControlName="tenancyName" type="text" [(ngModel)]="tenancyName" />
+        <nz-form-explain *ngIf="getFormControl('tenancyName').dirty&&getFormControl('tenancyName').hasError('required')">{{l('CanNotNull')}}</nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-label>{{l("LeaveEmptyToSwitchToHost")}}</nz-form-label>
+
+    <br>
+    <!-- 功能按钮 -->
+    <div style="border-top:1px solid #e8e8e8;width: 100%;">
+      <br>
+      <div style="float:right;">
+        <button nz-button type="button" [disabled]="saving" (click)="close()">
+          {{l("Cancel")}}
+        </button>
+        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid">
+          {{l("Save")}}
+        </button>
+      </div>
+    </div>
+
+  </form>
+</nz-card>

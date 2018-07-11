@@ -10,7 +10,7 @@ import { AppAuthService } from './auth/app-auth.service';
 import { AppRouteGuard } from './auth/auth-route-guard';
 
 // delon
-import { AlainThemeModule } from '@delon/theme';
+import { AlainThemeModule, ModalHelper } from '@delon/theme';
 import { DelonABCModule } from '@delon/abc';
 import { DelonACLModule } from '@delon/acl';
 import { DelonFormModule } from '@delon/form';
@@ -56,6 +56,9 @@ const THIRDMODULES = [
     // third libs
     ...THIRDMODULES,
   ],
+  providers: [
+    ModalHelper
+  ]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

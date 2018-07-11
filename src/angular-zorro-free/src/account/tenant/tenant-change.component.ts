@@ -1,41 +1,41 @@
-﻿// import { Component, OnInit, Injector, ViewChild } from '@angular/core';
-// import { AccountServiceProxy } from '@shared/service-proxies/service-proxies' 
-// import { TenantChangeModalComponent } from './tenant-change-modal.component'
-// import { AppComponentBase } from '@shared/component-base';
+﻿import { Component, OnInit, Injector, ViewChild } from '@angular/core';
+import { AccountServiceProxy } from '@shared/service-proxies/service-proxies'
+import { AppComponentBase } from '@shared/app-component-base';
+import { TenantChangeModalComponent } from './tenant-change-modal.component';
 
-// import { Abp } from '@abp';
 
-// @Component({
-//     selector: 'tenant-change',
-//     templateUrl: './tenant-change.component.html'
-// })
-// export class TenantChangeComponent extends AppComponentBase implements OnInit {
-    
-//     @ViewChild('tenantChangeModal') tenantChangeModal: TenantChangeModalComponent;
+@Component({
+    selector: 'tenant-change',
+    templateUrl: './tenant-change.component.html'
+})
+export class TenantChangeComponent extends AppComponentBase implements OnInit {
 
-//     tenancyName: string;
-//     name: string;
+    tenancyName: string;
+    name: string;
 
-//     constructor(
-//         injector: Injector,
-//         private _accountService: AccountServiceProxy
-//         ) { 
-//         super(injector);
-//     }
+    constructor(
+        injector: Injector,
+        private _accountService: AccountServiceProxy
+    ) {
+        super(injector);
+    }
 
-//     ngOnInit() {
-        
-//         if (this.appSession.tenant) {
-//             this.tenancyName = this.appSession.tenant.tenancyName;
-//             this.name = this.appSession.tenant.name;
-//         }
-//     }
+    ngOnInit() {
+        if (this.appSession.tenant) {
+            this.tenancyName = this.appSession.tenant.tenancyName;
+            this.name = this.appSession.tenant.name;
+        }
+    }
 
-//     get isMultiTenancyEnabled(): boolean {        
-//         return Abp.multiTenancy.isEnabled;
-//     }
+    get isMultiTenancyEnabled(): boolean {
+        return abp.multiTenancy.isEnabled;
+    }
 
-//     showChangeModal(): void{
-//         this.tenantChangeModal.show(this.tenancyName);
-//     }
-// }
+    showChangeModal(): void {
+        this.modalHelper.createStatic(TenantChangeModalComponent, { tenancyName: this.tenancyName }, {
+            size: 'md'
+        }).subscribe(() => {
+
+        });
+    }
+}
