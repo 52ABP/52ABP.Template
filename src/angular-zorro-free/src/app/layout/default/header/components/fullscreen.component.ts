@@ -5,7 +5,7 @@ import { AppComponentBase } from '@shared/app-component-base';
 @Component({
   selector: 'header-fullscreen',
   template: `
-  <div (click)="_click()">
+  <div (click)="click()">
     <i class="anticon anticon-{{status ? 'shrink' : 'arrows-alt'}}" ></i>
     {{ status ? l('ExitFullScreen') : l('FullScreen') }}
   </div>
@@ -25,8 +25,7 @@ export class HeaderFullScreenComponent extends AppComponentBase {
     this.status = screenfull.isFullscreen;
   }
 
-  @HostListener('click')
-  _click() {
+  click() {
     if (screenfull.enabled) {
       screenfull.toggle();
     }
