@@ -1,48 +1,12 @@
-﻿<!-- <div>
-  <nz-card [nzBordered]="false">
-    <ng-template #title>
-      <h4>
-        <span>{{l("ChangeTenant")}}</span>
-      </h4>
-    </ng-template>
+﻿<div>
 
-    <ng-template #body>
-      <form nz-form [formGroup]="validateForm" (ngSubmit)="save()">
-
-        <nz-form-item>
-          <nz-form-label [nzSpan]="6" nzFor="email" nzHasFeedback nzRequired>{{l("TenancyName")}}</nz-form-label>
-          <nz-form-control [nzSpan]="14" nzHasFeedback [nzValidateStatus]="getFormControl('tenancyName')">
-            <input nz-input name="tenancyName" type="text" [(ngModel)]="tenancyName" />
-            <nz-form-explain *ngIf="getFormControl('tenancyName').dirty&&getFormControl('password').hasError('required')">{{l('CanNotNull')}}</nz-form-explain>
-          </nz-form-control>
-        </nz-form-item>
-
-
-        <br> -->
-<!-- 功能按钮 -->
-<!-- <div style="border-top:1px solid #e8e8e8;width: 100%;">
-          <br>
-          <div style="float:right;">
-            <button nz-button [nzType]="'default'" [nzSize]="'large'" type="button" [disabled]="saving" (click)="close()">
-              {{l("Cancel")}}
-            </button>
-            <button nz-button [nzType]="'primary'" [nzSize]="'large'" type="submit" [disabled]="!validateForm.valid">
-              {{l("Save")}}
-            </button>
-          </div>
-        </div>
-      </form>
-    </ng-template>
-  </nz-card>
-</div> -->
-
-
-<nz-card [nzTitle]="l('ChangeTenant')" [nzBordered]="false">
+  <h3>
+    <span>{{l('ChangeTenant')}}</span>
+  </h3>
 
   <form nz-form [formGroup]="validateForm" (ngSubmit)="save()">
-
-    <nz-form-item>
-      <nz-form-label [nzSpan]="6" nzFor="email" nzHasFeedback nzRequired>{{l("TenancyName")}}</nz-form-label>
+    <nz-form-item [class]="no-bottom-form-itme">
+      <nz-form-label [nzSpan]="6" nzFor="" nzHasFeedback nzRequired>{{l("TenancyName")}}</nz-form-label>
       <nz-form-control [nzSpan]="14" nzHasFeedback [nzValidateStatus]="getFormControl('tenancyName')">
         <input nz-input formControlName="tenancyName" type="text" [(ngModel)]="tenancyName" />
         <nz-form-explain *ngIf="getFormControl('tenancyName').dirty&&getFormControl('tenancyName').hasError('required')">{{l('CanNotNull')}}</nz-form-explain>
@@ -51,19 +15,21 @@
 
     <nz-form-label>{{l("LeaveEmptyToSwitchToHost")}}</nz-form-label>
 
-    <br>
-    <!-- 功能按钮 -->
-    <div style="border-top:1px solid #e8e8e8;width: 100%;">
-      <br>
-      <div style="float:right;">
-        <button nz-button type="button" [disabled]="saving" (click)="close()">
-          {{l("Cancel")}}
-        </button>
-        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid">
-          {{l("Save")}}
-        </button>
-      </div>
-    </div>
-
   </form>
-</nz-card>
+
+
+  <br>
+  <!-- 功能按钮 -->
+  <div style="border-top:1px solid #e8e8e8;width: 100%;">
+    <br>
+    <div style="float:right;">
+      <button nz-button type="button" [disabled]="saving" (click)="close()">
+        {{l("Cancel")}}
+      </button>
+      <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid">
+        {{l("Save")}}
+      </button>
+    </div>
+  </div>
+
+</div>
