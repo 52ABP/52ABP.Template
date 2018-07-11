@@ -1,20 +1,20 @@
 export class MenuItem {
-    name: string = '';
-    permissionName: string = '';
+    displayName: string = '';
+    permission: string = '';
     icon: string = '';
     route: string = '';
-    items: MenuItem[];
+    childMenus: MenuItem[];
 
-    constructor(name: string, permissionName: string, icon: string, route: string, childItems: MenuItem[] = null) {
-        this.name = name;
-        this.permissionName = permissionName;
+    constructor(displayName: string, permission: string, icon: string, route: string, childMenus: MenuItem[] = null) {
+        this.displayName = displayName;
+        this.permission = permission;
         this.icon = icon;
         this.route = route;
 
-        if (childItems) {
-            this.items = childItems;
+        if (childMenus) {
+            this.childMenus = childMenus;
         } else {
-            this.items = [];
+            this.childMenus = [];
         }
     }
 }

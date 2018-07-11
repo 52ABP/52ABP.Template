@@ -37,7 +37,6 @@ export class AccountComponent extends AppComponentBase {
 
   public constructor(injector: Injector, private _loginService: LoginService) {
     super(injector);
-
     this.currentYear = new Date().getFullYear();
     this.versionText =
       this.appSession.application.version +

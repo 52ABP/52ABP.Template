@@ -18,6 +18,7 @@ const COMPONENTS = [
   LayoutFullScreenComponent,
   HeaderComponent,
   SidebarComponent,
+  SideBarNavComponent
 ];
 
 const HEADERCOMPONENTS = [
@@ -33,6 +34,7 @@ const HEADERCOMPONENTS = [
 // passport
 import { LayoutPassportComponent } from './passport/passport.component';
 import { SharedModule } from '@shared/shared.module';
+import { SideBarNavComponent } from '@app/layout/default/sidebar/components/sidebar-nav.component';
 const PASSPORT = [LayoutPassportComponent];
 
 @NgModule({

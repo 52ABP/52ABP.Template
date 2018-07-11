@@ -1,0 +1,57 @@
+<ul nz-menu [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed" [nzTheme]="themeValue">
+  <ng-template ngFor let-menuItem [ngForOf]="list" let-mainMenuItemIndex="index">
+    <li *ngIf="!menuItem.items" nz-menu-item routerLinkActive="ant-menu-item-selected">
+      <a [routerLink]="[menuItem.link]">
+        <i *ngIf="menuItem.icon" class="{{menuItem.icon}}"></i>
+        <nz-tooltip *ngIf="isCollapsedd" nzPlacement="right" [nzTitle]="child1.text">
+          <span nz-tooltip>
+            <i class="{{ menuItem.icon }}"></i>
+          </span>
+        </nz-tooltip>
+        <span>{{menuItem.text}}</span>
+      </a>
+    </li>
+
+    <li *ngIf="menuItem.items" nz-submenu>
+      <span title>
+        <i *ngIf="menuItem.icon" class="{{menuItem.icon}}"></i>
+        <nz-tooltip *ngIf="isCollapsedd" nzPlacement="right" [nzTitle]="child1.text">
+          <span nz-tooltip>
+            <i class="{{ menuItem.icon }}"></i>
+          </span>
+        </nz-tooltip>
+        <span>{{menuItem.text}}</span>
+      </span>
+      <ul>
+        <ng-template ngFor let-subMenuItem [ngForOf]="menuItem.items" let-mainMenuItemIndex="index">
+          <li *ngIf="!subMenuItem.items" nz-menu-item>
+            <a [routerLink]="[subMenuItem.link]">
+              <i *ngIf="subMenuItem.icon" class="{{subMenuItem.icon}}"></i>
+              <span>{{subMenuItem.text}}</span>
+            </a>
+          </li>
+
+          <li *ngIf="subMenuItem.items" nz-submenu>
+            <span title>
+              <i *ngIf="subMenuItem.icon" class="{{subMenuItem.icon}}"></i>
+              <span>{{subMenuItem.text}}</span>
+            </span>
+
+            <ul>
+              <ng-template ngFor let-subSubMenuItem [ngForOf]="subMenuItem.items" let-mainMenuItemIndex="index">
+                <li *ngIf="!subSubMenuItem.items" nz-menu-item routerLinkActive="ant-menu-item-selected">
+                  <a [routerLink]="[subSubMenuItem.link]">
+                    <i *ngIf="subSubMenuItem.icon" class="{{subSubMenuItem.icon}}"></i>
+                    <span>{{subSubMenuItem.text}}</span>
+                  </a>
+                </li>
+              </ng-template>
+            </ul>
+          </li>
+        </ng-template>
+      </ul>
+
+    </li>
+
+  </ng-template>
+</ul>
