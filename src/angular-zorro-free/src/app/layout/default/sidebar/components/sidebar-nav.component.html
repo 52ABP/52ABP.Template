@@ -1,13 +1,8 @@
-<ul nz-menu [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed" [nzTheme]="themeValue">
+<ul nz-menu [nzMode]="'inline'" [nzInlineCollapsed]="settings.layout.collapsed" [nzTheme]="themeValue">
   <ng-template ngFor let-menuItem [ngForOf]="list" let-mainMenuItemIndex="index">
     <li *ngIf="!menuItem.items" nz-menu-item routerLinkActive="ant-menu-item-selected">
       <a [routerLink]="[menuItem.link]">
         <i *ngIf="menuItem.icon" class="{{menuItem.icon}}"></i>
-        <nz-tooltip *ngIf="isCollapsedd" nzPlacement="right" [nzTitle]="child1.text">
-          <span nz-tooltip>
-            <i class="{{ menuItem.icon }}"></i>
-          </span>
-        </nz-tooltip>
         <span>{{menuItem.text}}</span>
       </a>
     </li>
@@ -15,11 +10,6 @@
     <li *ngIf="menuItem.items" nz-submenu>
       <span title>
         <i *ngIf="menuItem.icon" class="{{menuItem.icon}}"></i>
-        <nz-tooltip *ngIf="isCollapsedd" nzPlacement="right" [nzTitle]="child1.text">
-          <span nz-tooltip>
-            <i class="{{ menuItem.icon }}"></i>
-          </span>
-        </nz-tooltip>
         <span>{{menuItem.text}}</span>
       </span>
       <ul>
@@ -50,8 +40,6 @@
           </li>
         </ng-template>
       </ul>
-
     </li>
-
   </ng-template>
 </ul>

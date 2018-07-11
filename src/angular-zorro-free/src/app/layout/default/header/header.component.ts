@@ -11,7 +11,8 @@ export class HeaderComponent {
   constructor(public settings: SettingsService) { }
 
   toggleCollapsedSideabar() {
-    this.settings.setLayout('collapsed', !this.settings.layout.collapsed);
+    let collapsed = !this.settings.layout.collapsed;
+    this.settings.setLayout('collapsed', collapsed);
   }
 
   searchToggleChange() {

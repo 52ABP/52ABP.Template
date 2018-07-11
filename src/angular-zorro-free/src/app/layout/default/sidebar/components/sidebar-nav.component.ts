@@ -3,7 +3,7 @@ import { Component, Injector, OnInit, ViewEncapsulation } from '@angular/core';
 import { MenuItem } from '@shared/layout/menu-item';
 
 import { AppComponentBase } from '@shared/app-component-base';
-import { MenuService, Menu } from '@delon/theme';
+import { MenuService, Menu, SettingsService } from '@delon/theme';
 
 @Component({
     selector: 'abp-sidebar-nav',
@@ -19,6 +19,7 @@ export class SideBarNavComponent extends AppComponentBase implements OnInit {
 
     constructor(
         injector: Injector,
+        public settings: SettingsService,
         private menuService: MenuService
     ) {
         super(injector);
@@ -28,9 +29,6 @@ export class SideBarNavComponent extends AppComponentBase implements OnInit {
 
     ngOnInit() {
         // event.on
-        abp.event.on('abp.theme-setting.collapsed', collapsed => {
-            this.isCollapsed = collapsed;
-        });
         abp.event.on('abp.theme-setting.changed', themeName => {
             switch (themeName) {
                 case 'A':
