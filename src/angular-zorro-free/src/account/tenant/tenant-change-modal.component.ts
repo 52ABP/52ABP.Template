@@ -26,12 +26,12 @@ export class TenantChangeModalComponent extends ModalFormComponentBase implement
 
     ngOnInit(): void {
         this.validateForm = this.formBuilder.group({
-            tenancyName: ['', [Validators.required]],
+            tenancyName: [''],
         });
     }
 
     save(): void {
-        if (!this.tenancyName) {
+        if (!this.tenancyName || this.tenancyName === '') {
             abp.multiTenancy.setTenantIdCookie(undefined);;
             this.close();
             location.reload();

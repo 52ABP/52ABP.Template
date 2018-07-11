@@ -12,16 +12,14 @@ import { LoginService } from 'account/login/login.service';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/app-component-base';
 import { AbpSessionService } from '@abp/session/abp-session.service';
+import { FormComponentBase } from '@shared/component-base/form-component-base';
 
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less'],
   animations: [appModuleAnimation()],
 })
-export class LoginComponent extends AppComponentBase implements OnInit {
-  @ViewChild('cardBody') cardBody: ElementRef;
-
-  validateForm: FormGroup;
+export class LoginComponent extends FormComponentBase implements OnInit {
 
   submitting = false;
 
@@ -30,33 +28,27 @@ export class LoginComponent extends AppComponentBase implements OnInit {
     private fb: FormBuilder,
     public loginService: LoginService,
     private _router: Router,
-    private _sessionService: AbpSessionService,
   ) {
     super(injector);
   }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]],
-      password: [null, [Validators.required]],
+      userName: ['', [Validators.required]],
+      password: ['', [Validators.required]],
       remember: [true],
-      mobile: [],
-      captcha: [],
     });
   }
 
-  // tslint:disable-next-line:use-life-cycle-interface
-  ngAfterViewInit(): void {}
 
   get multiTenancySideIsTeanant(): boolean {
-    return this._sessionService.tenantId > 0;
+    return this.appSession.tenantId > 0;
   }
 
   get isSelfRegistrationAllowed(): boolean {
-    if (!this._sessionService.tenantId) {
+    if (!this.appSession.tenantId) {
       return false;
     }
-
     return true;
   }
 

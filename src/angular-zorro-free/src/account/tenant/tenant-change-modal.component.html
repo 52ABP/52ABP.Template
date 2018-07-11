@@ -9,27 +9,22 @@
       <nz-form-label [nzSpan]="6" nzFor="" nzHasFeedback nzRequired>{{l("TenancyName")}}</nz-form-label>
       <nz-form-control [nzSpan]="14" nzHasFeedback [nzValidateStatus]="getFormControl('tenancyName')">
         <input nz-input formControlName="tenancyName" type="text" [(ngModel)]="tenancyName" />
-        <nz-form-explain *ngIf="getFormControl('tenancyName').dirty&&getFormControl('tenancyName').hasError('required')">{{l('CanNotNull')}}</nz-form-explain>
       </nz-form-control>
     </nz-form-item>
 
     <nz-form-label>{{l("LeaveEmptyToSwitchToHost")}}</nz-form-label>
 
-  </form>
-
-
-  <br>
-  <!-- 功能按钮 -->
-  <div style="border-top:1px solid #e8e8e8;width: 100%;">
-    <br>
-    <div style="float:right;">
-      <button nz-button type="button" [disabled]="saving" (click)="close()">
-        {{l("Cancel")}}
-      </button>
-      <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid">
-        {{l("Save")}}
-      </button>
+    <!-- 功能按钮 -->
+    <div class="custom-modal-footer" style="border-top:1px solid #e8e8e8;width: 100%;">
+      <div class="custom-modal-footter-group" style="float:right;">
+        <button nz-button type="button" [disabled]="saving" (click)="close()">
+          {{l("Cancel")}}
+        </button>
+        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid">
+          {{l("Save")}}
+        </button>
+      </div>
     </div>
-  </div>
 
+  </form>
 </div>
