@@ -6,8 +6,8 @@
         <nz-alert *ngIf="error" nzType="'error'" nzMessage="error" nzShowIcon="true" class="mb-lg"></nz-alert>
         <nz-form-item>
           <nz-form-control>
-            <nz-input-group nzSize="small" nzPrefixIcon="anticon anticon-user">
-              <input nz-input formControlName="userName" placeholder="admin" [(ngModel)]="loginService.authenticateModel.userNameOrEmailAddress">
+            <nz-input-group nzPrefixIcon="anticon anticon-user">
+              <input nz-input formControlName="userName" placeholder="{{l('UserNameOrEmail')}}" [(ngModel)]="loginService.authenticateModel.userNameOrEmailAddress">
             </nz-input-group>
 
 
@@ -17,7 +17,7 @@
         <nz-form-item>
           <nz-form-control>
             <nz-input-group nzPrefixIcon="anticon anticon-lock">
-              <input nz-input type="password" formControlName="password" placeholder="888888" [(ngModel)]="loginService.authenticateModel.password">
+              <input nz-input type="password" formControlName="password" placeholder="{{l('Password')}}" [(ngModel)]="loginService.authenticateModel.password">
             </nz-input-group>
 
             <!-- <nz-form-explain *ngIf="password.dirty && password.errors">              请输入密码！            </nz-form-explain> -->
