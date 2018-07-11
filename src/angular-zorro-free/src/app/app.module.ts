@@ -10,6 +10,10 @@ import { SharedModule } from '@shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { AboutComponent } from './about/about.component';
+import { TenantsComponent } from './tenants/tenants.component';
+import { UsersComponent } from './users/users.component';
+import { RolesComponent } from './roles/roles.component';
 
 @NgModule({
   imports: [
@@ -24,7 +28,11 @@ import { BrowserModule } from '@angular/platform-browser';
   ],
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent,
+    TenantsComponent,
+    UsersComponent,
+    RolesComponent
   ],
   providers: [
     LocalizationService
