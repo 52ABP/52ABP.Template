@@ -1,15 +1,24 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Injector } from '@angular/core';
 import * as screenfull from 'screenfull';
+import { AppComponentBase } from '@shared/app-component-base';
 
 @Component({
   selector: 'header-fullscreen',
   template: `
-  <i class="anticon anticon-{{status ? 'shrink' : 'arrows-alt'}}"></i>
-  {{ status ? '退出全屏' : '全屏' }}
+  <div (click)="_click()">
+    <i class="anticon anticon-{{status ? 'shrink' : 'arrows-alt'}}" ></i>
+    {{ status ? l('ExitFullScreen') : l('FullScreen') }}
+  </div>
   `
 })
-export class HeaderFullScreenComponent {
+export class HeaderFullScreenComponent extends AppComponentBase {
   status = false;
+
+  constructor(
+    injector: Injector
+  ) {
+    super(injector);
+  }
 
   @HostListener('window:resize')
   _resize() {

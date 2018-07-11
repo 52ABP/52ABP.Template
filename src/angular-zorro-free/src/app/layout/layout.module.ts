@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 
-
-import { LayoutDefaultComponent } from './default/default.component';
-import { LayoutFullScreenComponent } from './fullscreen/fullscreen.component';
 import { HeaderComponent } from './default/header/header.component';
 import { SidebarComponent } from './default/sidebar/sidebar.component';
 import { HeaderSearchComponent } from './default/header/components/search.component';
@@ -14,8 +11,6 @@ import { HeaderStorageComponent } from './default/header/components/storage.comp
 import { HeaderUserComponent } from './default/header/components/user.component';
 
 const COMPONENTS = [
-  LayoutDefaultComponent,
-  LayoutFullScreenComponent,
   HeaderComponent,
   SidebarComponent,
   SideBarNavComponent,
@@ -33,24 +28,21 @@ const HEADERCOMPONENTS = [
   HeaderUserComponent,
 ];
 
-// passport
-import { LayoutPassportComponent } from './passport/passport.component';
+// 
 import { SharedModule } from '@shared/shared.module';
 import { SideBarNavComponent } from '@app/layout/default/sidebar/components/sidebar-nav.component';
 import { SideBarLogoComponent } from '@app/layout/default/sidebar/components/sidebar-logo.component';
 import { SidebarUserComponent } from '@app/layout/default/sidebar/components/sidebar-user.component';
-const PASSPORT = [LayoutPassportComponent];
 
 @NgModule({
   imports: [SharedModule],
   providers: [],
   declarations: [
     ...COMPONENTS,
-    ...HEADERCOMPONENTS,
-    ...PASSPORT],
+    ...HEADERCOMPONENTS
+  ],
   exports: [
-    ...COMPONENTS,
-    ...PASSPORT
+    ...COMPONENTS
   ],
 })
 export class LayoutModule { }
