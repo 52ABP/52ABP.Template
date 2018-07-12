@@ -82,15 +82,8 @@ export class AppConsts {
   }
 
   // msg confirm
-  private static confirm(
-    message: string,
-    callback?: (result: boolean) => void,
-  ): any;
-  private static confirm(
-    message: string,
-    title?: string,
-    callback?: (result: boolean) => void,
-  ): any;
+  private static confirm(message: string, callback?: (result: boolean) => void): any;
+  private static confirm(message: string, title?: string, callback?: (result: boolean) => void, ): any;
   private static confirm(
     message: string,
     titleOrCallBack?: string | ((result: boolean) => void),
@@ -112,10 +105,10 @@ export class AppConsts {
         nzTitle: '确认操作',
         nzContent: message,
         nzOnOk() {
-          if (callback) callback(true);
+          if (titleOrCallBack) titleOrCallBack(true);
         },
         nzOnCancel() {
-          if (callback) callback(false);
+          if (titleOrCallBack) titleOrCallBack(false);
         },
       });
     }

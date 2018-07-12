@@ -30,7 +30,7 @@
     </nz-form-item>
 
     <!-- 登陆按钮 -->
-    <button nz-button nzType="primary" type="submit" class="ant-btn__block">{{l("LogIn")}}</button>
+    <button nz-button nzType="primary" type="submit" class="ant-btn__block" [disabled]="!validateForm.valid">{{l("LogIn")}}</button>
 
     <!-- 注册 -->
     <nz-form-item>
