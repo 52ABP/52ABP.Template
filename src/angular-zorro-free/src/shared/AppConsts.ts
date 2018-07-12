@@ -102,10 +102,10 @@ export class AppConsts {
                 nzTitle: '确认操作',
                 nzContent: message,
                 nzOnOk() {
-                    if (callback) callback(true);
+                    if (titleOrCallBack) titleOrCallBack(true);
                 },
                 nzOnCancel() {
-                    if (callback) callback(false);
+                    if (titleOrCallBack) titleOrCallBack(false);
                 },
             });
         }
