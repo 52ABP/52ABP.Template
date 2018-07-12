@@ -24,11 +24,10 @@ import { LoginService } from '../login/login.service';
   styleUrls: ['./register.component.less'],
   animations: [appModuleAnimation()],
 })
-export class RegisterComponent extends FormComponentBase implements OnInit {
+export class RegisterComponent extends FormComponentBase<RegisterInput> implements OnInit {
+
 
   model: RegisterInput;
-
-  saving = false;
 
   constructor(
     injector: Injector,
@@ -60,12 +59,11 @@ export class RegisterComponent extends FormComponentBase implements OnInit {
     this._router.navigate(['/']);
   }
 
-  save(): void {
-    this.saving = true;
+  protected submitExecute(finisheCallback: Function): void {
     this._accountService
       .register(this.model)
       .finally(() => {
-        this.saving = false;
+        finisheCallback();
       })
       .subscribe((result: RegisterOutput) => {
         if (!result.canLogin) {
@@ -74,13 +72,24 @@ export class RegisterComponent extends FormComponentBase implements OnInit {
           return;
         }
 
-        // Autheticate
         this.saving = true;
+
+        // Autheticate
         this._loginService.authenticateModel.userNameOrEmailAddress = this.model.userName;
         this._loginService.authenticateModel.password = this.model.password;
         this._loginService.authenticate(() => {
           this.saving = false;
         });
       });
+  }
+  protected setFormValues(entity: RegisterInput): void {
+
+  }
+  protected getFormValues(): void {
+    this.model.name = this.getControlVal('name');
+    this.model.surname = this.getControlVal('surname');
+    this.model.emailAddress = this.getControlVal('emailAddress');
+    this.model.userName = this.getControlVal('userName');
+    this.model.password = this.getControlVal('password');
   }
 }

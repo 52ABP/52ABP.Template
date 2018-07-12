@@ -35,7 +35,7 @@ export class TenantsComponent extends PagedListingComponentBase<TenantDto> {
       if (isSave) {
         this.refresh();
       }
-    })
+    });
   }
   edit(item: TenantDto) {
     this.modalHelper.open(EditTenantComponent, { id: item.id }, 'md', {
@@ -44,7 +44,7 @@ export class TenantsComponent extends PagedListingComponentBase<TenantDto> {
       if (isSave) {
         this.refresh();
       }
-    })
+    });
   }
 
   delete(item: TenantDto): void {

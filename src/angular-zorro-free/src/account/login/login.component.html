@@ -1,13 +1,11 @@
 ﻿<div [@routerTransition]>
-  <form nz-form [formGroup]="validateForm" class="login-form">
-
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submit()">
     <br>
-
     <!-- 账号 -->
     <nz-form-item>
       <nz-form-control>
         <nz-input-group nzPrefixIcon="anticon anticon-user">
-          <input nz-input formControlName="userName" placeholder="{{l('UserNameOrEmail')}}" [(ngModel)]="loginService.authenticateModel.userNameOrEmailAddress">
+          <input nz-input formControlName="userName" placeholder="{{l('UserNameOrEmail')}}">
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
@@ -16,29 +14,23 @@
     <nz-form-item>
       <nz-form-control>
         <nz-input-group nzPrefixIcon="anticon anticon-lock">
-          <input nz-input formControlName="password" placeholder="{{l('Password')}}" [(ngModel)]="loginService.authenticateModel.password"
-            type="password">
+          <input nz-input formControlName="password" placeholder="{{l('Password')}}" type="password">
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
 
     <!-- 记住我 -->
+
     <nz-form-item>
       <nz-col [nzSpan]="12">
-        <label nz-checkbox formControlName="remember" [(ngModel)]="loginService.rememberMe" name="rememberMe" id="rememberme">
+        <label nz-checkbox formControlName="rememberMe">
           <span>{{l("RememberMe")}}</span>
         </label>
       </nz-col>
-      <!-- <nz-col [nzSpan]="12" class="text-right" *ngIf="isSelfRegistrationAllowed">
-        <a [routerLink]="['../register']">{{l("Register")}}</a>
-      </nz-col> -->
     </nz-form-item>
 
     <!-- 登陆按钮 -->
-    <nz-form-item>
-      <!-- [disabled]='!validateForm.valid' -->
-      <button nz-button (click)="login()" nzType="primary" type="submit" class="ant-btn__block">{{l("LogIn")}}</button>
-    </nz-form-item>
+    <button nz-button nzType="primary" type="submit" class="ant-btn__block">{{l("LogIn")}}</button>
 
     <!-- 注册 -->
     <nz-form-item>
@@ -48,6 +40,8 @@
         <a [routerLink]="['../register']">{{l("Register")}}</a>
       </nz-col>
     </nz-form-item>
+
+
 
   </form>
 </div>

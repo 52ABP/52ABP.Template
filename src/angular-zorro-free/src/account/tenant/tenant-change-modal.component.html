@@ -1,14 +1,14 @@
-﻿<div>
+﻿<div class="formTenant">
 
   <h3>
     <span>{{l('ChangeTenant')}}</span>
   </h3>
 
-  <form nz-form [formGroup]="validateForm" (ngSubmit)="save()">
-    <nz-form-item [class]="no-bottom-form-itme">
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submit()">
+    <nz-form-item>
       <nz-form-label [nzSpan]="6" nzFor="" nzHasFeedback nzRequired>{{l("TenancyName")}}</nz-form-label>
       <nz-form-control [nzSpan]="14" nzHasFeedback [nzValidateStatus]="getFormControl('tenancyName')">
-        <input nz-input formControlName="tenancyName" type="text" [(ngModel)]="tenancyName" />
+        <input nz-input formControlName="tenancyName" type="text" />
       </nz-form-control>
     </nz-form-item>
 

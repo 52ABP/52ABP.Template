@@ -4,7 +4,7 @@
     <span>{{l('EditTenant')}}</span>
   </h3>
   <nz-spin [nzSpinning]="!tenant">
-    <form nz-form [formGroup]="validateForm" (ngSubmit)="enter()" *ngIf="tenant">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submit()" *ngIf="tenant">
 
       <!-- 租户名称 -->
       <nz-form-control nzHasFeedback>

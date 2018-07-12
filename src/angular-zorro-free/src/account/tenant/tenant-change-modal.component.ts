@@ -9,9 +9,18 @@ import { ModalFormComponentBase } from '@shared/component-base/modal-form-compon
 
 @Component({
     selector: 'tenantChangeModal',
-    templateUrl: './tenant-change-modal.component.html'
+    templateUrl: './tenant-change-modal.component.html',
+    styles: [
+        `
+        .formTenant{
+            padding-bottom: 45px;
+        }
+        `
+    ]
 })
-export class TenantChangeModalComponent extends ModalFormComponentBase implements OnInit {
+export class TenantChangeModalComponent extends ModalFormComponentBase<any> implements OnInit {
+
+
 
     @Input() tenancyName: string = '';
 
@@ -30,7 +39,7 @@ export class TenantChangeModalComponent extends ModalFormComponentBase implement
         });
     }
 
-    save(): void {
+    protected submitExecute(finisheCallback: Function): void {
         if (!this.tenancyName || this.tenancyName === '') {
             abp.multiTenancy.setTenantIdCookie(undefined);;
             this.close();
@@ -41,7 +50,6 @@ export class TenantChangeModalComponent extends ModalFormComponentBase implement
         var input = new IsTenantAvailableInput();
         input.tenancyName = this.tenancyName;
 
-        this.saving = true;
         this._accountService.isTenantAvailable(input)
             .finally(() => { this.saving = false; })
             .subscribe((result) => {
@@ -59,5 +67,12 @@ export class TenantChangeModalComponent extends ModalFormComponentBase implement
                         break;
                 }
             });
+    }
+
+    protected setFormValues(entity: any): void {
+        this.setControlVal('tenancyName', this.tenancyName);
+    }
+    protected getFormValues(): void {
+        this.tenancyName = this.getControlVal('tenancyName');
     }
 }

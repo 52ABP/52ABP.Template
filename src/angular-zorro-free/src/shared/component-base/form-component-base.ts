@@ -37,16 +37,16 @@ export abstract class FormComponentBase<EntityDto> extends AppComponentBase {
     }
 
 
-    enter() {
+    submit() {
         this.getFormValues();
 
         this.saving = true;
-        this.save(() => {
+        this.submitExecute(() => {
             this.saving = false;
         });
     }
 
-    protected abstract save(finisheCallback: Function): void;
+    protected abstract submitExecute(finisheCallback: Function): void;
     protected abstract setFormValues(entity: EntityDto): void;
     protected abstract getFormValues(): void;
 }

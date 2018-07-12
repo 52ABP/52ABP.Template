@@ -31,8 +31,8 @@ export class TenantChangeComponent extends AppComponentBase implements OnInit {
     }
 
     showChangeModal(): void {
-        this.modalHelper.createStatic(TenantChangeModalComponent, { tenancyName: this.tenancyName }, {
-            size: 'md'
+        this.modalHelper.open(TenantChangeModalComponent, { tenancyName: this.tenancyName }, 'md', {
+            nzMask: true,
         }).subscribe(() => {
 
         });

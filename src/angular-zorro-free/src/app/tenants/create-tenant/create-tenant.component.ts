@@ -33,7 +33,7 @@ export class CreateTenantComponent extends ModalFormComponentBase<CreateTenantDt
   }
 
 
-  protected save(finisheCallback: Function): void {
+  protected submitExecute(finisheCallback: Function): void {
     this._tenantService.create(this.tenant)
       .finally(() => {
         finisheCallback();

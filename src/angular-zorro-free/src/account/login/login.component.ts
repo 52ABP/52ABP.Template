@@ -19,7 +19,7 @@ import { FormComponentBase } from '@shared/component-base/form-component-base';
   styleUrls: ['./login.component.less'],
   animations: [appModuleAnimation()],
 })
-export class LoginComponent extends FormComponentBase implements OnInit {
+export class LoginComponent extends FormComponentBase<any> implements OnInit {
 
   submitting = false;
 
@@ -36,7 +36,7 @@ export class LoginComponent extends FormComponentBase implements OnInit {
     this.validateForm = this.fb.group({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      remember: [true],
+      rememberMe: [true],
     });
   }
 
@@ -52,8 +52,16 @@ export class LoginComponent extends FormComponentBase implements OnInit {
     return true;
   }
 
-  login(): void {
-    this.submitting = true;
+  protected submitExecute(finisheCallback: Function): void {
     this.loginService.authenticate(() => (this.submitting = false));
   }
+  protected setFormValues(entity: any): void {
+
+  }
+  protected getFormValues(): void {
+    this.loginService.authenticateModel.userNameOrEmailAddress = this.getControlVal('userName');
+    this.loginService.authenticateModel.password = this.getControlVal('password');
+    this.loginService.authenticateModel.rememberClient = this.getControlVal('rememberMe');
+  }
+
 }

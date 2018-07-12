@@ -45,7 +45,7 @@ export class EditTenantComponent extends ModalFormComponentBase<TenantDto> imple
       })
   }
 
-  protected save(finisheCallback: Function): void {
+  protected submitExecute(finisheCallback: Function): void {
     this._tenantService.update(this.tenant)
       .finally(() => {
         finisheCallback();
