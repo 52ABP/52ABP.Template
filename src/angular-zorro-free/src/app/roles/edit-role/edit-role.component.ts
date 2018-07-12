@@ -35,9 +35,9 @@ export class EditRoleComponent extends ModalFormComponentBase<RoleDto> implement
     this._roleService.getAllPermissions()
       .subscribe((permissions: ListResultDtoOfPermissionDto) => {
         this.permissions = permissions;
-      });
 
-    this.fetchData();
+        this.fetchData();
+      });
   }
 
   fetchData(): void {
@@ -53,7 +53,7 @@ export class EditRoleComponent extends ModalFormComponentBase<RoleDto> implement
         }
         this.permissions.items.forEach((item) => {
           this.permissionList.push({
-            label: item.displayName, value: item.name, checked: this.checkPermission(item.name)
+            label: item.displayName, value: item.name, checked: this.checkPermission(item.name), disabled: this.role.isStatic
           });
         });
 
