@@ -35,7 +35,8 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/sweetalert/dist/sweetalert.min.js",
               "node_modules/block-ui/jquery.blockUI.js",
-
+              "node_modules/spin.js/spin.min.js",
+              "node_modules/spin.js/jquery.spin.js",
               "node_modules/@antv/g2/dist/g2.min.js",
               "node_modules/@antv/data-set/dist/data-set.min.js",
               "node_modules/@antv/g2-plugin-slider/dist/g2-plugin-slider.min.js",
@@ -46,7 +47,9 @@
               "node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js",
               "node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.moment.js",
               "node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js",
-              "node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js"
+              "node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js",
+              "node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js"
+
 
 
             ]

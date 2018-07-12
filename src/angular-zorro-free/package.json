@@ -64,6 +64,7 @@
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
     "screenfull": "^3.3.1",
+    "spin.js": "2.3.2",
     "stylelint": "^9.2.0",
     "stylelint-config-standard": "^18.2.0",
     "sweetalert": "^2.1.0",
