@@ -47,6 +47,7 @@
     "abp-ng2-module": "^3.1.0",
     "abp-web-resources": "^3.7.0",
     "ajv": "^6.4.0",
+    "block-ui": "^2.70.1",
     "core-js": "^2.5.4",
     "editorconfig-tools": "^0.1.1",
     "famfamfam-flags": "^1.0.0",

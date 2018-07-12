@@ -76,7 +76,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.EntityFrameworkCore.Seed.Host
                     UserName = AbpUserBase.AdminUserName,
                     Name = "admin",
                     Surname = "admin",
-                    EmailAddress = "admin@aspnetboilerplate.com",
+                    EmailAddress = "admin@52abp.com",
                     IsEmailConfirmed = true,
                     IsActive = true
                 };
