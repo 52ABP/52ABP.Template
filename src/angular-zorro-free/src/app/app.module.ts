@@ -16,6 +16,10 @@ import { UsersComponent } from './users/users.component';
 import { RolesComponent } from './roles/roles.component';
 import { CreateTenantComponent } from '@app/tenants/create-tenant/create-tenant.component';
 import { EditTenantComponent } from '@app/tenants/edit-tenant/edit-tenant.component';
+import { CreateRoleComponent } from '@app/roles/create-role/create-role.component';
+import { EditRoleComponent } from '@app/roles/edit-role/edit-role.component';
+import { CreateUserComponent } from '@app/users/create-user/create-user.component';
+import { EditUserComponent } from '@app/users/edit-user/edit-user.component';
 
 @NgModule({
   imports: [
@@ -36,11 +40,19 @@ import { EditTenantComponent } from '@app/tenants/edit-tenant/edit-tenant.compon
     UsersComponent,
     RolesComponent,
     CreateTenantComponent,
-    EditTenantComponent
+    EditTenantComponent,
+    CreateRoleComponent,
+    EditRoleComponent,
+    CreateUserComponent,
+    EditUserComponent
   ],
   entryComponents: [
     CreateTenantComponent,
     EditTenantComponent,
+    CreateRoleComponent,
+    EditRoleComponent,
+    CreateUserComponent,
+    EditUserComponent
   ],
   providers: [
     LocalizationService
