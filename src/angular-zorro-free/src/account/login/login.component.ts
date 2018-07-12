@@ -20,7 +20,6 @@ import { FormComponentBase } from '@shared/component-base/form-component-base';
   animations: [appModuleAnimation()],
 })
 export class LoginComponent extends FormComponentBase<any> implements OnInit {
-
   submitting = false;
 
   constructor(
@@ -40,7 +39,6 @@ export class LoginComponent extends FormComponentBase<any> implements OnInit {
     });
   }
 
-
   get multiTenancySideIsTeanant(): boolean {
     return this.appSession.tenantId > 0;
   }
@@ -55,13 +53,16 @@ export class LoginComponent extends FormComponentBase<any> implements OnInit {
   protected submitExecute(finisheCallback: Function): void {
     this.loginService.authenticate(() => (this.submitting = false));
   }
-  protected setFormValues(entity: any): void {
-
-  }
+  protected setFormValues(entity: any): void {}
   protected getFormValues(): void {
-    this.loginService.authenticateModel.userNameOrEmailAddress = this.getControlVal('userName');
-    this.loginService.authenticateModel.password = this.getControlVal('password');
-    this.loginService.authenticateModel.rememberClient = this.getControlVal('rememberMe');
+    this.loginService.authenticateModel.userNameOrEmailAddress = this.getControlVal(
+      'userName',
+    );
+    this.loginService.authenticateModel.password = this.getControlVal(
+      'password',
+    );
+    this.loginService.authenticateModel.rememberClient = this.getControlVal(
+      'rememberMe',
+    );
   }
-
 }
