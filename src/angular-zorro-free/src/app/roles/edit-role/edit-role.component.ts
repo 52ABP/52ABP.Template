@@ -75,7 +75,7 @@ export class EditRoleComponent extends ModalFormComponentBase<RoleDto> implement
         tmpPermissions.push(item.value);
       }
     });
-    debugger
+
     this.role.permissions = tmpPermissions;
 
     this._roleService.update(this.role)
