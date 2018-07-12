@@ -3,31 +3,18 @@ import { NzModalRef } from 'ng-zorro-antd';
 import { ModalComponentBase } from '@shared/component-base/modal-component-base';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
-export abstract class ModalFormComponentBase extends ModalComponentBase {
+export abstract class ModalFormComponentBase<EntityDto> extends ModalComponentBase {
 
     modalRef: NzModalRef;
     formBuilder: FormBuilder;
     validateForm: FormGroup;
+    saving: boolean = false;
 
     constructor(injector: Injector) {
         super(injector);
         this.modalRef = injector.get(NzModalRef);
         this.formBuilder = injector.get(FormBuilder);
     }
-
-    success(result?: any) {
-        if (result) {
-            this.modalRef.triggerCancel();
-        }
-        else {
-            this.modalRef.triggerOk();
-        }
-    }
-
-    close($event?: MouseEvent): void {
-        this.modalRef.triggerCancel();
-    }
-
 
     getFormControl(name: string) {
         return this.validateForm.controls[name];
@@ -42,4 +29,24 @@ export abstract class ModalFormComponentBase extends ModalComponentBase {
         }
     }
 
+    getControlVal(name: string): any {
+        return this.validateForm.controls[name].value;
+    }
+
+    setControlVal(name: string, val: any) {
+        this.validateForm.controls[name].setValue(val);
+    }
+
+    enter() {
+        this.getFormValues();
+
+        this.saving = true;
+        this.save(() => {
+            this.saving = false;
+        });
+    }
+
+    protected abstract save(finisheCallback: Function): void;
+    protected abstract setFormValues(entity: EntityDto): void;
+    protected abstract getFormValues(): void;
 }

@@ -1,3 +1,43 @@
-<p>
-  tenants works!
-</p>
+<page-header [title]="l('Tenants')"></page-header>
+
+
+<nz-card [nzExtra]="extraTpl">
+
+  <ng-template #extraTpl>
+    <button nz-button (click)="refresh()" nzShape="circle">
+      <i class="anticon anticon-reload"></i>
+    </button>
+    <button nz-button (click)="create()" nzShape="circle" nzType="primary">
+      <i class="anticon anticon-plus"></i>
+    </button>
+  </ng-template>
+
+
+  <nz-table #ajaxTable nzShowSizeChanger [nzData]="dataList" [nzTotal]="total" [(nzPageIndex)]="pageNumber" [(nzPageSize)]="pageSize"
+    [nzLoading]="isTableLoading" (nzPageIndexChange)="refresh()" (nzPageSizeChange)="refresh()">
+    <thead>
+      <tr>
+        <th>{{l("TenancyName")}}</th>
+        <th>{{l("Name")}}</th>
+        <th>{{l("IsActive")}}</th>
+        <th>{{l("Actions")}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of ajaxTable.data">
+        <td>{{item.tenancyName}}</td>
+        <td>{{item.name}}</td>
+        <td>
+          <nz-badge *ngIf="item.isActive" [nzStatus]="'success'" [nzText]="l('Yes')"></nz-badge>
+          <nz-badge *ngIf="!item.isActive" [nzStatus]="'default'" [nzText]="l('No')"></nz-badge>
+        </td>
+        <td>
+          <a (click)="edit(item)">编辑</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="delete(item)">删除</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+</nz-card>

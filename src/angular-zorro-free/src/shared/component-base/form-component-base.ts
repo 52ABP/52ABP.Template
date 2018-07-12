@@ -4,10 +4,11 @@ import { ModalComponentBase } from '@shared/component-base/modal-component-base'
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AppComponentBase } from '@shared/app-component-base';
 
-export abstract class FormComponentBase extends AppComponentBase {
+export abstract class FormComponentBase<EntityDto> extends AppComponentBase {
 
     formBuilder: FormBuilder;
     validateForm: FormGroup;
+    saving: boolean = false;
 
     constructor(injector: Injector) {
         super(injector);
@@ -27,4 +28,25 @@ export abstract class FormComponentBase extends AppComponentBase {
         }
     }
 
+    getControlVal(name: string) {
+        return this.validateForm.controls[name].value;
+    }
+
+    setControlVal(name: string, val: any) {
+        this.validateForm.controls[name].setValue(val);
+    }
+
+
+    enter() {
+        this.getFormValues();
+
+        this.saving = true;
+        this.save(() => {
+            this.saving = false;
+        });
+    }
+
+    protected abstract save(finisheCallback: Function): void;
+    protected abstract setFormValues(entity: EntityDto): void;
+    protected abstract getFormValues(): void;
 }

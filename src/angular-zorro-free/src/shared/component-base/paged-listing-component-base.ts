@@ -1,4 +1,4 @@
-﻿import { AppComponentBase } from "shared/app-component-base";
+import { AppComponentBase } from "shared/app-component-base";
 import { Injector, OnInit } from '@angular/core';
 
 export class PagedResultDto {
@@ -21,7 +21,9 @@ export abstract class PagedListingComponentBase<EntityDto> extends AppComponentB
     public pageNumber: number = 1;
     public totalPages: number = 1;
     public totalItems: number;
-    public isTableLoading = false;
+    public isTableLoading = true;
+
+    dataList: EntityDto[];
 
     constructor(injector: Injector) {
         super(injector);
@@ -35,24 +37,20 @@ export abstract class PagedListingComponentBase<EntityDto> extends AppComponentB
         this.getDataPage(this.pageNumber);
     }
 
-    public showPaging(result: PagedResultDto, pageNumber: number): void {
-        this.totalPages = ((result.totalCount - (result.totalCount % this.pageSize)) / this.pageSize) + 1;
-
-        this.totalItems = result.totalCount;
-        this.pageNumber = pageNumber;
-    }
-
     public getDataPage(page: number): void {
+        if (page == 0) {
+            page = 1;
+        }
         var req = new PagedRequestDto();
         req.maxResultCount = this.pageSize;
         req.skipCount = (page - 1) * this.pageSize;
 
         this.isTableLoading = true;
-        this.list(req, page, () => {
+        this.fetchData(req, page, () => {
             this.isTableLoading = false;
         });
     }
 
-    protected abstract list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void;
+    protected abstract fetchData(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void;
     protected abstract delete(entity: EntityDto): void;
 }

@@ -14,6 +14,8 @@ import { AboutComponent } from './about/about.component';
 import { TenantsComponent } from './tenants/tenants.component';
 import { UsersComponent } from './users/users.component';
 import { RolesComponent } from './roles/roles.component';
+import { CreateTenantComponent } from '@app/tenants/create-tenant/create-tenant.component';
+import { EditTenantComponent } from '@app/tenants/edit-tenant/edit-tenant.component';
 
 @NgModule({
   imports: [
@@ -32,7 +34,13 @@ import { RolesComponent } from './roles/roles.component';
     AboutComponent,
     TenantsComponent,
     UsersComponent,
-    RolesComponent
+    RolesComponent,
+    CreateTenantComponent,
+    EditTenantComponent
+  ],
+  entryComponents: [
+    CreateTenantComponent,
+    EditTenantComponent,
   ],
   providers: [
     LocalizationService

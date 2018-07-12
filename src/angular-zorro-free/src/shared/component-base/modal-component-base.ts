@@ -14,15 +14,15 @@ export abstract class ModalComponentBase extends AppComponentBase {
 
     success(result?: any) {
         if (result) {
-            this.modalRef.triggerCancel();
+            this.modalRef.close(result);
         }
         else {
-            this.modalRef.triggerOk();
+            this.close();
         }
     }
 
     close($event?: MouseEvent): void {
-        this.modalRef.triggerCancel();
+        this.modalRef.close();
     }
 
 }
