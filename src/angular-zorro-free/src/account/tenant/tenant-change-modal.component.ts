@@ -9,14 +9,7 @@ import { ModalFormComponentBase } from '@shared/component-base/modal-form-compon
 
 @Component({
     selector: 'tenantChangeModal',
-    templateUrl: './tenant-change-modal.component.html',
-    styles: [
-        `
-        .formTenant{
-            padding-bottom: 45px;
-        }
-        `
-    ]
+    templateUrl: './tenant-change-modal.component.html'
 })
 export class TenantChangeModalComponent extends ModalFormComponentBase<any> implements OnInit {
 
