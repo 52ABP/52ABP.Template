@@ -14,8 +14,7 @@ export class TenantChangeComponent extends AppComponentBase implements OnInit {
     name: string;
 
     constructor(
-        injector: Injector,
-        private _accountService: AccountServiceProxy
+        injector: Injector
     ) {
         super(injector);
     }

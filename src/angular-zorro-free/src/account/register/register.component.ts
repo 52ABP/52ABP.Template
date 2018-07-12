@@ -1,28 +1,32 @@
 ﻿import {
   Component,
   Injector,
-  ElementRef,
   AfterViewInit,
-  ViewChild,
+  OnInit,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
+
 import {
   AccountServiceProxy,
   RegisterInput,
   RegisterOutput,
 } from '@shared/service-proxies/service-proxies';
+
+
+import { FormComponentBase } from '@shared/component-base/form-component-base';
+import { appModuleAnimation } from '@shared/animations/routerTransition';
+
 import { LoginService } from '../login/login.service';
-import { AppComponentBase } from '@shared/app-component-base';
 
 @Component({
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.less'],
+  animations: [appModuleAnimation()],
 })
-export class RegisterComponent extends AppComponentBase
-  implements AfterViewInit {
-  // @ViewChild('cardBody') cardBody: ElementRef;
+export class RegisterComponent extends FormComponentBase implements OnInit {
 
-  model: RegisterInput = new RegisterInput();
+  model: RegisterInput;
 
   saving = false;
 
@@ -35,12 +39,25 @@ export class RegisterComponent extends AppComponentBase
     super(injector);
   }
 
-  ngAfterViewInit(): void {
-    // $(this.cardBody.nativeElement).find('input:first').focus();
+  ngOnInit(): void {
+    if (!this.appSession.tenant) {
+      this.back();
+      return;
+    }
+
+    this.model = new RegisterInput();
+
+    this.validateForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      surname: ['', [Validators.required]],
+      emailAddress: ['', [Validators.required, Validators.email]],
+      userName: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
   }
 
   back(): void {
-    this._router.navigate(['/login']);
+    this._router.navigate(['/']);
   }
 
   save(): void {

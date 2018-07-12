@@ -36,7 +36,8 @@
 
     <!-- 登陆按钮 -->
     <nz-form-item>
-      <button nz-button (click)="login()" nzType="primary" type="submit" [disabled]='!validateForm.valid' class="ant-btn__block">{{l("LogIn")}}</button>
+      <!-- [disabled]='!validateForm.valid' -->
+      <button nz-button (click)="login()" nzType="primary" type="submit" class="ant-btn__block">{{l("LogIn")}}</button>
     </nz-form-item>
 
     <!-- 注册 -->

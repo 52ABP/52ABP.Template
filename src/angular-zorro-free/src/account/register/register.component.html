@@ -1,71 +1,80 @@
 ﻿<div [@routerTransition]>
-    <form nz-form #registerForm="ngForm" method="post" (ngSubmit)="save()" role="form">
-        <!-- <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert> -->
-        <h3>{{l('Register')}}</h3>
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="save()">
 
-        <div nz-form-item>
-            <div nz-form-control>
-                <!-- <nz-input [(ngModel)]="model.userName" name="UserName" required maxlength="32" [nzPlaceHolder]="l('UserName')" [nzSize]="'large'">
-                    <ng-template #prefix>
-                        <i class="anticon anticon-user"></i>
-                    </ng-template>
-                </nz-input> -->
-            </div>
-        </div>
+    <br>
 
-        <div nz-form-item>
-            <div nz-form-control>
-                <!-- <nz-input [(ngModel)]="model.password" [nzPlaceHolder]="l('Password')" [nzType]="'password'" [nzSize]="'large'" name="Password"
-                    required maxlength="32">
-                    <ng-template #prefix>
-                        <i class="anticon anticon-lock"></i>
-                    </ng-template>
-                </nz-input> -->
-            </div>
-        </div>
-        <div nz-form-item>
-            <div nz-form-control>
-                <!-- <nz-input [(ngModel)]="model.emailAddress" name="EmailAddress" required maxlength="255" [nzType]="'email'" [nzPlaceHolder]="l('EmailAddress')"
-                    [nzSize]="'large'">
-                    <ng-template #prefix>
-                        <i class="anticon anticon-mail"></i>
-                    </ng-template>
-                </nz-input> -->
-            </div>
-        </div>
-        <div nz-form-item>
-            <div nz-form-control>
-                <!-- <nz-input [(ngModel)]="model.name" name="Name" required maxlength="32" [nzPlaceHolder]="l('Name')" [nzSize]="'large'">
-                    <ng-template #prefix>
-                        <i class="anticon anticon-book"></i>
-                    </ng-template>
-                </nz-input> -->
-            </div>
-        </div>
-        <div nz-form-item>
-            <div nz-form-control>
-                <!-- <nz-input [(ngModel)]="model.surname" name="Surname" required maxlength="32" [nzPlaceHolder]="l('Surname')" [nzSize]="'large'">
-                    <ng-template #prefix>
-                        <i class="anticon anticon-book"></i>
-                    </ng-template>
-                </nz-input> -->
-            </div>
-        </div>
+    <!-- 名 -->
+    <nz-form-item>
+      <nz-form-control nzHasFeedback>
+        <nz-input-group nzPrefixIcon="anticon anticon-user">
+          <input nz-input formControlName="name" [(ngModel)]="model.name" [placeholder]="l('Name')">
+        </nz-input-group>
+        <nz-form-explain *ngIf="validateForm.get('name').dirty&&validateForm.get('name').errors">
+          <ng-container *ngIf="validateForm.get('name').hasError('required')">{{l('CanNotNull')}}</ng-container>
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+
+    <!-- 姓 -->
+    <nz-form-item>
+      <nz-form-control nzHasFeedback>
+        <nz-input-group nzPrefixIcon="anticon anticon-user">
+          <input nz-input formControlName="surname" [(ngModel)]="model.surname" [placeholder]="l('Surname')">
+        </nz-input-group>
+        <nz-form-explain *ngIf="validateForm.get('surname').dirty&&validateForm.get('surname').errors">
+          <ng-container *ngIf="validateForm.get('surname').hasError('required')">{{l('CanNotNull')}}</ng-container>
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
 
 
+    <!-- 邮箱 -->
+    <nz-form-item>
+      <nz-form-control nzHasFeedback>
+        <nz-input-group nzPrefixIcon="anticon anticon-mail">
+          <input nz-input formControlName="emailAddress" [(ngModel)]="model.emailAddress" [placeholder]="l('EmailAddress')">
+        </nz-input-group>
+        <nz-form-explain *ngIf="validateForm.get('emailAddress').dirty&&validateForm.get('emailAddress').errors">
+          <ng-container *ngIf="validateForm.get('emailAddress').hasError('email')">{{l('NotEmail')}}</ng-container>
+          <ng-container *ngIf="validateForm.get('emailAddress').hasError('required')">{{l('CanNotNull')}}</ng-container>
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
 
-        <div nz-form-item>
 
-            <!-- <button nz-button [nzType]="'default'" [disabled]="saving" [routerLink]="['../login']" class="login">
-                <i class="anticon anticon-rollback"></i>
-                <span>{{l("Back")}}</span>
-            </button>
+    <!-- 用户账号 -->
+    <nz-form-item>
+      <nz-form-control nzHasFeedback>
+        <nz-input-group nzPrefixIcon="anticon anticon-user">
+          <input nz-input formControlName="userName" [(ngModel)]="model.userName" [placeholder]="l('UserName')">
+        </nz-input-group>
+        <nz-form-explain *ngIf="validateForm.get('userName').dirty&&validateForm.get('userName').errors">
+          <ng-container *ngIf="validateForm.get('email').hasError('required')">{{l('CanNotNull')}}</ng-container>
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
 
-            <button nz-button [nzType]="'primary'" [nzLoading]="saving" [disabled]="!registerForm.form.valid" class="submit">
-                <span>{{l("Submit")}}</span>
-            </button> -->
+    <!-- 密码 -->
+    <nz-form-item>
+      <nz-form-control nzHasFeedback>
+        <nz-input-group nzPrefixIcon="anticon anticon-lock">
+          <input nz-input formControlName="password" [(ngModel)]="model.password" type="password" [placeholder]="l('Password')">
+        </nz-input-group>
+        <nz-form-explain *ngIf="validateForm.get('password').dirty&&validateForm.get('password').errors">
+          <ng-container *ngIf="validateForm.get('email').hasError('required')">{{l('CanNotNull')}}</ng-container>
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
 
-        </div>
-    </form>
+    <!-- 功能按钮 -->
+    <nz-form-item>
+      <nz-col [nzSpan]="12">
+        <button (click)="back()" nz-button [disabled]="saving">{{l("Back")}}</button>
+      </nz-col>
+      <nz-col [nzSpan]="12" class="text-right">
+        <button nz-button nzType="primary" type="submit" [disabled]="!validateForm.valid">{{l("Submit")}}</button>
+      </nz-col>
+    </nz-form-item>
 
+  </form>
 </div>
