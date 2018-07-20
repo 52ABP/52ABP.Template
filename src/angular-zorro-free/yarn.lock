@@ -3513,6 +3513,7 @@ hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
 
+
 hosted-git-info@^2.1.4, hosted-git-info@^2.6.0:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
@@ -5393,6 +5394,10 @@ npm-which@^3.0.1:
     console-control-strings "~1.1.0"
     gauge "~2.7.3"
     set-blocking "~2.0.0"
+
+nswag@^11.17.20:
+  version "11.17.21"
+  resolved "https://registry.yarnpkg.com/nswag/-/nswag-11.17.21.tgz#60fb92d820f25218ee2db3c2ac3af2fd6f9bfa3f"
 
 nth-check@~1.0.1:
   version "1.0.1"
