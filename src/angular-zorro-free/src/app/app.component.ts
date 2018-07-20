@@ -57,9 +57,10 @@ export class AppComponent extends AppComponentBase implements OnInit, AfterViewI
     super(injector);
 
     // 创建菜单
-    var arrMenu = this.processMenu(this.Menums);
+    // 创建菜单
+    let arrMenu = new Array<Menu>();
+    this.processMenu(arrMenu, this.Menums);
     this.menuService.add(arrMenu);
-
   }
 
   ngOnInit(): void {
@@ -92,25 +93,26 @@ export class AppComponent extends AppComponentBase implements OnInit, AfterViewI
   }
 
   // 处理生成菜单
-  processMenu(menus: MenuItem[]): Array<Menu> {
-    // abp.auth.isGranted
-    const retMenu = new Array<Menu>();
+  processMenu(resMenu: Menu[], menus: MenuItem[], isChild?: boolean) {
     menus.forEach((item) => {
-      if (!this.isGranted(item.permission)) {
-        let subMenu: Menu;
-        subMenu = {
-          text: item.displayName,
-          link: item.route,
-          icon: `${item.icon}`
-        };
-        if (subMenu) {
-          if (item.childMenus && item.childMenus.length > 0)
-            subMenu.children = this.processMenu(item.childMenus);
-          retMenu.push(subMenu);
-        }
+      let subMenu: Menu;
+      subMenu = {
+        text: item.displayName,
+        link: item.route,
+        icon: `${item.icon}`,
+        hide: item.hide
+      };
+      if (item.permission !== '' && !this.isGranted(item.permission)) {
+        subMenu.hide = true;
       }
+
+      if (item.childMenus && item.childMenus.length > 0) {
+        subMenu.children = [];
+        this.processMenu(subMenu.children, item.childMenus);
+      }
+
+      resMenu.push(subMenu);
     });
-    return retMenu;
   }
 
 }

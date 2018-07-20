@@ -23,7 +23,6 @@ export class SideBarNavComponent extends AppComponentBase implements OnInit {
         private menuService: MenuService
     ) {
         super(injector);
-
         this.list = this.menuService.menus;
     }
 
@@ -60,5 +59,17 @@ export class SideBarNavComponent extends AppComponentBase implements OnInit {
             return this.permission.isGranted(menuItem.permissionName);
         }
         return true;
+    }
+
+
+    hasChildren(item: Menu): boolean {
+        if (item.children && item.children.length == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    canShow(item: Menu): boolean {
+        return !item.hide;
     }
 }
