@@ -6,7 +6,8 @@
   </a>
   <ul class="dropdown-menu">
     <li *ngFor="let language of languages">
-      <a *ngIf="language.name != currentLanguage.name" (click)="changeLanguage(language.name)"><i class="{{language.icon}}"></i> {{language.displayName}}</a>
+      <a *ngIf="language.name != currentLanguage.name" (click)="changeLanguage(language.name)">
+        <i class="{{language.icon}}"></i> {{language.displayName}}</a>
     </li>
   </ul>
 </li>
