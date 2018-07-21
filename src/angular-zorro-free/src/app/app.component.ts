@@ -76,7 +76,7 @@ export class AppComponent extends AppComponentBase
     super(injector);
 
     // 创建菜单
-    // 创建菜单
+
     const arrMenu = new Array<Menu>();
     this.processMenu(arrMenu, this.Menums);
     this.menuService.add(arrMenu);

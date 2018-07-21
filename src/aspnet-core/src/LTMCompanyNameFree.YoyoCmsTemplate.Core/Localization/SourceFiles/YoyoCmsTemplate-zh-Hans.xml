@@ -61,7 +61,12 @@
     <text name="Reset" value="重置" />
     <text name="ResetPermissionsTooltip" value="重置用户权限后，用户仅拥有所属角色包含的权限，为用户直接指定的权限将取消." />
     <text name="ResetSuccessfully" value="重置成功" />
-    <text name="Tenants" value="租户" />
+    <text name="CurrentTenant" value="租户" />
+    <text name="NotSelected" value="未选择" />
+    <text name="Tenants" value="当前租户名称" />
+    <text name="ChangeTenant" value="切换租户" />
+    <text name="LeaveEmptyToSwitchToHost" value="留空则切换到宿主" />
+    <text name="Change" value="切换" />
     <text name="TenantsHeaderInfo" value="管理租户." />
     <text name="CreateNewTenant" value="添加租户" />
     <text name="TenancyCodeName" value="租户编码" />
