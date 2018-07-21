@@ -1,8 +1,45 @@
 <page-header>
+  <ng-template #content>
+    <div class="page-header">
+      <div class="avatar" style="text-align: center">
+        <!-- https://upload-images.jianshu.io/upload_images/1979022-b6bb0a2dad6c7f3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240 -->
 
-  欢迎使用本应用，您可以从左边的菜单启动要使用的功能!如果您没有看到任何菜单，可能是因为您没有获得任何一项授权，您可以联系您的系统管理员获得授权。
+        <img class="img" src=" https://upload-images.jianshu.io/upload_images/1979022-b6bb0a2dad6c7f3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+          width="100px" height="100px">
+        <!-- <img class="img" src="https://mp.weixin.qq.com/rr?timestamp=1532171705&src=3&ver=1&signature=Mr7jG2uBte-*FqiCN9-yVKRU-YZWVWKfpioWBN2d7waS1kpnma3ffiERhirb0xbfAtqOIkNsFY*5b1pgcRTfRgb7arw5gX1uwgI4QfAIiJg="
+          width="100px" height="100px"> -->
+        <span>微信扫一扫关注</span>
+      </div>
+      <div class="desc">
+        <div class="desc-title">有事没事就请访问
+          <a href="//www.52abp.com" target="_blank">52ABP社区</a>
+        </div>
+        <div>假砖家 | 我们是一群业余的搞一个专业的事情。</div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #extra>
+    <div class="page-extra">
+      <div>
+        <p>项目数</p>
+        <p>56</p>
+      </div>
+      <div>
+        <p>团队内排名</p>
+        <p>8
+          <span> / 24</span>
+        </p>
+      </div>
+      <div>
+        <p>项目访问</p>
+        <p>2,223</p>
+      </div>
+    </div>
+  </ng-template>
 
 </page-header>
+
+
 <!-- 演示卡片数据 -->
 <div nz-row nzGutter="16">
   <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
@@ -54,10 +91,7 @@
 
 <div nz-row [nzGutter]="24">
   <div nz-col nzXs="24" nzSm="24" nzMd="24">
-    <nz-card nzTitle="52abp模板项目中的技术栈" [nzBordered]="false" [nzLoading]="loading" class="ant-card__body-nopadding mb-lg project-list">
-      <ng-template #extra>
-        <a (click)="msg.success('to')">全部项目</a>
-      </ng-template>
+    <nz-card nzTitle="52ABP模板项目中的技术栈" [nzBordered]="false" [nzLoading]="loading" class="ant-card__body-nopadding mb-lg project-list">
       <div *ngFor="let item of notice" nz-card-grid class="project-grid">
         <nz-card [nzBordered]="false" class="ant-card__body-nopadding mb0">
           <nz-card-meta [nzTitle]="noticeTitle" [nzDescription]="item.description">
@@ -82,3 +116,22 @@
 
 
 </div>
+
+
+<!-- 更多资料  -->
+<nz-row nzGutter="24">
+  <nz-col nzSpan="24">
+    <nz-card nzTitle="更多资料" [nzBordered]="false" [nzBodyStyle]="{'padding-top.px': 12, 'padding-bottom.px': 12 }" class="mb-lg">
+      <div class="members">
+        <div nz-row [nzGutter]="48">
+          <div nz-col [nzSpan]="12" *ngFor="let i of members">
+            <a href="{{i.link}}" target="_blank">
+              <nz-avatar [nzSrc]="i.logo" [nzSize]="'small'"></nz-avatar>
+              <span class="member">{{i.title}}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nz-card>
+  </nz-col>
+</nz-row>
