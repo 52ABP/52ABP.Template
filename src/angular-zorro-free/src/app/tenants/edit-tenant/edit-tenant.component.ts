@@ -1,25 +1,22 @@
 import { Component, OnInit, Injector, Input } from '@angular/core';
 import { ModalFormComponentBase } from '@shared/component-base/modal-form-component-base';
-import { TenantServiceProxy, TenantDto } from '@shared/service-proxies/service-proxies';
-import { Validators } from '../../../../node_modules/@angular/forms';
+import {
+  TenantServiceProxy,
+  TenantDto,
+} from '@shared/service-proxies/service-proxies';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-tenant',
   templateUrl: './edit-tenant.component.html',
-  styles: []
+  styles: [],
 })
-export class EditTenantComponent extends ModalFormComponentBase<TenantDto> implements OnInit {
-
-
-
+export class EditTenantComponent extends ModalFormComponentBase<TenantDto>
+  implements OnInit {
   @Input() id: number;
   tenant: TenantDto = null;
 
-
-  constructor(
-    injector: Injector,
-    private _tenantService: TenantServiceProxy
-  ) {
+  constructor(injector: Injector, private _tenantService: TenantServiceProxy) {
     super(injector);
   }
 
@@ -33,20 +30,19 @@ export class EditTenantComponent extends ModalFormComponentBase<TenantDto> imple
     this.fetchData();
   }
 
-
   fetchData() {
-    this._tenantService.get(this.id)
-      .finally(() => {
-
-      })
-      .subscribe((result) => {
+    this._tenantService
+      .get(this.id)
+      .finally(() => {})
+      .subscribe(result => {
         this.tenant = result;
         this.setFormValues(this.tenant);
-      })
+      });
   }
 
   protected submitExecute(finisheCallback: Function): void {
-    this._tenantService.update(this.tenant)
+    this._tenantService
+      .update(this.tenant)
       .finally(() => {
         finisheCallback();
       })
@@ -55,7 +51,6 @@ export class EditTenantComponent extends ModalFormComponentBase<TenantDto> imple
         this.success(true);
       });
   }
-
 
   protected setFormValues(entity: TenantDto): void {
     this.setControlVal('tenancyName', entity.tenancyName);

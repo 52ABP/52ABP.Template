@@ -1,40 +1,41 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { ModalFormComponentBase } from '@shared/component-base/modal-form-component-base';
-import { TenantServiceProxy, CreateTenantDto } from '@shared/service-proxies/service-proxies';
-import { Validators } from '../../../../node_modules/@angular/forms';
+import {
+  TenantServiceProxy,
+  CreateTenantDto,
+} from '@shared/service-proxies/service-proxies';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-tenant',
   templateUrl: './create-tenant.component.html',
-  styles: []
+  styles: [],
 })
-export class CreateTenantComponent extends ModalFormComponentBase<CreateTenantDto> implements OnInit {
-
-  saving: boolean = false;
+export class CreateTenantComponent
+  extends ModalFormComponentBase<CreateTenantDto>
+  implements OnInit {
+  saving = false;
   tenant: CreateTenantDto = new CreateTenantDto();
 
-  constructor(
-    injector: Injector,
-    private _tenantService: TenantServiceProxy
-  ) {
+  constructor(injector: Injector, private _tenantService: TenantServiceProxy) {
     super(injector);
   }
 
   ngOnInit() {
     this.tenant.init({ isActive: true });
-    this.tenant.connectionString
+    this.tenant.connectionString;
     this.validateForm = this.formBuilder.group({
       tenancyName: ['', [Validators.required]],
       name: ['', [Validators.required]],
       connectionString: [''],
       adminEmailAddress: ['', [Validators.required, Validators.email]],
-      isActive: [true]
+      isActive: [true],
     });
   }
 
-
   protected submitExecute(finisheCallback: Function): void {
-    this._tenantService.create(this.tenant)
+    this._tenantService
+      .create(this.tenant)
       .finally(() => {
         finisheCallback();
       })
@@ -44,9 +45,7 @@ export class CreateTenantComponent extends ModalFormComponentBase<CreateTenantDt
       });
   }
 
-  protected setFormValues(entity: CreateTenantDto): void {
-
-  }
+  protected setFormValues(entity: CreateTenantDto): void {}
 
   protected getFormValues(): void {
     this.tenant.tenancyName = this.getControlVal('tenancyName');

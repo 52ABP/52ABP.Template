@@ -1,4 +1,4 @@
-import { AppComponentBase } from 'shared/app-component-base';
+import { AppComponentBase } from '@shared/app-component-base';
 import { Component, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SettingsService } from '@delon/theme';

@@ -1,13 +1,13 @@
 ﻿import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { AbpModule } from '@abp/abp.module';
+import { AbpModule } from 'abp-ng2-module/dist/src/abp.module';
 import { RouterModule } from '@angular/router';
 
-import { AppSessionService } from './session/app-session.service';
-import { AppUrlService } from './nav/app-url.service';
-import { AppAuthService } from './auth/app-auth.service';
-import { AppRouteGuard } from './auth/auth-route-guard';
+import { AppSessionService } from '@shared/session/app-session.service';
+import { AppUrlService } from '@shared/nav/app-url.service';
+import { AppAuthService } from '@shared/auth/app-auth.service';
+import { AppRouteGuard } from '@shared/auth/auth-route-guard';
 
 // delon
 import { AlainThemeModule, ModalHelper } from '@delon/theme';
@@ -19,14 +19,8 @@ import { DelonFormModule } from '@delon/form';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { CountdownModule } from 'ngx-countdown';
 
-
-
-const THIRDMODULES = [
-  NgZorroAntdModule,
-  CountdownModule
-];
+const THIRDMODULES = [NgZorroAntdModule, CountdownModule];
 // endregion
-
 
 @NgModule({
   imports: [
@@ -41,7 +35,7 @@ const THIRDMODULES = [
     DelonACLModule,
     DelonFormModule,
     // third libs
-    ...THIRDMODULES
+    ...THIRDMODULES,
   ],
   declarations: [],
   exports: [
@@ -56,9 +50,7 @@ const THIRDMODULES = [
     // third libs
     ...THIRDMODULES,
   ],
-  providers: [
-    ModalHelper
-  ]
+  providers: [ModalHelper],
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

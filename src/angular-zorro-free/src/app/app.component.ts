@@ -8,18 +8,17 @@ import { Router } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { HostBinding } from '@angular/core';
-import { NzModalService, NzNotificationService } from "ng-zorro-antd";
+import { NzModalService, NzNotificationService } from 'ng-zorro-antd';
 import { AppConsts } from '@shared/AppConsts';
 import { MenuItem } from '@shared/layout/menu-item';
-
-
 
 @Component({
   selector: 'app-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+  styleUrls: ['./app.component.less'],
 })
-export class AppComponent extends AppComponentBase implements OnInit, AfterViewInit {
+export class AppComponent extends AppComponentBase
+  implements OnInit, AfterViewInit {
   @HostBinding('class.layout-fixed')
   get isFixed() {
     return this.settings.layout.fixed;
@@ -36,29 +35,49 @@ export class AppComponent extends AppComponentBase implements OnInit, AfterViewI
   // 全局的菜单
   Menums = [
     // 首页
-    new MenuItem(this.l("HomePage"), "", "anticon anticon-home", "/app/home"),
+    new MenuItem(this.l('HomePage'), '', 'anticon anticon-home', '/app/home'),
     // 租户
-    new MenuItem(this.l("Tenants"), "Pages.Administration.Tenants", "anticon anticon-team", "/app/tenants"),
+    new MenuItem(
+      this.l('Tenants'),
+      'Pages.Tenants',
+      'anticon anticon-team',
+      '/app/tenants',
+    ),
     // 角色
-    new MenuItem(this.l("Roles"), "Pages.Administration.Roles", "anticon anticon-safety", "/app/roles"),
+    new MenuItem(
+      this.l('Roles'),
+      'Pages.Roles',
+      'anticon anticon-safety',
+      '/app/roles',
+    ),
     // 用户
-    new MenuItem(this.l("Users"), "Pages.Administration.Users", "anticon anticon-user", "/app/users"),
+    new MenuItem(
+      this.l('Users'),
+      'Pages.Users',
+      'anticon anticon-user',
+      '/app/users',
+    ),
     // 关于我们
-    new MenuItem(this.l("About"), "", "anticon anticon-info-circle-o", "/app/about"),
-  ]
+    new MenuItem(
+      this.l('About'),
+      '',
+      'anticon anticon-info-circle-o',
+      '/app/about',
+    ),
+  ];
 
   constructor(
     injector: Injector,
     private settings: SettingsService,
     private router: Router,
     private titleSrv: TitleService,
-    private menuService: MenuService
+    private menuService: MenuService,
   ) {
     super(injector);
 
     // 创建菜单
     // 创建菜单
-    let arrMenu = new Array<Menu>();
+    const arrMenu = new Array<Menu>();
     this.processMenu(arrMenu, this.Menums);
     this.menuService.add(arrMenu);
   }
@@ -94,13 +113,13 @@ export class AppComponent extends AppComponentBase implements OnInit, AfterViewI
 
   // 处理生成菜单
   processMenu(resMenu: Menu[], menus: MenuItem[], isChild?: boolean) {
-    menus.forEach((item) => {
+    menus.forEach(item => {
       let subMenu: Menu;
       subMenu = {
         text: item.displayName,
         link: item.route,
         icon: `${item.icon}`,
-        hide: item.hide
+        hide: item.hide,
       };
       if (item.permission !== '' && !this.isGranted(item.permission)) {
         subMenu.hide = true;
@@ -114,5 +133,4 @@ export class AppComponent extends AppComponentBase implements OnInit, AfterViewI
       resMenu.push(subMenu);
     });
   }
-
 }

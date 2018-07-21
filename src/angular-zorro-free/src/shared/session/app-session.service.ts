@@ -6,7 +6,7 @@ import {
   ApplicationInfoDto,
   GetCurrentLoginInformationsOutput,
 } from '@shared/service-proxies/service-proxies';
-import { AbpMultiTenancyService } from '@abp/multi-tenancy/abp-multi-tenancy.service';
+import { AbpMultiTenancyService } from 'abp-ng2-module/dist/src/multi-tenancy/abp-multi-tenancy.service';
 
 @Injectable()
 export class AppSessionService {

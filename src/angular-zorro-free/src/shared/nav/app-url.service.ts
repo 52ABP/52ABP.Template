@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
-import { AppSessionService } from '../session/app-session.service';
+import { AppSessionService } from '@shared/session/app-session.service';
 
 @Injectable()
 export class AppUrlService {
