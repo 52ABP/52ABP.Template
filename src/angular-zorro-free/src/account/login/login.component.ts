@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { AppComponentBase } from '@shared/app-component-base';
-import { AbpSessionService } from 'abp-ng2-module/dist/src/session/abp-session.service';
 import { FormComponentBase } from '@shared/component-base/form-component-base';
 
 @Component({

@@ -3,9 +3,12 @@ import { AppComponentBase } from '@shared/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from '../../../node_modules/ng-zorro-antd';
+import { zip } from '../../../node_modules/rxjs';
 
 @Component({
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.less'],
+
   animations: [appModuleAnimation()],
 })
 export class HomeComponent extends AppComponentBase implements OnInit {
@@ -16,47 +19,53 @@ export class HomeComponent extends AppComponentBase implements OnInit {
   ) {
     super(injector);
   }
-  todoData: any[] = [
+
+  members = [
     {
-      completed: true,
-      avatar: '1',
-      name: '苏先生',
-      content: `请告诉我，我应该说点什么好？`,
+      id: 'members-1',
+      title: '科学搬砖组',
+      logo:
+        'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png',
+      link: '',
     },
     {
-      completed: false,
-      avatar: '2',
-      name: 'はなさき',
-      content: `ハルカソラトキヘダツヒカリ`,
+      id: 'members-2',
+      title: '程序员日常',
+      logo:
+        'https://gw.alipayobjects.com/zos/rmsportal/zOsKZmFRdUtvpqCImOVY.png',
+      link: '',
     },
     {
-      completed: false,
-      avatar: '3',
-      name: 'cipchk',
-      content: `this world was never meant for one as beautiful as you.`,
+      id: 'members-3',
+      title: '设计天团',
+      logo:
+        'https://gw.alipayobjects.com/zos/rmsportal/dURIMkkrRFpPgTuzkwnB.png',
+      link: '',
     },
     {
-      completed: false,
-      avatar: '4',
-      name: 'Kent',
-      content: `my heart is beating with hers`,
+      id: 'members-4',
+      title: '中二少女团',
+      logo:
+        'https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png',
+      link: '',
     },
     {
-      completed: false,
-      avatar: '5',
-      name: 'Are you',
-      content: `They always said that I love beautiful girl than my friends`,
-    },
-    {
-      completed: false,
-      avatar: '6',
-      name: 'Forever',
-      content: `Walking through green fields ，sunshine in my eyes.`,
+      id: 'members-5',
+      title: '骗你学计算机',
+      logo:
+        'https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png',
+      link: '',
     },
   ];
 
-  webSite: any[] = [];
-  salesData: any[] = [];
-  offlineChartData: any[] = [];
-  ngOnInit(): void {}
+  notice: any[];
+  loading = true;
+
+  ngOnInit(): void {
+    zip(this.http.get('/api/notice')).subscribe(([chart]: [any]) => {
+      this.notice = chart;
+
+      this.loading = false;
+    });
+  }
 }
