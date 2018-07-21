@@ -7,6 +7,29 @@
 
   </h1>
 </div>
+<nz-card nzTitle="进行中的项目" [nzBordered]="false" [nzLoading]="loading" class="ant-card__body-nopadding mb-lg project-list">
+  <ng-template #extra>
+    <a (click)="msg.success('to')">全部项目</a>
+  </ng-template>
+  <div *ngFor="let item of notice" nz-card-grid class="project-grid">
+    <nz-card [nzBordered]="false" class="ant-card__body-nopadding mb0">
+      <nz-card-meta [nzTitle]="noticeTitle" [nzDescription]="item.description">
+        <ng-template #noticeTitle>
+          <div class="card-title">
+            <nz-avatar [nzSrc]="item.logo" [nzSize]="'small'"></nz-avatar>
+            <a (click)="msg.info('to' + item.href)">{{item.title}}</a>
+          </div>
+        </ng-template>
+      </nz-card-meta>
+      <div class="project-item">
+        <a (click)="msg.info('show user: ' + item.member)">{{item.member}}</a>
+        <span *ngIf="item.updatedAt" class="datetime" title="{{item.updatedAt}}">
+          {{item.updatedAt | _date: 'fn' }}
+        </span>
+      </div>
+    </nz-card>
+  </div>
+</nz-card>
 <!-- <quick-menu>
   <nz-list [nzBordered]="false" [nzSplit]="false">
     <nz-list-item>

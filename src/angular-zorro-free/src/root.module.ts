@@ -24,7 +24,7 @@ import { SharedModule } from '@shared/shared.module';
 import { AppModule } from '@app/app.module';
 export function appInitializerFactory(injector: Injector) {
   return () => {
-    abp.ui.setBusy();
+    //  abp.ui.setBusy();
     // tslint:disable-next-line:no-shadowed-variable
     return new Promise<boolean>((resolve, reject) => {
       AppPreBootstrap.run(() => {
@@ -38,7 +38,7 @@ export function appInitializerFactory(injector: Injector) {
             resolve(result);
           },
           err => {
-            abp.ui.clearBusy();
+            //   abp.ui.clearBusy();
             reject(err);
           },
         );
