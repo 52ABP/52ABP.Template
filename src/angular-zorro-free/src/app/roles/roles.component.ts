@@ -1,26 +1,33 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { PagedListingComponentBase, PagedRequestDto } from '@shared/component-base/paged-listing-component-base';
-import { RoleDto, RoleServiceProxy, PagedResultDtoOfRoleDto } from '@shared/service-proxies/service-proxies';
+import {
+  PagedListingComponentBase,
+  PagedRequestDto,
+} from '@shared/component-base/paged-listing-component-base';
+import {
+  RoleDto,
+  RoleServiceProxy,
+  PagedResultDtoOfRoleDto,
+} from '@shared/service-proxies/service-proxies';
 import { EditRoleComponent } from '@app/roles/edit-role/edit-role.component';
 import { CreateRoleComponent } from '@app/roles/create-role/create-role.component';
 
 @Component({
   selector: 'app-roles',
   templateUrl: './roles.component.html',
-  styles: []
+  styles: [],
 })
 export class RolesComponent extends PagedListingComponentBase<RoleDto> {
-
-
-  constructor(
-    injector: Injector,
-    private rolesService: RoleServiceProxy
-  ) {
+  constructor(injector: Injector, private rolesService: RoleServiceProxy) {
     super(injector);
   }
 
-  protected fetchData(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
-    this.rolesService.getAll(request.skipCount, request.maxResultCount)
+  protected fetchData(
+    request: PagedRequestDto,
+    pageNumber: number,
+    finishedCallback: Function,
+  ): void {
+    this.rolesService
+      .getAll(request.skipCount, request.maxResultCount)
       .finally(() => {
         finishedCallback();
       })
@@ -30,38 +37,43 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
   }
   protected delete(entity: RoleDto): void {
     abp.message.confirm(
-      "Remove Users from Role and delete Role '" + entity.displayName + "'?",
-      "Permanently delete this Role",
+      'Remove Users from Role and delete Role \'' + entity.displayName + '\'?',
+      'Permanently delete this Role',
       (result: boolean) => {
         if (result) {
-          this.rolesService.delete(entity.id)
+          this.rolesService
+            .delete(entity.id)
             .finally(() => {
-              abp.notify.info("Deleted Role: " + entity.displayName);
+              abp.notify.info('Deleted Role: ' + entity.displayName);
               this.refresh();
             })
-            .subscribe(() => { });
+            .subscribe(() => {});
         }
-      }
+      },
     );
   }
 
   create(): void {
-    this.modalHelper.open(CreateRoleComponent, {}, 'md', {
-      nzMask: true
-    }).subscribe((isSave) => {
-      if (isSave) {
-        this.refresh();
-      }
-    });
+    this.modalHelper
+      .open(CreateRoleComponent, {}, 'md', {
+        nzMask: true,
+      })
+      .subscribe(isSave => {
+        if (isSave) {
+          this.refresh();
+        }
+      });
   }
 
   edit(item: RoleDto): void {
-    this.modalHelper.open(EditRoleComponent, { id: item.id }, 'md', {
-      nzMask: true
-    }).subscribe((isSave) => {
-      if (isSave) {
-        this.refresh();
-      }
-    });
+    this.modalHelper
+      .open(EditRoleComponent, { id: item.id }, 'md', {
+        nzMask: true,
+      })
+      .subscribe(isSave => {
+        if (isSave) {
+          this.refresh();
+        }
+      });
   }
 }
