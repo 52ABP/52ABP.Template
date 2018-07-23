@@ -1,56 +1,61 @@
-import { AppComponentBase } from "shared/app-component-base";
+import { AppComponentBase } from '@shared/app-component-base';
 import { Injector, OnInit } from '@angular/core';
 
 export class PagedResultDto {
-    items: any[];
-    totalCount: number;
+  items: any[];
+  totalCount: number;
 }
 
 export class EntityDto {
-    id: number;
+  id: number;
 }
 
 export class PagedRequestDto {
-    skipCount: number;
-    maxResultCount: number;
+  skipCount: number;
+  maxResultCount: number;
 }
 
-export abstract class PagedListingComponentBase<EntityDto> extends AppComponentBase implements OnInit {
+export abstract class PagedListingComponentBase<EntityDto>
+  extends AppComponentBase
+  implements OnInit {
+  public pageSize = 10;
+  public pageNumber = 1;
+  public totalPages = 1;
+  public totalItems: number;
+  public isTableLoading = true;
 
-    public pageSize: number = 10;
-    public pageNumber: number = 1;
-    public totalPages: number = 1;
-    public totalItems: number;
-    public isTableLoading = true;
+  dataList: EntityDto[];
 
-    dataList: EntityDto[];
+  constructor(injector: Injector) {
+    super(injector);
+  }
 
-    constructor(injector: Injector) {
-        super(injector);
+  ngOnInit(): void {
+    this.refresh();
+  }
+
+  refresh(): void {
+    this.getDataPage(this.pageNumber);
+  }
+
+  public getDataPage(page: number): void {
+    if (page === 0) {
+      page = 1;
     }
+    const req = new PagedRequestDto();
+    req.maxResultCount = this.pageSize;
+    req.skipCount = (page - 1) * this.pageSize;
 
-    ngOnInit(): void {
-        this.refresh();
-    }
+    this.isTableLoading = true;
+    this.fetchData(req, page, () => {
+      this.isTableLoading = false;
+    });
+  }
 
-    refresh(): void {
-        this.getDataPage(this.pageNumber);
-    }
-
-    public getDataPage(page: number): void {
-        if (page == 0) {
-            page = 1;
-        }
-        var req = new PagedRequestDto();
-        req.maxResultCount = this.pageSize;
-        req.skipCount = (page - 1) * this.pageSize;
-
-        this.isTableLoading = true;
-        this.fetchData(req, page, () => {
-            this.isTableLoading = false;
-        });
-    }
-
-    protected abstract fetchData(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void;
-    protected abstract delete(entity: EntityDto): void;
+  protected abstract fetchData(
+    request: PagedRequestDto,
+    pageNumber: number,
+    finishedCallback: Function,
+  ): void;
+  protected abstract delete(entity: EntityDto): void;
 }

@@ -16,7 +16,7 @@ import { AppConsts } from '@shared/AppConsts';
 import * as _ from 'lodash';
 import { UtilsService } from 'abp-ng2-module/dist/src/utils/utils.service';
 import { MessageService } from 'abp-ng2-module/dist/src/message/message.service';
-import { TokenService } from '@abp/auth/token.service';
+import { TokenService } from 'abp-ng2-module/dist/src/auth/token.service';
 import { LogService } from 'abp-ng2-module/dist/src/log/log.service';
 
 @Injectable()

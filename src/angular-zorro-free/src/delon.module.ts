@@ -52,6 +52,7 @@ export function delonAuthConfig(): DelonAuthConfig {
     DelonUtilModule.forRoot(),
     // // mock
     // ...MOCKMODULE,
+    DelonMockModule.forRoot({ data: MOCKDATA }),
   ],
 })
 export class DelonModule {
@@ -59,9 +60,7 @@ export class DelonModule {
     @Optional()
     @SkipSelf()
     parentModule: DelonModule,
-  ) {
-
-  }
+  ) {}
 
   static forRoot(): ModuleWithProviders {
     return {

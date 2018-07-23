@@ -1,14 +1,14 @@
-import { RootModule } from './root.module';
+import { RootModule } from 'root.module';
 import { enableProdMode, ViewEncapsulation } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { environment } from './environments/environment';
+import { environment } from '@env/environment';
 
 import { preloaderFinished } from '@delon/theme';
 
 preloaderFinished();
 
-import { hmrBootstrap } from './hmr';
+import { hmrBootstrap } from 'hmr';
 
 if (environment.production) {
   enableProdMode();

@@ -39,21 +39,21 @@ export class AppComponent extends AppComponentBase
     // 租户
     new MenuItem(
       this.l('Tenants'),
-      'Pages.Administration.Tenants',
+      'Pages.Tenants',
       'anticon anticon-team',
       '/app/tenants',
     ),
     // 角色
     new MenuItem(
       this.l('Roles'),
-      'Pages.Administration.Roles',
+      'Pages.Roles',
       'anticon anticon-safety',
       '/app/roles',
     ),
     // 用户
     new MenuItem(
       this.l('Users'),
-      'Pages.Administration.Users',
+      'Pages.Users',
       'anticon anticon-user',
       '/app/users',
     ),
@@ -76,7 +76,9 @@ export class AppComponent extends AppComponentBase
     super(injector);
 
     // 创建菜单
-    const arrMenu = this.processMenu(this.Menums);
+
+    const arrMenu = new Array<Menu>();
+    this.processMenu(arrMenu, this.Menums);
     this.menuService.add(arrMenu);
   }
 
@@ -110,24 +112,25 @@ export class AppComponent extends AppComponentBase
   }
 
   // 处理生成菜单
-  processMenu(menus: MenuItem[]): Array<Menu> {
-    // abp.auth.isGranted
-    const retMenu = new Array<Menu>();
+  processMenu(resMenu: Menu[], menus: MenuItem[], isChild?: boolean) {
     menus.forEach(item => {
-      if (!this.isGranted(item.permission)) {
-        let subMenu: Menu;
-        subMenu = {
-          text: item.displayName,
-          link: item.route,
-          icon: `${item.icon}`,
-        };
-        if (subMenu) {
-          if (item.childMenus && item.childMenus.length > 0)
-            subMenu.children = this.processMenu(item.childMenus);
-          retMenu.push(subMenu);
-        }
+      let subMenu: Menu;
+      subMenu = {
+        text: item.displayName,
+        link: item.route,
+        icon: `${item.icon}`,
+        hide: item.hide,
+      };
+      if (item.permission !== '' && !this.isGranted(item.permission)) {
+        subMenu.hide = true;
       }
+
+      if (item.childMenus && item.childMenus.length > 0) {
+        subMenu.children = [];
+        this.processMenu(subMenu.children, item.childMenus);
+      }
+
+      resMenu.push(subMenu);
     });
-    return retMenu;
   }
 }

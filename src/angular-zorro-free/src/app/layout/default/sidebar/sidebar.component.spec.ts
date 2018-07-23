@@ -1,11 +1,11 @@
 import { TestBed, TestModuleMetadata } from '@angular/core/testing';
 import { setUpTestBed } from '@testing/common.spec';
 
-import { SidebarComponent } from './sidebar.component';
+import { SidebarComponent } from '@app/layout/default/sidebar/sidebar.component';
 
 describe('Layout: Sidebar', () => {
   setUpTestBed(<TestModuleMetadata>{
-    declarations: [ SidebarComponent ]
+    declarations: [SidebarComponent],
   });
 
   it('should create an instance', () => {

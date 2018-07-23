@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
-import { PermissionCheckerService } from '@abp/auth/permission-checker.service';
-import { AppSessionService } from '../session/app-session.service';
+import { PermissionCheckerService } from 'abp-ng2-module/dist/src/auth/permission-checker.service';
+import { AppSessionService } from '@shared/session/app-session.service';
 
 import {
   CanActivate,
