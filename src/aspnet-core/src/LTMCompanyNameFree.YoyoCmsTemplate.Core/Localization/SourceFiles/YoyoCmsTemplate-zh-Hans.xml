@@ -18,9 +18,7 @@
     <text name="Password" value="密码" />
     <text name="RememberMe" value="记住我" />
     <text name="LogIn" value="登录" />
-    <text name="Users" value="用户" />
-    <text name="Roles" value="角色" />
-    <text name="Tenants" value="租户" />
+ 
 
     <text name="LoginFailed" value="登录失败!" />
     <text name="Roles" value="角色" />
