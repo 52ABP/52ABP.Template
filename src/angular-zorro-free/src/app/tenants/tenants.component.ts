@@ -26,6 +26,7 @@ export class TenantsComponent extends PagedListingComponentBase<TenantDto> {
       })
       .subscribe((result: PagedResultDtoOfTenantDto) => {
         this.dataList = result.items;
+        this.totalItems = result.totalCount;
       });
   }
   create() {

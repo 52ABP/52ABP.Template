@@ -33,6 +33,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
       })
       .subscribe((result: PagedResultDtoOfUserDto) => {
         this.dataList = result.items;
+        this.totalItems = result.totalCount;
       });
   }
 

@@ -13,8 +13,8 @@
   </ng-template>
 
 
-  <nz-table #ajaxTable nzShowSizeChanger [nzData]="dataList" [nzTotal]="total" [(nzPageIndex)]="pageNumber" [(nzPageSize)]="pageSize"
-    [nzLoading]="isTableLoading" (nzPageIndexChange)="refresh()" (nzPageSizeChange)="refresh()">
+  <nz-table #ajaxTable nzShowSizeChanger [nzData]="dataList" [nzTotal]="totalItems" [(nzPageIndex)]="pageNumber" [(nzPageSize)]="pageSize"
+    [nzLoading]="isTableLoading" (nzPageIndexChange)="refresh()" (nzPageSizeChange)="refresh()" [nzFrontPagination]="false">
     <thead>
       <tr>
         <th>{{l("UserName")}}</th>

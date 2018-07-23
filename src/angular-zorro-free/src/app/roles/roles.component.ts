@@ -26,6 +26,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
       })
       .subscribe((result: PagedResultDtoOfRoleDto) => {
         this.dataList = result.items;
+        this.totalItems = result.totalCount;
       });
   }
   protected delete(entity: RoleDto): void {
