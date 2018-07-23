@@ -5,17 +5,13 @@ import { AppComponentBase } from '@shared/app-component-base';
 @Component({
   selector: 'abp-sidebar-user',
   templateUrl: './sidebar-user.component.html',
-  styles: []
+  styles: [],
 })
 export class SidebarUserComponent extends AppComponentBase implements OnInit {
+  shownLoginName = '';
+  emailAddress = '';
 
-  shownLoginName: string = "";
-  emailAddress: string = "";
-
-  constructor(
-    injector: Injector,
-    private authService: AppAuthService
-  ) {
+  constructor(injector: Injector, private authService: AppAuthService) {
     super(injector);
   }
 

@@ -3,7 +3,7 @@
   <h3>
     <span>{{l('EditTenant')}}</span>
   </h3>
-  <nz-spin [nzSpinning]="loding">
+  <nz-spin>
     <form nz-form [formGroup]="validateForm" (ngSubmit)="submit()" *ngIf="tenant">
 
       <!-- 租户名称 -->

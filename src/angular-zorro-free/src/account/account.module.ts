@@ -34,8 +34,7 @@ import { AdGlobalFooterModule } from '@delon/abc';
     AbpModule,
     SharedModule,
     ServiceProxyModule,
-    AccountRoutingModule,
-    AdGlobalFooterModule,
+    AccountRoutingModule
   ],
   declarations: [
     AccountComponent,

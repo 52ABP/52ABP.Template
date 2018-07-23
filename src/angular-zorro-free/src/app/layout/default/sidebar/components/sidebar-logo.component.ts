@@ -10,7 +10,7 @@ import { SettingsService } from '@delon/theme';
 })
 export class SideBarLogoComponent extends AppComponentBase implements OnInit {
     isCollapsed: boolean = false;
-    protected logoBgColor: string;
+    logoBgColor: string;
 
     constructor(
         injector: Injector,
