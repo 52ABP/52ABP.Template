@@ -1,7 +1,5 @@
 # LTMCompanyName.YoyoCmsTemplate
 
-![VSTS的构建状态徽章](https://ltm0203.visualstudio.com/_apis/public/build/definitions/bd26f708-3de6-4d20-a7ab-b9497b19a206/4/badge)
-
 > 各个镜像的编译状态
 > 考虑到国内的下载速度慢，我们在码云上也部署了一套环境，代码同步。
 
