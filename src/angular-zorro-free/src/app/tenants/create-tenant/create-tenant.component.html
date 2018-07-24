@@ -1,9 +1,9 @@
 <div>
 
   <h3>
-    <span>{{l('EditTenant')}}</span>
+    <span>{{l('CreateNewTenant')}}</span>
   </h3>
-  <nz-spin>
+  <nz-spin [nzSpinning]="!tenant">
     <form nz-form [formGroup]="validateForm" (ngSubmit)="submit()" *ngIf="tenant">
 
       <!-- 租户名称 -->
