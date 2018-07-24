@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/aspnet-core/src/LTMCompanyNameFree.YoyoCmsTemplate.Migrator/LTMCompanyNameFree.YoyoCmsTemplate.Migrator.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
