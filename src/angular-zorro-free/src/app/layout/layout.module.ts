@@ -28,7 +28,6 @@ const HEADERCOMPONENTS = [
   HeaderStorageComponent,
   HeaderUserComponent,
   HeaderLanguageswitch,
-  TopBarLanguageSwitchComponent
 ];
 
 //
@@ -44,4 +43,4 @@ import { TopBarLanguageSwitchComponent } from '@app/layout/default/header/compon
   declarations: [...COMPONENTS, ...HEADERCOMPONENTS],
   exports: [...COMPONENTS],
 })
-export class LayoutModule { }
+export class LayoutModule {}
