@@ -28,7 +28,6 @@ const HEADERCOMPONENTS = [
   HeaderStorageComponent,
   HeaderUserComponent,
   HeaderLanguageswitch,
-  TopBarLanguageSwitchComponent
 ];
 
 //
@@ -36,7 +35,6 @@ import { SharedModule } from '@shared/shared.module';
 import { SideBarNavComponent } from '@app/layout/default/sidebar/components/sidebar-nav.component';
 import { SideBarLogoComponent } from '@app/layout/default/sidebar/components/sidebar-logo.component';
 import { SidebarUserComponent } from '@app/layout/default/sidebar/components/sidebar-user.component';
-import { TopBarLanguageSwitchComponent } from '@app/layout/default/header/components/topbar-languageswitch.component';
 
 @NgModule({
   imports: [SharedModule],
@@ -44,4 +42,4 @@ import { TopBarLanguageSwitchComponent } from '@app/layout/default/header/compon
   declarations: [...COMPONENTS, ...HEADERCOMPONENTS],
   exports: [...COMPONENTS],
 })
-export class LayoutModule { }
+export class LayoutModule {}

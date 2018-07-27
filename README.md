@@ -1,15 +1,23 @@
 # LTMCompanyName.YoyoCmsTemplate
+
+> 各个镜像的编译状态
+> 考虑到国内的下载速度慢，我们在码云上也部署了一套环境，代码同步。
+
+#### 代码相关镜像仓库：
+
+码云：https://gitee.com/yoyocms/LTMCompanyNameFree.YoyoCmsTemplate
+Github:https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate
+
 ## 一、什么是 52ABP ？
 
-基于.NET  Core 版本为2.1， 整个框架使用的是ABP(ASP.NET Boilerplate)，前端这次使用的是ng-alain 。
+基于.NET Core 版本为 2.1， 整个框架使用的是 ABP(ASP.NET Boilerplate)，前端这次使用的是 ng-alain 。
 可以说作为一个内容整合商，52abp 的第一个正式开源的免费项目，您可以基于这个项目进行升级和扩展属于自己自定义的功能模块。
 
-关于ABP的后端文档，详情参看：https://aspnetboilerplate.com/Pages/Documents
+关于 ABP 的后端文档，详情参看：https://aspnetboilerplate.com/Pages/Documents
 
-关于ng-alain的官方文档，详情参考：https://ng-alain.com/docs/getting-started
+关于 ng-alain 的官方文档，详情参考：https://ng-alain.com/docs/getting-started
 
-本次着重说明的是前端项目的文档。 本文档的大部分内容是从ng-alain官方摘录，因为是你的前端框架嘛。。 
-
+本次着重说明的是前端项目的文档。 本文档的大部分内容是从 ng-alain 官方摘录，因为是你的前端框架嘛。。
 
 ## 二、前端项目的说明
 
@@ -17,7 +25,7 @@
 
 在开始之前有一些文档描述约定说明，这有助于更好的阅读：
 
-- API相关
+- API 相关
   - `[]` 表示属性
   - `()` 表示事件
   - `[()]` 表示双向绑定
@@ -33,7 +41,7 @@
 
 ## 四、目录结构
 
-本项目是通过Angular CLI构建的项目，但是为了符合ABP的开发方式，以及满足DDD的架构模式，将各个模块进行了剥离和拆分。所以目录结构也和标准的NG CLI 项目结构发生了变化。
+本项目是通过 Angular CLI 构建的项目，但是为了符合 ABP 的开发方式，以及满足 DDD 的架构模式，将各个模块进行了剥离和拆分。所以目录结构也和标准的 NG CLI 项目结构发生了变化。
 
 ```
 ├─src
@@ -66,7 +74,7 @@
 │  │  │  app.module.ts   # 52abp应用的核心模块
 │  │  ├─home
 │  │  │      home.component.ts  # 后端首页组件-类似控制台
-│  │  │      
+│  │  │
 │  │  ├─layout
 │  │  │  │  layout.module.ts # 后端的布局模块
 │  │  │  │  
@@ -75,7 +83,7 @@
 │  │  │  │  │  
 │  │  │  │  ├─header
 │  │  │  │  │  │  header.component.ts# 布局的头部组件
-│  │  │  │  │          
+│  │  │  │  │
 │  │  │  │  └─sidebar
 │  │  │  │          sidebar.component.ts# 布局的左侧菜单栏组件
 │  ├─assets
@@ -87,55 +95,47 @@
 │  │  │  
 │  │  ├─animations                    # 路由的动画效果
 │  │  │      routerTransition.ts
-│  │  │      
+│  │  │
 │  │  ├─auth                          # ABP的授权管理
 │  │  │      app-auth.service.ts
 │  │  │      auth-route-guard.ts
-│  │  │      
+│  │  │
 │  │  ├─helpers                        # 字面意思，实时通讯
 │  │  │      SignalRAspNetCoreHelper.ts
 │  │  │      UrlHelper.ts
-│  │  │      
+│  │  │
 │  │  ├─layout            # 菜单组件
 │  │  │      menu-item.ts
-│  │  │      
+│  │  │
 │  │  ├─nav            #链接的服务类
 │  │  │      app-url.service.ts
-│  │  │      
+│  │  │
 │  │  ├─service-proxies                # 动态生成的crud接口的代理类
 │  │  │      service-proxies.ts
 │  │  │      service-proxy.module.ts
-│  │  │      
+│  │  │
 │  │  └─session                                   # ABP所提供的Session 服务方法，提供一些基本的用户信息
 │  │          app-session.service.ts
-│  │          
+│  │
 │  ├─styles                  # 可以基于ng-alain 的基础样式上进行调整
 │  │      index.less
 │  │      theme.less
-│  │      
+│  │
 │  └─testing
 │          common.spec.ts
-│          
+│
 ├─_mock                      # Mock 数据规则
-        
 ```
 
- # 启动项目
-从事前端开发由yarn和npm两个包管理器，个人推荐使用yarn，还原上比npm有点优势。
+# 启动项目
 
+从事前端开发由 yarn 和 npm 两个包管理器，个人推荐使用 yarn，还原上比 npm 有点优势。
 
 ```
-
 yarn install            还原组件信息
 
 
 npm start        启动项目
-
-
 ```
 
 以上就是项目的简单说明，以后有时间，再继续给大家交流。也欢迎大家来完善内容。
-
-
-
-
