@@ -52,6 +52,10 @@ export abstract class PagedListingComponentBase<EntityDto>
     });
   }
 
+  public showPaging(result: PagedResultDto): void {
+    this.totalItems = result.totalCount;
+  }
+
   protected abstract fetchData(
     request: PagedRequestDto,
     pageNumber: number,
