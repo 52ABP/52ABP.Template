@@ -50,12 +50,12 @@ export class TenantsComponent extends PagedListingComponentBase<TenantDto> {
 
   delete(item: TenantDto): void {
     abp.message.confirm(
-      "Delete tenant '" + item.name + "'?",
+      'Delete tenant \'' + item.name + '\'?',
       (result: boolean) => {
         if (result) {
           this._tenantService.delete(item.id)
             .finally(() => {
-              abp.notify.info("Deleted tenant: " + item.name);
+              abp.notify.info('Deleted tenant: ' + item.name);
               this.refresh();
             })
             .subscribe(() => { });
