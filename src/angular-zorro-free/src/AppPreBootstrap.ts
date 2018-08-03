@@ -4,6 +4,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Type, CompilerOptions, NgModuleRef } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
 
+import { registerLocaleData } from '@angular/common';
+import zh from '@angular/common/locales/zh';
+
 export class AppPreBootstrap {
   static run(callback: () => void): void {
     AppPreBootstrap.getApplicationConfig(() => {
@@ -75,6 +78,8 @@ export class AppPreBootstrap {
         );
 
         moment.locale(abp.localization.currentLanguage.name);
+
+        registerLocaleData(zh);
 
         if (abp.clock.provider.supportsMultipleTimezone) {
           moment.tz.setDefault(abp.timing.timeZoneInfo.iana.timeZoneId);
