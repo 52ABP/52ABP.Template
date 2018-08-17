@@ -79,6 +79,7 @@ export class AppPreBootstrap {
 
         moment.locale(abp.localization.currentLanguage.name);
 
+        // 注册语言,NG-Zorro的DataPicker要使用
         registerLocaleData(zh);
 
         if (abp.clock.provider.supportsMultipleTimezone) {
