@@ -1,6 +1,6 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { AppAuthService } from '@shared/auth/app-auth.service';
-import { AppComponentBase } from '@shared/app-component-base';
+import { AppComponentBase } from '@shared/component-base/app-component-base';
 
 @Component({
   selector: 'abp-sidebar-user',

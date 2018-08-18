@@ -1,9 +1,8 @@
 import { Component, Injector, AfterViewInit, OnInit } from '@angular/core';
-import { AppComponentBase } from '@shared/app-component-base';
+import { AppComponentBase } from '@shared/component-base/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { _HttpClient } from '@yoyo/theme';
-import { NzMessageService } from '../../../node_modules/ng-zorro-antd';
-import { zip } from '../../../node_modules/rxjs';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   templateUrl: './home.component.html',
@@ -86,10 +85,6 @@ export class HomeComponent extends AppComponentBase implements OnInit {
   loading = true;
 
   ngOnInit(): void {
-    zip(this.http.get('/api/notice')).subscribe(([chart]: [any]) => {
-      this.notice = chart;
 
-      this.loading = false;
-    });
   }
 }

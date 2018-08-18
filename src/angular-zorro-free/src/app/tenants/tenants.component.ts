@@ -1,6 +1,6 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { TenantServiceProxy, TenantDto, PagedResultDtoOfTenantDto } from '@shared/service-proxies/service-proxies';
-import { AppComponentBase } from '@shared/app-component-base';
+import { AppComponentBase } from '@shared/component-base/app-component-base';
 import { EditTenantComponent } from '@app/tenants/edit-tenant/edit-tenant.component';
 import { PagedRequestDto, PagedListingComponentBase } from '@shared/component-base/paged-listing-component-base';
 import { CreateTenantComponent } from '@app/tenants/create-tenant/create-tenant.component';
@@ -19,7 +19,7 @@ export class TenantsComponent extends PagedListingComponentBase<TenantDto> {
     super(injector);
   }
 
-  fetchData(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
+  fetchDataList(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
     this._tenantService.getAll(request.skipCount, request.maxResultCount)
       .finally(() => {
         finishedCallback();

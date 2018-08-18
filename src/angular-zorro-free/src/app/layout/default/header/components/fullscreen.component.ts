@@ -1,6 +1,6 @@
 import { Component, HostListener, Injector } from '@angular/core';
 import * as screenfull from 'screenfull';
-import { AppComponentBase } from '@shared/app-component-base';
+import { AppComponentBase } from '@shared/component-base/app-component-base';
 
 @Component({
   selector: 'header-fullscreen',

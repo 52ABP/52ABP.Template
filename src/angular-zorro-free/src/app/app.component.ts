@@ -1,7 +1,7 @@
 import { AppMenus } from './AppMenus';
 import { Component, OnInit } from '@angular/core';
 import { SignalRAspNetCoreHelper } from '@shared/helpers/SignalRAspNetCoreHelper';
-import { AppComponentBase } from '@shared/app-component-base';
+import { AppComponentBase } from '@shared/component-base/app-component-base';
 import { Injector } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
 import { SettingsService, TitleService, MenuService, MenuItem } from '@yoyo/theme';

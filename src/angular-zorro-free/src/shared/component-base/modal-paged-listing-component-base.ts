@@ -1,36 +1,22 @@
 import { ModalComponentBase } from '@shared/component-base/modal-component-base';
 import { AppComponentBase } from '@shared/component-base/app-component-base';
-import { Injector, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
-import { NzModalRef } from 'ng-zorro-antd';
-/**
- * 分页请求必须参数
- */
-export class PagedResultDto {
-  items: any[];
-  totalCount: number;
-}
+import {
+  PagedResultDto,
+  PagedRequestDto,
+} from '@shared/component-base/paged-listing-component-base';
 
-// 实体主键dto
-export class EntityDto {
-  id: number;
-}
-/**
- * 分页结果dto
- */
-export class PagedRequestDto {
-  skipCount: number;
-  maxResultCount: number;
-  sorting: string;
-}
-
-/**
- * 分页列表基类，包含一些分页通用方法。注意 派生类中的 `ngOnInit` 会覆盖此类中的此方法。
- */
-// tslint:disable-next-line:no-shadowed-variable
-export abstract class PagedListingComponentBase<EntityDto>
-  extends AppComponentBase
+export abstract class ModalPagedListingComponentBase<EntityDto>
+  extends ModalComponentBase
   implements OnInit {
+  /**
+   * 数据表的数据源
+   */
+  dataList: EntityDto[] = [];
+
+  //#region 分页模块
+
   /**
    * 分页大小
    */
@@ -47,10 +33,26 @@ export abstract class PagedListingComponentBase<EntityDto>
    * 总记录数
    */
   public totalItems: number;
+
+  /**
+   * 排序
+   */
+  public sorting: string = undefined;
+  /**
+   * 模糊搜索的文本
+   */
+  filterText = '';
+
+  //#endregion
+
+  //#region 数据加载模块
   /**
    * 是否加载中
    */
-  public isTableLoading = true;
+  public isTableLoading = false;
+  //#endregion
+
+  //#region Checkbox复选框
 
   /**
    * 是否全部选中
@@ -70,20 +72,8 @@ export abstract class PagedListingComponentBase<EntityDto>
    * 已选中数据项列表
    */
   public selectedDataItems: any[] = [];
-  /**
-   * 排序
-   */
-  public sorting: string = undefined;
 
-  /**
-   * 模糊搜索的文本
-   */
-  filterText = '';
-
-  /**
-   * 数据表的数据源
-   */
-  dataList: EntityDto[] = [];
+  //#endregion
 
   /**
    * 构造函数
@@ -94,19 +84,19 @@ export abstract class PagedListingComponentBase<EntityDto>
     super(injector);
   }
 
+  /**
+   * 子类中的ngOnInit会覆盖父类此方法
+   */
   ngOnInit(): void {
     this.refresh();
   }
-
   /**
-   * 刷新表格数据
-   * @param args
+   * 刷新表格数据的方法
    */
   refresh(): void {
     this.restCheckStatus(this.dataList);
     this.getDataPage(this.pageNumber);
   }
-
   /**
    * 刷新表格数据并跳转到第一页（`pageNumber = 1`）
    */
@@ -116,47 +106,41 @@ export abstract class PagedListingComponentBase<EntityDto>
     this.getDataPage(this.pageNumber);
   }
 
+  //#region 分页的信息和内容
+
+  //#endregion
+
+  //#region 分页有关的实现基类方法
+
   /**
+   * 计算分页
+   * @param result 分页结果Dto
    *
-   *
-   *
-   *
-   * 布尔类型表格列头过滤列表
    */
-  // tslint:disable-next-line:member-ordering
-  public booleanFilterList: any[] = [
-    { text: this.l('All'), value: 'All' },
-    { text: this.l('Yes'), value: true },
-    { text: this.l('No'), value: false },
-  ];
+  public showPaging(result: PagedResultDto): void {
+    this.totalItems = result.totalCount;
+  }
+
+  /**
+   * 获取当前页数据
+   * @param page 当前页码
+   */
   public getDataPage(page: number): void {
-    // if (page <= 0) {
-    //   this.pageNumber = 1;
-    //   this.refresh();
-    //   return;
-    // }
     const req = new PagedRequestDto();
     req.maxResultCount = this.pageSize;
     req.skipCount = (page - 1) * this.pageSize;
     req.sorting = this.sorting;
+
     this.isTableLoading = true;
-    this.fetchDataList(req, page, () => {
+    this.getDataList(req, page, () => {
       this.isTableLoading = false;
       // 更新全选框禁用状态
       this.refreshAllCheckBoxDisabled();
     });
   }
-  /**
-   * 刷新全选框是否禁用
-   */
-  refreshAllCheckBoxDisabled(): void {
-    this.allCheckboxDisabled = this.dataList.length <= 0;
-  }
-  public pageNumberChange(): void {
-    if (this.pageNumber > 0) {
-      this.refresh();
-    }
-  }
+  //#endregion
+
+  //#region Checkbox，复选框的实现方法
 
   /**
    * 选中全部记录
@@ -166,7 +150,6 @@ export abstract class PagedListingComponentBase<EntityDto>
     this.dataList.forEach(data => ((<any>data).checked = this.allChecked));
     this.refreshCheckStatus(this.dataList);
   }
-
   /**
    * 刷新选中状态
    */
@@ -195,54 +178,20 @@ export abstract class PagedListingComponentBase<EntityDto>
     entityList.forEach(value => (value.checked = false));
   }
   /**
-   * 计算分页
-   * @param result 分页结果Dto
-   * @param pageNumber 当前页码
+   * 刷新全选框是否禁用
    */
-  public showPaging(result: PagedResultDto): void {
-    this.totalItems = result.totalCount;
+  refreshAllCheckBoxDisabled(): void {
+    this.allCheckboxDisabled = this.dataList.length <= 0;
   }
 
-  /**
-   * 数据表格排序
-   * @param sort 排序信息
-   */
-  gridSort(sort: { key: string; value: string }) {
-    this.sorting = undefined;
-    let ascOrDesc = sort.value; // 'ascend' or 'descend' or null
-    const filedName = sort.key; // 字段名
-    if (ascOrDesc) {
-      ascOrDesc = abp.utils.replaceAll(ascOrDesc, 'end', '');
-      const args = ['{0} {1}', filedName, ascOrDesc];
-      const sortingStr = abp.utils.formatString.apply(this, args);
-      this.sorting = sortingStr;
-    }
-    this.refresh();
-  }
-
-  /**
-   * 权限列表验证
-   * @param permissions 权限名称列表
-   */
-  isGrantedAny(...permissions: string[]): boolean {
-    if (!permissions) {
-      return false;
-    }
-    for (const permission of permissions) {
-      if (this.isGranted(permission)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
+  //#endregion
   /**
    * 获取数据抽象接口，必须实现
    * @param request 请求必需参数 skipCount: number; maxResultCount: number;
    * @param pageNumber 当前页码
    * @param finishedCallback 完成后回调函数
    */
-  protected abstract fetchDataList(
+  protected abstract getDataList(
     request: PagedRequestDto,
     pageNumber: number,
     finishedCallback: Function,

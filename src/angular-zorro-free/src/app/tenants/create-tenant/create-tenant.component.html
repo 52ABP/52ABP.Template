@@ -4,14 +4,15 @@
     <span>{{l('CreateNewTenant')}}</span>
   </h3>
   <nz-spin [nzSpinning]="!tenant">
-    <form nz-form [formGroup]="validateForm" (ngSubmit)="submit()" *ngIf="tenant">
+    <form nz-form #validateForm="ngForm" (ngSubmit)="save()" *ngIf="tenant">
 
       <!-- 租户名称 -->
       <nz-form-item>
         <nz-form-control nzHasFeedback>
-          <input nz-input formControlName="tenancyName" [placeholder]="l('TenancyName')">
-          <nz-form-explain *ngIf="validateForm.get('tenancyName').dirty&&validateForm.get('tenancyName').errors">
-            <ng-container *ngIf="validateForm.get('tenancyName').hasError('required')">{{l('CanNotNull')}}</ng-container>
+          <input nz-input name="tenancyName" #tenancyName="ngModel" [(ngModel)]="tenant.tenancyName" [placeholder]="l('TenancyName')"
+            required>
+          <nz-form-explain *ngIf="tenancyName.control.dirty&&tenancyName.control.errors">
+            <ng-container *ngIf="tenancyName.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
           </nz-form-explain>
         </nz-form-control>
       </nz-form-item>
@@ -19,9 +20,9 @@
       <!-- 名称 -->
       <nz-form-item>
         <nz-form-control nzHasFeedback>
-          <input nz-input formControlName="name" [placeholder]="l('Name')" autocomplete='name'>
-          <nz-form-explain *ngIf="validateForm.get('name').dirty&&validateForm.get('name').errors">
-            <ng-container *ngIf="validateForm.get('name').hasError('required')">{{l('CanNotNull')}}</ng-container>
+          <input nz-input name="name" #name="ngModel" [(ngModel)]="tenant.name" [placeholder]="l('Name')" required>
+          <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
+            <ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
           </nz-form-explain>
         </nz-form-control>
       </nz-form-item>
@@ -29,24 +30,25 @@
       <!-- 数据库链接字符串 -->
       <nz-form-item>
         <nz-form-control nzHasFeedback>
-          <input nz-input formControlName="connectionString" [placeholder]="l('DatabaseConnectionString')+l('Optional')">
+          <input nz-input name="connectionString" [(ngModel)]="tenant.connectionString" [placeholder]="l('DatabaseConnectionString')+l('Optional')">
         </nz-form-control>
       </nz-form-item>
 
       <!-- 邮箱 -->
       <nz-form-item>
         <nz-form-control nzHasFeedback>
-          <input nz-input formControlName="adminEmailAddress" [placeholder]="l('AdminEmailAddress')" autocomplete='name'>
-          <nz-form-explain *ngIf="validateForm.get('adminEmailAddress').dirty&&validateForm.get('adminEmailAddress').errors">
-            <ng-container *ngIf="validateForm.get('adminEmailAddress').hasError('required')">{{l('CanNotNull')}}</ng-container>
-            <ng-container *ngIf="validateForm.get('adminEmailAddress').hasError('email')">{{l('NotEmail')}}</ng-container>
+          <input nz-input name="adminEmailAddress" #adminEmailAddress="ngModel" [(ngModel)]="tenant.adminEmailAddress" [placeholder]="l('AdminEmailAddress')"
+            autocomplete='name' required email>
+          <nz-form-explain *ngIf="adminEmailAddress.control.dirty&&adminEmailAddress.control.errors">
+            <ng-container *ngIf="adminEmailAddress.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+            <ng-container *ngIf="adminEmailAddress.control.hasError('email')">{{l('NotEmail')}}</ng-container>
           </nz-form-explain>
         </nz-form-control>
       </nz-form-item>
 
       <!-- 激活 -->
       <nz-form-control>
-        <label nz-checkbox formControlName="isActive">{{l("IsActive")}}</label>
+        <label nz-checkbox name="isActive" [(ngModel)]="tenant.isActive">{{l("IsActive")}}</label>
       </nz-form-control>
 
       <!-- 默认密码 -->
@@ -60,7 +62,7 @@
           <button nz-button type="button" [disabled]="saving" (click)="close()">
             {{l("Cancel")}}
           </button>
-          <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid">
+          <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid||saving">
             {{l("Save")}}
           </button>
         </div>

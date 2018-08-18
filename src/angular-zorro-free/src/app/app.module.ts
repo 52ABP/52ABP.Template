@@ -1,4 +1,4 @@
-import { MenuService } from '@yoyo/theme';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '@app/app-routing.module';
@@ -20,11 +20,14 @@ import { CreateRoleComponent } from '@app/roles/create-role/create-role.componen
 import { EditRoleComponent } from '@app/roles/edit-role/edit-role.component';
 import { CreateUserComponent } from '@app/users/create-user/create-user.component';
 import { EditUserComponent } from '@app/users/edit-user/edit-user.component';
+import { MenuService } from '@yoyo/theme';
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,

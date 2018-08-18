@@ -11,14 +11,15 @@
 
 
   <nz-spin [nzSpinning]="!role">
-    <form nz-form [formGroup]="validateForm" (ngSubmit)="submit()" *ngIf="role">
+    <form nz-form #validateForm="ngForm" (ngSubmit)="save()" *ngIf="role">
 
       <!-- 角色名称 -->
       <nz-form-item>
         <nz-form-control nzHasFeedback>
-          <input nz-input formControlName="name" [placeholder]="l('Name')">
-          <nz-form-explain *ngIf="validateForm.get('name').dirty&&validateForm.get('name').errors">
-            <ng-container *ngIf="validateForm.get('name').hasError('required')">{{l('CanNotNull')}}</ng-container>
+          <input nz-input name="name" #name="ngModel" [(ngModel)]="role.name" [placeholder]="l('Name')" [disabled]="role.isStatic"
+            required>
+          <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
+            <ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
           </nz-form-explain>
         </nz-form-control>
       </nz-form-item>
@@ -26,9 +27,10 @@
       <!-- 角色展示名称 -->
       <nz-form-item>
         <nz-form-control nzHasFeedback>
-          <input nz-input formControlName="displayName" [placeholder]="l('DisplayName')">
-          <nz-form-explain *ngIf="validateForm.get('displayName').dirty&&validateForm.get('displayName').errors">
-            <ng-container *ngIf="validateForm.get('displayName').hasError('required')">{{l('CanNotNull')}}</ng-container>
+          <input nz-input name="displayName" #displayName="ngModel" [(ngModel)]="role.displayName" [placeholder]="l('DisplayName')"
+            required>
+          <nz-form-explain *ngIf="displayName.control.dirty&&displayName.control.errors">
+            <ng-container *ngIf="displayName.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
           </nz-form-explain>
         </nz-form-control>
       </nz-form-item>
@@ -36,13 +38,13 @@
       <!-- 角色介绍 -->
       <nz-form-item>
         <nz-form-control>
-          <input nz-input formControlName="description" [placeholder]="l('RoleDescription')">
+          <input nz-input name="description" [(ngModel)]="role.description" [placeholder]="l('RoleDescription')">
         </nz-form-control>
       </nz-form-item>
 
       <!-- 权限组 -->
       <nz-form-item>
-        <nz-checkbox-group formControlName="permissions" *ngIf="permissionList.length!=0"></nz-checkbox-group>
+        <nz-checkbox-group name="permissions" [(ngModel)]="permissionList" *ngIf="permissionList.length!=0"></nz-checkbox-group>
       </nz-form-item>
 
       <!-- 功能按钮 -->
@@ -51,7 +53,7 @@
           <button nz-button type="button" [disabled]="saving" (click)="close()">
             {{l("Cancel")}}
           </button>
-          <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid">
+          <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid||saving">
             {{l("Save")}}
           </button>
         </div>

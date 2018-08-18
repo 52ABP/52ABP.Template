@@ -1,4 +1,4 @@
-import { AppComponentBase } from '@shared/app-component-base';
+import { AppComponentBase } from '@shared/component-base/app-component-base';
 import { Component, Injector, OnInit } from '@angular/core';
 import { AppAuthService } from '@shared/auth/app-auth.service';
 

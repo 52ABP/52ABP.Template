@@ -19,6 +19,7 @@ import { RootRoutingModule } from 'root-routing.module';
 import { SharedModule } from '@shared/shared.module';
 
 import { AbpModule, AbpHttpInterceptor } from '@yoyo/abp';
+import { TitleService } from '@yoyo/theme';
 import { AppModule } from '@app/app.module';
 
 import { YoYoModule } from './yoyo.module';
@@ -85,6 +86,7 @@ export function getCurrentLanguage(): string {
       provide: LOCALE_ID,
       useFactory: getCurrentLanguage,
     },
+    TitleService,
   ],
   bootstrap: [RootComponent],
 })

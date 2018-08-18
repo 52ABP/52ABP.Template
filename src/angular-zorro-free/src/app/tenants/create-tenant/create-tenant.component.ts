@@ -1,10 +1,10 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { ModalFormComponentBase } from '@shared/component-base/modal-form-component-base';
 import {
   TenantServiceProxy,
   CreateTenantDto,
 } from '@shared/service-proxies/service-proxies';
 import { Validators } from '@angular/forms';
+import { ModalComponentBase } from '@shared/component-base';
 
 @Component({
   selector: 'app-create-tenant',
@@ -12,7 +12,7 @@ import { Validators } from '@angular/forms';
   styles: [],
 })
 export class CreateTenantComponent
-  extends ModalFormComponentBase<CreateTenantDto>
+  extends ModalComponentBase
   implements OnInit {
   saving = false;
   tenant: CreateTenantDto = new CreateTenantDto();
@@ -24,34 +24,19 @@ export class CreateTenantComponent
   ngOnInit() {
     this.tenant.init({ isActive: true });
     this.tenant.connectionString;
-    this.validateForm = this.formBuilder.group({
-      tenancyName: ['', [Validators.required]],
-      name: ['', [Validators.required]],
-      connectionString: [''],
-      adminEmailAddress: ['', [Validators.required, Validators.email]],
-      isActive: [true],
-    });
   }
 
-  protected submitExecute(finisheCallback: Function): void {
+  save(): void {
+    this.saving = true;
     this._tenantService
       .create(this.tenant)
       .finally(() => {
-        finisheCallback();
+        this.saving = false;
       })
       .subscribe(() => {
         this.notify.info(this.l('SavedSuccessfully'));
-        this.success(true);
+        this.success();
       });
   }
 
-  protected setFormValues(entity: CreateTenantDto): void {}
-
-  protected getFormValues(): void {
-    this.tenant.tenancyName = this.getControlVal('tenancyName');
-    this.tenant.name = this.getControlVal('name');
-    this.tenant.connectionString = this.getControlVal('connectionString');
-    this.tenant.adminEmailAddress = this.getControlVal('adminEmailAddress');
-    this.tenant.isActive = this.getControlVal('isActive');
-  }
 }
