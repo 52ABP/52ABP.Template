@@ -1,5 +1,5 @@
 import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
-import { SettingsService } from '@delon/theme';
+import { SettingsService } from '@yoyo/theme';
 
 @Component({
   selector: 'layout-header',
@@ -9,7 +9,7 @@ import { SettingsService } from '@delon/theme';
 export class HeaderComponent {
   searchToggleStatus: boolean;
 
-  constructor(public settings: SettingsService) {}
+  constructor(public settings: SettingsService) { }
 
   toggleCollapsedSideabar() {
     const collapsed = !this.settings.layout.collapsed;

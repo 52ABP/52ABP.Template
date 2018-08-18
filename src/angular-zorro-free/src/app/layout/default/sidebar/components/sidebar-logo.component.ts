@@ -1,7 +1,7 @@
 import { Component, Injector, OnInit, ViewEncapsulation } from '@angular/core';
 import { MenuItem } from '@shared/layout/menu-item';
 import { AppComponentBase } from '@shared/app-component-base';
-import { SettingsService } from '@delon/theme';
+import { SettingsService } from '@yoyo/theme';
 
 @Component({
     templateUrl: './sidebar-logo.component.html',

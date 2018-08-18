@@ -1,16 +1,16 @@
+import { AppMenus } from './AppMenus';
 import { Component, OnInit } from '@angular/core';
 import { SignalRAspNetCoreHelper } from '@shared/helpers/SignalRAspNetCoreHelper';
 import { AppComponentBase } from '@shared/app-component-base';
 import { Injector } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
-import { SettingsService, TitleService, MenuService, Menu } from '@delon/theme';
+import { SettingsService, TitleService, MenuService, MenuItem } from '@yoyo/theme';
 import { Router } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { HostBinding } from '@angular/core';
 import { NzModalService, NzNotificationService } from 'ng-zorro-antd';
 import { AppConsts } from '@shared/AppConsts';
-import { MenuItem } from '@shared/layout/menu-item';
 
 @Component({
   selector: 'app-app',
@@ -32,39 +32,7 @@ export class AppComponent extends AppComponentBase
     return this.settings.layout.collapsed;
   }
 
-  // 全局的菜单
-  Menums = [
-    // 首页
-    new MenuItem(this.l('HomePage'), '', 'anticon anticon-home', '/app/home'),
-    // 租户
-    new MenuItem(
-      this.l('Tenants'),
-      'Pages.Tenants',
-      'anticon anticon-team',
-      '/app/tenants',
-    ),
-    // 角色
-    new MenuItem(
-      this.l('Roles'),
-      'Pages.Roles',
-      'anticon anticon-safety',
-      '/app/roles',
-    ),
-    // 用户
-    new MenuItem(
-      this.l('Users'),
-      'Pages.Users',
-      'anticon anticon-user',
-      '/app/users',
-    ),
-    // 关于我们
-    new MenuItem(
-      this.l('About'),
-      '',
-      'anticon anticon-info-circle-o',
-      '/app/about',
-    ),
-  ];
+
 
   constructor(
     injector: Injector,
@@ -76,10 +44,7 @@ export class AppComponent extends AppComponentBase
     super(injector);
 
     // 创建菜单
-
-    const arrMenu = new Array<Menu>();
-    this.processMenu(arrMenu, this.Menums);
-    this.menuService.add(arrMenu);
+    this.menuService.menus = AppMenus.Menus;
   }
 
   ngOnInit(): void {
@@ -109,28 +74,5 @@ export class AppComponent extends AppComponentBase
   ngAfterViewInit(): void {
     // ($ as any).AdminBSB.activateAll();
     // ($ as any).AdminBSB.activateDemo();
-  }
-
-  // 处理生成菜单
-  processMenu(resMenu: Menu[], menus: MenuItem[], isChild?: boolean) {
-    menus.forEach(item => {
-      let subMenu: Menu;
-      subMenu = {
-        text: item.displayName,
-        link: item.route,
-        icon: `${item.icon}`,
-        hide: item.hide,
-      };
-      if (item.permission !== '' && !this.isGranted(item.permission)) {
-        subMenu.hide = true;
-      }
-
-      if (item.childMenus && item.childMenus.length > 0) {
-        subMenu.children = [];
-        this.processMenu(subMenu.children, item.childMenus);
-      }
-
-      resMenu.push(subMenu);
-    });
   }
 }

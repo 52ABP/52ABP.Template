@@ -1,7 +1,7 @@
 import { Component, Injector, AfterViewInit, OnInit } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { _HttpClient } from '@delon/theme';
+import { _HttpClient } from '@yoyo/theme';
 import { NzMessageService } from '../../../node_modules/ng-zorro-antd';
 import { zip } from '../../../node_modules/rxjs';
 

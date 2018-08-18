@@ -1,14 +1,9 @@
 import { Injector, ElementRef } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
-import { PermissionCheckerService } from 'abp-ng2-module/dist/src/auth/permission-checker.service';
-import { FeatureCheckerService } from 'abp-ng2-module/dist/src/features/feature-checker.service';
-import { NotifyService } from 'abp-ng2-module/dist/src/notify/notify.service';
-import { SettingService } from 'abp-ng2-module/dist/src/settings/setting.service';
-import { MessageService } from 'abp-ng2-module/dist/src/message/message.service';
-import { LocalizationService } from 'abp-ng2-module/dist/src/localization/localization.service';
-import { AbpMultiTenancyService } from 'abp-ng2-module/dist/src/multi-tenancy/abp-multi-tenancy.service';
 import { AppSessionService } from '@shared/session/app-session.service';
-import { ModalHelper } from '@delon/theme';
+import { ModalHelper } from '@yoyo/theme';
+import { PermissionCheckerService, FeatureCheckerService, NotifyService, SettingService, MessageService, LocalizationService, AbpMultiTenancyService } from '@yoyo/abp';
+
 
 export abstract class AppComponentBase {
   localizationSourceName = AppConsts.localization.defaultLocalizationSourceName;

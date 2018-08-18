@@ -13,10 +13,11 @@
       "@testing/*": ["testing/*"],
       "@env": ["environments"],
       "@env/*": ["environments/*"],
-      "@abp/*": ["../node_modules/abp-ng2-module/dist/src/*"],
       "@app/*": ["./app/*"],
       "@shared": ["shared"],
-      "@shared/*": ["shared/*"]
+      "@shared/*": ["shared/*"],
+      "@yoyo": ["../node_modules/yoyo-ng-module/src"],
+      "@yoyo/*": ["../node_modules/yoyo-ng-module/src/*"],
     },
     "baseUrl": "./"
   },
