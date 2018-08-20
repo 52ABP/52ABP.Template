@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import * as distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import { NzMessageService } from 'ng-zorro-antd';
-import { NoticeItem, NoticeIconList } from '@delon/abc';
+import { NoticeItem, NoticeIconList } from '@yoyo/abc';
 
 /**
  * 菜单通知
@@ -48,7 +48,7 @@ export class HeaderNotifyComponent {
   count = 5;
   loading = false;
 
-  constructor(private msg: NzMessageService) {}
+  constructor(private msg: NzMessageService) { }
 
   updateNoticeData(notices: NoticeIconList[]): NoticeItem[] {
     const data = this.data.slice();

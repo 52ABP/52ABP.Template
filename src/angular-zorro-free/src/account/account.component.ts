@@ -6,7 +6,7 @@
   Injector,
 } from '@angular/core';
 import { LoginService } from './login/login.service';
-import { AppComponentBase } from '@shared/app-component-base';
+import { AppComponentBase } from '@shared/component-base/app-component-base';
 
 @Component({
   selector: 'layout-account',

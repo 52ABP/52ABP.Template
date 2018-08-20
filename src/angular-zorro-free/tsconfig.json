@@ -22,8 +22,9 @@
       "@env/*": ["environments/*"],
       "@shared": ["shared"],
       "@shared/*": ["shared/*"],
-      "@abp/*": ["../node_modules/abp-ng2-module/dist/src/*"],
       "@app/*": ["./app/*"],
+      "@yoyo": ["../node_modules/yoyo-ng-module/src"],
+      "@yoyo/*": ["../node_modules/yoyo-ng-module/src/*"],
     }
   }
 }

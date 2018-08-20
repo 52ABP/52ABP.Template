@@ -1,9 +1,9 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '@app/app-routing.module';
 import { AppComponent } from '@app/app.component';
-import { AbpModule } from 'abp-ng2-module/dist/src/abp.module';
-import { LocalizationService } from 'abp-ng2-module/dist/src/localization/localization.service';
+import { AbpModule, LocalizationService } from '@yoyo/abp';
 import { LayoutModule } from '@app/layout/layout.module';
 import { HomeComponent } from '@app/home/home.component';
 import { SharedModule } from '@shared/shared.module';
@@ -20,11 +20,14 @@ import { CreateRoleComponent } from '@app/roles/create-role/create-role.componen
 import { EditRoleComponent } from '@app/roles/edit-role/edit-role.component';
 import { CreateUserComponent } from '@app/users/create-user/create-user.component';
 import { EditUserComponent } from '@app/users/edit-user/edit-user.component';
+import { MenuService } from '@yoyo/theme';
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
@@ -54,6 +57,9 @@ import { EditUserComponent } from '@app/users/edit-user/edit-user.component';
     CreateUserComponent,
     EditUserComponent,
   ],
-  providers: [LocalizationService],
+  providers: [
+    LocalizationService,
+    MenuService
+  ],
 })
-export class AppModule {}
+export class AppModule { }

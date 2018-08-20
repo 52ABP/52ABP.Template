@@ -7,6 +7,8 @@ import { AppConsts } from '@shared/AppConsts';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 
+import { LocalizationService } from '@yoyo/abp';
+
 export class AppPreBootstrap {
   static run(callback: () => void): void {
     AppPreBootstrap.getApplicationConfig(() => {
@@ -36,7 +38,7 @@ export class AppPreBootstrap {
       .done(result => {
         AppConsts.appBaseUrl = result.appBaseUrl;
         AppConsts.remoteServiceBaseUrl = result.remoteServiceBaseUrl;
-
+        LocalizationService.localizationSourceName = AppConsts.localization.defaultLocalizationSourceName;
         callback();
       });
   }
@@ -79,6 +81,7 @@ export class AppPreBootstrap {
 
         moment.locale(abp.localization.currentLanguage.name);
 
+        // 注册语言,NG-Zorro的DataPicker要使用
         registerLocaleData(zh);
 
         if (abp.clock.provider.supportsMultipleTimezone) {

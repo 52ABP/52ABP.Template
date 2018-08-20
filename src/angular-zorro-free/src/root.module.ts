@@ -1,27 +1,28 @@
 import { NgModule, Injector } from '@angular/core';
-import { CommonModule, PlatformLocation } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 import { RootComponent } from 'root.component';
-import { promise } from 'protractor';
-import { resolve, reject } from 'q';
 import { AppSessionService } from '@shared/session/app-session.service';
 import { AppPreBootstrap } from 'AppPreBootstrap';
 import { AppConsts } from '@shared/AppConsts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { AbpModule } from 'abp-ng2-module/dist/src/abp.module';
 import { ServiceProxyModule } from '@shared/service-proxies/service-proxy.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AbpHttpInterceptor } from 'abp-ng2-module/dist/src/abpHttpInterceptor';
+
 import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
 import { APP_INITIALIZER } from '@angular/core';
 import { LOCALE_ID } from '@angular/core';
-import { DelonModule } from 'delon.module';
 import { RootRoutingModule } from 'root-routing.module';
 import { SharedModule } from '@shared/shared.module';
+
+import { AbpModule, AbpHttpInterceptor } from '@yoyo/abp';
+import { TitleService } from '@yoyo/theme';
 import { AppModule } from '@app/app.module';
+
+import { YoYoModule } from './yoyo.module';
 export function appInitializerFactory(injector: Injector) {
   return () => {
     //  abp.ui.setBusy();
@@ -61,7 +62,7 @@ export function getCurrentLanguage(): string {
     BrowserModule,
     AbpModule,
     // 引入DelonMdule
-    DelonModule.forRoot(),
+    YoYoModule.forRoot(),
     ServiceProxyModule,
     RootRoutingModule,
     HttpClientModule,
@@ -85,7 +86,8 @@ export function getCurrentLanguage(): string {
       provide: LOCALE_ID,
       useFactory: getCurrentLanguage,
     },
+    TitleService,
   ],
   bootstrap: [RootComponent],
 })
-export class RootModule {}
+export class RootModule { }

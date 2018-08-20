@@ -1,14 +1,8 @@
 import { Injector, ElementRef } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
-import { PermissionCheckerService } from 'abp-ng2-module/dist/src/auth/permission-checker.service';
-import { FeatureCheckerService } from 'abp-ng2-module/dist/src/features/feature-checker.service';
-import { NotifyService } from 'abp-ng2-module/dist/src/notify/notify.service';
-import { SettingService } from 'abp-ng2-module/dist/src/settings/setting.service';
-import { MessageService } from 'abp-ng2-module/dist/src/message/message.service';
-import { LocalizationService } from 'abp-ng2-module/dist/src/localization/localization.service';
-import { AbpMultiTenancyService } from 'abp-ng2-module/dist/src/multi-tenancy/abp-multi-tenancy.service';
 import { AppSessionService } from '@shared/session/app-session.service';
-import { ModalHelper } from '@delon/theme';
+import { NotifyService, SettingService, MessageService, LocalizationService, AbpMultiTenancyService, FeatureCheckerService, PermissionCheckerService } from '@yoyo/abp';
+import { ModalHelper } from '@yoyo/theme';
 
 export abstract class AppComponentBase {
   localizationSourceName = AppConsts.localization.defaultLocalizationSourceName;
@@ -23,6 +17,11 @@ export abstract class AppComponentBase {
   appSession: AppSessionService;
   elementRef: ElementRef;
   modalHelper: ModalHelper;
+
+  /**
+   * 保存状态
+   */
+  saving = false;
 
   constructor(injector: Injector) {
     this.localization = injector.get(LocalizationService);

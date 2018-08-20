@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { PermissionCheckerService } from 'abp-ng2-module/dist/src/auth/permission-checker.service';
+import { PermissionCheckerService } from '@yoyo/abp';
 import { AppSessionService } from '@shared/session/app-session.service';
 
 import {
@@ -16,7 +16,7 @@ export class AppRouteGuard implements CanActivate, CanActivateChild {
     private _permissionChecker: PermissionCheckerService,
     private _router: Router,
     private _sessionService: AppSessionService,
-  ) {}
+  ) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,

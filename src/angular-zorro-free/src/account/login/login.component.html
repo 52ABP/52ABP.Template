@@ -1,47 +1,82 @@
 ﻿<div [@routerTransition]>
-  <form nz-form [formGroup]="validateForm" (ngSubmit)="submit()">
-    <br>
-    <!-- 账号 -->
-    <nz-form-item>
-      <nz-form-control>
-        <nz-input-group nzPrefixIcon="anticon anticon-user">
-          <input nz-input formControlName="userName" placeholder="{{l('UserNameOrEmail')}}">
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
+  <nz-spin [nzTip]="l('LogIningWithThreeDot')" [nzSize]="'large'" [nzSpinning]="submitting">
+    <nz-card [nzTitle]="nzTitle" nzHoverable='true'>
+      <ng-template #nzTitle>
+        <div class="text-center">
+          <i class="anticon anticon-login"></i>
+          <span>{{l('LogIn')}}</span>
+        </div>
+      </ng-template>
+      <form nz-form #loginForm="ngForm" role="form" novalidate (ngSubmit)="login()" method="post" class="login-form">
+        <br>
+        <!-- 账号 -->
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group nzPrefixIcon="anticon anticon-user">
+              <input nz-input name="userNameOrEmailAddress" #userNameOrEmailAddressInput="ngModel" [(ngModel)]="loginService.authenticateModel.userNameOrEmailAddress"
+                [placeholder]="l('UserNameOrEmail')" [nzSize]="'large'" required maxlength="255">
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
 
-    <!-- 密码 -->
-    <nz-form-item>
-      <nz-form-control>
-        <nz-input-group nzPrefixIcon="anticon anticon-lock">
-          <input nz-input formControlName="password" placeholder="{{l('Password')}}" type="password">
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
+        <!-- 密码 -->
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group nzPrefixIcon="anticon anticon-lock">
+              <input nz-input name="password" #passwordInput="ngModel" [(ngModel)]="loginService.authenticateModel.password" [placeholder]="l('Password')"
+                type="password" [nzSize]="'large'" required maxlength="32">
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
 
-    <!-- 记住我 -->
+        <!-- 记住我 -->
 
-    <nz-form-item>
-      <nz-col [nzSpan]="12">
-        <label nz-checkbox formControlName="rememberMe">
-          <span>{{l("RememberMe")}}</span>
-        </label>
-      </nz-col>
-    </nz-form-item>
+        <nz-form-item>
+          <nz-col [nzSpan]="12">
 
-    <!-- 登陆按钮 -->
-    <button nz-button nzType="primary" type="submit" class="ant-btn__block" [disabled]="!validateForm.valid">{{l("LogIn")}}</button>
+            <label nz-checkbox [(ngModel)]="loginService.rememberMe" name="rememberMe" id="rememberme">
+              <span>{{l("RememberMe")}}</span>
+            </label>
 
-    <!-- 注册 -->
-    <nz-form-item>
-      <nz-col [nzSpan]="12">
-      </nz-col>
-      <nz-col [nzSpan]="12" class="text-right" *ngIf="isSelfRegistrationAllowed">
-        <a [routerLink]="['../register']">{{l("Register")}}</a>
-      </nz-col>
-    </nz-form-item>
+          </nz-col>
+
+          <nz-col [nzSpan]="12" class="text-right">
+            <a routerLink="/account/forgot-password" class="forgot forget-password">{{l("ForgotPassword")}}</a>
+
+          </nz-col>
+
+        </nz-form-item>
+
+        <!-- 登陆按钮 -->
+
+        <button nz-button [nzType]="'primary'" [nzLoading]="submitting" [nzSize]="'large'" class="ant-btn__block" [disabled]="!loginForm.form.valid||submitting">
+          <i class="anticon anticon-login"></i>
+          <span>{{l("LogIn")}}</span>
+        </button>
+
+      </form>
+      <!-- 注册 -->
+      <nz-form-item>
+        <nz-col [nzSpan]="12">
+        </nz-col>
+        <nz-col [nzSpan]="12" class="text-right" *ngIf="isSelfRegistrationAllowed">
+          <a [routerLink]="['../register']">{{l("Register")}}</a>
+        </nz-col>
+      </nz-form-item>
+
+      <div class="login-action-items">
+        <div class="links">
+          <span *ngIf="isSelfRegistrationAllowed">
+            <a routerLink="/account/register">{{l("CreateAnAccount")}}</a>
+            <nz-divider nzType="vertical"></nz-divider>
+          </span>
+          <span>
+            <a routerLink="/account/email-activation">{{l("EmailActivation")}}</a>
+          </span>
+        </div>
+      </div>
 
 
-
-  </form>
+    </nz-card>
+  </nz-spin>
 </div>

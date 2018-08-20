@@ -14,7 +14,6 @@ import { HeaderUserComponent } from '@app/layout/default/header/components/user.
 const COMPONENTS = [
   HeaderComponent,
   SidebarComponent,
-  SideBarNavComponent,
   SideBarLogoComponent,
   SidebarUserComponent,
 ];
@@ -32,7 +31,6 @@ const HEADERCOMPONENTS = [
 
 //
 import { SharedModule } from '@shared/shared.module';
-import { SideBarNavComponent } from '@app/layout/default/sidebar/components/sidebar-nav.component';
 import { SideBarLogoComponent } from '@app/layout/default/sidebar/components/sidebar-logo.component';
 import { SidebarUserComponent } from '@app/layout/default/sidebar/components/sidebar-user.component';
 
@@ -42,4 +40,4 @@ import { SidebarUserComponent } from '@app/layout/default/sidebar/components/sid
   declarations: [...COMPONENTS, ...HEADERCOMPONENTS],
   exports: [...COMPONENTS],
 })
-export class LayoutModule {}
+export class LayoutModule { }

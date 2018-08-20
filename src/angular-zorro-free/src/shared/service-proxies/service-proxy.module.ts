@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AbpHttpInterceptor } from 'abp-ng2-module/dist/src/abpHttpInterceptor';
+import { AbpHttpInterceptor } from '@yoyo/abp';
 
 import * as ApiServiceProxies from '@shared/service-proxies/service-proxies';
 
@@ -16,4 +16,4 @@ import * as ApiServiceProxies from '@shared/service-proxies/service-proxies';
     { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true },
   ],
 })
-export class ServiceProxyModule {}
+export class ServiceProxyModule { }

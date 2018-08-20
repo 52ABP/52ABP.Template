@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit, Injector } from '@angular/core';
 
 import * as _ from 'lodash';
-import { AppComponentBase } from '@shared/app-component-base';
+import { AppComponentBase } from '@shared/component-base/app-component-base';
 
 @Component({
   // tslint:disable-next-line:component-selector

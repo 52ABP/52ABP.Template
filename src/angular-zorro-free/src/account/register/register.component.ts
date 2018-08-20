@@ -14,17 +14,17 @@ import {
 } from '@shared/service-proxies/service-proxies';
 
 
-import { FormComponentBase } from '@shared/component-base/form-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 
 import { LoginService } from '../login/login.service';
+import { AppComponentBase } from '@shared/component-base/app-component-base';
 
 @Component({
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.less'],
   animations: [appModuleAnimation()],
 })
-export class RegisterComponent extends FormComponentBase<RegisterInput> implements OnInit {
+export class RegisterComponent extends AppComponentBase implements OnInit {
 
 
   model: RegisterInput;
@@ -43,27 +43,19 @@ export class RegisterComponent extends FormComponentBase<RegisterInput> implemen
       this.back();
       return;
     }
-
     this.model = new RegisterInput();
-
-    this.validateForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      surname: ['', [Validators.required]],
-      emailAddress: ['', [Validators.required, Validators.email]],
-      userName: ['', [Validators.required]],
-      password: ['', [Validators.required]]
-    });
   }
 
   back(): void {
-    this._router.navigate(['/']);
+    this._router.navigate(['/account/login']);
   }
 
-  protected submitExecute(finisheCallback: Function): void {
+  save(): void {
+    this.saving = true;
     this._accountService
       .register(this.model)
       .finally(() => {
-        finisheCallback();
+        this.saving = false;
       })
       .subscribe((result: RegisterOutput) => {
         if (!result.canLogin) {
@@ -82,14 +74,5 @@ export class RegisterComponent extends FormComponentBase<RegisterInput> implemen
         });
       });
   }
-  protected setFormValues(entity: RegisterInput): void {
 
-  }
-  protected getFormValues(): void {
-    this.model.name = this.getControlVal('name');
-    this.model.surname = this.getControlVal('surname');
-    this.model.emailAddress = this.getControlVal('emailAddress');
-    this.model.userName = this.getControlVal('userName');
-    this.model.password = this.getControlVal('password');
-  }
 }

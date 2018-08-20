@@ -1,8 +1,5 @@
-import { AppComponentBase } from '@shared/app-component-base';
+import { AppComponentBase } from '@shared/component-base/app-component-base';
 import { Component, Injector, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { SettingsService } from '@delon/theme';
-import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 import { AppAuthService } from '@shared/auth/app-auth.service';
 
 @Component({
@@ -26,7 +23,7 @@ export class HeaderUserComponent extends AppComponentBase implements OnInit {
   constructor(injector: Injector, private _authService: AppAuthService) {
     super(injector);
   }
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   logout(): void {
     this._authService.logout();
   }

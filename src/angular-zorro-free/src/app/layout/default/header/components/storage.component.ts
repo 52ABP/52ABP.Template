@@ -1,6 +1,6 @@
 import { Component, HostListener, Injector } from '@angular/core';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
-import { AppComponentBase } from '@shared/app-component-base';
+import { AppComponentBase } from '@shared/component-base/app-component-base';
 
 @Component({
   selector: 'header-storage',

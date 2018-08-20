@@ -1,9 +1,7 @@
 ﻿import {
   Component,
   OnInit,
-  ViewChild,
   Injector,
-  ElementRef,
   Input,
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -11,16 +9,17 @@ import { AccountServiceProxy } from '@shared/service-proxies/service-proxies';
 import { IsTenantAvailableInput } from '@shared/service-proxies/service-proxies';
 import { AppTenantAvailabilityState } from '@shared/AppEnums';
 import { ModalComponentBase } from '@shared/component-base/modal-component-base';
-import { ModalFormComponentBase } from '@shared/component-base/modal-form-component-base';
+import { AppComponentBase } from '@shared/component-base/app-component-base';
 
 @Component({
-  selector: 'tenantChangeModal',
+  selector: 'app-tenant-change-modal',
   templateUrl: './tenant-change-modal.component.html',
 })
-export class TenantChangeModalComponent extends ModalFormComponentBase<any>
+export class TenantChangeModalComponent extends ModalComponentBase
   implements OnInit {
-  @Input() tenancyName = '';
-
+  @Input()
+  tenancyName = '';
+  beforeTenancyName = '';
   saving = false;
 
   constructor(
@@ -31,12 +30,15 @@ export class TenantChangeModalComponent extends ModalFormComponentBase<any>
   }
 
   ngOnInit(): void {
-    this.validateForm = this.formBuilder.group({
-      tenancyName: [''],
-    });
+    this.beforeTenancyName = this.tenancyName;
   }
 
-  protected submitExecute(finisheCallback: Function): void {
+  save(): void {
+    this.saving = true;
+    if (this.tenancyName === this.beforeTenancyName) {
+      this.close();
+      return;
+    }
     if (!this.tenancyName || this.tenancyName === '') {
       abp.multiTenancy.setTenantIdCookie(undefined);
       this.close();
@@ -69,12 +71,5 @@ export class TenantChangeModalComponent extends ModalFormComponentBase<any>
             break;
         }
       });
-  }
-
-  protected setFormValues(entity: any): void {
-    this.setControlVal('tenancyName', this.tenancyName);
-  }
-  protected getFormValues(): void {
-    this.tenancyName = this.getControlVal('tenancyName');
   }
 }

@@ -1,7 +1,8 @@
-﻿import { CommonModule } from '@angular/common';
+﻿import { CustomComponentModule } from '@shared/components/custom-components.module';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { AbpModule } from 'abp-ng2-module/dist/src/abp.module';
+import { AbpModule } from '@yoyo/abp';
 import { RouterModule } from '@angular/router';
 
 import { AppSessionService } from '@shared/session/app-session.service';
@@ -9,18 +10,26 @@ import { AppUrlService } from '@shared/nav/app-url.service';
 import { AppAuthService } from '@shared/auth/app-auth.service';
 import { AppRouteGuard } from '@shared/auth/auth-route-guard';
 
-// delon
-import { AlainThemeModule, ModalHelper } from '@delon/theme';
-import { DelonABCModule } from '@delon/abc';
-import { DelonACLModule } from '@delon/acl';
-import { DelonFormModule } from '@delon/form';
-
 // region: third libs
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { CountdownModule } from 'ngx-countdown';
 
-const THIRDMODULES = [NgZorroAntdModule, CountdownModule];
+/**
+ * 第三方的一些组件模块
+ */
+const THIRDMODULES = [
+  NgZorroAntdModule,
+  CountdownModule,
+  CustomComponentModule,
+];
+// import { DelonABCModule } from '../../node_modules/yoyo-ng-module/abc';
+import { DelonABCModule, AdPageHeaderConfig } from '@yoyo/abc';
+import { AlainThemeModule, ModalHelper } from '@yoyo/theme';
+
 // endregion
+
+import { EqualValidator } from './utils/validation/index';
+const PIPES = [EqualValidator];
 
 @NgModule({
   imports: [
@@ -32,12 +41,12 @@ const THIRDMODULES = [NgZorroAntdModule, CountdownModule];
 
     AlainThemeModule.forChild(),
     DelonABCModule,
-    DelonACLModule,
-    DelonFormModule,
+    // DelonACLModule,
+    // DelonFormModule,
     // third libs
     ...THIRDMODULES,
   ],
-  declarations: [],
+  declarations: [...PIPES],
   exports: [
     CommonModule,
     FormsModule,
@@ -45,12 +54,16 @@ const THIRDMODULES = [NgZorroAntdModule, CountdownModule];
     RouterModule,
     AlainThemeModule,
     DelonABCModule,
-    DelonACLModule,
-    DelonFormModule,
+    // DelonACLModule,
+    // DelonFormModule,
     // third libs
+    ...PIPES,
     ...THIRDMODULES,
   ],
-  providers: [ModalHelper],
+  providers: [
+    ModalHelper,
+    // { provide: AdPageHeaderConfig, useFactory: pageHeaderConfig },
+  ],
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
@@ -60,7 +73,7 @@ export class SharedModule {
         AppSessionService,
         AppUrlService,
         AppAuthService,
-        AppRouteGuard,
+        AppRouteGuard
       ],
     };
   }

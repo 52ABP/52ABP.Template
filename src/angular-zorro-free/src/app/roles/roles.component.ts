@@ -21,7 +21,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
     super(injector);
   }
 
-  protected fetchData(
+  protected fetchDataList(
     request: PagedRequestDto,
     pageNumber: number,
     finishedCallback: Function,
@@ -48,7 +48,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
               abp.notify.info('Deleted Role: ' + entity.displayName);
               this.refresh();
             })
-            .subscribe(() => {});
+            .subscribe(() => { });
         }
       },
     );
