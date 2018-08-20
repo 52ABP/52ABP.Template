@@ -34,7 +34,7 @@ export function appInitializerFactory(injector: Injector) {
         );
         appSessionService.init().then(
           result => {
-            abp.ui.clearBusy();
+            //  abp.ui.clearBusy();
             resolve(result);
           },
           err => {
