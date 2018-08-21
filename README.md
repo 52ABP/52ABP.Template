@@ -2,14 +2,9 @@
 
 
 
-[![GitHub forks](https://img.shields.io/github/forks/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg?style=social)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/network)
 
-
-[![GitHub forks](https://img.shields.io/github/forks/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg?style=social)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/network)
-
-
-
-[![GitHub license](https://img.shields.io/github/license/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg?style=social)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/blob/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg?style=social)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/network)[![GitHub license](https://img.shields.io/github/license/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg?style=social)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/blob/master/LICENSE)
 
 
 # LTMCompanyName.YoyoCmsTemplate
