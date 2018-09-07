@@ -8,9 +8,13 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 
 import { LocalizationService } from '@yoyo/abp';
+import { environment } from '@env/environment';
 
 export class AppPreBootstrap {
   static run(callback: () => void): void {
+
+    console.log("由52ABP模板构建,详情请访问 https://www.52abp.com");
+
     AppPreBootstrap.getApplicationConfig(() => {
       AppPreBootstrap.getUserConfiguration(callback);
     });
@@ -27,9 +31,15 @@ export class AppPreBootstrap {
   }
 
   private static getApplicationConfig(callback: () => void) {
+    let envName = '';
+    if (environment.production) {
+      envName = 'prod';
+    } else {
+      envName = 'dev';
+    }
     return abp
       .ajax({
-        url: '/assets/appconfig.json',
+        url: '/assets/appconfig' + envName + '.json',
         method: 'GET',
         headers: {
           'Abp.TenantId': abp.multiTenancy.getTenantIdCookie(),
