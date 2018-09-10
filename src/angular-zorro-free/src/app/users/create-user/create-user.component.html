@@ -22,7 +22,8 @@
         <nz-form-item>
           <nz-col [nzSpan]="12">
             <nz-form-control nzHasFeedback>
-              <input nz-input name="name" #name="ngModel" [(ngModel)]="user.name" [placeholder]="l('name')" autocomplete="name" required>
+              <input nz-input name="name" #name="ngModel" [(ngModel)]="user.name" [placeholder]="l('name')"
+                autocomplete="name" required>
               <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
                 <ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
               </nz-form-explain>
@@ -30,7 +31,8 @@
           </nz-col>
           <nz-col [nzSpan]="12">
             <nz-form-control nzHasFeedback>
-              <input nz-input name="surname" #surname="ngModel" [(ngModel)]="user.surname" [placeholder]="l('Surname')" required>
+              <input nz-input name="surname" #surname="ngModel" [(ngModel)]="user.surname" [placeholder]="l('Surname')"
+                required>
               <nz-form-explain *ngIf="surname.control.dirty&&surname.control.errors">
                 <ng-container *ngIf="surname.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
               </nz-form-explain>
@@ -53,8 +55,9 @@
         <!-- 密码 -->
         <nz-form-item>
           <nz-form-control nzHasFeedback>
-            <input nz-input name="password" #password="ngModel" [(ngModel)]="user.password" [placeholder]="l('Password')" type="password"
-              autocomplete="current-password" validateEqual="confirmPassword" reverse="true" required minlength="6" maxlength="32">
+            <input nz-input name="password" #password="ngModel" [(ngModel)]="user.password" [placeholder]="l('Password')"
+              type="password" autocomplete="current-password" validateEqual="confirmPassword" reverse="true" required
+              minlength="6" maxlength="32">
             <nz-form-explain *ngIf="password.control.dirty&&password.control.errors">
               <ng-container *ngIf="password.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
               <ng-container *ngIf="password.control.hasError('minlength')">{{l('MinLength')}}</ng-container>
@@ -66,8 +69,9 @@
         <!-- 确认密码 -->
         <nz-form-item>
           <nz-form-control nzHasFeedback>
-            <input nz-input name="confirmPassword" #confirmPasswordInput='ngModel' [(ngModel)]="confirmPassword" [placeholder]="l('ConfirmPassword')"
-              type="password" validateEqual="password" reverse="false" autocomplete="current-password" required>
+            <input nz-input name="confirmPassword" #confirmPasswordInput='ngModel' [(ngModel)]="confirmPassword"
+              [placeholder]="l('ConfirmPassword')" type="password" validateEqual="password" reverse="false"
+              autocomplete="current-password" required>
             <nz-form-explain *ngIf="confirmPasswordInput.control.dirty&&confirmPasswordInput.control.errors">
               <ng-container *ngIf="confirmPasswordInput.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
               <ng-container *ngIf="confirmPasswordInput.control.hasError('validateEqual')">{{l('PasswordInconsistent')}}</ng-container>
@@ -96,7 +100,7 @@
         <button nz-button type="button" [disabled]="saving" (click)="close()">
           {{l("Cancel")}}
         </button>
-        <button nz-button [nzType]="'primary'" type="button" (click)="submit()" [disabled]="!validateForm.valid||saving">
+        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid||saving">
           {{l("Save")}}
         </button>
       </div>
