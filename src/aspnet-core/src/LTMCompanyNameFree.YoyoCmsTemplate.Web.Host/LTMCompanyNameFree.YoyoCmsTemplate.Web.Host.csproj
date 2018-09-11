@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ClientApp\" />
   </ItemGroup>
 
   <!-- SPA Debug And Release Configs -->
