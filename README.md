@@ -48,6 +48,10 @@ Github:https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate
 
 本地环境需要您安装 [node](http://nodejs.org/) 和 [git](https://git-scm.com/)。我们的技术栈基于 [Typescript](https://www.tslang.cn/)、[Angular](https://angular.io/)、[g2](http://g2.alipay.com/)、[@delon](https://github.com/cipchk/delon) 和 [ng-zorro-antd](https://ng.ant.design/)，提前了解和学习这些知识会非常有帮助。
 
+
+[运行项目教程](https://juejin.im/post/5b5ec016e51d45194558524b)
+
+
 ## 四、目录结构
 
 本项目是通过 Angular CLI 构建的项目，但是为了符合 ABP 的开发方式，以及满足 DDD 的架构模式，将各个模块进行了剥离和拆分。所以目录结构也和标准的 NG CLI 项目结构发生了变化。
