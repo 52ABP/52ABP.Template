@@ -31,26 +31,12 @@ export class AppPreBootstrap {
   }
 
   private static getApplicationConfig(callback: () => void) {
-    let envName = '';
-    if (environment.production) {
-      envName = 'prod';
-    } else {
-      envName = 'dev';
-    }
-    return abp
-      .ajax({
-        url: '/assets/appconfig.' + envName + '.json',
-        method: 'GET',
-        headers: {
-          'Abp.TenantId': abp.multiTenancy.getTenantIdCookie(),
-        },
-      })
-      .done(result => {
-        AppConsts.appBaseUrl = result.appBaseUrl;
-        AppConsts.remoteServiceBaseUrl = result.remoteServiceBaseUrl;
-        LocalizationService.localizationSourceName = AppConsts.localization.defaultLocalizationSourceName;
-        callback();
-      });
+    // TODO:当前地址
+    let baseUrl = window.location.protocol + '//' + window.location.host;
+    AppConsts.appBaseUrl = baseUrl;
+    AppConsts.remoteServiceBaseUrl = baseUrl;
+    LocalizationService.localizationSourceName = AppConsts.localization.defaultLocalizationSourceName;
+    callback();
   }
 
   private static getCurrentClockProvider(

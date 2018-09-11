@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --port 8080 -o",
+    "start": "ng serve",
     "build": "ng build --prod --build-optimizer",
+    "build:ssr": "npm run build -- --app=ssr --output-hashing=media",
     "test": "ng test",
     "lint": "npm run lint:ts && npm run lint:style",
     "e2e": "ng e2e",
