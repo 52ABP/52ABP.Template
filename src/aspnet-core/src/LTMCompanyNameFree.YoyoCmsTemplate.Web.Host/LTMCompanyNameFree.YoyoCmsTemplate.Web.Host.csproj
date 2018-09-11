@@ -7,16 +7,30 @@
     <OutputType>Exe</OutputType>
     <PackageId>LTMCompanyNameFree.YoyoCmsTemplate.Web.Host</PackageId>
     <UserSecretsId>LTMCompanyNameFree-YoyoCmsTemplate-56C2EF2F-ABD6-4EFC-AAF2-2E81C34E8FB1</UserSecretsId>
+
+    <!-- SPA Config -->
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+
   </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="App_Data\Logs\**" />
     <Content Remove="App_Data\Logs\**" />
     <EmbeddedResource Remove="App_Data\Logs\**" />
     <None Remove="App_Data\Logs\**" />
   </ItemGroup>
+
   <ItemGroup>
     <Content Remove="wwwroot\swagger\ui\index.html" />
   </ItemGroup>
+
   <ItemGroup>
     <None Include="app.config" />
     <None Update="Dockerfile">
@@ -30,9 +44,7 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LTMCompanyNameFree.YoyoCmsTemplate.Web.Core\LTMCompanyNameFree.YoyoCmsTemplate.Web.Core.csproj" />
-  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0">
       <PrivateAssets>All</PrivateAssets>
@@ -47,7 +59,13 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.0" />
     <PackageReference Include="Abp.Castle.Log4Net" Version="3.7.2" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LTMCompanyNameFree.YoyoCmsTemplate.Web.Core\LTMCompanyNameFree.YoyoCmsTemplate.Web.Core.csproj" />
+  </ItemGroup>
+
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
@@ -61,4 +79,38 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
+
+  <!-- SPA Debug And Release Configs -->
+  <!-- Debug Config -->
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <!-- Release Config -->
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    
+    <!-- use yarn or npm restore packages -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="yarn" />
+    <!--<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />-->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
 </Project>
