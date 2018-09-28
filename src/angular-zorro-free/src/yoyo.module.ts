@@ -13,7 +13,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { AlainThemeModule } from '@yoyo/theme';
 import { DelonABCModule, ReuseTabService, ReuseTabStrategy } from '@yoyo/abc';
-import { DelonCacheModule } from '@yoyo/cache';
+// import { DelonCacheModule } from '@yoyo/cache';
 import { DelonUtilModule } from '@yoyo/util';
 
 
@@ -33,7 +33,7 @@ export function pageHeaderConfig(): AdPageHeaderConfig {
     NgZorroAntdModule.forRoot(),
     AlainThemeModule.forRoot(),
     DelonABCModule.forRoot(),
-    DelonCacheModule.forRoot(),
+    // DelonCacheModule.forRoot(),
     DelonUtilModule.forRoot(),
   ],
 })
