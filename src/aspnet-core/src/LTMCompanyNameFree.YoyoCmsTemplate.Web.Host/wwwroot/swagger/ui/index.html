@@ -66,10 +66,10 @@
 
     <div id="swagger-ui"></div>
 
-    <script src="./swagger-ui-bundle.js"></script>
-    <script src="./swagger-ui-standalone-preset.js"></script>
-    <script src="/swagger/ui/abp.js"></script>
-    <script src="/swagger/ui/abp.swagger.js"></script>
+    <script src="swagger-ui-bundle.js"></script>
+    <script src="swagger-ui-standalone-preset.js"></script>
+    <script src="ui/abp.js"></script>
+    <script src="ui/abp.swagger.js"></script>
     <script>
         window.onload = function () {
             var configObject = JSON.parse('%(ConfigObject)');
@@ -79,7 +79,8 @@
             configObject.presets = [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset];
             configObject.layout = "StandaloneLayout";
             configObject.requestInterceptor = function (request) {
-                request.headers.Authorization = "Bearer " + abp.auth.getToken();
+                var token = abp.auth.getToken();
+                request.headers.Authorization = token ? "Bearer " + token : null;
                 return request;
             };
             if (!configObject.hasOwnProperty("oauth2RedirectUrl")) {
