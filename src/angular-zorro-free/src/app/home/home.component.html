@@ -103,15 +103,15 @@
             <ng-template #noticeTitle>
               <div class="card-title">
                 <nz-avatar [nzSrc]="item.logo" [nzSize]="'small'"></nz-avatar>
-                <a (click)="msg.info('to' + item.href)">{{item.title}}</a>
+                <a [href]="item.href" target="_blank">{{item.title}}</a>
               </div>
             </ng-template>
           </nz-card-meta>
           <div class="project-item">
-            <a (click)="msg.info('show user: ' + item.member)">{{item.member}}</a>
+            <!-- <a (click)="msg.info('show user: ' + item.member)">{{item.member}}</a>
             <span *ngIf="item.updatedAt" class="datetime" title="{{item.updatedAt}}">
               {{item.updatedAt | _date: 'fn' }}
-            </span>
+            </span> -->
           </div>
         </nz-card>
       </div>
