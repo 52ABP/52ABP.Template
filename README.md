@@ -7,7 +7,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg?style=social)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/network)[![GitHub license](https://img.shields.io/github/license/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg?style=social)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/blob/master/LICENSE)
 
 
-# LTMCompanyName.YoyoCmsTemplate
+# LTMCompanyNameFree.YoyoCmsTemplate
 
 > 各个镜像的编译状态
 > 考虑到国内的下载速度慢，我们在码云上也部署了一套环境，代码同步。
