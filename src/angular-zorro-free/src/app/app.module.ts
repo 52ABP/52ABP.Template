@@ -21,6 +21,7 @@ import { EditRoleComponent } from '@app/roles/edit-role/edit-role.component';
 import { CreateUserComponent } from '@app/users/create-user/create-user.component';
 import { EditUserComponent } from '@app/users/edit-user/edit-user.component';
 import { MenuService } from '@yoyo/theme';
+import { AdvertisingComponent } from './advertising/advertising.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { MenuService } from '@yoyo/theme';
     EditRoleComponent,
     CreateUserComponent,
     EditUserComponent,
+    AdvertisingComponent,
   ],
   entryComponents: [
     CreateTenantComponent,
@@ -56,6 +58,7 @@ import { MenuService } from '@yoyo/theme';
     EditRoleComponent,
     CreateUserComponent,
     EditUserComponent,
+    AdvertisingComponent,
   ],
   providers: [
     LocalizationService,

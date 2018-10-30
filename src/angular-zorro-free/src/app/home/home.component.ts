@@ -3,6 +3,7 @@ import { AppComponentBase } from '@shared/component-base/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { _HttpClient } from '@yoyo/theme';
 import { NzMessageService } from 'ng-zorro-antd';
+import { AdvertisingComponent } from '@app/advertising/advertising.component';
 
 @Component({
   templateUrl: './home.component.html',
@@ -123,5 +124,12 @@ export class HomeComponent extends AppComponentBase implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  showAdvertising() {
+    this.modalHelper.open(AdvertisingComponent)
+      .subscribe(() => {
+
+      });
   }
 }
