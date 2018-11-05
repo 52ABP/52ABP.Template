@@ -30,8 +30,8 @@
         <nz-form-item>
           <nz-form-control nzHasFeedback>
             <nz-input-group nzPrefixIcon="anticon anticon-user">
-              <input nz-input name="name" #name="ngModel" [(ngModel)]="model.name" [placeholder]="l('Name')" required
-                maxlength="32">
+              <input nz-input name="name" #name="ngModel" [(ngModel)]="model.name" [placeholder]="l('UserName')"
+                required maxlength="32">
             </nz-input-group>
             <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
               <ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
