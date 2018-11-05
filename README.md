@@ -40,8 +40,12 @@ Github:https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate
 
 更多详细的启动教程：
 [项目运行教程](https://www.52abp.com/Blog/BlogDetails/1)
+### 备注：
+```
+默认用户名：admin
 
-
+默认密码：123qwe
+```
 # 联系我们
 
 
