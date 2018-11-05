@@ -1,33 +1,34 @@
-# Introduction
+# 介绍
 
-This is a template to create **ASP.NET Core MVC / Angular** based startup projects for [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents). It has 2 different versions:
+52ABP是一个整合了前后端的强力框架，
+后端是对.NET Core和ABP框架进行了二次的封装和整合
+前端是在Angular的基础上整合了Ng-Zorro、Ng-alain等组件
+架构层面也是一个基于DDD(领域驱动设计)的经典分层架构 目的是成为一个强大的基础设施符合国人开发习惯的框架现代WEB应用框架。
 
-1. [ASP.NET Core MVC & jQuery](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Core) (server rendered multi-page application).
-2. [ASP.NET Core & Angular](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Angular) (single page application).
+关于 ABP 的后端文档，详情参看：[ABP中文文档](https://www.52abp.com/ReadWiki/ABP%E6%A1%86%E6%9E%B6%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/Documents-3.7.2/Readme.md)
+
+关于 ng-alain 的官方文档，详情参考：https://ng-alain.com/docs/getting-started
+
+本次着重说明的是前端项目的文档。 本文档的大部分内容是从 ng-alain 官方摘录，因为是你的前端框架嘛。。
  
-User Interface is based on [BSB Admin theme](https://github.com/gurayyarar/AdminBSBMaterialDesign).
- 
-# Download
+# 下载
 
-Create & download your project from https://aspnetboilerplate.com/Templates
+通过52ABP来创建属于你自己的独立项目信息: https://www.52abp.com/Download/Index
 
-# Screenshots
+# 截图
+![image](https://upload-images.jianshu.io/upload_images/1979022-149453e355774c58.gif?imageMogr2/auto-orient/strip)
+![](https://upload-images.jianshu.io/upload_images/1979022-78623047838e0674.gif?imageMogr2/auto-orient/strip)
 
-#### Sample Dashboard Page
-![](_screenshots/module-zero-core-template-ui-home.png)
+[52ABP模板 ASP.Net Core 与 Angular的开源实例项目
+](https://www.cnblogs.com/wer-ltm/p/9358478.html)
 
-#### User Creation Modal
-![](_screenshots/module-zero-core-template-ui-user-create-modal.png)
+# 文档教程
 
-#### Login Page
-
-![](_screenshots/module-zero-core-template-ui-login.png)
-
-# Documentation
-
-* [ASP.NET Core MVC & jQuery version.](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Core)
-* [ASP.NET Core & Angular  version.](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Angular)
-
+* [[52ABP] - 001、SPA免费项目模版搭建教程
+](https://www.52abp.com/Blog/BlogDetails/1)
+* [[52ABP系列] - 002、模板项目配合代码生成器开发
+](https://www.52abp.com/Blog/BlogDetails/2)
+* [ABP中文文档](https://www.52abp.com/ReadWiki/ABP%E6%A1%86%E6%9E%B6%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/Documents-3.7.2/Readme.md)
 # License
 
 [MIT](LICENSE).
