@@ -1,8 +1,5 @@
 
 
-
-
-
 [![GitHub stars](https://img.shields.io/github/stars/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg?style=social)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/network)[![GitHub license](https://img.shields.io/github/license/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg?style=social)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/blob/master/LICENSE)
 
@@ -17,7 +14,7 @@
 码云：https://gitee.com/yoyocms/LTMCompanyNameFree.YoyoCmsTemplate
 Github:https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate
 
-## 一、什么是 52ABP ？
+## 关于 52ABP 
 
 基于.NET Core 版本为 2.1， 整个框架使用的是 ABP(ASP.NET Boilerplate)，前端这次使用的是 ng-alain 。
 可以说作为一个内容整合商，52abp 的第一个正式开源的免费项目，您可以基于这个项目进行升级和扩展属于自己自定义的功能模块。
@@ -28,7 +25,33 @@ Github:https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate
 
 本次着重说明的是前端项目的文档。 本文档的大部分内容是从 ng-alain 官方摘录，因为是你的前端框架嘛。。
 
-## 二、前端项目的说明
+
+
+## 环境准备
+
+本地环境需要您安装 [node](http://nodejs.org/) 和 [git](https://git-scm.com/)。我们的技术栈基于 [Typescript](https://www.tslang.cn/)、[Angular](https://angular.io/)、[g2](http://g2.alipay.com/)、[@delon](https://github.com/cipchk/delon) 和 [ng-zorro-antd](https://ng.ant.design/)，提前了解和学习这些知识会非常有帮助。
+
+
+
+
+# 启动项目
+
+我们推荐你从[https://www.52abp.com](https://www.52abp.com/Download/Index) 创建您自己的项目模板，本项目模板为统一的启动模板，您可以像我们贡献您的代码信息。
+
+更多详细的启动教程：
+[项目运行教程](https://www.52abp.com/Blog/BlogDetails/1)
+
+
+# 联系我们
+
+
+**欢迎关注角落的白板报**
+ 
+
+![联系我们](http://upload-images.jianshu.io/upload_images/1979022-a6ae2876aeac3cab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+# 前端项目的说明
 
 **如何阅读文档**
 
@@ -43,112 +66,13 @@ Github:https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate
 - 对象相关，一般在类描述时
   - `[]` 表示属性
   - `()` 结尾表示方法
+## 前端常用的命令
 
-## 三、环境准备
-
-本地环境需要您安装 [node](http://nodejs.org/) 和 [git](https://git-scm.com/)。我们的技术栈基于 [Typescript](https://www.tslang.cn/)、[Angular](https://angular.io/)、[g2](http://g2.alipay.com/)、[@delon](https://github.com/cipchk/delon) 和 [ng-zorro-antd](https://ng.ant.design/)，提前了解和学习这些知识会非常有帮助。
-
-
-[运行项目教程](https://juejin.im/post/5b5ec016e51d45194558524b)
-
-
-## 四、目录结构
-
-本项目是通过 Angular CLI 构建的项目，但是为了符合 ABP 的开发方式，以及满足 DDD 的架构模式，将各个模块进行了剥离和拆分。所以目录结构也和标准的 NG CLI 项目结构发生了变化。
-
-```
-├─src
-│  │  AppPreBootstrap.ts    # ABP前端项目的启动组件，
-│  │  delon.module.ts          # ng-alian的核心组件，delon
-│  │  favicon.ico
-│  │  hmr.ts
-│  │  index.html
-│  │  main.ts
-│  │  polyfills.ts
-│  │  root-routing.module.ts   # 最外部的根路由，判断是否登录
-│  │  root.component.ts          # 根组件
-│  │  root.module.ts               #根模块
-│  │  styles.less                      #全局样式
-│  │  typings.d.ts               # 定义的abp框架中会使用到的方法和模块名称的一些常量
-│  │  
-│  ├─account
-│  │  │  account.module.ts           # 负责整个账号体系的模块如：登录、注册、布局、租户管理等
-│  │  ├─layout
-│  │  │      account-languages.component.ts  # 控制登录、注册、租户登录的布局控件
-│  │  ├─login
-│  │  │      login.service.ts # 提供登录注册的方法
-│  │  ├─register
-│  │  │      register.component.ts # 注册组件
-│  │  └─tenant
-│  │          tenant-change.component.ts   # 切换租户名称登录的组件
-│  ├─app
-│  │  │  app-routing.module.ts    # 中后台管理的路由总控
-│  │  │  app.component.ts  # 52abp应用的核心组件
-│  │  │  app.module.ts   # 52abp应用的核心模块
-│  │  ├─home
-│  │  │      home.component.ts  # 后端首页组件-类似控制台
-│  │  │
-│  │  ├─layout
-│  │  │  │  layout.module.ts # 后端的布局模块
-│  │  │  │  
-│  │  │  ├─default
-│  │  │  │  │  default.component.ts  # 布局的默认内容
-│  │  │  │  │  
-│  │  │  │  ├─header
-│  │  │  │  │  │  header.component.ts# 布局的头部组件
-│  │  │  │  │
-│  │  │  │  └─sidebar
-│  │  │  │          sidebar.component.ts# 布局的左侧菜单栏组件
-│  ├─assets
-│  │  │  .gitkeep
-│  │  │  appconfig.json #与后端交互配置的 端口号和域名
-│  ├─environments          # 环境变量配置
-│  ├─shared
-│  │  │  │  shared.module.ts  # 整个项目通用贡献的模块
-│  │  │  
-│  │  ├─animations                    # 路由的动画效果
-│  │  │      routerTransition.ts
-│  │  │
-│  │  ├─auth                          # ABP的授权管理
-│  │  │      app-auth.service.ts
-│  │  │      auth-route-guard.ts
-│  │  │
-│  │  ├─helpers                        # 字面意思，实时通讯
-│  │  │      SignalRAspNetCoreHelper.ts
-│  │  │      UrlHelper.ts
-│  │  │
-│  │  ├─layout            # 菜单组件
-│  │  │      menu-item.ts
-│  │  │
-│  │  ├─nav            #链接的服务类
-│  │  │      app-url.service.ts
-│  │  │
-│  │  ├─service-proxies                # 动态生成的crud接口的代理类
-│  │  │      service-proxies.ts
-│  │  │      service-proxy.module.ts
-│  │  │
-│  │  └─session                                   # ABP所提供的Session 服务方法，提供一些基本的用户信息
-│  │          app-session.service.ts
-│  │
-│  ├─styles                  # 可以基于ng-alain 的基础样式上进行调整
-│  │      index.less
-│  │      theme.less
-│  │
-│  └─testing
-│          common.spec.ts
-│
-├─_mock                      # Mock 数据规则
-```
-
-# 启动项目
-
-从事前端开发由 yarn 和 npm 两个包管理器，个人推荐使用 yarn，还原上比 npm 有点优势。
-
-```
-yarn install            还原组件信息
-
-
-npm start        启动项目
-```
+生成指定路径的 组件
+`
+  ng generate component persons/create-or-edit-person-modal
+`
+# 关于贡献
 
 以上就是项目的简单说明，以后有时间，再继续给大家交流。也欢迎大家来完善内容。
+[更多内容...](https://github.com/52ABP/Documents/blob/master/52ABP%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E4%B8%AD%E5%BF%83/52ABP%E5%9B%A2%E9%98%9F%E6%AC%A2%E8%BF%8E%E6%82%A8%E7%9A%84%E5%88%B0%E6%9D%A5.md)
