@@ -4,15 +4,12 @@
 [![GitHub forks](https://img.shields.io/github/forks/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg?style=social)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/network)[![GitHub license](https://img.shields.io/github/license/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg?style=social)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/blob/master/LICENSE)
 
 
-# LTMCompanyNameFree.YoyoCmsTemplate
+# 介绍
 
 > 各个镜像的编译状态
 > 考虑到国内的下载速度慢，我们在码云上也部署了一套环境，代码同步。
 
-#### 代码相关镜像仓库：
 
-码云：https://gitee.com/yoyocms/LTMCompanyNameFree.YoyoCmsTemplate
-Github:https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate
 
 ## 关于 52ABP 
 
@@ -25,7 +22,17 @@ Github:https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate
 
 本次着重说明的是前端项目的文档。 本文档的大部分内容是从 ng-alain 官方摘录，因为是你的前端框架嘛。。
 
+## 截图
 
+![image](https://upload-images.jianshu.io/upload_images/1979022-149453e355774c58.gif?imageMogr2/auto-orient/strip)
+![](https://upload-images.jianshu.io/upload_images/1979022-78623047838e0674.gif?imageMogr2/auto-orient/strip)
+
+[52ABP模板 ASP.Net Core 与 Angular的开源实例项目
+](https://www.cnblogs.com/wer-ltm/p/9358478.html)
+
+## 下载地址
+
+通过52ABP来创建属于你自己的独立项目信息:https://www.52abp.com/Download/Index
 
 ## 环境准备
 
@@ -46,6 +53,13 @@ Github:https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate
 
 默认密码：123qwe
 ```
+
+
+#### 代码相关镜像仓库：
+
+码云：[国内镜像](https://gitee.com/yoyocms/LTMCompanyNameFree.YoyoCmsTemplate)
+
+Github:[主仓库](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate) 
 # 联系我们
 
 
