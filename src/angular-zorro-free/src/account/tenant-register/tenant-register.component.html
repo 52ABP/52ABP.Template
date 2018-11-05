@@ -1,0 +1,88 @@
+<div [@routerTransition]>
+  <nz-spin [nzTip]="l('Registering')" [nzSpinning]="saving">
+    <nz-card [nzTitle]="nzTitle" nzHoverable='true'>
+      <ng-template #nzTitle>
+        <div class="text-center">
+          <i class="anticon anticon-login"></i>
+          <span>{{l('TenantRegister')}}</span>
+        </div>
+      </ng-template>
+
+      <form nz-form #validateForm="ngForm" (ngSubmit)="save()" role="form" novalidate method="post">
+
+        <br>
+
+        <!-- 租户名称 -->
+        <nz-form-item>
+          <nz-form-control nzHasFeedback>
+            <nz-input-group nzPrefixIcon="anticon anticon-cloud">
+              <input nz-input type="text" name="tenancyName" #tenancyName="ngModel" [(ngModel)]="model.tenancyName"
+                [placeholder]="l('TenancyName')" required>
+            </nz-input-group>
+            <nz-form-explain *ngIf="tenancyName.control.dirty&&tenancyName.control.errors">
+              <ng-container *ngIf="tenancyName.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+
+
+        <!-- 管理员账号 -->
+        <nz-form-item>
+          <nz-form-control nzHasFeedback>
+            <nz-input-group nzPrefixIcon="anticon anticon-user">
+              <input nz-input name="name" #name="ngModel" [(ngModel)]="model.name" [placeholder]="l('Name')" required
+                maxlength="32">
+            </nz-input-group>
+            <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
+              <ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- 管理员邮箱 -->
+        <nz-form-item>
+          <nz-form-control nzHasFeedback>
+            <nz-input-group nzPrefixIcon="anticon anticon-mail">
+              <input nz-input type="email" name="adminEmailAddress" #adminEmailAddress="ngModel" [(ngModel)]="model.adminEmailAddress"
+                [placeholder]="l('AdminEmailAddress')" required email>
+            </nz-input-group>
+            <nz-form-explain *ngIf="adminEmailAddress.control.dirty&&adminEmailAddress.control.errors">
+              <ng-container *ngIf="adminEmailAddress.control.hasError('email')">{{l('NotEmail')}}</ng-container>
+              <ng-container *ngIf="adminEmailAddress.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- 管理员密码 -->
+        <nz-form-item>
+          <nz-form-control nzHasFeedback>
+            <nz-input-group nzPrefixIcon="anticon anticon-lock">
+              <input nz-input type="password" name="tenantAdminPassword" #tenantAdminPassword="ngModel" [(ngModel)]="model.tenantAdminPassword"
+                [placeholder]="l('Password')" required maxlength="32" minlength="6">
+            </nz-input-group>
+            <nz-form-explain *ngIf="tenantAdminPassword.control.dirty&&tenantAdminPassword.control.errors">
+              <ng-container *ngIf="tenantAdminPassword.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+              <ng-container *ngIf="tenantAdminPassword.control.hasError('minlength')">{{l('MinLength')}}</ng-container>
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- 功能按钮 -->
+        <button nz-button [nzType]="'primary'" [nzLoading]="saving" class="ant-btn__block" type="submit" [disabled]="!validateForm.valid||saving">
+          <i class="anticon anticon-login"></i>
+          <span>{{l("Register")}}</span>
+        </button>
+      </form>
+
+      <nz-form-item>
+        <nz-col [nzSpan]="12">
+        </nz-col>
+        <nz-col [nzSpan]="12" class="text-right">
+          <a (click)="back()">{{l("Back")}}</a>
+        </nz-col>
+      </nz-form-item>
+
+      <p class="register-protocal" style="margin-top: 24px;">点击“注册”，即代表你同意<a href="/" target="_blank">《服务协议》</a></p>
+    </nz-card>
+  </nz-spin>
+</div>

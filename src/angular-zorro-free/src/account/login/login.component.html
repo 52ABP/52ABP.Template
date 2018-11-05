@@ -71,6 +71,12 @@
             <a routerLink="/account/register">{{l("CreateAnAccount")}}</a>
             <nz-divider nzType="vertical"></nz-divider>
           </span>
+          <!-- 租户注册 -->
+          <span *ngIf="!appSession.tenantId">
+            <a routerLink="/account/tenant-register">{{l("TenantRegister")}}</a>
+            <nz-divider nzType="vertical"></nz-divider>
+          </span>
+
           <!-- //todo: 等待有缘人帮我们完善吧 -->
           <!-- <span>
             <a routerLink="/account/email-activation">{{l("EmailActivation")}}</a>

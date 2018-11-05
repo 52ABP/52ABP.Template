@@ -61,7 +61,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy
             //创建成功后，需要设置当前工作单元为当前登录后的租户信息
             using (CurrentUnitOfWork.SetTenantId(tenant.Id))
             {
-                // 创建角色
+                // 给新租户创建角色
                 CheckErrors(await _roleManager.CreateStaticRoles(tenant.Id));
                 // 保存，获取角色id
                 await CurrentUnitOfWork.SaveChangesAsync();
@@ -74,7 +74,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy
 
 
                 // 如果没有提交密码,那么走的是默认密码 123qwe
-                adminUser.Password = _passwordHasher.HashPassword(adminUser, input.TenantPassword.IsNullOrWhiteSpace() ? User.DefaultPassword : input.AdminPassword);
+                adminUser.Password = _passwordHasher.HashPassword(adminUser, input.TenantAdminPassword.IsNullOrWhiteSpace() ? User.DefaultPassword : input.TenantAdminPassword);
                 CheckErrors(await UserManager.CreateAsync(adminUser));
 
                 // 保存，获取角色id
@@ -89,8 +89,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy
             return tenant.MapTo<TenantDto>();
 
 
-
-
+ 
 
         }
 

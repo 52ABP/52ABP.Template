@@ -33,9 +33,9 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy.Dto
         public bool IsActive {get; set;}
 
         /// <summary>
-        /// 租户密码
+        /// 租户管理员密码
         /// </summary>
-        public string TenantPassword { get; set; }
+        public string TenantAdminPassword { get; set; }
 
     }
 }

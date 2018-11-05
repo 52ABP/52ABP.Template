@@ -60,9 +60,6 @@ import { AdvertisingComponent } from './advertising/advertising.component';
     EditUserComponent,
     AdvertisingComponent,
   ],
-  providers: [
-    LocalizationService,
-    MenuService
-  ],
+  providers: [LocalizationService, MenuService],
 })
-export class AppModule { }
+export class AppModule {}

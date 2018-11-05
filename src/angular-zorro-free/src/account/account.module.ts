@@ -22,6 +22,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AbpModule } from '@yoyo/abp';
 import { AdGlobalFooterModule } from '@yoyo/abc';
+import { TenantRegisterComponent } from './tenant-register/tenant-register.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,7 @@ import { AdGlobalFooterModule } from '@yoyo/abc';
     AbpModule,
     SharedModule,
     ServiceProxyModule,
-    AccountRoutingModule
+    AccountRoutingModule,
   ],
   declarations: [
     AccountComponent,
@@ -43,10 +44,10 @@ import { AdGlobalFooterModule } from '@yoyo/abc';
     LoginComponent,
     RegisterComponent,
     AccountLanguagesComponent,
+
+    TenantRegisterComponent,
   ],
-  entryComponents: [
-    TenantChangeModalComponent
-  ],
+  entryComponents: [TenantChangeModalComponent],
   providers: [LoginService],
 })
-export class AccountModule { }
+export class AccountModule {}

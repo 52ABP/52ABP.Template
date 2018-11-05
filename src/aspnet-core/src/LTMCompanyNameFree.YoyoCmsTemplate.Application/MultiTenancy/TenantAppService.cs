@@ -47,9 +47,10 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy
         
         public override async Task<TenantDto> Create(CreateTenantDto input)
         {
+            //检查权限
             CheckCreatePermission();
 
-            // Create tenant
+            // 创建角色
             var tenant = ObjectMapper.Map<Tenant>(input);
             tenant.ConnectionString = input.ConnectionString.IsNullOrEmpty()
                 ? null
@@ -62,30 +63,32 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy
             }
 
             await _tenantManager.CreateAsync(tenant);
-            await CurrentUnitOfWork.SaveChangesAsync(); // To get new tenant's id.
+            await CurrentUnitOfWork.SaveChangesAsync(); //      保存以获取新租户的Id
 
-            // Create tenant database
+
+            // 创建租户数据库
             _abpZeroDbMigrator.CreateOrMigrateForTenant(tenant);
 
-            // We are working entities of new tenant, so changing tenant filter
+            //创建成功后，需要设置当前工作单元为当前登录后的租户信息
             using (CurrentUnitOfWork.SetTenantId(tenant.Id))
             {
-                // Create static roles for new tenant
+                // 给新租户创建角色
                 CheckErrors(await _roleManager.CreateStaticRoles(tenant.Id));
 
                 await CurrentUnitOfWork.SaveChangesAsync(); // To get static role ids
 
-                // Grant all permissions to admin role
+                //    分配权限
+
                 var adminRole = _roleManager.Roles.Single(r => r.Name == StaticRoleNames.Tenants.Admin);
                 await _roleManager.GrantAllPermissionsAsync(adminRole);
 
-                // Create admin user for the tenant
+                // 创建此租户的管理员用户
                 var adminUser = User.CreateTenantAdminUser(tenant.Id, input.AdminEmailAddress);
                 adminUser.Password = _passwordHasher.HashPassword(adminUser, User.DefaultPassword);
                 CheckErrors(await _userManager.CreateAsync(adminUser));
                 await CurrentUnitOfWork.SaveChangesAsync(); // To get admin user's id
 
-                // Assign admin user to role!
+                // 给租户管理员授权
                 CheckErrors(await _userManager.AddToRoleAsync(adminUser, adminRole.Name));
                 await CurrentUnitOfWork.SaveChangesAsync();
             }
