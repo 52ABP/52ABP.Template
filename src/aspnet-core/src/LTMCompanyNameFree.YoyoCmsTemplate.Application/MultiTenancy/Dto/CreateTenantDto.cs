@@ -5,9 +5,15 @@ using Abp.MultiTenancy;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy.Dto
 {
+    /// <summary>
+    /// 创建租户的DTO信息
+    /// </summary>
     [AutoMapTo(typeof(Tenant))]
     public class CreateTenantDto
     {
+        /// <summary>
+        /// 全局唯一的租户Id
+        /// </summary>
         [Required]
         [StringLength(AbpTenantBase.MaxTenancyNameLength)]
         [RegularExpression(AbpTenantBase.TenancyNameRegex)]
@@ -25,5 +31,11 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy.Dto
         public string ConnectionString { get; set; }
 
         public bool IsActive {get; set;}
+
+        /// <summary>
+        /// 租户密码
+        /// </summary>
+        public string TenantPassword { get; set; }
+
     }
 }
