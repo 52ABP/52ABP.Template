@@ -23,8 +23,8 @@
         <nz-form-item>
           <nz-form-control>
             <nz-input-group nzPrefixIcon="anticon anticon-lock">
-              <input nz-input name="password" #passwordInput="ngModel" [(ngModel)]="loginService.authenticateModel.password" [placeholder]="l('Password')"
-                type="password" [nzSize]="'large'" required maxlength="32">
+              <input nz-input name="password" #passwordInput="ngModel" [(ngModel)]="loginService.authenticateModel.password"
+                [placeholder]="l('Password')" type="password" [nzSize]="'large'" required maxlength="32">
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
@@ -49,7 +49,8 @@
 
         <!-- 登陆按钮 -->
 
-        <button nz-button [nzType]="'primary'" [nzLoading]="submitting" [nzSize]="'large'" class="ant-btn__block" [disabled]="!loginForm.form.valid||submitting">
+        <button nz-button [nzType]="'primary'" [nzLoading]="submitting" [nzSize]="'large'" class="ant-btn__block"
+          [disabled]="!loginForm.form.valid||submitting">
           <i class="anticon anticon-login"></i>
           <span>{{l("LogIn")}}</span>
         </button>
@@ -70,9 +71,10 @@
             <a routerLink="/account/register">{{l("CreateAnAccount")}}</a>
             <nz-divider nzType="vertical"></nz-divider>
           </span>
-          <span>
+          <!-- //todo: 等待有缘人帮我们完善吧 -->
+          <!-- <span>
             <a routerLink="/account/email-activation">{{l("EmailActivation")}}</a>
-          </span>
+          </span> -->
         </div>
       </div>
 
