@@ -44,7 +44,6 @@
     <text name="PleaseEnterLoginInformation" value="请输入登录信息" />
     <text name="TenancyName" value="租户名称" />
     <text name="UserNameOrEmail" value="用户名或邮箱地址" />
-    <text name="UserName" value="用户名" />
 
     <text name="Password" value="密码" />
     <text name="RememberMe" value="记住我" />
