@@ -1,7 +1,7 @@
 import { TestBed, TestModuleMetadata } from '@angular/core/testing';
 import { setUpTestBed } from '@testing/common.spec';
 
-import { SidebarComponent } from '@app/layout/default/sidebar/sidebar.component';
+import { SidebarComponent } from './sidebar.component';
 
 describe('Layout: Sidebar', () => {
   setUpTestBed(<TestModuleMetadata>{

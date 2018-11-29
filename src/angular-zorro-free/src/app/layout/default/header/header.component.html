@@ -1,36 +1,33 @@
-<div class="top-nav-wrap">
-  <ul class="top-nav">
-    <!-- 菜单按钮 -->
+<div class="alain-default__nav-wrap">
+  <ul class="alain-default__nav">
+    <!-- Menu -->
     <li>
-      <div class="item" (click)="toggleCollapsedSideabar()">
-        <i class="anticon anticon-menu-{{settings.layout.collapsed ? 'unfold' : 'fold'}}"></i>
+      <div class="alain-default__nav-item" (click)="toggleCollapsedSidebar()">
+        <i nz-icon type="menu-{{settings.layout.collapsed ? 'unfold' : 'fold'}}"></i>
       </div>
     </li>
     <!-- Github Page -->
     <li>
-      <a class="item" href="//github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate" target="_blank">
-        <i class="anticon anticon-github"></i>
+      <a class="alain-default__nav-item" href="https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate" target="_blank">
+        <i nz-icon type="github"></i>
       </a>
     </li>
-    <!-- 52abp网站 -->
-    <li>
-      <a class="item" href="//www.52abp.com" target="_blank">
-        <i class="anticon anticon-link"></i>
-      </a>
+    <!-- 52abp官网 -->
+    <li class="hidden-mobile">
+      <div class="alain-default__nav-item" href="https://www.52abp.com">
+        <i nz-icon type="link"></i>
+      </div>
     </li>
   </ul>
-</div>
-
-
-<div style="right:10px;position: fixed;">
-  <ul class="top-nav">
-    <!-- 语言切换 -->
-    <header-languageswitch></header-languageswitch>
-    <!-- 设置 -->
-    <li class="hidden-xs">
+  <ul class="alain-default__nav">
+    <li class="hidden-mobile">
+      <header-i18n></header-i18n>
+    </li>
+    <!-- Settings -->
+    <li class="hidden-mobile">
       <nz-dropdown nzTrigger="click" nzPlacement="bottomRight">
-        <div class="item" nz-dropdown>
-          <i class="anticon anticon-setting"></i>
+        <div class="alain-default__nav-item" nz-dropdown>
+          <i nz-icon type="setting"></i>
         </div>
         <div nz-menu style="width:200px;">
           <div nz-menu-item>
@@ -42,10 +39,8 @@
         </div>
       </nz-dropdown>
     </li>
-    <!-- 右侧用户信息有关内容 -->
-    <li class="hidden-xs">
+    <li class="hidden-mobile">
       <header-user></header-user>
     </li>
-
   </ul>
 </div>

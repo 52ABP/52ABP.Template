@@ -1,5 +1,5 @@
 ﻿<div [@routerTransition]>
-  <nz-spin [nzTip]="l('LogIningWithThreeDot')" [nzSize]="'large'" [nzSpinning]="submitting">
+  <nz-spin [nzTip]="l('LogIningWithThreeDot')" [nzSpinning]="submitting">
     <nz-card [nzTitle]="nzTitle" nzHoverable='true'>
       <ng-template #nzTitle>
         <div class="text-center">
@@ -14,7 +14,7 @@
           <nz-form-control>
             <nz-input-group nzPrefixIcon="anticon anticon-user">
               <input nz-input name="userNameOrEmailAddress" #userNameOrEmailAddressInput="ngModel" [(ngModel)]="loginService.authenticateModel.userNameOrEmailAddress"
-                [placeholder]="l('UserNameOrEmail')" [nzSize]="'large'" required maxlength="255">
+                [placeholder]="l('UserNameOrEmail')" required maxlength="255">
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
@@ -24,7 +24,7 @@
           <nz-form-control>
             <nz-input-group nzPrefixIcon="anticon anticon-lock">
               <input nz-input name="password" #passwordInput="ngModel" [(ngModel)]="loginService.authenticateModel.password"
-                [placeholder]="l('Password')" type="password" [nzSize]="'large'" required maxlength="32">
+                [placeholder]="l('Password')" type="password" required maxlength="32">
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
@@ -49,24 +49,25 @@
 
         <!-- 登陆按钮 -->
 
-        <button nz-button [nzType]="'primary'" [nzLoading]="submitting" [nzSize]="'large'" class="ant-btn__block"
-          [disabled]="!loginForm.form.valid||submitting">
+        <button nz-button [nzType]="'primary'" [nzLoading]="submitting" class="yoyo__block" [disabled]="!loginForm.form.valid||submitting">
           <i class="anticon anticon-login"></i>
           <span>{{l("LogIn")}}</span>
         </button>
 
       </form>
       <!-- 注册 -->
-      <nz-form-item>
+      <!-- <nz-form-item>
         <nz-col [nzSpan]="12">
         </nz-col>
         <nz-col [nzSpan]="12" class="text-right" *ngIf="isSelfRegistrationAllowed">
           <a [routerLink]="['../register']">{{l("Register")}}</a>
         </nz-col>
-      </nz-form-item>
+      </nz-form-item> -->
 
       <div class="login-action-items">
         <div class="links">
+          <!-- 用户注册 -->
+          <br>
           <span *ngIf="isSelfRegistrationAllowed">
             <a routerLink="/account/register">{{l("CreateAnAccount")}}</a>
             <nz-divider nzType="vertical"></nz-divider>

@@ -1,34 +1,23 @@
-<page-header>
+<page-header [content]="content" [extra]="extra">
   <ng-template #content>
-    <div class="page-header">
-      <div class="avatar" style="text-align: center">
-        <!-- https://upload-images.jianshu.io/upload_images/1979022-b6bb0a2dad6c7f3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240 -->
-
-        <img class="img" src=" https://upload-images.jianshu.io/upload_images/1979022-b6bb0a2dad6c7f3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-          width="100px" height="100px">
-        <!-- <img class="img" src="https://mp.weixin.qq.com/rr?timestamp=1532171705&src=3&ver=1&signature=Mr7jG2uBte-*FqiCN9-yVKRU-YZWVWKfpioWBN2d7waS1kpnma3ffiERhirb0xbfAtqOIkNsFY*5b1pgcRTfRgb7arw5gX1uwgI4QfAIiJg="
-            width="100px" height="100px"> -->
-
-        <span>微信扫一扫关注</span>
+    <div class="avatar" style="text-align: center">
+      <img class="img" src=" https://upload-images.jianshu.io/upload_images/1979022-b6bb0a2dad6c7f3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+        width="100px" height="100px">
+      <span>微信扫一扫关注</span>
+    </div>
+    <div class="desc">
+      <div class="desc-title">有事没事就请访问
+        <a href="//www.52abp.com" target="_blank">52ABP社区</a>
       </div>
-      <div class="desc">
-        <div class="desc-title">有事没事就请访问
-          <a href="//www.52abp.com" target="_blank">52ABP社区</a>
-        </div>
-        <div>假砖家 | 我们是一群业余的搞一个专业的事情。</div>
-        <div> 点击加入交流QQ群：
-          <a href="https://jq.qq.com/?_wv=1027&k=5He28dh">633751348 【52ABP .NET CORE 实战群】</a>
-
-        </div>
-        <div style="color:red"><a href="https://dwz.cn/kQydQrTe"> 【推荐课程】52abp框架asp.net core & Angular全栈开发实战视频课程 </a><a
-            href="https://dwz.cn/kQydQrTe" target="_blank">立即学习</a></div>
+      <div>假砖家 | 我们是一群业余的搞一个专业的事情。</div>
+      <div> 点击加入交流QQ群：
+        <a href="https://jq.qq.com/?_wv=1027&k=5He28dh">633751348 【52ABP .NET CORE 实战群】</a>
       </div>
     </div>
   </ng-template>
   <ng-template #extra>
     <div class="page-extra">
       <div>
-
         <p>项目数</p>
         <p>56</p>
       </div>
@@ -44,7 +33,6 @@
       </div>
     </div>
   </ng-template>
-
 </page-header>
 
 <!-- <img src="https://edu-image.nosdn.127.net/0300916b-24c4-491b-9665-a0d367ac0b9e.jpg?imageView&quality=100&crop=0_0_1920_1077&thumbnail=450y250"

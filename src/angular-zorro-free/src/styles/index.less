@@ -1,4 +1,5 @@
-// 建议所有项目自定义样式放在该文件夹下
+// // 建议所有项目自定义样式放在该文件夹下
+@import './theme-variable';
 // modal-body
 .no-bottom-form-itme {
     margin-bottom: 24px;
@@ -6,31 +7,6 @@
 
 .padding-bottom-45 {
     padding-bottom: 45px;
-}
-
-// 左侧菜单栏的顶部距离
-.aside {
-    margin-top: 0px;
-}
-
-@media (min-width: @screen-md-min) {
-    .content {
-        margin-left: (@aside-wd + @content-padding);
-    }
-    .aside-collapsed {
-        .sidebar {
-            width: @aside-collapsed-wd;
-        }
-        .content {
-            margin-left: (@aside-collapsed-wd + @content-padding);
-        } // 顶部工具栏的宽度
-        .head_content>.header {
-            margin-left: (@aside-collapsed-wd);
-        }
-    } // 顶部工具栏的宽度
-    .head_content>.header {
-        margin-left: (@aside-wd);
-    }
 }
 
 .custom-modal-footer {
@@ -41,4 +17,8 @@
         margin-top: 10px;
         float: right;
     }
+}
+
+.yoyo__block {
+    width: 100%;
 }

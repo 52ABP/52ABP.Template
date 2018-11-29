@@ -21,7 +21,6 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AbpModule } from '@yoyo/abp';
-import { AdGlobalFooterModule } from '@yoyo/abc';
 import { TenantRegisterComponent } from './tenant-register/tenant-register.component';
 
 @NgModule({
@@ -50,4 +49,4 @@ import { TenantRegisterComponent } from './tenant-register/tenant-register.compo
   entryComponents: [TenantChangeModalComponent],
   providers: [LoginService],
 })
-export class AccountModule {}
+export class AccountModule { }

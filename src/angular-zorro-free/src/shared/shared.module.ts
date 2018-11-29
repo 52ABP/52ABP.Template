@@ -23,12 +23,15 @@ const THIRDMODULES = [
   CustomComponentModule,
 ];
 // import { DelonABCModule } from '../../node_modules/yoyo-ng-module/abc';
-import { DelonABCModule, AdPageHeaderConfig } from '@yoyo/abc';
+import { DelonABCModule, PageHeaderConfig } from '@yoyo/abc';
+import { DelonFormModule } from '@yoyo/form';
+
 import { AlainThemeModule, ModalHelper } from '@yoyo/theme';
 
 // endregion
 
 import { EqualValidator } from './utils/validation/index';
+import { DelonChartModule } from 'yoyo-ng-module/src/chart';
 const PIPES = [EqualValidator];
 
 @NgModule({
@@ -42,7 +45,8 @@ const PIPES = [EqualValidator];
     AlainThemeModule.forChild(),
     DelonABCModule,
     // DelonACLModule,
-    // DelonFormModule,
+    DelonChartModule,
+    DelonFormModule,
     // third libs
     ...THIRDMODULES,
   ],
@@ -55,7 +59,8 @@ const PIPES = [EqualValidator];
     AlainThemeModule,
     DelonABCModule,
     // DelonACLModule,
-    // DelonFormModule,
+    DelonChartModule,
+    DelonFormModule,
     // third libs
     ...PIPES,
     ...THIRDMODULES,

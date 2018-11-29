@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceProxyModule } from '@shared/service-proxies/service-proxy.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NgZorroAntdModule, NzIconService } from 'ng-zorro-antd';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
@@ -23,7 +23,15 @@ import { TitleService } from '@yoyo/theme';
 import { AppModule } from '@app/app.module';
 
 import { YoYoModule } from './yoyo.module';
+import { ICONS_AUTO } from './style-icons-auto';
+import { ICONS } from './style-icons';
+
 export function appInitializerFactory(injector: Injector) {
+
+  // 导入图标
+  const iconSrv = injector.get(NzIconService);
+  iconSrv.addIcon(...ICONS_AUTO, ...ICONS);
+
   return () => {
     //  abp.ui.setBusy();
     // tslint:disable-next-line:no-shadowed-variable

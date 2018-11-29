@@ -42,11 +42,11 @@ export class AppPreBootstrap {
         url: '/assets/appconfig.' + envName + '.json',
         method: 'GET',
         headers: {
-          'Abp.TenantId': abp.multiTenancy.getTenantIdCookie(),
+          'Abp.TenantId': (abp.multiTenancy.getTenantIdCookie() || ''),
         },
       })
       .done(result => {
-        AppConsts.appBaseUrl = result.appBaseUrl;
+        AppConsts.appBaseUrl = window.location.protocol + '//' + window.location.host;
         AppConsts.remoteServiceBaseUrl = result.remoteServiceBaseUrl;
         LocalizationService.localizationSourceName = AppConsts.localization.defaultLocalizationSourceName;
         callback();
@@ -71,21 +71,16 @@ export class AppPreBootstrap {
     callback: () => void,
   ): JQueryPromise<any> {
 
-    let token = abp.auth.getToken();
-    if (!token) {
-      token = '';
-    }
+
 
     return abp
       .ajax({
         url: AppConsts.remoteServiceBaseUrl + '/AbpUserConfiguration/GetAll',
         method: 'GET',
         headers: {
-          Authorization: 'Bearer ' + token,
-          '.AspNetCore.Culture': abp.utils.getCookieValue(
-            'Abp.Localization.CultureName',
-          ),
-          'Abp.TenantId': abp.multiTenancy.getTenantIdCookie(),
+          Authorization: 'Bearer ' + (abp.auth.getToken() || ''),
+          '.AspNetCore.Culture': abp.utils.getCookieValue('Abp.Localization.CultureName'),
+          'Abp.TenantId': (abp.multiTenancy.getTenantIdCookie() || ''),
         },
       })
       .done(result => {
