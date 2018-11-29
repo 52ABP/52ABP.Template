@@ -49,7 +49,7 @@
     "lint-staged": "^7.1.2",
     "moment": "^2.18.1",
     "moment-timezone": "^0.5.13",
-    "ng-zorro-antd": "^1.8.0",
+    "ng-zorro-antd": "1.8.0",
     "ngx-countdown": "^3.0.1",
     "nswag": "^11.17.20",
     "prettier": "^1.12.1",
