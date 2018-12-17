@@ -1,4 +1,5 @@
-﻿import {
+import { finalize } from 'rxjs/operators';
+import {
   Component,
   Injector,
   AfterViewInit,
@@ -54,9 +55,9 @@ export class RegisterComponent extends AppComponentBase implements OnInit {
     this.saving = true;
     this._accountService
       .register(this.model)
-      .finally(() => {
+      .pipe(finalize(() => {
         this.saving = false;
-      })
+      }))
       .subscribe((result: RegisterOutput) => {
         if (!result.canLogin) {
           this.notify.success(this.l('SuccessfullyRegistered'));

@@ -1,8 +1,7 @@
 <div>
-
-  <h3>
-    <span>{{l('CreateNewTenant')}}</span>
-  </h3>
+  <div class="modal-header">
+    <div class="modal-title">{{l('CreateNewTenant')}}</div>
+  </div>
   <nz-spin [nzSpinning]="!tenant">
     <form nz-form #validateForm="ngForm" (ngSubmit)="save()" *ngIf="tenant">
 
@@ -37,8 +36,8 @@
       <!-- 邮箱 -->
       <nz-form-item>
         <nz-form-control nzHasFeedback>
-          <input nz-input name="adminEmailAddress" #adminEmailAddress="ngModel" [(ngModel)]="tenant.adminEmailAddress" [placeholder]="l('AdminEmailAddress')"
-            autocomplete='name' required email>
+          <input nz-input name="adminEmailAddress" #adminEmailAddress="ngModel" [(ngModel)]="tenant.adminEmailAddress"
+            [placeholder]="l('AdminEmailAddress')" autocomplete='name' required email>
           <nz-form-explain *ngIf="adminEmailAddress.control.dirty&&adminEmailAddress.control.errors">
             <ng-container *ngIf="adminEmailAddress.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
             <ng-container *ngIf="adminEmailAddress.control.hasError('email')">{{l('NotEmail')}}</ng-container>
@@ -56,16 +55,17 @@
         <label>{{l("DefaultPasswordIs","123qwe")}}</label>
       </nz-form-control>
 
+
+
+
       <!-- 功能按钮 -->
-      <div class="custom-modal-footer">
-        <div class="custom-modal-footter-group">
-          <button nz-button type="button" [disabled]="saving" (click)="close()">
-            {{l("Cancel")}}
-          </button>
-          <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid||saving">
-            {{l("Save")}}
-          </button>
-        </div>
+      <div class="modal-footer">
+        <button nz-button type="button" [disabled]="saving" (click)="close()">
+          {{l("Cancel")}}
+        </button>
+        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid||saving">
+          {{l("Save")}}
+        </button>
       </div>
 
     </form>

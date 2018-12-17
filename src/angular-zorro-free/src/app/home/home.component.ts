@@ -1,9 +1,11 @@
 import { Component, Injector, AfterViewInit, OnInit } from '@angular/core';
 import { AppComponentBase } from '@shared/component-base/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { _HttpClient } from '@yoyo/theme';
+import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd';
+import { ACLService } from '@delon/acl';
 import { AdvertisingComponent } from '@app/advertising/advertising.component';
+// import { AdvertisingComponent } from '@app/advertising/advertising.component';
 
 @Component({
   templateUrl: './home.component.html',
@@ -16,6 +18,7 @@ export class HomeComponent extends AppComponentBase implements OnInit {
     injector: Injector,
     private http: _HttpClient,
     public msg: NzMessageService,
+    private aclService: ACLService
   ) {
     super(injector);
   }

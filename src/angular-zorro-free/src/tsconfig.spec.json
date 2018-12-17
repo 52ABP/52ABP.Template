@@ -2,20 +2,31 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/spec",
-    "module": "commonjs",
-    "types": ["jasmine", "node"],
+    "types": [
+      "jasmine",
+      "node"
+    ],
     "paths": {
+      "@abp/*": [ "../node_modules/abp-ng2-module/dist/src/*" ],  
+      "@abp": [ "../node_modules/abp-ng2-module/dist/src" ],
       "@appshared": ["app/shared"],
       "@appshared/*": ["app/shared/*"],
-      "@core": ["app/core"],
-      "@core/*": ["app/core/*"],
       "@testing": ["testing"],
       "@testing/*": ["testing/*"],
       "@env": ["environments"],
-      "@env/*": ["environments/*"]
+      "@env/*": ["environments/*"],
+      "@app/*": ["./app/*"],
+      "@shared": ["shared"],
+      "@shared/*": ["shared/*"],
     },
     "baseUrl": "./"
   },
-  "files": ["test.ts", "polyfills.ts"],
-  "include": ["**/*.spec.ts", "**/*.d.ts"]
+  "files": [
+    "test.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "**/*.spec.ts",
+    "**/*.d.ts"
+  ]
 }

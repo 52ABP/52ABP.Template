@@ -1,8 +1,8 @@
 <div class="padding-bottom-45">
 
-  <h3>
-    <span>{{l('EditUser')}}</span>
-  </h3>
+  <div class="modal-header">
+    <div class="modal-title">{{l('EditUser')}}</div>
+  </div>
 
 
   <form nz-form #validateForm="ngForm" (ngSubmit)="save()" *ngIf="user">
@@ -11,7 +11,8 @@
         <!-- 用户账号 -->
         <nz-form-item>
           <nz-form-control nzHasFeedback>
-            <input nz-input name="userName" #userName="ngModel" [(ngModel)]="user.userName" [placeholder]="l('UserName')" required>
+            <input nz-input name="userName" #userName="ngModel" [(ngModel)]="user.userName" [placeholder]="l('UserName')"
+              required>
             <nz-form-explain *ngIf="userName.control.dirty&&userName.control.errors">
               <ng-container *ngIf="userName.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
             </nz-form-explain>
@@ -22,7 +23,8 @@
         <nz-form-item>
           <nz-col [nzSpan]="12">
             <nz-form-control nzHasFeedback>
-              <input nz-input name="name" #name="ngModel" [(ngModel)]="user.name" [placeholder]="l('name')" autocomplete="name" required>
+              <input nz-input name="name" #name="ngModel" [(ngModel)]="user.name" [placeholder]="l('name')"
+                autocomplete="name" required>
               <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
                 <ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
               </nz-form-explain>
@@ -30,7 +32,8 @@
           </nz-col>
           <nz-col [nzSpan]="12">
             <nz-form-control nzHasFeedback>
-              <input nz-input name="surname" #surname="ngModel" [(ngModel)]="user.surname" [placeholder]="l('Surname')" required>
+              <input nz-input name="surname" #surname="ngModel" [(ngModel)]="user.surname" [placeholder]="l('Surname')"
+                required>
               <nz-form-explain *ngIf="surname.control.dirty&&surname.control.errors">
                 <ng-container *ngIf="surname.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
               </nz-form-explain>
@@ -65,15 +68,13 @@
 
 
     <!-- 功能按钮 -->
-    <div class="custom-modal-footer">
-      <div class="custom-modal-footter-group">
-        <button nz-button type="button" [disabled]="saving" (click)="close()">
-          {{l("Cancel")}}
-        </button>
-        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid||saving">
-          {{l("Save")}}
-        </button>
-      </div>
+    <div class="modal-footer">
+      <button nz-button type="button" [disabled]="saving" (click)="close()">
+        {{l("Cancel")}}
+      </button>
+      <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid||saving">
+        {{l("Save")}}
+      </button>
     </div>
 
   </form>

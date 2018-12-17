@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   Injector,
   ElementRef,
@@ -11,7 +11,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/component-base/app-component-base';
-import { AbpSessionService } from '@yoyo/abp/session/abp-session.service';
+import { AbpSessionService } from '@abp/session/abp-session.service';
+
 import {
   SessionServiceProxy
 } from '@shared/service-proxies/service-proxies';

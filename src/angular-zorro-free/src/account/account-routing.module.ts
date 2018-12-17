@@ -1,4 +1,4 @@
-﻿import { TenantRegisterComponent } from './tenant-register/tenant-register.component';
+import { TenantRegisterComponent } from './tenant-register/tenant-register.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -18,6 +18,10 @@ import { AccountComponent } from './account.component';
           {
             path: 'tenant-register',
             component: TenantRegisterComponent,
+          },
+          {
+            path: '**',
+            redirectTo: 'login',
           },
         ],
       },
