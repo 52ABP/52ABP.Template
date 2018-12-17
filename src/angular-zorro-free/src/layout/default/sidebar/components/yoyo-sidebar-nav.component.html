@@ -1,0 +1,51 @@
+<ng-template #icon let-i>
+    <ng-container *ngIf="i" [ngSwitch]="i.type">
+      <i *ngSwitchCase="'icon'" class="sidebar-nav__item-icon" nz-icon [type]="i.value" [theme]="i.theme" [spin]="i.spin"
+        [twoToneColor]="i.twoToneColor" [iconfont]="i.iconfont"></i>
+      <img *ngSwitchCase="'img'" src="{{ i.value }}" class="sidebar-nav__item-icon sidebar-nav__item-img">
+      <i *ngSwitchDefault class="sidebar-nav__item-icon {{ i.value }}"></i>
+    </ng-container>
+  </ng-template>
+  
+  <ul nz-menu [nzMode]="'inline'" [nzInlineCollapsed]="collapsed" class="sidebar-nav">
+    <ng-template ngFor let-menuItem [ngForOf]="list" let-mainMenuItemIndex="index">
+      <li *ngIf="!hasChildren(menuItem)&&!menuItem._hidden" nz-menu-item routerLinkActive="ant-menu-item-selected">
+        <a [routerLink]="[menuItem.link]" (click)="click(menuItem)">
+          <ng-template [ngTemplateOutlet]="icon" [ngTemplateOutletContext]="{$implicit: menuItem.icon}"></ng-template>
+          <span>{{menuItem.text}}</span>
+        </a>
+      </li>
+      <li *ngIf="hasChildren(menuItem)&&!menuItem._hidden" nz-submenu [nzOpen]="menuItem._open">
+        <span title>
+          <ng-template [ngTemplateOutlet]="icon" [ngTemplateOutletContext]="{$implicit: menuItem.icon}"></ng-template>
+          <span>{{menuItem.text}}</span>
+        </span>
+        <ul>
+          <ng-template ngFor let-subMenuItem [ngForOf]="menuItem.children" let-mainMenuItemIndex="index">
+            <li *ngIf="!hasChildren(subMenuItem)&&!subMenuItem._hidden" nz-menu-item routerLinkActive="ant-menu-item-selected">
+              <a [routerLink]="[subMenuItem.link]" (click)="click(subMenuItem)">
+                <ng-template [ngTemplateOutlet]="icon" [ngTemplateOutletContext]="{$implicit: subMenuItem.icon}"></ng-template>
+                <span>{{subMenuItem.text}}</span>
+              </a>
+            </li>
+            <li *ngIf="hasChildren(subMenuItem)&&!subMenuItem._hidden" nz-submenu [nzOpen]="menuItem._open">
+              <span title>
+                <ng-template [ngTemplateOutlet]="icon" [ngTemplateOutletContext]="{$implicit: subMenuItem.icon}"></ng-template>
+                <span>{{subMenuItem.text}}</span>
+              </span>
+              <ul>
+                <ng-template ngFor let-subSubMenuItem [ngForOf]="subMenuItem.children" let-mainMenuItemIndex="index">
+                  <li *ngIf="!hasChildren(subSubMenuItem)&&!subSubMenuItem._hidden" nz-menu-item routerLinkActive="ant-menu-item-selected">
+                    <a [routerLink]="[subSubMenuItem.link]" (click)="click(subSubMenuItem)">
+                      <ng-template [ngTemplateOutlet]="icon" [ngTemplateOutletContext]="{$implicit: subSubMenuItem.icon}"></ng-template>
+                      <span>{{subSubMenuItem.text}}</span>
+                    </a>
+                  </li>
+                </ng-template>
+              </ul>
+            </li>
+          </ng-template>
+        </ul>
+      </li>
+    </ng-template>
+  </ul>
