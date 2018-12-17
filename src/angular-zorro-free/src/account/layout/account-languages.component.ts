@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 
 import * as _ from 'lodash';
 import { AppComponentBase } from '@shared/component-base/app-component-base';

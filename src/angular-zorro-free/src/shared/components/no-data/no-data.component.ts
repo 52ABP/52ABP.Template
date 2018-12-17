@@ -1,5 +1,5 @@
-import { AppConsts } from '@shared/AppConsts';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Injector } from '@angular/core';
+import { AppComponentBase } from '@shared/component-base';
 
 @Component({
   selector: 'no-data',
@@ -28,7 +28,7 @@ import { Component, Input, OnInit } from '@angular/core';
   ],
   preserveWhitespaces: false,
 })
-export class NoDataComponent implements OnInit {
+export class NoDataComponent extends AppComponentBase implements OnInit {
   // region fields
   /**
    * 显示文本
@@ -43,11 +43,15 @@ export class NoDataComponent implements OnInit {
   icon = 'anticon anticon-frown-o';
 
   // endregion
-  constructor() { }
+  constructor(
+    injector: Injector
+  ) {
+    super(injector);
+  }
 
   ngOnInit() {
     if (!this.text) {
-      this.text = AppConsts.l('NoData');
+      this.text = this.l('NoData');
     }
   }
 }

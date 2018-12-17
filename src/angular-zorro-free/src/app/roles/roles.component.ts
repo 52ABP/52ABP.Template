@@ -37,7 +37,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
       });
   }
   protected delete(entity: RoleDto): void {
-    abp.message.confirm(
+    this.message.confirm(
       'Remove Users from Role and delete Role \'' + entity.displayName + '\'?',
       'Permanently delete this Role',
       (result: boolean) => {
@@ -45,7 +45,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
           this.rolesService
             .delete(entity.id)
             .finally(() => {
-              abp.notify.info('Deleted Role: ' + entity.displayName);
+              this.notify.info('Deleted Role: ' + entity.displayName);
               this.refresh();
             })
             .subscribe(() => { });

@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   ViewContainerRef,
   OnInit,

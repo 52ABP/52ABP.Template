@@ -13,14 +13,16 @@
   </ng-template>
 
 
-  <nz-table #ajaxTable nzShowSizeChanger [nzData]="dataList" [nzTotal]="totalItems" [(nzPageIndex)]="pageNumber" [(nzPageSize)]="pageSize"
-    [nzLoading]="isTableLoading" (nzPageIndexChange)="refresh()" (nzPageSizeChange)="refresh()" [nzFrontPagination]="false">
+  <nz-table #ajaxTable nzShowSizeChanger [nzData]="dataList" [nzTotal]="totalItems" [(nzPageIndex)]="pageNumber"
+    [(nzPageSize)]="pageSize" [nzLoading]="isTableLoading" (nzPageIndexChange)="refresh()" (nzPageSizeChange)="refresh()"
+    [nzFrontPagination]="false">
     <thead>
       <tr>
         <th>{{l("UserName")}}</th>
         <th>{{l("FullName")}}</th>
         <th>{{l("EmailAddress")}}</th>
         <th>{{l("IsActive")}}</th>
+        <th>{{l("CreationTime")}}</th>
         <th>{{l("Actions")}}</th>
       </tr>
     </thead>
@@ -33,6 +35,7 @@
           <nz-badge *ngIf="item.isActive" [nzStatus]="'success'" [nzText]="l('Yes')"></nz-badge>
           <nz-badge *ngIf="!item.isActive" [nzStatus]="'default'" [nzText]="l('No')"></nz-badge>
         </td>
+        <td>{{item.creationTime| _date: 'YYYY年MM月DD日'}}</td>
         <td>
           <a (click)="edit(item)">编辑</a>
           <nz-divider nzType="vertical"></nz-divider>

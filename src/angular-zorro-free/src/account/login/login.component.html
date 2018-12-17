@@ -1,8 +1,8 @@
-﻿<div [@routerTransition]>
+<div [@routerTransition]>
   <nz-spin [nzTip]="l('LogIningWithThreeDot')" [nzSpinning]="submitting">
     <nz-card [nzTitle]="nzTitle" nzHoverable='true'>
       <ng-template #nzTitle>
-        <div class="text-center">
+        <div class="text-center yoyo__block">
           <i class="anticon anticon-login"></i>
           <span>{{l('LogIn')}}</span>
         </div>
@@ -37,13 +37,12 @@
             <label nz-checkbox [(ngModel)]="loginService.rememberMe" name="rememberMe" id="rememberme">
               <span>{{l("RememberMe")}}</span>
             </label>
-
           </nz-col>
 
-          <nz-col [nzSpan]="12" class="text-right">
+          <!-- //todo:忘记密码 等待有缘人帮我们完善吧-->
+          <!-- <nz-col [nzSpan]="12" class="text-right">
             <a routerLink="/account/forgot-password" class="forgot forget-password">{{l("ForgotPassword")}}</a>
-
-          </nz-col>
+          </nz-col> -->
 
         </nz-form-item>
 
@@ -55,14 +54,6 @@
         </button>
 
       </form>
-      <!-- 注册 -->
-      <!-- <nz-form-item>
-        <nz-col [nzSpan]="12">
-        </nz-col>
-        <nz-col [nzSpan]="12" class="text-right" *ngIf="isSelfRegistrationAllowed">
-          <a [routerLink]="['../register']">{{l("Register")}}</a>
-        </nz-col>
-      </nz-form-item> -->
 
       <div class="login-action-items">
         <div class="links">
@@ -78,7 +69,7 @@
             <nz-divider nzType="vertical"></nz-divider>
           </span>
 
-          <!-- //todo: 等待有缘人帮我们完善吧 -->
+          <!-- //todo:邮件激活 等待有缘人帮我们完善吧 -->
           <!-- <span>
             <a routerLink="/account/email-activation">{{l("EmailActivation")}}</a>
           </span> -->

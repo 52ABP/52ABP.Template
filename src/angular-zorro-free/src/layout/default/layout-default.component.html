@@ -1,0 +1,25 @@
+<div class="alain-default__progress-bar" *ngIf="isFetching"></div>
+
+<div class="ant-layout ant-layout-has-sider">
+
+  <nz-sider [nzCollapsed]="collapsed">
+    <layout-sidebar class="alain-default__aside"></layout-sidebar>
+  </nz-sider>
+
+
+  <div class="ant-layout ant-pro-content">
+    <nz-header>
+      <layout-header class="alain-default__header"></layout-header>
+    </nz-header>
+    <nz-content style="margin: 0px 24px 0px;padding-top: 0px;">
+      <reuse-tab></reuse-tab>
+      <router-outlet></router-outlet>
+    </nz-content>
+  </div>
+
+</div>
+
+
+<ng-template #settingHost></ng-template>
+
+<nz-back-top></nz-back-top>

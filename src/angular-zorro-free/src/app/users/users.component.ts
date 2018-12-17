@@ -38,12 +38,12 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
   }
 
   protected delete(entity: UserDto): void {
-    abp.message.confirm(
+    this.message.confirm(
       "Delete user '" + entity.fullName + "'?",
       (result: boolean) => {
         if (result) {
           this._userService.delete(entity.id).subscribe(() => {
-            abp.notify.info('Deleted User: ' + entity.fullName);
+            this.notify.info('Deleted User: ' + entity.fullName);
             this.refresh();
           });
         }
@@ -54,8 +54,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
   create(): void {
     this.modalHelper
       .open(CreateUserComponent, {}, 'md', {
-        nzMask: true,
-        nzClosable: false,
+        nzMask: true
       })
       .subscribe(isSave => {
         if (isSave) {
@@ -67,8 +66,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
   edit(item: UserDto): void {
     this.modalHelper
       .open(EditUserComponent, { id: item.id }, 'md', {
-        nzMask: true,
-        nzClosable: false,
+        nzMask: true
       })
       .subscribe(isSave => {
         if (isSave) {
