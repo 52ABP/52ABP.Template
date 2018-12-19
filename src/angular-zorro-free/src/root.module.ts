@@ -26,7 +26,6 @@ import { ICONS_AUTO } from './style-icons-auto';
 import { ICONS } from './style-icons';
 
 import { AbpModule } from '@abp/abp.module';
-import { AbpHttpInterceptor } from '@abp/abpHttpInterceptor';
 import { LocalizationService } from '@shared/i18n/localization.service';
 
 
@@ -106,7 +105,6 @@ const I18NSERVICE_PROVIDES = [
     ],
     declarations: [RootComponent],
     providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true },
         { provide: API_BASE_URL, useFactory: getRemoteServiceBaseUrl },
         { provide: APP_INITIALIZER, useFactory: appInitializerFactory, deps: [Injector, PlatformLocation], multi: true },
         { provide: LOCALE_ID, useFactory: getCurrentLanguage, },
