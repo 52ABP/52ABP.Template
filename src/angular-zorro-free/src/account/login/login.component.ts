@@ -39,7 +39,7 @@ export class LoginComponent extends AppComponentBase implements OnInit {
   }
 
   ngOnInit(): void {
-    this.titleSrvice.setTitle(this.l('LogIn'))
+    this.titleSrvice.setTitle(this.l('LogIn'));
   }
 
   get multiTenancySideIsTeanant(): boolean {

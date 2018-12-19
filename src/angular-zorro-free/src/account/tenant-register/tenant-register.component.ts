@@ -29,7 +29,7 @@ export class TenantRegisterComponent extends AppComponentBase
   }
 
   ngOnInit() {
-    this.titleSrvice.setTitle(this.l('TenantRegister'))
+    this.titleSrvice.setTitle(this.l('TenantRegister'));
   }
 
   back(): void {

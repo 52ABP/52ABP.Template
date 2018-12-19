@@ -40,7 +40,7 @@ export class RegisterComponent extends AppComponentBase implements OnInit {
   }
 
   ngOnInit(): void {
-    this.titleSrvice.setTitle(this.l('CreateAnAccount'))
+    this.titleSrvice.setTitle(this.l('CreateAnAccount'));
 
     if (!this.appSession.tenant) {
       this.back();
