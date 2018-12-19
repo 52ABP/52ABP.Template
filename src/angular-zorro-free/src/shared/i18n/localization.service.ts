@@ -46,10 +46,10 @@ export class LocalizationService implements AlainI18NService {
      * @param args 参数
      */
     formatString(str: string, args: any[]): string {
-        let result: string;
+        let result: string = str;
         for (var i = 0; i < args.length; i++) {
             var placeHolder = '{' + i + '}';
-            result = this.replaceAll(str, placeHolder, args[i]);
+            result = this.replaceAll(result, placeHolder, args[i]);
         }
         return result;
     }
