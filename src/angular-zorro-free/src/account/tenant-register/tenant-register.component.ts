@@ -28,7 +28,9 @@ export class TenantRegisterComponent extends AppComponentBase
     super(injector);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.titleSrvice.setTitle(this.l('TenantRegister'));
+  }
 
   back(): void {
     this._router.navigate(['/account/login']);

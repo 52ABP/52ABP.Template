@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   OnInit,
   Injector,
@@ -10,6 +10,7 @@ import { IsTenantAvailableInput } from '@shared/service-proxies/service-proxies'
 import { AppTenantAvailabilityState } from '@shared/AppEnums';
 import { ModalComponentBase } from '@shared/component-base/modal-component-base';
 import { AppComponentBase } from '@shared/component-base/app-component-base';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tenant-change-modal',
@@ -41,8 +42,7 @@ export class TenantChangeModalComponent extends ModalComponentBase
     }
     if (!this.tenancyName || this.tenancyName === '') {
       abp.multiTenancy.setTenantIdCookie(undefined);
-      this.close();
-      location.reload();
+      this.success();
       return;
     }
 
@@ -51,15 +51,14 @@ export class TenantChangeModalComponent extends ModalComponentBase
 
     this._accountService
       .isTenantAvailable(input)
-      .finally(() => {
+      .pipe(finalize(() => {
         this.saving = false;
-      })
+      }))
       .subscribe(result => {
         switch (result.state) {
           case AppTenantAvailabilityState.Available:
             abp.multiTenancy.setTenantIdCookie(result.tenantId);
             this.success();
-            location.reload();
             return;
           case AppTenantAvailabilityState.InActive:
             this.message.warn(this.l('TenantIsNotActive', this.tenancyName));

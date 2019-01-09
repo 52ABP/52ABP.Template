@@ -1,8 +1,8 @@
-﻿<div [@routerTransition]>
-  <nz-spin [nzTip]="l('Registering')" [nzSize]="'large'" [nzSpinning]="saving">
+<div [@routerTransition]>
+  <nz-spin [nzTip]="l('Registering')" [nzSpinning]="saving">
     <nz-card [nzTitle]="nzTitle" nzHoverable='true'>
       <ng-template #nzTitle>
-        <div class="text-center">
+        <div class="text-center yoyo__block">
           <i class="anticon anticon-login"></i>
           <span>{{l('Register')}}</span>
         </div>
@@ -27,7 +27,8 @@
         <nz-form-item>
           <nz-form-control nzHasFeedback>
             <nz-input-group nzPrefixIcon="anticon anticon-user">
-              <input nz-input name="surname" #surname="ngModel" [(ngModel)]="model.surname" [placeholder]="l('Surname')" required>
+              <input nz-input name="surname" #surname="ngModel" [(ngModel)]="model.surname" [placeholder]="l('Surname')"
+                required>
             </nz-input-group>
             <nz-form-explain *ngIf="surname.control.dirty&&surname.control.errors">
               <ng-container *ngIf="surname.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
@@ -40,8 +41,8 @@
         <nz-form-item>
           <nz-form-control nzHasFeedback>
             <nz-input-group nzPrefixIcon="anticon anticon-mail">
-              <input nz-input type="email" name="emailAddress" #emailAddress="ngModel" [(ngModel)]="model.emailAddress" [placeholder]="l('EmailAddress')"
-                required email>
+              <input nz-input type="email" name="emailAddress" #emailAddress="ngModel" [(ngModel)]="model.emailAddress"
+                [placeholder]="l('EmailAddress')" required email>
             </nz-input-group>
             <nz-form-explain *ngIf="emailAddress.control.dirty&&emailAddress.control.errors">
               <ng-container *ngIf="emailAddress.control.hasError('email')">{{l('NotEmail')}}</ng-container>
@@ -55,7 +56,8 @@
         <nz-form-item>
           <nz-form-control nzHasFeedback>
             <nz-input-group nzPrefixIcon="anticon anticon-user">
-              <input nz-input name="userName" #userName="ngModel" [(ngModel)]="model.userName" [placeholder]="l('UserName')" required maxlength="32">
+              <input nz-input name="userName" #userName="ngModel" [(ngModel)]="model.userName" [placeholder]="l('UserName')"
+                required maxlength="32">
             </nz-input-group>
             <nz-form-explain *ngIf="userName.control.dirty&&userName.control.errors">
               <ng-container *ngIf="userName.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
@@ -67,8 +69,8 @@
         <nz-form-item>
           <nz-form-control nzHasFeedback>
             <nz-input-group nzPrefixIcon="anticon anticon-lock">
-              <input nz-input type="password" name="password" #password="ngModel" [(ngModel)]="model.password" type="password" [placeholder]="l('Password')"
-                required maxlength="32" minlength="6">
+              <input nz-input type="password" name="password" #password="ngModel" [(ngModel)]="model.password" type="password"
+                [placeholder]="l('Password')" required maxlength="32" minlength="6">
             </nz-input-group>
             <nz-form-explain *ngIf="password.control.dirty&&password.control.errors">
               <ng-container *ngIf="password.control.hasError('required')">{{l('CanNotNull')}}</ng-container>

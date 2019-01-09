@@ -1,8 +1,8 @@
-﻿<div [@routerTransition]>
-  <nz-spin [nzTip]="l('LogIningWithThreeDot')" [nzSize]="'large'" [nzSpinning]="submitting">
+<div [@routerTransition]>
+  <nz-spin [nzTip]="l('LogIningWithThreeDot')" [nzSpinning]="submitting">
     <nz-card [nzTitle]="nzTitle" nzHoverable='true'>
       <ng-template #nzTitle>
-        <div class="text-center">
+        <div class="text-center yoyo__block">
           <i class="anticon anticon-login"></i>
           <span>{{l('LogIn')}}</span>
         </div>
@@ -14,7 +14,7 @@
           <nz-form-control>
             <nz-input-group nzPrefixIcon="anticon anticon-user">
               <input nz-input name="userNameOrEmailAddress" #userNameOrEmailAddressInput="ngModel" [(ngModel)]="loginService.authenticateModel.userNameOrEmailAddress"
-                [placeholder]="l('UserNameOrEmail')" [nzSize]="'large'" required maxlength="255">
+                [placeholder]="l('UserNameOrEmail')" required maxlength="255">
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
@@ -24,7 +24,7 @@
           <nz-form-control>
             <nz-input-group nzPrefixIcon="anticon anticon-lock">
               <input nz-input name="password" #passwordInput="ngModel" [(ngModel)]="loginService.authenticateModel.password"
-                [placeholder]="l('Password')" type="password" [nzSize]="'large'" required maxlength="32">
+                [placeholder]="l('Password')" type="password" required maxlength="32">
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
@@ -37,36 +37,28 @@
             <label nz-checkbox [(ngModel)]="loginService.rememberMe" name="rememberMe" id="rememberme">
               <span>{{l("RememberMe")}}</span>
             </label>
-
           </nz-col>
 
-          <nz-col [nzSpan]="12" class="text-right">
+          <!-- //todo:忘记密码 等待有缘人帮我们完善吧-->
+          <!-- <nz-col [nzSpan]="12" class="text-right">
             <a routerLink="/account/forgot-password" class="forgot forget-password">{{l("ForgotPassword")}}</a>
-
-          </nz-col>
+          </nz-col> -->
 
         </nz-form-item>
 
         <!-- 登陆按钮 -->
 
-        <button nz-button [nzType]="'primary'" [nzLoading]="submitting" [nzSize]="'large'" class="ant-btn__block"
-          [disabled]="!loginForm.form.valid||submitting">
+        <button nz-button [nzType]="'primary'" [nzLoading]="submitting" class="yoyo__block" [disabled]="!loginForm.form.valid||submitting">
           <i class="anticon anticon-login"></i>
           <span>{{l("LogIn")}}</span>
         </button>
 
       </form>
-      <!-- 注册 -->
-      <nz-form-item>
-        <nz-col [nzSpan]="12">
-        </nz-col>
-        <nz-col [nzSpan]="12" class="text-right" *ngIf="isSelfRegistrationAllowed">
-          <a [routerLink]="['../register']">{{l("Register")}}</a>
-        </nz-col>
-      </nz-form-item>
 
       <div class="login-action-items">
         <div class="links">
+          <!-- 用户注册 -->
+          <br>
           <span *ngIf="isSelfRegistrationAllowed">
             <a routerLink="/account/register">{{l("CreateAnAccount")}}</a>
             <nz-divider nzType="vertical"></nz-divider>
@@ -77,7 +69,7 @@
             <nz-divider nzType="vertical"></nz-divider>
           </span>
 
-          <!-- //todo: 等待有缘人帮我们完善吧 -->
+          <!-- //todo:邮件激活 等待有缘人帮我们完善吧 -->
           <!-- <span>
             <a routerLink="/account/email-activation">{{l("EmailActivation")}}</a>
           </span> -->

@@ -2,24 +2,24 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "module": "es2015",
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "paths": {
-      "@appshared": ["app/shared"],
+      "@abp/*": [ "../node_modules/abp-ng2-module/dist/src/*" ],
       "@appshared/*": ["app/shared/*"],
-      "@core": ["app/core"],
-      "@core/*": ["app/core/*"],
       "@testing": ["testing"],
       "@testing/*": ["testing/*"],
       "@env": ["environments"],
       "@env/*": ["environments/*"],
-      "@app/*": ["./app/*"],
-      "@shared": ["shared"],
       "@shared/*": ["shared/*"],
-      "@yoyo": ["../node_modules/yoyo-ng-module/src"],
-      "@yoyo/*": ["../node_modules/yoyo-ng-module/src/*"],
+      "@app/*": ["./app/*"],
+      "@layout/*":["./layout/*"]
     },
     "baseUrl": "./"
   },
-  "exclude": ["src/test.ts", "**/*.spec.ts"]
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ]
 }

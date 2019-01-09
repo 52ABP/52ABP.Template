@@ -61,6 +61,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
                 )
             );
 
+
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             services.AddSwaggerGen(options =>
             {
@@ -75,8 +76,6 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
                     In = "header",
                     Type = "apiKey"
                 });
-                // Assign scope requirements to operations based on AuthorizeAttribute
-                options.OperationFilter<SecurityRequirementsOperationFilter>();
             });
 
             // Configure Abp and Dependency Injection
@@ -123,6 +122,8 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "YoyoCmsTemplate API V1");
+                // options.SwaggerEndpoint(_appConfiguration["App:ServerRootAddress"].EnsureEndsWith('/') + "swagger/v1/swagger.json", "YoyoCmsTemplate API V1");
+
                 options.IndexStream = () => Assembly.GetExecutingAssembly()
                     .GetManifestResourceStream("LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.wwwroot.swagger.ui.index.html");
             }); // URL: /swagger

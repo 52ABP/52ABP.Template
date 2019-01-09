@@ -1,4 +1,4 @@
-﻿import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
@@ -20,8 +20,7 @@ import { LoginService } from './login/login.service';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AbpModule } from '@yoyo/abp';
-import { AdGlobalFooterModule } from '@yoyo/abc';
+import { AbpModule } from '@abp/abp.module';
 import { TenantRegisterComponent } from './tenant-register/tenant-register.component';
 
 @NgModule({
@@ -50,4 +49,4 @@ import { TenantRegisterComponent } from './tenant-register/tenant-register.compo
   entryComponents: [TenantChangeModalComponent],
   providers: [LoginService],
 })
-export class AccountModule {}
+export class AccountModule { }

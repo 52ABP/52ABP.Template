@@ -1,6 +1,9 @@
+import { LocalizationService } from '@shared/i18n/localization.service';
 import { AppConsts } from '@shared/AppConsts';
-import { Component, Input, AfterViewInit, Renderer2 } from '@angular/core';
-import { LocalizationService } from '@yoyo/abp';
+import { Component, Input, AfterViewInit, Renderer2, Injector } from '@angular/core';
+import { AppComponentBase } from '@shared/component-base';
+
+
 @Component({
   selector: 'validation-messages',
   template: `
@@ -13,15 +16,17 @@ import { LocalizationService } from '@yoyo/abp';
   </ng-container>
     `,
 })
-export class ValidationMessagesComponent implements AfterViewInit {
+export class ValidationMessagesComponent extends AppComponentBase implements AfterViewInit {
   @Input()
   formCtrl;
   @Input()
   errorDefs: any[] = [];
 
-  private _localizationService: LocalizationService;
-  constructor(private appLocalizationService: LocalizationService) {
-    this._localizationService = appLocalizationService;
+
+  constructor(
+    injector: Injector
+  ) {
+    super(injector);
   }
 
   ngAfterViewInit(): void {
@@ -39,29 +44,21 @@ export class ValidationMessagesComponent implements AfterViewInit {
         targetElement.getAttributeNode('required')
       ) {
         this.errorDefs.push({
-          required: AppConsts.l('ThisFieldIsRequired'),
+          required: this.l('ThisFieldIsRequired'),
         });
       }
       if (targetElement.getAttribute('minlength')) {
         this.errorDefs.push({
-          minlength: AppConsts.l(
-            'PleaseEnterAtLeastNCharacter',
-            targetElement.getAttribute('minlength'),
+          minlength: this.l('PleaseEnterAtLeastNCharacter', targetElement.getAttribute('minlength'),
           ),
         });
       }
       if (targetElement.getAttribute('maxlength')) {
         this.errorDefs.push({
-          maxlength: AppConsts.l(
-            'PleaseEnterNoMoreThanNCharacter',
-            targetElement.getAttribute('maxlength'),
+          maxlength: this.l('PleaseEnterNoMoreThanNCharacter', targetElement.getAttribute('maxlength'),
           ),
         });
       }
-
-      // if (targetElement.getAttribute('pattern')) {
-      //     this.errorDefs.push({ pattern: AppConsts.l('EnterFormatIsNotCorrect') });
-      // }
     });
   }
 

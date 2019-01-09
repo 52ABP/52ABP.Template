@@ -1,8 +1,8 @@
-﻿import { CustomComponentModule } from '@shared/components/custom-components.module';
+import { CustomComponentModule } from '@shared/components/custom-components.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { AbpModule } from '@yoyo/abp';
+import { AbpModule } from '@abp/abp.module';
 import { RouterModule } from '@angular/router';
 
 import { AppSessionService } from '@shared/session/app-session.service';
@@ -21,15 +21,19 @@ const THIRDMODULES = [
   NgZorroAntdModule,
   CountdownModule,
   CustomComponentModule,
+  DirectivesModule,
 ];
-// import { DelonABCModule } from '../../node_modules/yoyo-ng-module/abc';
-import { DelonABCModule, AdPageHeaderConfig } from '@yoyo/abc';
-import { AlainThemeModule, ModalHelper } from '@yoyo/theme';
+
+import { DelonABCModule } from '@delon/abc';
+import { DelonFormModule } from '@delon/form';
+import { AlainThemeModule } from '@delon/theme';
 
 // endregion
+import { DelonChartModule } from '@delon/chart';
+import { DelonACLModule } from '@delon/acl';
+import { PermissionService } from './auth';
+import { DirectivesModule } from './directives/directives.module';
 
-import { EqualValidator } from './utils/validation/index';
-const PIPES = [EqualValidator];
 
 @NgModule({
   imports: [
@@ -41,12 +45,15 @@ const PIPES = [EqualValidator];
 
     AlainThemeModule.forChild(),
     DelonABCModule,
-    // DelonACLModule,
-    // DelonFormModule,
+    DelonACLModule,
+    DelonChartModule,
+    DelonFormModule,
     // third libs
     ...THIRDMODULES,
   ],
-  declarations: [...PIPES],
+  declarations: [
+
+  ],
   exports: [
     CommonModule,
     FormsModule,
@@ -54,16 +61,12 @@ const PIPES = [EqualValidator];
     RouterModule,
     AlainThemeModule,
     DelonABCModule,
-    // DelonACLModule,
-    // DelonFormModule,
+    DelonACLModule,
+    DelonChartModule,
+    DelonFormModule,
     // third libs
-    ...PIPES,
     ...THIRDMODULES,
-  ],
-  providers: [
-    ModalHelper,
-    // { provide: AdPageHeaderConfig, useFactory: pageHeaderConfig },
-  ],
+  ]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
@@ -73,7 +76,8 @@ export class SharedModule {
         AppSessionService,
         AppUrlService,
         AppAuthService,
-        AppRouteGuard
+        AppRouteGuard,
+        PermissionService,
       ],
     };
   }

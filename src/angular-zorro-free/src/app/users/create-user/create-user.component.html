@@ -1,8 +1,9 @@
 <div class="padding-bottom-45">
 
-  <h3>
-    <span>{{l('CreateNewUser')}}</span>
-  </h3>
+
+  <div class="modal-header">
+    <div class="modal-title">{{l('CreateNewUser')}}</div>
+  </div>
 
 
   <form nz-form #validateForm="ngForm" (ngSubmit)="save()" *ngIf="user">
@@ -94,16 +95,15 @@
     </nz-tabset>
 
 
+
     <!-- 功能按钮 -->
-    <div class="custom-modal-footer">
-      <div class="custom-modal-footter-group">
-        <button nz-button type="button" [disabled]="saving" (click)="close()">
-          {{l("Cancel")}}
-        </button>
-        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid||saving">
-          {{l("Save")}}
-        </button>
-      </div>
+    <div class="modal-footer">
+      <button nz-button type="button" [disabled]="saving" (click)="close()">
+        {{l("Cancel")}}
+      </button>
+      <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid||saving">
+        {{l("Save")}}
+      </button>
     </div>
 
   </form>

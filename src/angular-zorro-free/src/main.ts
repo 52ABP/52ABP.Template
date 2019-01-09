@@ -1,14 +1,10 @@
-import { RootModule } from 'root.module';
 import { enableProdMode, ViewEncapsulation } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { environment } from './environments/environment';
+import { hmrBootstrap } from './hmr';
+import { RootModule } from 'root.module';
 
-import { environment } from '@env/environment';
 
-import { preloaderFinished } from '@yoyo/theme';
-
-preloaderFinished();
-
-import { hmrBootstrap } from 'hmr';
 
 if (environment.production) {
   enableProdMode();
@@ -19,8 +15,7 @@ const bootstrap = () => {
     .bootstrapModule(RootModule, {
       defaultEncapsulation: ViewEncapsulation.Emulated,
       preserveWhitespaces: false,
-    })
-    .then(res => {
+    }).then((res) => {
       if ((<any>window).appBootstrap) {
         (<any>window).appBootstrap();
       }
