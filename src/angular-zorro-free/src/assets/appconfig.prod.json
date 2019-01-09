@@ -1,4 +1,4 @@
 {
-  "remoteServiceBaseUrl": "http://localhost:21021",
+  "remoteServiceBaseUrl": "https://freeapi.yoyocms.com",
   "appBaseUrl": "http://localhost:8080"
 }

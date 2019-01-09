@@ -12,8 +12,7 @@ import { environment } from '@env/environment';
 
 export class AppPreBootstrap {
   static run(callback: () => void): void {
-
-    console.log("由52ABP模板构建,详情请访问 https://www.52abp.com");
+    console.log('由52ABP模板构建,详情请访问 https://www.52abp.com');
 
     AppPreBootstrap.getApplicationConfig(() => {
       AppPreBootstrap.getUserConfiguration(callback);
@@ -46,9 +45,11 @@ export class AppPreBootstrap {
         },
       })
       .done(result => {
-        AppConsts.appBaseUrl = result.appBaseUrl;
+        AppConsts.appBaseUrl =
+          window.location.protocol + '//' + window.location.host; // result.appBaseUrl;
         AppConsts.remoteServiceBaseUrl = result.remoteServiceBaseUrl;
-        LocalizationService.localizationSourceName = AppConsts.localization.defaultLocalizationSourceName;
+        LocalizationService.localizationSourceName =
+          AppConsts.localization.defaultLocalizationSourceName;
         callback();
       });
   }
@@ -70,7 +71,6 @@ export class AppPreBootstrap {
   private static getUserConfiguration(
     callback: () => void,
   ): JQueryPromise<any> {
-
     let token = abp.auth.getToken();
     if (!token) {
       token = '';
