@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Abp.Authorization;
 using Abp.Authorization.Roles;
+using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
+using Abp.Organizations;
 using Abp.Runtime.Caching;
 using Abp.Zero.Configuration;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Users;
@@ -21,7 +23,9 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Roles
             IPermissionManager permissionManager, 
             ICacheManager cacheManager, 
             IUnitOfWorkManager unitOfWorkManager,
-            IRoleManagementConfig roleManagementConfig)
+            IRoleManagementConfig roleManagementConfig,
+            IRepository<OrganizationUnit, long> organizationUnitRepository, 
+            IRepository<OrganizationUnitRole, long> organizationUnitRoleRepository)
             : base(
                   store,
                   roleValidators, 
@@ -30,8 +34,9 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Roles
                   permissionManager,
                   cacheManager, 
                   unitOfWorkManager,
-                  roleManagementConfig)
+                  roleManagementConfig, organizationUnitRepository, organizationUnitRoleRepository)
         {
         }
+       
     }
 }

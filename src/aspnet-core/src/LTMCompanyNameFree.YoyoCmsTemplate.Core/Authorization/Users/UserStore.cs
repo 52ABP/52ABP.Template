@@ -2,6 +2,7 @@ using Abp.Authorization.Users;
 using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
 using Abp.Linq;
+using Abp.Organizations;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Roles;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Users
@@ -16,7 +17,10 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Users
             IRepository<UserRole, long> userRoleRepository, 
             IRepository<UserLogin, long> userLoginRepository, 
             IRepository<UserClaim, long> userClaimRepository, 
-            IRepository<UserPermissionSetting, long> userPermissionSettingRepository) 
+            IRepository<UserPermissionSetting, long> userPermissionSettingRepository,
+            IRepository<UserOrganizationUnit, long> userOrganizationUnitRepository,
+      IRepository<OrganizationUnitRole, long> organizationUnitRoleRepository
+            ) 
             : base(
                   unitOfWorkManager, 
                   userRepository, 
@@ -25,7 +29,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Users
                   userRoleRepository, 
                   userLoginRepository, 
                   userClaimRepository,
-                  userPermissionSettingRepository)
+                  userPermissionSettingRepository, userOrganizationUnitRepository, organizationUnitRoleRepository)
         {
         }
     }
