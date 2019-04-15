@@ -37,12 +37,15 @@
               "src/styles.less"
             ],
             "scripts": [
+              "node_modules/@antv/g2/dist/g2.min.js",
+              "node_modules/@antv/data-set/dist/data-set.min.js",
+              "node_modules/@antv/g2-plugin-slider/dist/g2-plugin-slider.min.js",
               "node_modules/ajv/dist/ajv.bundle.js",
-              
+              "node_modules/qrious/dist/qrious.min.js",
+              "node_modules/simplemde-antd/dist/simplemde.min.js",
               "node_modules/@aspnet/signalr/dist/browser/signalr.min.js",
               "node_modules/moment/min/moment-with-locales.js",
               "node_modules/moment-timezone/builds/moment-timezone-with-data.js",
-             
               "src/assets/abp-web-resources/abp.js",
               "src/assets/abp-web-resources/abp.sweet-alert.js",
               "src/assets/abp-web-resources/abp.notify.js",

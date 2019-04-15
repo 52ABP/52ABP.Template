@@ -6,18 +6,24 @@
 
 # 介绍
 
-> 各个镜像的编译状态
-> 考虑到国内的下载速度慢，我们在码云上也部署了一套环境，代码同步。
+本模板是基于ASP.NET Core 和Angular 提供给52ABP进行下载的模板项目。
+- 快速启动教程： [创建ASP.NET Core 和Angular免费项目模版搭建教程(单页面模板)](https://www.52abp.com/BlogDetails/1)
 
-# 课程推荐信息：
+- 集成的主题内容：[Ng-zorro](https://ng.ant.design) 与 [ng-alain](https://ng-alain.com)
 
-# 教程
-## 收费课程
-- 网易课程地址：[https://study.163.com/provider/400000000309007/index.htm?share=2&shareId=400000000309007](https://study.163.com/provider/400000000309007/index.htm?share=2&shareId=400000000309007)
-## 免费公开课：
-- ABP的公开课地址：[https://study.163.com/course/introduction/1005208064.htm](https://study.163.com/course/introduction/1005208064.htm)
-- .NET CORE 开发框架ABP的系统性学习路线图:https://www.bilibili.com/video/av31334354
-- 在10分钟内上手Angular - Google的前后端分离框架快速体验  https://www.bilibili.com/video/av31231940
+ 
+
+- 在线运行地址：https://free.yoyocms.com
+- 项目下载地址： https://www.52abp.com/Download/Index
+
+## 环境准备
+
+- 本地环境需要您安装 [node](http://nodejs.org/) 和 [git](https://git-scm.com/)。
+- Visual Studio 2017 
+- [.NetCore SDK2.2+](https://dotnet.microsoft.com/download)
+- 我们的技术栈基于 [Typescript](https://www.tslang.cn/)、[Angular](https://angular.io/)、[g2](http://g2.alipay.com/)、[@delon](https://github.com/cipchk/delon) 和 [ng-zorro-antd](https://ng.ant.design/)，提前了解和学习这些知识会非常有帮助。
+
+
 
 
 ## 关于 52ABP 
@@ -28,11 +34,22 @@
 架构层面也是一个基于DDD(领域驱动设计)的经典分层架构 目的是成为一个强大的基础设施符合国人开发习惯的框架现代WEB应用框架。
 
 
-关于 ABP 的后端文档，详情参看：https://www.52abp.com/ReadWiki/ABP%E6%A1%86%E6%9E%B6%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/Documents-3.7.2/Readme.md
-
+关于 ABP 的后端文档，详情参看：
+[ABP中文文档](https://www.52abp.com/ReadWiki/ABP%E6%A1%86%E6%9E%B6%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/Documents-3.7.2/Readme.md)
+ 
 关于 ng-alain 的官方文档，详情参考：https://ng-alain.com/docs/getting-started
 
 本次着重说明的是前端项目的文档。 本文档的大部分内容是从 ng-alain 官方摘录，因为是你的前端框架嘛。。
+
+
+
+# 教程
+ 
+- 网易课程地址：[ASP.NET Core与Angular6快速开发](https://study.163.com/provider/400000000309007/index.htm?share=2&shareId=400000000309007)
+ 
+- 文档： [52ABP开发者中心](https://www.52abp.com/Wiki/52abp/latest/docs/Introduction)
+
+
 
 ## 截图
 
@@ -46,9 +63,6 @@
 
 通过52ABP来创建属于你自己的独立项目信息: https://www.52abp.com/Download/Index
 
-## 环境准备
-
-本地环境需要您安装 [node](http://nodejs.org/) 和 [git](https://git-scm.com/)。我们的技术栈基于 [Typescript](https://www.tslang.cn/)、[Angular](https://angular.io/)、[g2](http://g2.alipay.com/)、[@delon](https://github.com/cipchk/delon) 和 [ng-zorro-antd](https://ng.ant.design/)，提前了解和学习这些知识会非常有帮助。
 
 
 

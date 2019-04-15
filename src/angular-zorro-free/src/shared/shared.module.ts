@@ -21,6 +21,7 @@ const THIRDMODULES = [
   NgZorroAntdModule,
   CountdownModule,
   CustomComponentModule,
+  DirectivesModule,
 ];
 
 import { DelonABCModule } from '@delon/abc';
@@ -31,6 +32,7 @@ import { AlainThemeModule } from '@delon/theme';
 import { DelonChartModule } from '@delon/chart';
 import { DelonACLModule } from '@delon/acl';
 import { PermissionService } from './auth';
+import { DirectivesModule } from './directives/directives.module';
 
 
 @NgModule({

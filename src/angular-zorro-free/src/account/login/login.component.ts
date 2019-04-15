@@ -1,3 +1,4 @@
+import { ReuseTabService } from '@delon/abc/reuse-tab';
 import {
   Component,
   Injector,
@@ -38,7 +39,7 @@ export class LoginComponent extends AppComponentBase implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.titleSrvice.setTitle(this.l('LogIn'));
   }
 
   get multiTenancySideIsTeanant(): boolean {
