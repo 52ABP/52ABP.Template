@@ -61,7 +61,7 @@ export class LocalizationService implements AlainI18NService {
 
     /**
    * 填充数据
-   * @param localization 
+   * @param localization
    */
     extend(localization) {
         this.languages = localization.languages;

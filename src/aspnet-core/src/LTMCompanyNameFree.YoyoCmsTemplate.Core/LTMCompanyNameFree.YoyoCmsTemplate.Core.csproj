@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <VersionPrefix>1.0.0.0</VersionPrefix>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AssemblyName>LTMCompanyNameFree.YoyoCmsTemplate.Core</AssemblyName>
     <PackageId>LTMCompanyNameFree.YoyoCmsTemplate.Core</PackageId>
@@ -12,7 +12,8 @@
     <RootNamespace>LTMCompanyNameFree.YoyoCmsTemplate</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\SourceFiles\*.xml" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <EmbeddedResource Include="Localization\SourceFiles\YoyoCmsTemplate-zh-Hans.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\YoyoCmsTemplate.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Abp.AutoMapper" Version="4.0.2" />
