@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Migrations
 {
     [DbContext(typeof(YoyoCmsTemplateDbContext))]
-    [Migration("20190415160836_UpgroundABPVersion4_5_0")]
-    partial class UpgroundABPVersion4_5_0
+    [Migration("20190415162228_Initial_Migrations")]
+    partial class Initial_Migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

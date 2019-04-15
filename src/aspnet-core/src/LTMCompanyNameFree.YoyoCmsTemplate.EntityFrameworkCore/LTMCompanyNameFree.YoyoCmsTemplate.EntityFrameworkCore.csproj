@@ -16,8 +16,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.4" />
   </ItemGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Abp.ZeroCore.IdentityServer4.EntityFrameworkCore" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>

@@ -19,6 +19,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Migrations
                     ServiceName = table.Column<string>(maxLength: 256, nullable: true),
                     MethodName = table.Column<string>(maxLength: 256, nullable: true),
                     Parameters = table.Column<string>(maxLength: 1024, nullable: true),
+                    ReturnValue = table.Column<string>(nullable: true),
                     ExecutionTime = table.Column<DateTime>(nullable: false),
                     ExecutionDuration = table.Column<int>(nullable: false),
                     ClientIpAddress = table.Column<string>(maxLength: 64, nullable: true),
@@ -186,6 +187,24 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AbpOrganizationUnitRoles",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    TenantId = table.Column<int>(nullable: true),
+                    RoleId = table.Column<int>(nullable: false),
+                    OrganizationUnitId = table.Column<long>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AbpOrganizationUnitRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AbpOrganizationUnits",
                 columns: table => new
                 {
@@ -252,8 +271,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Migrations
                     UserId = table.Column<long>(nullable: false),
                     UserLinkId = table.Column<long>(nullable: true),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
-                    EmailAddress = table.Column<string>(maxLength: 256, nullable: true),
-                    LastLoginTime = table.Column<DateTime>(nullable: true)
+                    EmailAddress = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -346,7 +364,6 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Migrations
                     IsTwoFactorEnabled = table.Column<bool>(nullable: false),
                     IsEmailConfirmed = table.Column<bool>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false),
-                    LastLoginTime = table.Column<DateTime>(nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: false),
                     NormalizedEmailAddress = table.Column<string>(maxLength: 256, nullable: false),
                     ConcurrencyStamp = table.Column<string>(maxLength: 128, nullable: true)
@@ -796,6 +813,16 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Migrations
                 columns: new[] { "TenantId", "NotificationName", "EntityTypeName", "EntityId", "UserId" });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AbpOrganizationUnitRoles_TenantId_OrganizationUnitId",
+                table: "AbpOrganizationUnitRoles",
+                columns: new[] { "TenantId", "OrganizationUnitId" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AbpOrganizationUnitRoles_TenantId_RoleId",
+                table: "AbpOrganizationUnitRoles",
+                columns: new[] { "TenantId", "RoleId" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AbpOrganizationUnits_ParentId",
                 table: "AbpOrganizationUnits",
                 column: "ParentId");
@@ -1041,6 +1068,9 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Migrations
 
             migrationBuilder.DropTable(
                 name: "AbpNotificationSubscriptions");
+
+            migrationBuilder.DropTable(
+                name: "AbpOrganizationUnitRoles");
 
             migrationBuilder.DropTable(
                 name: "AbpOrganizationUnits");
