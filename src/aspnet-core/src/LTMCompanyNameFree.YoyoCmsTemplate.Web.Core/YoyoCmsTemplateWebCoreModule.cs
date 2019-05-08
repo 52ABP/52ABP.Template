@@ -12,7 +12,6 @@ using Abp.Zero.Configuration;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authentication.JwtBearer;
 using LTMCompanyNameFree.YoyoCmsTemplate.Configuration;
 using LTMCompanyNameFree.YoyoCmsTemplate.EntityFrameworkCore;
-using Abp.Configuration.Startup;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate
 {
@@ -38,9 +37,6 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate
             Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(
                 YoyoCmsTemplateConsts.ConnectionStringName
             );
-
-            // TODO:将所有错误信息显示到客户端
-            Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
 
             // Use database for language management
             Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();

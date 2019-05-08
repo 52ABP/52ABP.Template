@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc.Startup
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
 {
     public static class AuthConfigurer
     {

@@ -10,12 +10,12 @@ using Microsoft.Extensions.Logging;
 using Castle.Facilities.Logging;
 using Swashbuckle.AspNetCore.Swagger;
 using Abp.AspNetCore;
+using Abp.Castle.Logging.Log4Net;
 using Abp.Extensions;
 using LTMCompanyNameFree.YoyoCmsTemplate.Configuration;
 using LTMCompanyNameFree.YoyoCmsTemplate.Identity;
 
 using Abp.AspNetCore.SignalR.Hubs;
-using YoYo.Castle.Logging.Log4Net;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
 {
@@ -24,12 +24,9 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
         private const string _defaultCorsPolicyName = "localhost";
 
         private readonly IConfigurationRoot _appConfiguration;
-        private readonly IHostingEnvironment _env;
-
 
         public Startup(IHostingEnvironment env)
         {
-            _env = env;
             _appConfiguration = env.GetAppConfiguration();
         }
 
@@ -63,7 +60,6 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
                 )
             );
 
-
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             services.AddSwaggerGen(options =>
             {
@@ -80,20 +76,13 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
                 });
             });
 
-
-            //Configure Abp and Dependency Injection
-            return services.AddAbp<YoyoCmsTemplateWebHostModule>(options =>
-            {
-                //配置 Log4Net logging 日志信息
-                options.IocManager.IocContainer.AddFacility<LoggingFacility>(
-                    f => f.UseYoYoLog4Net().WithConfig(_env.GetLog4NetConfigFileName())
-                );
-            });
-
-
-
-
-
+            // Configure Abp and Dependency Injection
+            return services.AddAbp<YoyoCmsTemplateWebHostModule>(
+                // Configure Log4Net logging
+                options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
+                    f => f.UseAbpLog4Net().WithConfig("log4net.config")
+                )
+            );
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -130,9 +119,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
             // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "YoyoCmsTemplate API V1");
-                // options.SwaggerEndpoint(_appConfiguration["App:ServerRootAddress"].EnsureEndsWith('/') + "swagger/v1/swagger.json", "YoyoCmsTemplate API V1");
-
+                options.SwaggerEndpoint(_appConfiguration["App:ServerRootAddress"].EnsureEndsWith('/') + "swagger/v1/swagger.json", "YoyoCmsTemplate API V1");
                 options.IndexStream = () => Assembly.GetExecutingAssembly()
                     .GetManifestResourceStream("LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.wwwroot.swagger.ui.index.html");
             }); // URL: /swagger

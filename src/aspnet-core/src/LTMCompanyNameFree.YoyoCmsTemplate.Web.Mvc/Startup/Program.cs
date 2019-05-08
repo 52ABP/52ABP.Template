@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc.Startup
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
 {
     public class Program
     {

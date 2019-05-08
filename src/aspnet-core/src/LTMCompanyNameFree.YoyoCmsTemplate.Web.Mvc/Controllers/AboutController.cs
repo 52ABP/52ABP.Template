@@ -1,8 +1,8 @@
-﻿using Abp.AspNetCore.Mvc.Authorization;
+﻿using Microsoft.AspNetCore.Mvc;
+using Abp.AspNetCore.Mvc.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Controllers;
-using Microsoft.AspNetCore.Mvc;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc.Controllers
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 {
     [AbpMvcAuthorize]
     public class AboutController : YoyoCmsTemplateControllerBase

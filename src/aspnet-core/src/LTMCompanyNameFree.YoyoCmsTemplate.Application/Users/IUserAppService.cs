@@ -6,7 +6,7 @@ using LTMCompanyNameFree.YoyoCmsTemplate.Users.Dto;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Users
 {
-    public interface IUserAppService : IAsyncCrudAppService<UserDto, long, PagedResultRequestDto, CreateUserDto, UserDto>
+    public interface IUserAppService : IAsyncCrudAppService<UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>
     {
         Task<ListResultDto<RoleDto>> GetRoles();
 

@@ -36,10 +36,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.EntityFrameworkCore.Seed.Host
             {
                 adminRoleForHost = _context.Roles
                     .Add(new Role(null, StaticRoleNames.Host.Admin, StaticRoleNames.Host.Admin)
-                    {
-                        IsStatic = true,
-                        IsDefault = true
-                    }).Entity;
+                        {IsStatic = true, IsDefault = true}).Entity;
                 _context.SaveChanges();
             }
 
@@ -81,16 +78,16 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.EntityFrameworkCore.Seed.Host
                 {
                     TenantId = null,
                     UserName = AbpUserBase.AdminUserName,
-                    Name = "admin",
-                    Surname = "admin",
-                    EmailAddress = "admin@52abp.com",
+                    Name = AbpUserBase.AdminUserName,
+                    Surname = AbpUserBase.AdminUserName,
+                    EmailAddress = "info@ddxc.org",
                     IsEmailConfirmed = true,
                     IsActive = true
                 };
 
                 user.Password =
                     new PasswordHasher<User>(new OptionsWrapper<PasswordHasherOptions>(new PasswordHasherOptions()))
-                        .HashPassword(user, "123qwe");
+                        .HashPassword(user, User.DefaultPassword);
                 user.SetNormalizedNames();
 
                 adminUserForHost = _context.Users.Add(user).Entity;

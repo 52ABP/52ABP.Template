@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Abp;
 using Abp.AspNetCore.Mvc.Authorization;
 using Abp.Authorization;
@@ -14,6 +16,7 @@ using Abp.Domain.Uow;
 using Abp.Extensions;
 using Abp.MultiTenancy;
 using Abp.Notifications;
+using Abp.Runtime.Session;
 using Abp.Threading;
 using Abp.Timing;
 using Abp.UI;
@@ -26,10 +29,9 @@ using LTMCompanyNameFree.YoyoCmsTemplate.Identity;
 using LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy;
 using LTMCompanyNameFree.YoyoCmsTemplate.Sessions;
 using LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Account;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+using LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.TenantChange;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc.Controllers
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 {
     public class AccountController : YoyoCmsTemplateControllerBase
     {

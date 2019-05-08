@@ -1,10 +1,10 @@
-﻿using Abp.Modules;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Abp.Modules;
 using Abp.Reflection.Extensions;
 using LTMCompanyNameFree.YoyoCmsTemplate.Configuration;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc.Startup
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
 {
     [DependsOn(typeof(YoyoCmsTemplateWebCoreModule))]
     public class YoyoCmsTemplateWebMvcModule : AbpModule

@@ -1,30 +1,28 @@
 ﻿using System;
-using Abp.AspNetCore;
-using Abp.AspNetCore.SignalR.Hubs;
-using Castle.Facilities.Logging;
-using LTMCompanyNameFree.YoyoCmsTemplate.Authentication.JwtBearer;
-using LTMCompanyNameFree.YoyoCmsTemplate.Configuration;
-using LTMCompanyNameFree.YoyoCmsTemplate.Identity;
-using LTMCompanyNameFree.YoyoCmsTemplate.Web.Resources;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using YoYo.Castle.Logging.Log4Net;
+using Castle.Facilities.Logging;
+using Abp.AspNetCore;
+using Abp.Castle.Logging.Log4Net;
+using LTMCompanyNameFree.YoyoCmsTemplate.Authentication.JwtBearer;
+using LTMCompanyNameFree.YoyoCmsTemplate.Configuration;
+using LTMCompanyNameFree.YoyoCmsTemplate.Identity;
+using LTMCompanyNameFree.YoyoCmsTemplate.Web.Resources;
+using Abp.AspNetCore.SignalR.Hubs;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc.Startup
+
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
 {
     public class Startup
     {
         private readonly IConfigurationRoot _appConfiguration;
-        private readonly IHostingEnvironment _env;
-
 
         public Startup(IHostingEnvironment env)
         {
-            _env = env;
             _appConfiguration = env.GetAppConfiguration();
         }
 
@@ -42,19 +40,13 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc.Startup
 
             services.AddSignalR();
 
-          
-
-            //Configure Abp and Dependency Injection
-            return services.AddAbp<YoyoCmsTemplateWebMvcModule>(options =>
-            {
-                //配置 Log4Net logging 日志信息
-                options.IocManager.IocContainer.AddFacility<LoggingFacility>(
-                    f => f.UseYoYoLog4Net().WithConfig(_env.GetLog4NetConfigFileName())
-                );
-            });
-
-
-
+            // Configure Abp and Dependency Injection
+            return services.AddAbp<YoyoCmsTemplateWebMvcModule>(
+                // Configure Log4Net logging
+                options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
+                    f => f.UseAbpLog4Net().WithConfig("log4net.config")
+                )
+            );
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

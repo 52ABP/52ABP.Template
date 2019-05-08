@@ -1,11 +1,11 @@
 ﻿using System;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using Abp.AspNetCore.Mvc.Controllers;
 using Abp.Web.Models;
 using Abp.Web.Mvc.Models;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc.Controllers
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 {
     public class ErrorController : AbpController
     {

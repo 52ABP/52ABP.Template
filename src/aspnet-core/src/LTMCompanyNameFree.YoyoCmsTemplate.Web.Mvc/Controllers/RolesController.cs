@@ -1,13 +1,14 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Abp.Application.Services.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Controllers;
 using LTMCompanyNameFree.YoyoCmsTemplate.Roles;
+using LTMCompanyNameFree.YoyoCmsTemplate.Roles.Dto;
 using LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Roles;
-using Microsoft.AspNetCore.Mvc;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc.Controllers
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 {
     [AbpMvcAuthorize(PermissionNames.Pages_Roles)]
     public class RolesController : YoyoCmsTemplateControllerBase

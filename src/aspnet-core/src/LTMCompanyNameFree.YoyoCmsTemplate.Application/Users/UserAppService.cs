@@ -1,44 +1,55 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
+using Abp.Extensions;
 using Abp.IdentityFramework;
+using Abp.Linq.Extensions;
 using Abp.Localization;
 using Abp.Runtime.Session;
+using Abp.UI;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization;
+using LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Accounts;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Roles;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Users;
 using LTMCompanyNameFree.YoyoCmsTemplate.Roles.Dto;
 using LTMCompanyNameFree.YoyoCmsTemplate.Users.Dto;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Users
 {
     [AbpAuthorize(PermissionNames.Pages_Users)]
-    public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedResultRequestDto, CreateUserDto, UserDto>, IUserAppService
+    public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>, IUserAppService
     {
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
         private readonly IRepository<Role> _roleRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
+        private readonly IAbpSession _abpSession;
+        private readonly LogInManager _logInManager;
 
         public UserAppService(
             IRepository<User, long> repository,
             UserManager userManager,
             RoleManager roleManager,
             IRepository<Role> roleRepository,
-            IPasswordHasher<User> passwordHasher)
+            IPasswordHasher<User> passwordHasher,
+            IAbpSession abpSession,
+            LogInManager logInManager)
             : base(repository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _roleRepository = roleRepository;
             _passwordHasher = passwordHasher;
+            _abpSession = abpSession;
+            _logInManager = logInManager;
         }
 
         public override async Task<UserDto> Create(CreateUserDto input)
@@ -48,10 +59,11 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Users
             var user = ObjectMapper.Map<User>(input);
 
             user.TenantId = AbpSession.TenantId;
-            user.Password = _passwordHasher.HashPassword(user, input.Password);
             user.IsEmailConfirmed = true;
 
-            CheckErrors(await _userManager.CreateAsync(user));
+            await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
+
+            CheckErrors(await _userManager.CreateAsync(user, input.Password));
 
             if (input.RoleNames != null)
             {
@@ -123,9 +135,11 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Users
             return userDto;
         }
 
-        protected override IQueryable<User> CreateFilteredQuery(PagedResultRequestDto input)
+        protected override IQueryable<User> CreateFilteredQuery(PagedUserResultRequestDto input)
         {
-            return Repository.GetAllIncluding(x => x.Roles);
+            return Repository.GetAllIncluding(x => x.Roles)
+                .WhereIf(!input.Keyword.IsNullOrWhiteSpace(), x => x.UserName.Contains(input.Keyword) || x.Name.Contains(input.Keyword) || x.EmailAddress.Contains(input.Keyword))
+                .WhereIf(input.IsActive.HasValue, x => x.IsActive == input.IsActive);
         }
 
         protected override async Task<User> GetEntityByIdAsync(long id)
@@ -140,7 +154,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Users
             return user;
         }
 
-        protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedResultRequestDto input)
+        protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedUserResultRequestDto input)
         {
             return query.OrderBy(r => r.UserName);
         }
@@ -149,5 +163,62 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Users
         {
             identityResult.CheckErrors(LocalizationManager);
         }
+
+        public async Task<bool> ChangePassword(ChangePasswordDto input)
+        {
+            if (_abpSession.UserId == null)
+            {
+                throw new UserFriendlyException("Please log in before attemping to change password.");
+            }
+            long userId = _abpSession.UserId.Value;
+            var user = await _userManager.GetUserByIdAsync(userId);
+            var loginAsync = await _logInManager.LoginAsync(user.UserName, input.CurrentPassword, shouldLockout: false);
+            if (loginAsync.Result != AbpLoginResultType.Success)
+            {
+                throw new UserFriendlyException("Your 'Existing Password' did not match the one on record.  Please try again or contact an administrator for assistance in resetting your password.");
+            }
+            if (!new Regex(AccountAppService.PasswordRegex).IsMatch(input.NewPassword))
+            {
+                throw new UserFriendlyException("Passwords must be at least 8 characters, contain a lowercase, uppercase, and number.");
+            }
+            user.Password = _passwordHasher.HashPassword(user, input.NewPassword);
+            CurrentUnitOfWork.SaveChanges();
+            return true;
+        }
+
+        public async Task<bool> ResetPassword(ResetPasswordDto input)
+        {
+            if (_abpSession.UserId == null)
+            {
+                throw new UserFriendlyException("Please log in before attemping to reset password.");
+            }
+            long currentUserId = _abpSession.UserId.Value;
+            var currentUser = await _userManager.GetUserByIdAsync(currentUserId);
+            var loginAsync = await _logInManager.LoginAsync(currentUser.UserName, input.AdminPassword, shouldLockout: false);
+            if (loginAsync.Result != AbpLoginResultType.Success)
+            {
+                throw new UserFriendlyException("Your 'Admin Password' did not match the one on record.  Please try again.");
+            }
+            if (currentUser.IsDeleted || !currentUser.IsActive)
+            {
+                return false;
+            }
+            var roles = await _userManager.GetRolesAsync(currentUser);
+            if (!roles.Contains(StaticRoleNames.Tenants.Admin))
+            {
+                throw new UserFriendlyException("Only administrators may reset passwords.");
+            }
+
+            var user = await _userManager.GetUserByIdAsync(input.UserId);
+            if (user != null)
+            {
+                user.Password = _passwordHasher.HashPassword(user, input.NewPassword);
+                CurrentUnitOfWork.SaveChanges();
+            }
+
+            return true;
+        }
+
     }
 }
+

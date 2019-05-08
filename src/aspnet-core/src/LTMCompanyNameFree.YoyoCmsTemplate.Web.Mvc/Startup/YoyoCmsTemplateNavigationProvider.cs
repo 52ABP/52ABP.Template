@@ -2,7 +2,7 @@
 using Abp.Localization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc.Startup
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
 {
     /// <summary>
     /// This class defines menus for the application.

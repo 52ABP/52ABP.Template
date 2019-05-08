@@ -1,12 +1,12 @@
-using System.Linq;
+锘縰sing System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.IdentityFramework;
+using Abp.Linq.Extensions;
 using Abp.MultiTenancy;
 using Abp.Runtime.Security;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization;
@@ -14,43 +14,40 @@ using LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Roles;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Users;
 using LTMCompanyNameFree.YoyoCmsTemplate.Editions;
 using LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy.Dto;
+using Microsoft.AspNetCore.Identity;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy
 {
     [AbpAuthorize(PermissionNames.Pages_Tenants)]
-    public class TenantAppService : AsyncCrudAppService<Tenant, TenantDto, int, PagedResultRequestDto, CreateTenantDto, TenantDto>, ITenantAppService
+    public class TenantAppService : AsyncCrudAppService<Tenant, TenantDto, int, PagedTenantResultRequestDto, CreateTenantDto, TenantDto>, ITenantAppService
     {
         private readonly TenantManager _tenantManager;
         private readonly EditionManager _editionManager;
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
         private readonly IAbpZeroDbMigrator _abpZeroDbMigrator;
-        private readonly IPasswordHasher<User> _passwordHasher;
 
         public TenantAppService(
-            IRepository<Tenant, int> repository, 
-            TenantManager tenantManager, 
+            IRepository<Tenant, int> repository,
+            TenantManager tenantManager,
             EditionManager editionManager,
-            UserManager userManager,            
-            RoleManager roleManager, 
-            IAbpZeroDbMigrator abpZeroDbMigrator, 
-            IPasswordHasher<User> passwordHasher) 
+            UserManager userManager,
+            RoleManager roleManager,
+            IAbpZeroDbMigrator abpZeroDbMigrator)
             : base(repository)
         {
-            _tenantManager = tenantManager; 
+            _tenantManager = tenantManager;
             _editionManager = editionManager;
             _userManager = userManager;
             _roleManager = roleManager;
             _abpZeroDbMigrator = abpZeroDbMigrator;
-            _passwordHasher = passwordHasher;
         }
-        
+
         public override async Task<TenantDto> Create(CreateTenantDto input)
         {
-            //检查权限
             CheckCreatePermission();
 
-            // 创建角色
+            // Create tenant
             var tenant = ObjectMapper.Map<Tenant>(input);
             tenant.ConnectionString = input.ConnectionString.IsNullOrEmpty()
                 ? null
@@ -63,37 +60,42 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy
             }
 
             await _tenantManager.CreateAsync(tenant);
-            await CurrentUnitOfWork.SaveChangesAsync(); //      保存以获取新租户的Id
+            await CurrentUnitOfWork.SaveChangesAsync(); // To get new tenant's id.
 
-
-            // 创建租户数据库
+            // Create tenant database
             _abpZeroDbMigrator.CreateOrMigrateForTenant(tenant);
 
-            //创建成功后，需要设置当前工作单元为当前登录后的租户信息
+            // We are working entities of new tenant, so changing tenant filter
             using (CurrentUnitOfWork.SetTenantId(tenant.Id))
             {
-                // 给新租户创建角色
+                // Create static roles for new tenant
                 CheckErrors(await _roleManager.CreateStaticRoles(tenant.Id));
 
                 await CurrentUnitOfWork.SaveChangesAsync(); // To get static role ids
 
-                //    分配权限
-
+                // Grant all permissions to admin role
                 var adminRole = _roleManager.Roles.Single(r => r.Name == StaticRoleNames.Tenants.Admin);
                 await _roleManager.GrantAllPermissionsAsync(adminRole);
 
-                // 创建此租户的管理员用户
+                // Create admin user for the tenant
                 var adminUser = User.CreateTenantAdminUser(tenant.Id, input.AdminEmailAddress);
-                adminUser.Password = _passwordHasher.HashPassword(adminUser, User.DefaultPassword);
-                CheckErrors(await _userManager.CreateAsync(adminUser));
+                await _userManager.InitializeOptionsAsync(tenant.Id);
+                CheckErrors(await _userManager.CreateAsync(adminUser, User.DefaultPassword));
                 await CurrentUnitOfWork.SaveChangesAsync(); // To get admin user's id
 
-                // 给租户管理员授权
+                // Assign admin user to role!
                 CheckErrors(await _userManager.AddToRoleAsync(adminUser, adminRole.Name));
                 await CurrentUnitOfWork.SaveChangesAsync();
             }
 
             return MapToEntityDto(tenant);
+        }
+
+        protected override IQueryable<Tenant> CreateFilteredQuery(PagedTenantResultRequestDto input)
+        {
+            return Repository.GetAll()
+                .WhereIf(!input.Keyword.IsNullOrWhiteSpace(), x => x.TenancyName.Contains(input.Keyword) || x.Name.Contains(input.Keyword))
+                .WhereIf(input.IsActive.HasValue, x => x.IsActive == input.IsActive);
         }
 
         protected override void MapToEntity(TenantDto updateInput, Tenant entity)
@@ -118,3 +120,4 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy
         }
     }
 }
+

@@ -1,4 +1,4 @@
-﻿namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc.Startup
+﻿namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
 {
     public class PageNames
     {

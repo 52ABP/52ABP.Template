@@ -1,12 +1,14 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Abp.Application.Services.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Controllers;
 using LTMCompanyNameFree.YoyoCmsTemplate.Users;
-using Microsoft.AspNetCore.Mvc;
+using LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Users;
+using LTMCompanyNameFree.YoyoCmsTemplate.Users.Dto;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc.Controllers
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 {
     [AbpMvcAuthorize(PermissionNames.Pages_Users)]
     public class UsersController : YoyoCmsTemplateControllerBase

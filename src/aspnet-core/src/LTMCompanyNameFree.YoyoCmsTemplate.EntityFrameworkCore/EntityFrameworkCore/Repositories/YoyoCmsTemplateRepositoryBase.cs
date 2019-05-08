@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Repositories;
 using Abp.EntityFrameworkCore;
 using Abp.EntityFrameworkCore.Repositories;
 
@@ -25,7 +26,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.EntityFrameworkCore.Repositories
     /// This is a shortcut of <see cref="YoyoCmsTemplateRepositoryBase{TEntity,TPrimaryKey}"/> for <see cref="int"/> primary key.
     /// </summary>
     /// <typeparam name="TEntity">Entity type</typeparam>
-    public abstract class YoyoCmsTemplateRepositoryBase<TEntity> : YoyoCmsTemplateRepositoryBase<TEntity, int>
+    public abstract class YoyoCmsTemplateRepositoryBase<TEntity> : YoyoCmsTemplateRepositoryBase<TEntity, int>, IRepository<TEntity>
         where TEntity : class, IEntity<int>
     {
         protected YoyoCmsTemplateRepositoryBase(IDbContextProvider<YoyoCmsTemplateDbContext> dbContextProvider)
