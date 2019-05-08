@@ -79,7 +79,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
         {
             if (AbpSession.UserId.HasValue)
             {
-                return RedirectToAction("Index","Home");
+                return Redirect(GetAppHomeUrl());
             }
 
                 if (string.IsNullOrWhiteSpace(returnUrl))
@@ -191,7 +191,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
                     model.EmailAddress,
                     model.UserName,
                     model.Password,
-                    true // Assumed email address is always confirmed. Change this if you want to implement email confirmation.
+                    false // Assumed email address is always confirmed. Change this if you want to implement email confirmation.
                 );
 
                 // Getting tenant-specific settings
