@@ -5,8 +5,10 @@
     <text name="About" value="关于我们" />
     <text name="WelcomeMessage" value="欢迎使用 YoyoCmsTemplate!" />
     <text name="PleaseWait" value="页面加载中，请等待..." />
+    <text name="MultiLevelMenu" value="多级菜单" />
 
     
+
     <!--租户有关的内容-->
     <text name="TenantNameCanNotBeEmpty" value="租户名不能为空" />
     <text name="ThereIsNoTenantDefinedWithName{0}" value="租户 {0}不存在" />

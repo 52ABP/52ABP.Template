@@ -17,7 +17,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
                         PageNames.Home,
                         L("HomePage"),
                         url: "",
-                        icon: "home",
+                        icon: "fa-cubes",
                         requiresAuthentication: true
                     )
                 ).AddItem(
@@ -25,7 +25,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
                         PageNames.Tenants,
                         L("Tenants"),
                         url: "Tenants",
-                        icon: "business",
+                        icon: "fa-newspaper",
                         requiredPermissionName: PermissionNames.Pages_Tenants
                     )
                 ).AddItem(
@@ -33,7 +33,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
                         PageNames.Users,
                         L("Users"),
                         url: "Users",
-                        icon: "people",
+                        icon: "fa-people-carry ",
                         requiredPermissionName: PermissionNames.Pages_Users
                     )
                 ).AddItem(
@@ -41,7 +41,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
                         PageNames.Roles,
                         L("Roles"),
                         url: "Roles",
-                        icon: "local_offer",
+                        icon: "fa-power-off",
                         requiredPermissionName: PermissionNames.Pages_Roles
                     )
                 )
@@ -49,7 +49,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
                     new MenuItemDefinition(
                         PageNames.About,
                         L("About"),
-                        url: "About",
+                        url: "fa-address-book",
                         icon: "info"
                     )
                 ).AddItem( // Menu items below is just for demonstration!
@@ -60,73 +60,18 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
                     ).AddItem(
                         new MenuItemDefinition(
                             "AspNetBoilerplate",
-                            new FixedLocalizableString("ASP.NET Boilerplate")
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateHome",
-                                new FixedLocalizableString("Home"),
-                                url: "https://aspnetboilerplate.com?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateTemplates",
-                                new FixedLocalizableString("Templates"),
-                                url: "https://aspnetboilerplate.com/Templates?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateSamples",
-                                new FixedLocalizableString("Samples"),
-                                url: "https://aspnetboilerplate.com/Samples?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateDocuments",
-                                new FixedLocalizableString("Documents"),
-                                url: "https://aspnetboilerplate.com/Pages/Documents?ref=abptmpl"
-                            )
+                            new FixedLocalizableString("从零开始学Asp.Net Core"),
+                             url: "https://study.163.com/course/courseMain.htm?courseId=1209215803&share=2&shareId=400000000309007"
                         )
+                        
                     ).AddItem(
                         new MenuItemDefinition(
                             "AspNetZero",
-                            new FixedLocalizableString("ASP.NET Zero")
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroHome",
-                                new FixedLocalizableString("Home"),
-                                url: "https://aspnetzero.com?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroDescription",
-                                new FixedLocalizableString("Description"),
-                                url: "https://aspnetzero.com/?ref=abptmpl#description"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroFeatures",
-                                new FixedLocalizableString("Features"),
-                                url: "https://aspnetzero.com/?ref=abptmpl#features"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroPricing",
-                                new FixedLocalizableString("Pricing"),
-                                url: "https://aspnetzero.com/?ref=abptmpl#pricing"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroFaq",
-                                new FixedLocalizableString("Faq"),
-                                url: "https://aspnetzero.com/Faq?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroDocuments",
-                                new FixedLocalizableString("Documents"),
-                                url: "https://aspnetzero.com/Documents?ref=abptmpl"
-                            )
+                            new FixedLocalizableString("52ABPASP.NET Core与Angular开发"),
+                             url: "https://study.163.com/course/courseMain.htm?courseId=1006191011&share=2&shareId=400000000309007"
+
                         )
+
                     )
                 );
         }
