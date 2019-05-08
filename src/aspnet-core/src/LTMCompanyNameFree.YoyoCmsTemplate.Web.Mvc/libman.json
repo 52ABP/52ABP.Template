@@ -73,12 +73,12 @@
       "destination": "wwwroot/lib/spin.js"
     },
     {
-      "provider": "unpkg",
+      
       "library": "famfamfam-flags@1.0.0",
       "destination": "wwwroot/lib/famfamfam-flags"
     },
     {
-      "provider": "unpkg",
+      
       "library": "abp-web-resources@3.8.5",
       "destination": "wwwroot/lib/abp-web-resources"
     },
@@ -90,6 +90,19 @@
     {
       "library": "moment@2.24.0",
       "destination": "wwwroot/lib/moment"
+    },
+    {
+      "library": "bootstrap-select@1.13.10",
+      "destination": "wwwroot/lib/bootstrap-select"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "animate.css@3.7.0",
+      "destination": "wwwroot/lib/animate.css"
+    },
+    {
+      "library": "push.js@1.0.9",
+      "destination": "wwwroot/lib/push.js"
     }
   ]
 }

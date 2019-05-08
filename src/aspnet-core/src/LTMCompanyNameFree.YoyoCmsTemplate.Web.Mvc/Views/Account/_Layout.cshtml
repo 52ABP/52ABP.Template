@@ -34,12 +34,11 @@
     <title>YoyoCmsTemplate - Powered By YoyoSoft </title>
 
     <environment names="Development">
-        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/assets/css/theme.css" rel="stylesheet"asp-append-version="true" />
-
-
+        <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/waves/waves.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/assets/css/theme.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/view-resources/Views/Account/_Layout.css" rel="stylesheet" asp-append-version="true" />
     </environment>
 
@@ -79,24 +78,12 @@
                     @RenderBody()
 
                     <vc:account-languages></vc:account-languages>
-
-
                 </div>
-
-
                     <div class="u-login-form text-muted py-3 mt-auto">
 
                         <small>&copy; @DateTime.Now.Year YoyoCmsTemplate. <b>Version </b> @AppVersionHelper.Version [@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]</small>
-
-
                     </div>
-
-
-
-
                 </div>
-
-
 
                 @Html.Partial("~/Views/Account/_Account_Right.cshtml")
             </div>
@@ -109,8 +96,8 @@
     <environment names="Development">
 
 
-        <script src="~/lib/jquery/jquery.js"></script>
-        <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+        <script src="~/lib/jquery/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.js" asp-append-version="true"></script>
         <script src="~/lib/moment/min/moment-with-locales.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
         <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
@@ -120,14 +107,13 @@
         <script src="~/lib/spin.js/spin.js" asp-append-version="true"></script>
         <script src="~/lib/spin.js/jquery.spin.js" asp-append-version="true"></script>
         <script src="~/lib/Waves/waves.js" asp-append-version="true"></script>
-        <script src="~/js/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
-        <script src="~/js/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
-        <script src="~/js/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>
-        <script src="~/js/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>
-        <script src="~/js/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>
-        <script src="~/js/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
-        <script src="~/js/admin.js" asp-append-version="true"></script>
-        <script src="~/js/main.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
+         <script src="~/js/main.js" asp-append-version="true"></script>
 
         @if (CultureInfo.CurrentUICulture.Name != "en")
         {

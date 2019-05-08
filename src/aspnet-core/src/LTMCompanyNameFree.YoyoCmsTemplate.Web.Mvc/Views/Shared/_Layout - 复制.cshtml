@@ -33,23 +33,21 @@
 
     <link rel="shortcut icon" href="~/favicon.ico">
 
-    <title>YoyoCmsTemplate- Powered By YoyoSoft </title>
-    <!-- Web Fonts -->
-    <link href="//fonts.loli.net/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <title>YoyoCmsTemplate</title>
 
     <environment names="Development">
-
-
-        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/fonts/roboto/roboto.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/fonts/material-icons/materialicons.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/toastr/toastr.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/Waves/waves.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/Waves/dist/waves.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/animate.css/animate.css" rel="stylesheet" asp-append-version="true" />
-
-        <link href="~/lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" rel="stylesheet" asp-append-version="true">
-
+        <link href="~/css/materialize.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/style.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/themes/all-themes.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/view-resources/Views/Shared/_Layout.css" rel="stylesheet" asp-append-version="true" />
     </environment>
 
@@ -86,23 +84,94 @@
         </div>
     </div>
     <!-- #END# Page Loader -->
-
-
-    @RenderBody()
-
-
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon">
+            <i class="material-icons">search</i>
+        </div>
+        <input type="text" placeholder="@L("StartTyping")...">
+        <div class="close-search">
+            <i class="material-icons">close</i>
+        </div>
+    </div>
+    <!-- #END# Search Bar -->
     <!-- Top Bar -->
-    
-    <!-- #Top Bar -->
-    
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index"><i class="fa fa-cubes"></i> YoyoCmsTemplate</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Call Search -->
+                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    <!-- #END# Call Search -->
 
-    
+                    @await Component.InvokeAsync(typeof(TopBarLanguageSwitchViewComponent))
+
+                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <aside id="leftsidebar" class="sidebar">
+
+            @await Component.InvokeAsync(typeof(SideBarUserAreaViewComponent))
+            @await Component.InvokeAsync(typeof(SideBarNavViewComponent), new { activeMenu = ViewBag.CurrentPageName })
+
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    &copy; @DateTime.Now.Year <a href="javascript:void(0);">YoyoCmsTemplate</a>.
+                </div>
+                <div class="version">
+                    <b>@L("Version") </b> @AppVersionHelper.Version [@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]
+                </div>
+            </div>
+            <!-- #Footer -->
+        </aside>
+
+        @await Component.InvokeAsync(typeof(RightSideBarViewComponent))
+
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            @if (AlertManager.Alerts.Any())
+            {
+                <div id="AbpPageAlerts">
+                    @foreach (var alertMessage in AlertManager.Alerts)
+                    {
+                        <div class="alert alert-@alertMessage.Type.ToString().ToLower() @(alertMessage.Dismissible ? "alert-dismisable" : "")" role="alert">
+                            <h4 class="alert-heading">
+                                @alertMessage.Title
+                                @if (alertMessage.Dismissible)
+                                {
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                }
+                            </h4>
+                            <p>@alertMessage.Text</p>
+                        </div>
+                    }
+                </div>
+            }
+
+            @RenderBody()
+        </div>
+    </section>
 
     <environment names="Development">
         <script src="~/lib/json2/json2.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery/jquery.js" asp-append-version="true"></script>
-        <script src="~/lib/bootstrap/js/bootstrap.js" asp-append-version="true"></script>
-        <script src="~/lib/moment/min/moment.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
+        <script src="~/lib/moment/min/moment-with-locales.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
         <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
         <script src="~/lib/toastr/toastr.js" asp-append-version="true"></script>
@@ -111,7 +180,7 @@
         <script src="~/lib/spin.js/jquery.spin.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap-select/dist/js/bootstrap-select.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-slimscroll/jquery.slimscroll.js" asp-append-version="true"></script>
-        <script src="~/lib/Waves/waves.js" asp-append-version="true"></script>
+        <script src="~/lib/Waves/dist/waves.js" asp-append-version="true"></script>
         <script src="~/lib/push.js/push.js" asp-append-version="true"></script>
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
