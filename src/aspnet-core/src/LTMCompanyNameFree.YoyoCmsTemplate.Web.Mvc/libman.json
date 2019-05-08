@@ -3,7 +3,8 @@
   "defaultProvider": "unpkg",
   "libraries": [
 
-    {"provider": "cdnjs",
+    {
+      "provider": "cdnjs",
       "library": "twitter-bootstrap@4.3.1",
       "destination": "wwwroot/lib/bootstrap"
     },
@@ -73,12 +74,12 @@
       "destination": "wwwroot/lib/spin.js"
     },
     {
-      
+
       "library": "famfamfam-flags@1.0.0",
       "destination": "wwwroot/lib/famfamfam-flags"
     },
     {
-      
+
       "library": "abp-web-resources@3.8.5",
       "destination": "wwwroot/lib/abp-web-resources"
     },
@@ -103,6 +104,16 @@
     {
       "library": "push.js@1.0.9",
       "destination": "wwwroot/lib/push.js"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "signalr.js@2.4.0",
+      "destination": "wwwroot/lib/signalr.js"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "aspnet-signalr@1.1.4",
+      "destination": "wwwroot/lib/aspnet-signalr"
     }
   ]
 }
