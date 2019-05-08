@@ -114,6 +114,11 @@
       "provider": "cdnjs",
       "library": "aspnet-signalr@1.1.4",
       "destination": "wwwroot/lib/aspnet-signalr"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "Chart.js@2.8.0",
+      "destination": "wwwroot/lib/chartjs"
     }
   ]
 }

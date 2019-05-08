@@ -1,4 +1,6 @@
-﻿(function ($) {
+﻿'use strict';
+
+(function ($) {
     $(document).on('ready', function () {
         $('.js-overall-income-chart').each(function (i, el) {
             var chart = new Chart(el, {
@@ -61,7 +63,7 @@
                     tooltips: {
                         enabled: false,
                         intersect: 0,
-                        custom: function (tooltipModel) {
+                        custom: function custom(tooltipModel) {
                             // Tooltip Element
                             var tooltipEl = document.getElementById('overallIncomeChartTooltip' + i);
 
@@ -121,8 +123,8 @@
 
                             // Display, position, and set styles for font
                             tooltipEl.style.opacity = 1;
-                            tooltipEl.style.left = (position.left + tooltipModel.caretX - tooltipWidth / 2) + 'px';
-                            tooltipEl.style.top = (position.top + tooltipModel.caretY - tooltipHeight - 15) + 'px';
+                            tooltipEl.style.left = position.left + tooltipModel.caretX - tooltipWidth / 2 + 'px';
+                            tooltipEl.style.top = position.top + tooltipModel.caretY - tooltipHeight - 15 + 'px';
 
                             $(window).on('scroll', function () {
                                 var position = $self._chart.canvas.getBoundingClientRect(),
@@ -130,8 +132,8 @@
                                     tooltipHeight = $(tooltipEl).outerHeight();
 
                                 // Display, position, and set styles for font
-                                tooltipEl.style.left = (position.left + tooltipModel.caretX - tooltipWidth / 2) + 'px';
-                                tooltipEl.style.top = (position.top + tooltipModel.caretY - tooltipHeight - 15) + 'px';
+                                tooltipEl.style.left = position.left + tooltipModel.caretX - tooltipWidth / 2 + 'px';
+                                tooltipEl.style.top = position.top + tooltipModel.caretY - tooltipHeight - 15 + 'px';
                             });
                         }
                     }
@@ -164,3 +166,4 @@
         });
     });
 })(jQuery);
+

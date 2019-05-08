@@ -10,5 +10,9 @@
   {
     "outputFile": "wwwroot/view-resources/Views/Shared/_Layout.css",
     "inputFile": "wwwroot/view-resources/Views/Shared/_Layout.less"
+  },
+  {
+    "outputFile": "wwwroot/view-resources/Views/Home/Index.es5.js",
+    "inputFile": "wwwroot/view-resources/Views/Home/Index.js"
   }
 ]
