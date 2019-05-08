@@ -77,7 +77,12 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 
         public ActionResult Login(string userNameOrEmailAddress = "", string returnUrl = "", string successMessage = "")
         {
-            if (string.IsNullOrWhiteSpace(returnUrl))
+            if (AbpSession.UserId.HasValue)
+            {
+                return RedirectToAction("Index","Home");
+            }
+
+                if (string.IsNullOrWhiteSpace(returnUrl))
             {
                 returnUrl = GetAppHomeUrl();
             }

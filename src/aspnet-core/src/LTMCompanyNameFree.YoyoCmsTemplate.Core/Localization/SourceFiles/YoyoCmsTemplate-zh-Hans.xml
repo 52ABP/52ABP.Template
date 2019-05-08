@@ -35,7 +35,7 @@
     <text name="TenantSelection_Detail" value="请选择一个租户" />
     <text name="ForgotPassword" value="忘记密码" />
 
-
+    <text name="Register" value="注册" />
 
     <text name="FormIsNotValidMessage" value="部分输入信息不符合要求，请检查并改正.." />
 
