@@ -49,8 +49,8 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
                     new MenuItemDefinition(
                         PageNames.About,
                         L("About"),
-                        url: "fa-address-book",
-                        icon: "info"
+                        url: "/About",
+                        icon: "fa-address-book"
                     )
                 ).AddItem( // Menu items below is just for demonstration!
                     new MenuItemDefinition(
