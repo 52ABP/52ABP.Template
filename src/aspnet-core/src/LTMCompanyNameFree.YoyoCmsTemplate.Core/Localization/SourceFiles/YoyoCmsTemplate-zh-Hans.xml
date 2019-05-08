@@ -6,9 +6,13 @@
     <text name="WelcomeMessage" value="欢迎使用 YoyoCmsTemplate!" />
 
     <!--租户有关的内容-->
+    <text name="TenantNameCanNotBeEmpty" value="租户名不能为空" />
+    <text name="ThereIsNoTenantDefinedWithName{0}" value="租户 {0}不存在" />
+    <text name="TenantIsNotActive" value="租户 {0} 未激活." />
     <text name="CurrentTenant" value="当前租户名称" />
-    
-    
+    <text name="NotSelected" value="未选择" />
+    <text name="Tenants" value="租户" />
+    <text name="ChangeTenant" value="切换租户" />
     <text name="LeaveEmptyToSwitchToHost" value="留空则切换到宿主" />
     <text name="Change" value="切换" />
     <text name="TenantsHeaderInfo" value="管理租户." />
@@ -17,11 +21,11 @@
     <text name="TenantName" value="租户名称" />
     <text name="TenantRegister" value="租户注册" />
     <text name="TenantDeleteWarningMessage" value="租户 {0} 将被删除." />
-    <text name="AdminEmailAddress" value="管理员邮箱地址" />
+    <text name="AdminEmailAddress" value="管理员邮箱" />
     <text name="AdminPassword" value="管理员密码" />
     <text name="TenantAdminPassword" value="租户管理员密码" />
     <text name="AdminPasswordRepeat" value="管理员密码(核对)" />
-    <text name="EditTenant" value="编辑租户" />
+    <text name="EditTenant" value="修改租户" />
     <text name="EditingTenant" value="修改租户" />
     <text name="CreatingNewTenant" value="添加租户" />
     <text name="DeletingTenant" value="删除租户" />
