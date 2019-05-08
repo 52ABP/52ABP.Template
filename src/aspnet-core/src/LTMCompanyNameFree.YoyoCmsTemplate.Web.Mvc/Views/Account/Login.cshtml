@@ -23,45 +23,56 @@
         <script src="~/view-resources/Views/Account/Login.min.js" asp-append-version="true"></script>
     </environment>
 }
-<div class="card" id="﻿LoginArea">
-    <div class="body">
-        <form id="LoginForm" asp-action="Login" method="post">
-            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
-            <input type="hidden" name="returnUrlHash" />
-            <h4 class="text-center">@L("LogIn")</h4>
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="material-icons">person</i>
-                </span>
-                <div class="form-line">
-                    <input type="text" class="form-control" name="usernameOrEmailAddress" placeholder="@L("UserNameOrEmail")" required autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
+
+    <form id="LoginForm" asp-action="Login" class="mb-3" method="post">
+        <div class="mb-3">
+            <h1 class="h2">欢迎 回到52ABP!</h1>
+            <p class="small">
+                登录您的账号  ， 52ABP 是终身学习者的编程知识社区 保持好奇，刻意练习，每日精进。
+
+            </p>
+        </div>
+
+        @*<div class="d-flex my-4">
+                    <a class="btn btn-sm btn-dark px-3 mr-2" href="#">
+                        <i class="fab fa-github mr-1"></i> Login with Github
+                    </a>
+
+                    <a class="btn btn-sm btn-danger px-3" href="#">
+                        <i class="fab fa-google mr-1"></i> Login with Google
+                    </a>
                 </div>
+
+            <p class="small">
+               采用传统的账号密码登录
+            </p> *@
+
+
+
+        <div class="form-group mb-4">
+            <label for="email">Your email</label>
+            <input id="email" class="form-control" name="email" type="email" placeholder="john.doe@example.com">
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="password">Password</label>
+            <input id="password" class="form-control" name="password" type="password" placeholder="Your password">
+        </div>
+
+        <div class="form-group d-flex justify-content-between align-items-center mb-4">
+            <div class="custom-control custom-checkbox">
+                <input id="rememberMe" class="custom-control-input" name="rememberMe" type="checkbox">
+                <label class="custom-control-label" for="rememberMe">Remember me</label>
             </div>
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="material-icons">lock</i>
-                </span>
-                <div class="form-line">
-                    <input type="password" class="form-control" name="Password" placeholder="@L("Password")" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-8 p-t-5">
-                    <input type="checkbox" name="RememberMe" id="rememberme" class="filled-in chk-col-pink" value="true">
-                    <label for="rememberme">@L("RememberMe")</label>
-                </div>
-                <div class="col-xs-4">
-                    <button id="LoginButton" class="btn btn-block bg-pink waves-effect" type="submit">@L("LogIn")</button>
-                </div>
-            </div>
-            @if (Model.IsSelfRegistrationAllowed)
-            {
-                <div class="row m-t-15 m-b--20">
-                    <div class="col-xs-12">
-                        <a asp-action="Register">@L("Register")</a>
-                    </div>
-                </div>
-            }
-        </form>
-    </div>
-</div>
+
+            <a class="link-muted small" href="account-password-recover.html">Forgot Password?</a>
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit">Login</button>
+    </form>
+
+    <p class="small">
+        Don’t have an account? <a href="account-sign-up.html">Sign Up here</a>
+    </p>
+    <vc:account-languages></vc:account-languages>
+

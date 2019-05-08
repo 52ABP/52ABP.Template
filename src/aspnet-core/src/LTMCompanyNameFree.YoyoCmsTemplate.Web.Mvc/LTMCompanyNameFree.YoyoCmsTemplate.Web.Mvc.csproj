@@ -51,4 +51,9 @@
   <ItemGroup>
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Update="wwwroot\lib\jquery-validation\dist\localization\messages_zh_Hans.min.js">
+      <DependentUpon>messages_zh_Hans.js</DependentUpon>
+    </Content>
+  </ItemGroup>
 </Project>
