@@ -53,8 +53,8 @@
 
 ## 截图
 
-![image](https://upload-images.jianshu.io/upload_images/1979022-149453e355774c58.gif?imageMogr2/auto-orient/strip)
-![](https://upload-images.jianshu.io/upload_images/1979022-78623047838e0674.gif?imageMogr2/auto-orient/strip)
+ ![Jiaoluodebaibanbao Wechat](docs/demo-1.gif) ![Jiaoluodebaibanbao Wechat](docs/demo-2.gif)
+ 
 
 [52ABP模板 ASP.Net Core 与 Angular的开源实例项目
 ](https://www.cnblogs.com/wer-ltm/p/9358478.html)
@@ -77,7 +77,7 @@
 ```
 默认用户名：admin
 
-默认密码：123qwe
+默认密码：bb123456
 ```
 
 
@@ -90,9 +90,9 @@ Github:[主仓库](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate)
 
 
 **欢迎关注角落的白板报**
- 
+ ![Jiaoluodebaibanbao Wechat](docs/jiaoluodebaibanbao_wechat.png)
 
-![联系我们](http://upload-images.jianshu.io/upload_images/1979022-a6ae2876aeac3cab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+ 
 
 
 # 前端项目的说明

@@ -1,5 +1,51 @@
 {
   "version": "1.0",
   "defaultProvider": "cdnjs",
-  "libraries": []
+  "libraries": [
+
+    {
+      "library": "twitter-bootstrap@4.3.1",
+      "destination": "wwwroot/lib/bootstrap"
+    },
+    {
+      "library": "malihu-custom-scrollbar-plugin@3.1.5",
+      "destination": "wwwroot/lib/malihu-custom-scrollbar-plugin"
+    },
+    {
+      "library": "prism@1.16.0",
+      "destination": "wwwroot/lib/prism"
+    },
+    {
+      "library": "font-awesome@5.8.1",
+      "destination": "wwwroot/lib/font-awesome"
+    },
+    {
+      "library": "jquery@3.2.1",
+      "destination": "wwwroot/lib/jquery"
+    },
+    {
+      "library": "jquery-migrate@3.0.1",
+      "destination": "wwwroot/lib/jquery-migrate"
+    },
+    {
+      "library": "popper.js@1.15.0",
+      "destination": "wwwroot/lib/popper.js"
+    },
+    {
+      "library": "magnific-popup.js@1.1.0",
+      "destination": "wwwroot/lib/magnific-popup"
+    },
+    {
+      "library": "jquery-parallax@1.1.3",
+      "destination": "wwwroot/lib/jquery-parallax"
+    },
+    {
+      "library": "jquery-validate@1.19.0",
+      "destination": "wwwroot/lib/jquery-validate"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.11",
+      "destination": "wwwroot/lib/jquery-validate-unobtrusive"
+    }
+  ]
 }
