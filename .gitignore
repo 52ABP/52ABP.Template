@@ -287,3 +287,5 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 /src/aspnet-core/src/LTMCompanyNameFree.YoyoCmsTemplate.Web.MVC/wwwroot/lib
+/src/aspnet-core/src/LTMCompanyNameFree.YoyoCmsTemplate.Web.Host/App_Data/
+/src/aspnet-core/src/LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc/App_Data/
