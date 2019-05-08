@@ -325,24 +325,7 @@
                 @RenderBody()
             </div>
 
-            <!-- Footer -->
-            <footer class="u-footer d-md-flex align-items-md-center text-center text-md-left text-muted">
-                <ul class="list-inline small mb-3 mb-md-0">
-                    <li class="list-inline-item mr-4">
-                        <a class="text-muted" href="#!">About Htmlstream</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="text-muted" href="#!">More Freebies</a>
-                    </li>
-                </ul>
-
-                <small class="text-muted ml-auto">
-                    &copy; 2018
-                    <a class="text-muted" href="#!">Htmlstream</a>
-                    - All Rights Reserved.
-                </small>
-            </footer>
-            <!-- End Footer -->
+          @Html.Partial("_Layout_Footer")
         </div>
     </main>
 
@@ -352,7 +335,6 @@
         <script src="~/lib/jquery-migrate/dist/jquery-migrate.js" asp-append-version="true"></script>
         <script src="~/lib/popper.js/dist/umd/popper.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/js/bootstrap.js" asp-append-version="true"></script>
-
         <script src="~/lib/moment/min/moment.min.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
         <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
@@ -363,7 +345,6 @@
         <script src="~/lib/bootstrap-select/dist/js/bootstrap-select.js" asp-append-version="true"></script>
         <script src="~/lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js" asp-append-version="true"></script>
         <script src="~/lib/Waves/waves.js" asp-append-version="true"></script>
-
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>
@@ -371,9 +352,9 @@
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
 
-        <script src="~/assets/js/sidebar-nav.js"></script>
+        <script src="~/assets/js/sidebar-nav.js"  asp-append-version="true"></script>
 
-        <script src="~/assets/js/main.js"></script>
+        <script src="~/assets/js/main.js" asp-append-version="true"></script>
 
         <script src="~/view-resources/Views/Shared/_Layout.js" asp-append-version="true"></script>
 
