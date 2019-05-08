@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="YoYo.Castle.Log4Net" Version="3.7.2" />
+
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\LTMCompanyNameFree.YoyoCmsTemplate.Web.Core\LTMCompanyNameFree.YoyoCmsTemplate.Web.Core.csproj" />
+  </ItemGroup>
+
+</Project>

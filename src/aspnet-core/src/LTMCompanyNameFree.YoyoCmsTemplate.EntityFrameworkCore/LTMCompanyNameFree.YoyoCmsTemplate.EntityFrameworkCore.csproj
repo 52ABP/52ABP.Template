@@ -24,4 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LTMCompanyNameFree.YoyoCmsTemplate.Core\LTMCompanyNameFree.YoyoCmsTemplate.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
 </Project>

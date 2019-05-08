@@ -10,13 +10,12 @@ using Microsoft.Extensions.Logging;
 using Castle.Facilities.Logging;
 using Swashbuckle.AspNetCore.Swagger;
 using Abp.AspNetCore;
-using Abp.Castle.Logging.Log4Net;
 using Abp.Extensions;
-using LTMCompanyNameFree.YoyoCmsTemplate.Authentication.JwtBearer;
 using LTMCompanyNameFree.YoyoCmsTemplate.Configuration;
 using LTMCompanyNameFree.YoyoCmsTemplate.Identity;
 
 using Abp.AspNetCore.SignalR.Hubs;
+using YoYo.Castle.Logging.Log4Net;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
 {
@@ -25,9 +24,12 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
         private const string _defaultCorsPolicyName = "localhost";
 
         private readonly IConfigurationRoot _appConfiguration;
+        private readonly IHostingEnvironment _env;
+
 
         public Startup(IHostingEnvironment env)
         {
+            _env = env;
             _appConfiguration = env.GetAppConfiguration();
         }
 
@@ -78,13 +80,20 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
                 });
             });
 
-            // Configure Abp and Dependency Injection
-            return services.AddAbp<YoyoCmsTemplateWebHostModule>(
-                // Configure Log4Net logging
-                options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
-                    f => f.UseAbpLog4Net().WithConfig("log4net.config")
-                )
-            );
+
+            //Configure Abp and Dependency Injection
+            return services.AddAbp<YoyoCmsTemplateWebHostModule>(options =>
+            {
+                //配置 Log4Net logging 日志信息
+                options.IocManager.IocContainer.AddFacility<LoggingFacility>(
+                    f => f.UseYoYoLog4Net().WithConfig(_env.GetLog4NetConfigFileName())
+                );
+            });
+
+
+
+
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
