@@ -46,6 +46,32 @@
     {
       "library": "jquery-validation-unobtrusive@3.2.11",
       "destination": "wwwroot/lib/jquery-validate-unobtrusive"
+    },
+    {
+      "library": "json2@20160511",
+      "destination": "wwwroot/lib/json2"
+    },
+    {
+      "library": "jquery.blockUI@2.70",
+      "destination": "wwwroot/lib/blockUI"
+    },
+    {
+      "library": "sweetalert@2.1.2",
+      "destination": "wwwroot/lib/sweetalert"
+    },
+    {
+      "library": "toastr.js@2.1.4",
+      "destination": "wwwroot/lib/toastr"
+    },
+    {
+      "library": "spin.js@2.3.2",
+      "destination": "wwwroot/lib/spin.js"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "famfamfam-flags@1.0.0",
+      "destination": "wwwroot/lib/famfamfam-flags"
     }
+    
   ]
 }

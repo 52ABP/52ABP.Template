@@ -36,8 +36,8 @@
     <environment names="Development">
         <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
 
-        <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/stream-dashboard/css/theme.css" rel="stylesheet"asp-append-version="true" />
+        <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/assets/css/theme.css" rel="stylesheet"asp-append-version="true" />
 
 
         <link href="~/view-resources/Views/Account/_Layout.css" rel="stylesheet" asp-append-version="true" />
@@ -76,19 +76,18 @@
                         </div>
 
                         @*<div class="d-flex my-4">
-                <a class="btn btn-sm btn-dark px-3 mr-2" href="#">
-                    <i class="fab fa-github mr-1"></i> Login with Github
-                </a>
+                    <a class="btn btn-sm btn-dark px-3 mr-2" href="#">
+                        <i class="fab fa-github mr-1"></i> Login with Github
+                    </a>
 
-                <a class="btn btn-sm btn-danger px-3" href="#">
-                    <i class="fab fa-google mr-1"></i> Login with Google
-                </a>
-            </div>
+                    <a class="btn btn-sm btn-danger px-3" href="#">
+                        <i class="fab fa-google mr-1"></i> Login with Google
+                    </a>
+                </div>
 
-        <p class="small">
-           采用传统的账号密码登录
-        </p>
-                        *@
+            <p class="small">
+               采用传统的账号密码登录
+            </p> *@
 
 
                         @if (MultiTenancyConfig.IsEnabled)
@@ -122,27 +121,39 @@
                     <p class="small">
                         Don’t have an account? <a href="account-sign-up.html">Sign Up here</a>
                     </p>
+                    <vc:account-languages></vc:account-languages>
                 </div>
 
-                <div class="u-login-form text-muted py-3 mt-auto">
-                    <small><i class="far fa-question-circle mr-1"></i> If you are not able to sign in, please <a href="#">contact us</a>.</small>
+              
+
+ <div class="u-login-form text-muted py-3 mt-auto">
+                   
+                        <small>&copy; @DateTime.Now.Year YoyoCmsTemplate. <b>Version </b> @AppVersionHelper.Version [@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]</small>
+                  
+
                 </div>
+
+
+
+ 
             </div>
 
+
+
             <div class="col-lg-6 d-none d-lg-flex flex-column align-items-center justify-content-center bg-light">
-                <img class="img-fluid position-relative u-z-index-3 mx-5" src="./assets/svg/mockups/mockup.svg" alt="Image description">
+                <img class="img-fluid position-relative u-z-index-3 mx-5" src="~/assets/svg/mockups/mockup.svg" alt="Image description">
 
                 <figure class="u-shape u-shape--top-right u-shape--position-5">
-                    <img src="./assets/svg/shapes/shape-1.svg" alt="Image description">
+                    <img src="~/assets/svg/shapes/shape-1.svg" alt="Image description">
                 </figure>
                 <figure class="u-shape u-shape--center-left u-shape--position-6">
-                    <img src="./assets/svg/shapes/shape-2.svg" alt="Image description">
+                    <img src="~/assets/svg/shapes/shape-2.svg" alt="Image description">
                 </figure>
                 <figure class="u-shape u-shape--center-right u-shape--position-7">
-                    <img src="./assets/svg/shapes/shape-3.svg" alt="Image description">
+                    <img src="~/assets/svg/shapes/shape-3.svg" alt="Image description">
                 </figure>
                 <figure class="u-shape u-shape--bottom-left u-shape--position-8">
-                    <img src="./assets/svg/shapes/shape-4.svg" alt="Image description">
+                    <img src="~/assets/svg/shapes/shape-4.svg" alt="Image description">
                 </figure>
             </div>
         </div>
@@ -160,8 +171,8 @@
       
 
          <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
-        <script src="~/lib/toastr/toastr.js" asp-append-version="true"></script>
-        <script src="~/lib/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
+        <script src="~/lib/toastr/toastr.min.js" asp-append-version="true"></script>
+        <script src="~/lib/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
         <script src="~/lib/spin.js/spin.js" asp-append-version="true"></script>
         <script src="~/lib/spin.js/jquery.spin.js" asp-append-version="true"></script>
         <script src="~/lib/Waves/dist/waves.js" asp-append-version="true"></script>
