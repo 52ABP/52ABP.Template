@@ -275,7 +275,7 @@ $.AdminBSB.input = {
         //On focusout event
         $parentSelector.find('.form-control').focusout(function () {
             var $this = $(this);
-            if ($this.parents('.form-group').hasClass('form-float')) {
+            if ($this.parents('.form-group').hasClass('')) {
                 if ($this.val() == '') { $this.parents('.form-line').removeClass('focused'); }
             }
             else {
@@ -284,7 +284,7 @@ $.AdminBSB.input = {
         });
 
         //On label click
-        $parentSelector.on('click', '.form-float .form-line .form-label', function () {
+        $parentSelector.on('click', '. .form-line .form-label', function () {
             $(this).parent().find('input').focus();
         });
 
