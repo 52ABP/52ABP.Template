@@ -1,7 +1,5 @@
 
 
-[![GitHub stars](https://img.shields.io/github/stars/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg?style=social)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/network)[![GitHub license](https://img.shields.io/github/license/52ABP/LTMCompanyNameFree.YoyoCmsTemplate.svg?style=social)](https://github.com/52ABP/LTMCompanyNameFree.YoyoCmsTemplate/blob/master/LICENSE)
 
 
 # 介绍
@@ -9,12 +7,6 @@
 本模板是基于ASP.NET Core 和Angular 提供给52ABP进行下载的模板项目。
 - 快速启动教程： [创建ASP.NET Core 和Angular免费项目模版搭建教程(单页面模板)](https://www.52abp.com/BlogDetails/1)
 
-- 集成的主题内容：[Ng-zorro](https://ng.ant.design) 与 [ng-alain](https://ng-alain.com)
-
- 
-
-- 在线运行地址：https://free.yoyocms.com
-- 项目下载地址： https://www.52abp.com/Download/Index
 
 ## 下载地址
 
@@ -29,7 +21,7 @@
 我们推荐你从[https://www.52abp.com](https://www.52abp.com/Download/Index) 创建您自己的项目模板，本项目模板为统一的启动模板，您可以像我们贡献您的代码信息。
 
 更多详细的启动教程：
-[项目运行教程](https://www.52abp.com/Blog/BlogDetails/1)
+[52ABP-开发者中心](https://www.52abp.com/Wiki/52abp/master/docs/Introduction)
 ### 备注：
 ```
 默认用户名：admin
