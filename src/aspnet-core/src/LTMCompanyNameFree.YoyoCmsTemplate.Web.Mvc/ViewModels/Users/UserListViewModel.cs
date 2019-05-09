@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using LTMCompanyNameFree.YoyoCmsTemplate.Roles.Dto;
 using LTMCompanyNameFree.YoyoCmsTemplate.Users.Dto;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Users
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Users
 {
     public class UserListViewModel
     {

@@ -28,7 +28,7 @@ using LTMCompanyNameFree.YoyoCmsTemplate.Controllers;
 using LTMCompanyNameFree.YoyoCmsTemplate.Identity;
 using LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy;
 using LTMCompanyNameFree.YoyoCmsTemplate.Sessions;
-using LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Account;
+using LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Account;
 using LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.TenantChange;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers

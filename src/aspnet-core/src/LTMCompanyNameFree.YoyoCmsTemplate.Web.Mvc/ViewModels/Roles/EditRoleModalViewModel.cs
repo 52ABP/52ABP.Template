@@ -1,8 +1,8 @@
 ﻿using Abp.AutoMapper;
 using LTMCompanyNameFree.YoyoCmsTemplate.Roles.Dto;
-using LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Common;
+using LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Common;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Roles
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Roles
 {
     [AutoMapFrom(typeof(GetRoleForEditOutput))]
     public class EditRoleModalViewModel : GetRoleForEditOutput, IPermissionsEditViewModel

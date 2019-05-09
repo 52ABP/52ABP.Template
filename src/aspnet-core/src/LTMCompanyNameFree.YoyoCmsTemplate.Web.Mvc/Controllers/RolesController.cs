@@ -6,7 +6,7 @@ using LTMCompanyNameFree.YoyoCmsTemplate.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Controllers;
 using LTMCompanyNameFree.YoyoCmsTemplate.Roles;
 using LTMCompanyNameFree.YoyoCmsTemplate.Roles.Dto;
-using LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Roles;
+using LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Roles;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 {

@@ -1,8 +1,6 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using Abp.Localization;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.TopBarLanguageSwitch
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.TopBarNotifications
 {
     public class TopBarNotificationsViewComponent : YoyoCmsTemplateViewComponent
     {

@@ -5,8 +5,8 @@ using Abp.AspNetCore.Mvc.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Controllers;
 using LTMCompanyNameFree.YoyoCmsTemplate.Users;
-using LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Users;
 using LTMCompanyNameFree.YoyoCmsTemplate.Users.Dto;
+using LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Users;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 {

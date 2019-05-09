@@ -1,13 +1,9 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using Abp.Localization;
-using LTMCompanyNameFree.YoyoCmsTemplate.Sessions;
+﻿using System.Threading.Tasks;
 using Abp.Configuration.Startup;
-using LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.SideBarUserArea;
-using System.Threading.Tasks;
-using LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.TopBarUserProfile;
+using LTMCompanyNameFree.YoyoCmsTemplate.Sessions;
+using Microsoft.AspNetCore.Mvc;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.TopBarLanguageSwitch
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.TopBarUserProfile
 {
     public class TopBarUserProfileViewComponent : YoyoCmsTemplateViewComponent
     {

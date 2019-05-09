@@ -5,7 +5,7 @@ using Abp.Authorization.Users;
 using Abp.Extensions;
 using LTMCompanyNameFree.YoyoCmsTemplate.Validation;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Account
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Account
 {
     public class RegisterViewModel : IValidatableObject
     {

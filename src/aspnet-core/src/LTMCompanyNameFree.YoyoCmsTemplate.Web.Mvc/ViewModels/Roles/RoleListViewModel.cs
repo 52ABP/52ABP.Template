@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using LTMCompanyNameFree.YoyoCmsTemplate.Roles.Dto;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Roles
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Roles
 {
     public class RoleListViewModel
     {

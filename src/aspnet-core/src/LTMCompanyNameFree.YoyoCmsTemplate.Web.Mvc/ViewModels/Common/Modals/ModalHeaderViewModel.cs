@@ -1,4 +1,4 @@
-﻿namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Common.Modals
+﻿namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Common.Modals
 {
     public class ModalHeaderViewModel
     {

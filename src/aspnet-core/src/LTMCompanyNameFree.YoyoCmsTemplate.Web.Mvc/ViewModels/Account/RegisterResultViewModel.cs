@@ -1,4 +1,4 @@
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Account
+namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Account
 {
     public class RegisterResultViewModel
     {
