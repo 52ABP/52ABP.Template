@@ -49,8 +49,15 @@
 [52ABP模板 ASP.Net Core 与 Angular的开源实例项目
 ](https://www.cnblogs.com/wer-ltm/p/9358478.html)
 
+### 前端模板-Stream - Bootstrap 4 Dashboard UI Kit
+
+* 开源地址：[github](https://github.com/htmlstreamofficial/stream-dashboard-ui-kit)
+* 预览地址：[htmlstream](https://htmlstream.com/preview/stream-dashboard-ui-kit/index.html)
 
 ## 截图
+
+
+
 
  ![Jiaoluodebaibanbao Wechat](docs/demo-1.gif)
 
