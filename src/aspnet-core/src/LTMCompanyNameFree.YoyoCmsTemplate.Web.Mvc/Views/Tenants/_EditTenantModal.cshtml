@@ -1,0 +1,37 @@
+﻿@using Abp.MultiTenancy
+@using LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy.Dto
+@using LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Common.Modals
+@model TenantDto
+@{
+    Layout = null;
+}
+@Html.Partial("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditTenant")))
+
+<div class="modal-body">
+    <form name="TenantEditForm" role="form" novalidate class="form-validation">
+        <input type="hidden" name="Id" value="@Model.Id"/>
+        <div class="form-group ">
+            <div class="form-line">
+                <input class="form-control" type="text" name="TenancyName" value="@Model.TenancyName" required maxlength="64" minlength="2">
+                <label>@L("TenancyName")</label>
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="form-line">
+                <input type="text" name="Name" class="form-control" value="@Model.Name" required maxlength="128">
+                <label>@L("Name")</label>
+            </div>
+        </div>
+         
+        <div class="custom-control custom-checkbox mb-4 ">
+           
+ <input id="IsActive" type="checkbox" name="IsActive" value="true" @(Model.IsActive ? "checked" : "") class="custom-control-input" />
+                <label for="IsActive" class="d-block custom-control-label">@L("IsActive")</label>
+           
+        </div>
+    </form>
+</div>
+
+@Html.Partial("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+
+<script src="~/view-resources/Views/Tenants/_EditTenantModal.js" asp-append-version="true"></script>

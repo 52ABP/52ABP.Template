@@ -1,0 +1,142 @@
+﻿@using System.Globalization
+@using Abp.Configuration.Startup
+@using Abp.Web.Security.AntiForgery
+@using LTMCompanyNameFree.YoyoCmsTemplate
+@using LTMCompanyNameFree.YoyoCmsTemplate.Web.Resources
+@inject LTMCompanyNameFree.YoyoCmsTemplate.Timing.AppTimes AppTimes
+@inject IAbpAntiForgeryManager AbpAntiForgeryManager
+@inject IMultiTenancyConfig MultiTenancyConfig
+@inject IWebResourceManager WebResourceManager
+@{
+    Layout = null;
+    AbpAntiForgeryManager.SetCookie(Context);
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <meta name="keywords" content="">
+    <meta name="description" content="  ">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="~/favicon.ico">
+
+    <!-- Web Fonts -->
+    <link href="//fonts.loli.net/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+
+
+    <title>YoyoCmsTemplate - Powered By YoyoSoft </title>
+
+    <environment names="Development">
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/waves/waves.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/assets/css/theme.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/view-resources/Views/Account/_Layout.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/view-resources/Views/_Bundles/account-layout.min.css" asp-append-version="true" />
+    </environment>
+
+    <!-- View specific styles -->
+    @RenderSection("styles", required: false)
+
+    <script type="text/javascript">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '@ApplicationPath';
+    </script>
+
+</head>
+<body>
+    <main class="container-fluid w-100" role="main">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-white mnh-100vh">
+                <a class="u-login-form py-3 mb-auto" href="/">
+                    <img class="img-fluid" src="~/images/logo/52abplogo.png" width="160" alt="52ABP Logo">
+                </a>
+
+
+                <div class="u-login-form">
+
+
+                    @if (MultiTenancyConfig.IsEnabled)
+                    {
+                        <div class="tenant-change-box">
+                            <vc:tenant-change></vc:tenant-change>
+                        </div>
+                    }
+
+                    @RenderBody()
+
+                    <vc:account-languages></vc:account-languages>
+                </div>
+                    <div class="u-login-form text-muted py-3 mt-auto">
+
+                        <small>&copy; @DateTime.Now.Year YoyoCmsTemplate. <b>Version </b> @AppVersionHelper.Version [@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]</small>
+                    </div>
+                </div>
+
+                @Html.Partial("~/Views/Account/_Account_Right.cshtml")
+            </div>
+    </main>
+
+
+
+
+
+    <environment names="Development">
+
+
+        <script src="~/lib/jquery/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.js" asp-append-version="true"></script>
+        <script src="~/lib/moment/min/moment-with-locales.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+        <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
+        <script src="~/lib/toastr/toastr.min.js" asp-append-version="true"></script>
+        <script src="~/lib/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
+
+        <script src="~/lib/spin.js/spin.js" asp-append-version="true"></script>
+        <script src="~/lib/spin.js/jquery.spin.js" asp-append-version="true"></script>
+        <script src="~/lib/Waves/waves.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
+         <script src="~/js/main.js" asp-append-version="true"></script>
+
+        @if (CultureInfo.CurrentUICulture.Name != "en")
+        {
+            <script src="~/lib/jquery-validation/dist/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>
+        }
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/_Bundles/account-layout.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script>
+    // Localizing momentjs
+    moment.locale('@CultureInfo.CurrentUICulture.Name');
+    </script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="~/AbpServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
+    <script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
+
+    @WebResourceManager.RenderScripts()
+
+    <!-- View specific scripts -->
+    @RenderSection("scripts", required: false)
+</body>
+</html>

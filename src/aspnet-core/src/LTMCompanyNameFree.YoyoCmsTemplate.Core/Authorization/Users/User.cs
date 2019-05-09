@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Abp.Authorization.Users;
 using Abp.Extensions;
 
@@ -6,7 +7,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Users
 {
     public class User : AbpUser<User>
     {
-        public const string DefaultPassword = "123qwe";
+        public const string DefaultPassword = "bb123456";
 
         public static string CreateRandomPassword()
         {
@@ -21,7 +22,8 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Users
                 UserName = AdminUserName,
                 Name = AdminUserName,
                 Surname = AdminUserName,
-                EmailAddress = emailAddress
+                EmailAddress = emailAddress,
+                Roles = new List<UserRole>()
             };
 
             user.SetNormalizedNames();

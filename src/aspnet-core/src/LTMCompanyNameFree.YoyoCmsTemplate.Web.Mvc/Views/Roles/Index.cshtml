@@ -1,0 +1,161 @@
+﻿@using LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
+@model LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Roles.RoleListViewModel
+@{
+    ViewBag.CurrentPageName = PageNames.Roles; // The menu item will be active for this page.
+}
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Roles/Index.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Roles/Index.min.js" asp-append-version="true"></script>
+    </environment>
+}
+
+
+<div class="card mb-4">
+    <header class="card-header d-flex align-items-center">
+        <h2 class="h3 card-header-title"> @L("Roles") </h2>
+        <ul class="list-inline ml-auto mb-0">
+
+            <li class="list-inline-item">
+                <a id="RefreshButton" class="link-muted h3" href="#!">
+                    <i class="fas fa-redo"></i>刷新
+
+                </a>
+            </li>
+        </ul>
+    </header>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>@L("RoleName")</th>
+                    <th>@L("DisplayName")</th>
+                    <th class="text-center" scope="col">@L("Actions")</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                @foreach (var role in Model.Roles)
+                {
+                    <tr>
+                        <td>@role.Name</td>
+                        <td>@role.DisplayName</td>
+                        <td class="text-center">
+                            <a id="actions1Invoker" class="link-muted" href="#!" aria-haspopup="true" aria-expanded="false"
+                               data-toggle="dropdown">
+                                <i class="fa fa-sliders-h"></i>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right dropdown" style="width: 150px;" aria-labelledby="actions1Invoker">
+                                <ul class="list-unstyled mb-0">
+                                    <li>
+                                        <a href="#" class="d-flex align-items-center link-muted py-2 px-3 edit-role" data-role-id="@role.Id" data-toggle="modal" data-target="#RoleEditModal">
+                                            <i class="fa fa-plus mr-2"></i> @L("Edit")</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex align-items-center link-muted py-2 px-3 delete-role" data-role-id="@role.Id" data-role-name="@role.Name">
+                                            <i class="fa fa-minus mr-2"></i>@L("Delete")</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </td>
+                      
+
+                    </tr>
+                }
+                </tbody>
+
+            </table>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#RoleCreateModal">
+                @L("CreateNewRole")
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="RoleCreateModal" tabindex="-1" role="dialog" aria-labelledby="RoleCreateModalLabel" data-backdrop="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <span>@L("CreateNewRole")</span>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="roleCreateForm" role="form" novalidate class="form-validation">
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line"><label for="rolename">@L("RoleName")</label>
+                                    <input id="rolename" type="text" name="Name" required maxlength="32" minlength="2" class="validate form-control">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <label for="displayname">@L("DisplayName")</label>
+                                    <input id="displayname" type="text" name="DisplayName" required maxlength="32" minlength="2" class="validate form-control">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <label for="role-description">@L("RoleDescription")</label>
+                                    <textarea id="role-description" name="Description" class="validate form-control"></textarea>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <h4>@L("Permissions")</h4>
+                            @foreach (var permission in Model.Permissions)
+                            {
+                            <span class="col-sm-6">
+                                 <input type="checkbox" name="permission" value="@permission.Name" class="filled-in" id="permission-@permission.Name" checked="checked" />
+                                 <label for="permission-@permission.Name">@permission.DisplayName</label>
+
+                            </span>
+                            }
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">@L("Cancel")</button>
+                        <button type="submit" class="btn btn-primary waves-effect">@L("Save")</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="RoleEditModal" tabindex="-1" role="dialog" aria-labelledby="RoleEditModalLabel" data-backdrop="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>

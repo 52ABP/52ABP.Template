@@ -3,8 +3,12 @@
   <texts>
     <text name="HomePage" value="主页" />
     <text name="About" value="关于我们" />
-    <text name="WellcomeMessage" value="欢迎使用 YoyoCmsTemplate!" />
+    <text name="WelcomeMessage" value="欢迎使用 YoyoCmsTemplate!" />
+    <text name="PleaseWait" value="页面加载中，请等待..." />
+    <text name="MultiLevelMenu" value="多级菜单" />
+
     
+
     <!--租户有关的内容-->
     <text name="TenantNameCanNotBeEmpty" value="租户名不能为空" />
     <text name="ThereIsNoTenantDefinedWithName{0}" value="租户 {0}不存在" />
@@ -35,7 +39,7 @@
     <text name="TenantSelection_Detail" value="请选择一个租户" />
     <text name="ForgotPassword" value="忘记密码" />
 
- 
+    <text name="Register" value="注册" />
 
     <text name="FormIsNotValidMessage" value="部分输入信息不符合要求，请检查并改正.." />
 
@@ -48,7 +52,7 @@
     <text name="Password" value="密码" />
     <text name="RememberMe" value="记住我" />
     <text name="LogIn" value="登录" />
- 
+
 
     <text name="LoginFailed" value="登录失败!" />
     <text name="Roles" value="角色" />
@@ -92,12 +96,12 @@
     <text name="Reset" value="重置" />
     <text name="ResetPermissionsTooltip" value="重置用户权限后，用户仅拥有所属角色包含的权限，为用户直接指定的权限将取消." />
     <text name="ResetSuccessfully" value="重置成功" />
-   
+
     <text name="ChangingPermissions" value="更改权限" />
     <text name="EditingUser" value="修改用户" />
     <text name="CreatingNewUser" value="添加用户" />
     <text name="Edit" value="修改" />
-   
+
     <text name="EditingRole" value="修改角色" />
     <text name="CreatingNewRole" value="添加角色" />
     <text name="DeletingRole" value="删除角色" />
@@ -181,7 +185,7 @@
     <text name="Dashboard" value="工作台" />
     <text name="DashboardHeaderInfo" value="分析与报告" />
     <text name="GoToApplication" value="登录系统" />
-   
+
     <text name="PersonalInformations" value="个人信息" />
     <text name="AccountSettings" value="账号设置" />
     <text name="Captha_Hint" value="输入图片中的验证码:" />
@@ -195,12 +199,12 @@
     <text name="OopsYouAreLost" value="噢! 失踪了." />
     <text name="WeCanNotFindThePage" value="我们无法提供您想要访问的页面." />
     <text name="DashboardDemo_Note_Title" value="欢迎使用ASP.NET Zero启动项目!" />
-   
+
     <text name="WelcomePage_Title" value="欢迎!" />
     <text name="WelcomePage_Info" value="欢迎使用本应用，您可以从左边的菜单启动要使用的功能。如果您没有看到任何菜单，可能是因为您没有获得任何一项授权，您可以联系您的系统管理员获得授权. " />
     <text name="RequestedFileDoesNotExists" value="请求的文件不存在!" />
     <text name="MailSent" value="邮件已发送" />
-   
+
     <text name="UseCaptchaOnRegistration" value="用户注册时使用图片验证码(captcha)." />
     <text name="FormBasedRegistration" value="基于表单身份验证" />
     <text name="LdapSettings" value="LDAP设置" />
@@ -229,11 +233,15 @@
     <text name="ActionInformations" value="操作信息" />
     <text name="Today" value="今天" />
     <text name="Yesterday" value="昨天" />
-    
+
     <text name="LoginWith" value="登录" />
     <text name="PasswordChangeDontRememberMessage" value="忘记密码？ {0}." />
     <text name="ClickHere" value="点击这里" />
     <text name="Apply" value="应用" />
     <text name="CustomRange" value="自定义范围" />
+    
+    
   </texts>
 </localizationDictionary>
+
+

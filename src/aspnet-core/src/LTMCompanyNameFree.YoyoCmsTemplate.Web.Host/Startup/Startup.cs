@@ -12,7 +12,6 @@ using Swashbuckle.AspNetCore.Swagger;
 using Abp.AspNetCore;
 using Abp.Castle.Logging.Log4Net;
 using Abp.Extensions;
-using LTMCompanyNameFree.YoyoCmsTemplate.Authentication.JwtBearer;
 using LTMCompanyNameFree.YoyoCmsTemplate.Configuration;
 using LTMCompanyNameFree.YoyoCmsTemplate.Identity;
 
@@ -60,7 +59,6 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
                         .AllowCredentials()
                 )
             );
-
 
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             services.AddSwaggerGen(options =>
@@ -121,9 +119,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
             // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "YoyoCmsTemplate API V1");
-                // options.SwaggerEndpoint(_appConfiguration["App:ServerRootAddress"].EnsureEndsWith('/') + "swagger/v1/swagger.json", "YoyoCmsTemplate API V1");
-
+                options.SwaggerEndpoint(_appConfiguration["App:ServerRootAddress"].EnsureEndsWith('/') + "swagger/v1/swagger.json", "YoyoCmsTemplate API V1");
                 options.IndexStream = () => Assembly.GetExecutingAssembly()
                     .GetManifestResourceStream("LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.wwwroot.swagger.ui.index.html");
             }); // URL: /swagger

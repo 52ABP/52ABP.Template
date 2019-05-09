@@ -1,0 +1,187 @@
+﻿@using System.Globalization
+@using Abp.Configuration
+@using Abp.Configuration.Startup
+@using Abp.Web.Mvc.Alerts
+@using Abp.Web.Security.AntiForgery
+@using LTMCompanyNameFree.YoyoCmsTemplate
+@using LTMCompanyNameFree.YoyoCmsTemplate.Configuration
+@using LTMCompanyNameFree.YoyoCmsTemplate.Web.Resources
+@using LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.SideBarNav
+@using LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.TopBarLanguageSwitch
+@using LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.TopBarNotifications
+@using LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.TopBarUserProfile
+@inject LTMCompanyNameFree.YoyoCmsTemplate.Timing.AppTimes AppTimes
+@inject IAbpAntiForgeryManager AbpAntiForgeryManager
+@inject IMultiTenancyConfig MultiTenancyConfig
+@inject IWebResourceManager WebResourceManager
+@inject ISettingManager SettingManager
+@inject IAlertManager AlertManager
+@{
+    Layout = null;
+    AbpAntiForgeryManager.SetCookie(Context);
+    //var uiTheme = await SettingManager.GetSettingValueAsync(AppSettingNames.UiTheme); //无换肤功能
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="~/favicon.ico">
+
+    <title>YoyoCmsTemplate- Powered By YoyoSoft </title>
+    <!-- Web Fonts -->
+    <link href="//fonts.loli.net/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <environment names="Development">
+
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/toastr/toastr.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/Waves/waves.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/animate.css/animate.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/assets/css/theme.css" rel="stylesheet" />
+        <link href="~/view-resources/Views/Shared/_Layout.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+
+    <environment names="Staging,Production">
+        <link href="~/view-resources/Views/_Bundles/shared-layout.min.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+
+    <!-- View specific styles -->
+    @RenderSection("styles", required: false)
+
+    <script type="text/javascript">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '@ApplicationPath';
+    </script>
+</head>
+<body>
+
+    <!-- Header (Topbar) -->
+    <header class="u-header">
+        <div class="u-header-left">
+            <a class="u-header-logo" href="/">
+                <img class="u-logo-desktop" src="~/images/logo/52abplogo.png" width="160" alt="52ABP.com Logo">
+                <img class="img-fluid u-logo-mobile" src="~/images/logo/logo-mobile.png" width="50" alt="52ABP框架">
+            </a>
+        </div>
+
+        <div class="u-header-middle">
+            <a class="js-sidebar-invoker u-sidebar-invoker" href="#!"
+               data-is-close-all-except-this="true"
+               data-target="#sidebar">
+                <i class="fa fa-bars u-sidebar-invoker__icon--open"></i>
+                <i class="fa fa-times u-sidebar-invoker__icon--close"></i>
+            </a>
+
+            @* 搜索 *@
+            <div class="u-header-search"
+                 data-search-mobile-invoker="#headerSearchMobileInvoker"
+                 data-search-target="#headerSearch">
+                <a id="headerSearchMobileInvoker" class="btn btn-link input-group-prepend u-header-search__mobile-invoker" href="#!">
+                    <i class="fa fa-search"></i>
+                </a>
+
+                <div id="headerSearch" class="u-header-search-form">
+                    <div class="input-group">
+                        <button class="btn-link input-group-prepend u-header-search__btn" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        <input class="form-control u-header-search__field" type="search" placeholder="@L("StartTyping")...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="u-header-right">
+            @await Component.InvokeAsync(typeof(TopBarLanguageSwitchViewComponent))
+            @await Component.InvokeAsync(typeof(TopBarNotificationsViewComponent))
+            @await Component.InvokeAsync(typeof(TopBarUserProfileViewComponent))          
+
+        </div>
+    </header>
+    <!-- End Header (Topbar) -->
+
+    <main class="u-main" role="main">
+
+        @* 侧边栏--导航条 *@
+        @await Component.InvokeAsync(typeof(SideBarNavViewComponent), new { activeMenu = ViewBag.CurrentPageName })
+
+
+        <div class="u-content">
+            <div class="u-body">
+                @RenderBody()
+            </div>
+          
+            <partial name="_Layout_Footer"/>
+
+        </div>
+    </main>
+
+    <environment names="Development">
+        <script src="~/lib/json2/json2.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-migrate/dist/jquery-migrate.js" asp-append-version="true"></script>
+        <script src="~/lib/popper.js/dist/umd/popper.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.js" asp-append-version="true"></script>
+        <script src="~/lib/moment/min/moment.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+        <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
+        <script src="~/lib/toastr/toastr.min.js" asp-append-version="true"></script>
+        <script src="~/lib/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
+        <script src="~/lib/spin.js/spin.js" asp-append-version="true"></script>
+        <script src="~/lib/spin.js/jquery.spin.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap-select/dist/js/bootstrap-select.js" asp-append-version="true"></script>
+        <script src="~/lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js" asp-append-version="true"></script>
+        <script src="~/lib/Waves/waves.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
+        <script src="~/js/main.js"></script>
+
+
+        <script src="~/assets/js/sidebar-nav.js"  asp-append-version="true"></script>
+        <script src="~/assets/js/main.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Views/Shared/_Layout.js" asp-append-version="true"></script>
+
+        @if (CultureInfo.CurrentUICulture.Name != "en")
+        {
+            <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>
+        }
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/_Bundles/shared-layout.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script>
+    // Localizing momentjs
+    moment.locale('@CultureInfo.CurrentUICulture.Name');
+    </script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="~/AbpServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
+    <script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
+
+    <script src="~/lib/aspnet-signalr/signalr.js" asp-append-version="true"></script>
+    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js" asp-append-version="true"></script>
+
+    @WebResourceManager.RenderScripts()
+
+    <!-- View specific scripts -->
+    @RenderSection("scripts", required: false)
+</body>
+</html>

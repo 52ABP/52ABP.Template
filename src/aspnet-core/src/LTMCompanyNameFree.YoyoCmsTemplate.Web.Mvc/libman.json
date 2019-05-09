@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+
+    {
+      "provider": "cdnjs",
+      "library": "twitter-bootstrap@4.3.1",
+      "destination": "wwwroot/lib/bootstrap"
+    },
+    {
+      "library": "malihu-custom-scrollbar-plugin@3.1.5",
+      "destination": "wwwroot/lib/malihu-custom-scrollbar-plugin"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "prism@1.16.0",
+      "destination": "wwwroot/lib/prism"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "font-awesome@5.8.1",
+      "destination": "wwwroot/lib/font-awesome"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery@3.2.1",
+      "destination": "wwwroot/lib/jquery"
+    },
+    {
+      "library": "jquery-migrate@3.0.1",
+      "destination": "wwwroot/lib/jquery-migrate"
+    },
+    {
+      "library": "popper.js@1.15.0",
+      "destination": "wwwroot/lib/popper.js"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "magnific-popup.js@1.1.0",
+      "destination": "wwwroot/lib/magnific-popup"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery-parallax@1.1.3",
+      "destination": "wwwroot/lib/jquery-parallax"
+    },
+    {
+      "library": "jquery-validation@1.19.0",
+      "destination": "wwwroot/lib/jquery-validation"
+    },
+
+    {
+      "provider": "cdnjs",
+      "library": "json2@20160511",
+      "destination": "wwwroot/lib/json2"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery.blockUI@2.70",
+      "destination": "wwwroot/lib/blockUI"
+    },
+    {
+      "library": "sweetalert@2.1.2",
+      "destination": "wwwroot/lib/sweetalert"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "toastr.js@2.1.4",
+      "destination": "wwwroot/lib/toastr"
+    },
+    {
+      "library": "spin.js@2.3.2",
+      "destination": "wwwroot/lib/spin.js"
+    },
+    {
+
+      "library": "famfamfam-flags@1.0.0",
+      "destination": "wwwroot/lib/famfamfam-flags"
+    },
+    {
+
+      "library": "abp-web-resources@3.8.5",
+      "destination": "wwwroot/lib/abp-web-resources"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "node-waves@0.7.5",
+      "destination": "wwwroot/lib/waves"
+    },
+    {
+      "library": "moment@2.24.0",
+      "destination": "wwwroot/lib/moment"
+    },
+    {
+      "library": "bootstrap-select@1.13.10",
+      "destination": "wwwroot/lib/bootstrap-select"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "animate.css@3.7.0",
+      "destination": "wwwroot/lib/animate.css"
+    },
+    {
+      "library": "push.js@1.0.9",
+      "destination": "wwwroot/lib/push.js"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "signalr.js@2.4.0",
+      "destination": "wwwroot/lib/signalr.js"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "aspnet-signalr@1.1.4",
+      "destination": "wwwroot/lib/aspnet-signalr"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "Chart.js@2.8.0",
+      "destination": "wwwroot/lib/chartjs"
+    }
+  ]
+}

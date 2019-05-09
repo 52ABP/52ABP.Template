@@ -1,0 +1,107 @@
+﻿@using Abp.Authorization.Users
+@using Abp.Extensions
+@using Abp.MultiTenancy
+@model LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Account.LoginFormViewModel
+@section Styles
+{
+    <environment names="Development">
+        <link rel="stylesheet" href="~/view-resources/Views/Account/Login.css" asp-append-version="true" />
+    </environment>
+
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/view-resources/Views/Account/Login.min.css" asp-append-version="true" />
+    </environment>
+
+}
+@section Scripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Account/Login.min.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<div id="LoginArea">
+
+
+
+    <form id="LoginForm" asp-action="Login" class="mb-3" method="post">
+        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+        <input type="hidden" name="returnUrlHash" />
+        <div class="mb-3">
+            <h1 class="h2">欢迎 回到52ABP!</h1>
+            <p class="small">
+                登录您的账号  ， 52ABP 是终身学习者的编程知识社区 保持好奇，刻意练习，每日精进。
+
+            </p>
+        </div>
+
+        @*<div class="d-flex my-4">
+                    <a class="btn btn-sm btn-dark px-3 mr-2" href="#">
+                        <i class="fab fa-github mr-1"></i> Login with Github
+                    </a>
+
+                    <a class="btn btn-sm btn-danger px-3" href="#">
+                        <i class="fab fa-google mr-1"></i> Login with Google
+                    </a>
+                </div>
+
+            <p class="small">
+               采用传统的账号密码登录
+            </p> *@
+
+
+        <div class="form-group mb-4">
+            <label for="inputLeftIcon1">@L("UserNameOrEmail")</label>
+            <span class="form-icon-wrapper">
+                <span class="form-icon form-icon--left">
+                    <i class="fa fa-user-circle form-icon__item"></i>
+                </span>
+                <input name="usernameOrEmailAddress" value="admin" class="form-control form-icon-input-left" type="text" placeholder="@L("UserNameOrEmail")" required autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
+            </span>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="inputLeftIcon1">@L("Password")</label>
+            <span class="form-icon-wrapper">
+                <span class="form-icon form-icon--left">
+                    <i class="fas fa-lock form-icon__item"></i>
+                </span>
+                <input type="password" value="bb123456" class="form-control form-icon-input-left" name="Password" placeholder="@L("Password")" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
+
+
+            </span>
+        </div>
+
+
+
+
+        <div class="form-group d-flex justify-content-between align-items-center mb-4">
+            <div class="custom-control custom-checkbox">
+                <input id="rememberMe" class="custom-control-input" name="rememberMe" type="checkbox">
+
+                <label class="custom-control-label" for="rememberMe">@L("RememberMe")</label>
+
+            </div>
+            @if (Model.IsSelfRegistrationAllowed)
+            {
+                <p class="small">
+                    <a asp-action="Register">@L("Register")</a>
+                </p>
+
+
+            }
+            @*<a class="link-muted small" href="">Forgot Password?</a>*@
+        </div>
+
+        <button id="LoginButton" class="btn btn-primary btn-block waves-effect" type="submit">@L("LogIn")</button>
+    </form>
+
+
+
+
+</div>
+

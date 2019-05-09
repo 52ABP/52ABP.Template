@@ -1,0 +1,129 @@
+﻿@using Abp.Authorization.Users
+@model LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Account.RegisterViewModel
+@{
+    ViewBag.DisableTopBar = true;
+}
+@section Styles
+{
+    <environment names="Development">
+        <link rel="stylesheet" href="~/view-resources/Views/Account/Login.css" asp-append-version="true" />
+    </environment>
+
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/view-resources/Views/Account/Login.min.css" asp-append-version="true" />
+    </environment>
+}
+@section Scripts{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Account/Register.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Account/Register.min.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<form id="RegisterForm" asp-action="Register" method="post">
+
+    <div class="mb-3">
+        <h1 class="h2">@L("Register")!</h1>
+        <p class="small">
+            注册属于您的账号，使用52ABP创建您的项目。52ABP 是终身学习者的编程知识社区 保持好奇，刻意练习，每日精进。
+        </p>
+    </div>
+    @if (@ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-soft-danger fade show" role="alert">
+            <i class="fa fa-minus-circle alert-icon mr-3"></i>
+            <span>@ViewBag.ErrorMessage</span>
+        </div>
+    }
+
+
+    <input type="hidden" name="IsExternalLogin" value="@Model.IsExternalLogin.ToString()" />
+    <input type="hidden" name="ExternalLoginAuthSchema" value="@Model.ExternalLoginAuthSchema" />
+
+
+
+    <div class="form-group mb-4">
+        <label for="inputLeftIcon1">@L("Name")</label>
+        <span class="form-icon-wrapper">
+            <span class="form-icon form-icon--left">
+                <i class="fas fa-user-alt form-icon__item"></i>
+            </span>
+            <input type="text" class="form-control form-icon-input-left" name="Name" value="@Model.Name" placeholder="@L("Name")" required maxlength="@AbpUserBase.MaxNameLength">
+        </span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="inputLeftIcon1">@L("Surname")</label>
+        <span class="form-icon-wrapper">
+            <span class="form-icon form-icon--left">
+                <i class="fas fa-user-slash form-icon__item"></i>
+            </span>
+
+            <input type="text" class="form-control form-icon-input-left" name="Surname" value="@Model.Surname" placeholder="@L("Surname")" required maxlength="@AbpUserBase.MaxSurnameLength">
+
+        </span>
+    </div>
+
+
+
+
+    <div class="form-group mb-4">
+        <label for="inputLeftIcon1">@L("EmailAddress")</label>
+        <span class="form-icon-wrapper">
+            <span class="form-icon form-icon--left">
+                <i class="fas fa-mail-bulk form-icon__item"></i>
+            </span>
+            <input type="email" class="form-control form-icon-input-left" name="EmailAddress" value="@Model.EmailAddress" placeholder="@L("EmailAddress")" required maxlength="@AbpUserBase.MaxEmailAddressLength">
+
+
+        </span>
+    </div>
+
+
+    <div class="form-group mb-4">
+        <label for="inputLeftIcon1">@L("UserName")</label>
+        <span class="form-icon-wrapper">
+            <span class="form-icon form-icon--left">
+                <i class="fas fa-user-ninja form-icon__item"></i>
+            </span>
+            <input type="text" class="form-control form-icon-input-left" name="UserName" placeholder="@L("UserNameOrEmail")" value="@Model.UserName" required maxlength="@AbpUserBase.MaxUserNameLength">
+
+
+        </span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="inputLeftIcon1">@L("Password")</label>
+        <span class="form-icon-wrapper">
+            <span class="form-icon form-icon--left">
+                <i class="fas fa-lock form-icon__item"></i>
+            </span>
+            <input type="password" class="form-control form-icon-input-left" name="Password" placeholder="@L("Password")" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
+
+
+        </span>
+    </div>
+
+    <div class="custom-control custom-checkbox mb-4">
+        <input id="rememberMe" class="custom-control-input" name="rememberMe" type="checkbox">
+        <label class="d-block custom-control-label" for="rememberMe">我同意注册 <a href="#">隐私 &amp; 条款</a></label>
+    </div>
+
+     <button id="RegisterButton" class="btn btn-primary btn-block waves-effect" type="submit">@L("Register")</button>
+
+
+    <p class="small">
+        已经有账号了?
+
+        <a asp-action="Login">@L("LogIn")</a>
+
+    </p>
+
+
+
+
+</form>
+

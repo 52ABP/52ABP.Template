@@ -16,8 +16,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
         {
             if (bool.Parse(configuration["Authentication:JwtBearer:IsEnabled"]))
             {
-                services.AddAuthentication(options =>
-                {
+                services.AddAuthentication(options => {
                     options.DefaultAuthenticateScheme = "JwtBearer";
                     options.DefaultChallengeScheme = "JwtBearer";
                 }).AddJwtBearer("JwtBearer", options =>

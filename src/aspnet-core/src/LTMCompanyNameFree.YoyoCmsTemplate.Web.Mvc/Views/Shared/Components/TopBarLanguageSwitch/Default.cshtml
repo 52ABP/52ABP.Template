@@ -1,0 +1,51 @@
+﻿@using LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.TopBarLanguageSwitch
+@model TopBarLanguageSwitchViewModel
+
+    <div class="dropdown mr-4">
+        <li class="link-muted d-flex align-items-center">
+            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                <i class="@Model.CurrentLanguage.Icon" title="@Model.CurrentLanguage.DisplayName"></i>
+                <span>@Model.CurrentLanguage.DisplayName</span>
+                <b class="caret"></b>
+            </a>
+
+            <div class="dropdown-menu   border-0 py-0 mt-3"
+                 aria-labelledby="dropdownMenuLink">
+
+                <div class="card">
+
+                    <div class="card-body">
+
+
+                        <ul class="list-unstyled mb-0">
+                            @foreach (var language in Model.Languages)
+                            {
+                                if (language.Name != Model.CurrentLanguage.Name)
+                                {
+                                    <li class="mb-4">
+                                        <a class="d-flex align-items-center link-dark" href="@(ApplicationPath)AbpLocalization/ChangeCulture?cultureName=@(language.Name)&returnUrl=@(Context.Request.Path)">
+
+                                            <span class="h3 mb-0">
+                                                <i class="@language.Icon text-muted mr-2"></i>
+
+                                            </span> @language.DisplayName
+
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </li>
+
+    </div>
+
+    

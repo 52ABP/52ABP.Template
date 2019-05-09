@@ -4,7 +4,8 @@ using LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy.Dto;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy
 {
-    public interface ITenantAppService : IAsyncCrudAppService<TenantDto, int, PagedResultRequestDto, CreateTenantDto, TenantDto>
+    public interface ITenantAppService : IAsyncCrudAppService<TenantDto, int, PagedTenantResultRequestDto, CreateTenantDto, TenantDto>
     {
     }
 }
+

@@ -1,0 +1,117 @@
+﻿@using Abp.Collections.Extensions
+@using LTMCompanyNameFree.YoyoCmsTemplate.Web.Views
+@using LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.SideBarNav
+@model SideBarNavViewModel
+@{
+    var calculateMenuUrl = new Func<string, string>((url) =>
+    {
+        if (string.IsNullOrEmpty(url))
+        {
+            return ApplicationPath;
+        }
+
+        if (UrlChecker.IsRooted(url))
+        {
+            return url;
+        }
+
+        return ApplicationPath + url;
+    });
+}
+<aside id="sidebar" class="u-sidebar">
+    <div class="u-sidebar-inner">
+        <header class="u-sidebar-header">
+            <a class="u-sidebar-logo" href="index.html">
+                <img class="img-fluid" src="./assets/img/logo.png" width="124" alt="Stream Dashboard">
+            </a>
+        </header>
+
+        <nav class="u-sidebar-nav">
+            <ul class="u-sidebar-nav-menu u-sidebar-nav-menu--top-level">
+
+                @foreach (var menuItem in Model.MainMenu.Items)
+                {
+
+
+                <li class="u-sidebar-nav-menu__item">
+
+                    @if (menuItem.Items.IsNullOrEmpty())
+                    {
+                    <a class="u-sidebar-nav-menu__link @(Model.ActiveMenuItemName == menuItem.Name ? "active" : "") " href="@calculateMenuUrl(menuItem.Url)">
+                        @if (!string.IsNullOrWhiteSpace(menuItem.Icon))                        {
+                            <i class="fa @menuItem.Icon   u-sidebar-nav-menu__item-icon"></i>
+                        }  
+                        <span class="u-sidebar-nav-menu__item-title">@menuItem.DisplayName</span>
+                    </a>
+                    }
+                    else
+                    {
+                <a class="u-sidebar-nav-menu__link" href="javascript:void(0);" data-target="#subMenu@(menuItem.Name)">
+                    @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
+                    {
+                        <i class="fa @menuItem.Icon   u-sidebar-nav-menu__item-icon"></i>
+                    }
+                    <span class="u-sidebar-nav-menu__item-title">@menuItem.DisplayName</span>
+                    <i class="fa fa-angle-right u-sidebar-nav-menu__item-arrow"></i>
+                    <span class="u-sidebar-nav-menu__indicator"></span>
+                </a>
+
+                <ul id="subMenu@(menuItem.Name)" class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level" style="display: none;">
+
+                    @foreach (var subMenuItem in menuItem.Items)
+                    {
+                        @if (subMenuItem.Items.IsNullOrEmpty())
+                        {
+
+                            <li class="u-sidebar-nav-menu__item">
+                                <a class="u-sidebar-nav-menu__link" href="@calculateMenuUrl(subMenuItem.Url)">
+                                    @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
+                                    {
+                                        <i class="fa @subMenuItem.Icon   u-sidebar-nav-menu__item-icon"></i>
+                                    }
+                                    <span class="u-sidebar-nav-menu__item-title">@subMenuItem.DisplayName</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="u-sidebar-nav-menu__item">
+                                <a class="u-sidebar-nav-menu__link" href="@calculateMenuUrl(subMenuItem.Url)">
+                                    @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
+                                    {
+                                        <i class="fa @subMenuItem.Icon   u-sidebar-nav-menu__item-icon"></i>
+                                    }
+                                    <span class="u-sidebar-nav-menu__item-title">@subMenuItem.DisplayName</span>
+                                </a>
+                            </li>
+
+                        }
+
+
+
+
+                    }
+
+
+
+                </ul>
+
+                    }
+
+
+
+                </li>
+
+
+                   
+                  
+
+                }
+
+
+
+            </ul>
+        </nav>
+    </div>
+</aside>
+<!-- End Sidebar -->

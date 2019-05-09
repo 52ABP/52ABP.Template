@@ -1,0 +1,172 @@
+﻿@using Abp.Authorization.Users
+@using Abp.MultiTenancy
+@using LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy
+@using LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
+@model Abp.Application.Services.Dto.PagedResultDto<LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy.Dto.TenantDto>
+@{
+    ViewBag.CurrentPageName = PageNames.Tenants; // The menu item will be active for this page.
+}
+
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Tenants/Index.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Tenants/Index.min.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<h1 class="h2 font-weight-semibold mb-4"> @L("Tenants")</h1>
+
+
+
+<div class="card mb-4">
+    <header class="card-header d-flex align-items-center">
+
+      
+        <h2 class="h3 card-header-title"> @L("Tenants") </h2> 
+        <ul class="list-inline ml-auto mb-0">
+           
+            <li class="list-inline-item">
+                <a id="RefreshButton" class="link-muted h3" href="#!">
+                    <i class="fas fa-redo"></i>刷新
+                    
+                </a>
+            </li>
+        </ul>
+    </header>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>@L("TenancyName")</th>
+                    <th>@L("Name")</th>
+                    <th>@L("IsActive")</th>
+                    <th class="text-center" scope="col">@L("Actions")</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                @foreach (var tenant in Model.Items)
+                {
+                    <tr>
+
+                        <td>@tenant.TenancyName</td>
+                        <td>@tenant.Name</td>
+                        <td>
+                           
+                            <i class=" fa  @(tenant.IsActive ? "text-success fa-check-circle" : "fa-minus-circle text-danger")   alert-icon mr-3"></i>
+                          </td>
+
+                      
+                        <td class="text-center">
+                            <a id="actions1Invoker" class="link-muted" href="#!" aria-haspopup="true" aria-expanded="false"
+                               data-toggle="dropdown">
+                                <i class="fa fa-sliders-h"></i>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right dropdown" style="width: 150px;" aria-labelledby="actions1Invoker">
+                                <ul class="list-unstyled mb-0">
+                                    <li>
+                                        <a href="#" class="d-flex align-items-center link-muted py-2 px-3 edit-tenant" data-tenant-id="@tenant.Id" data-toggle="modal" data-target="#TenantEditModal">
+                                            <i class="fa fa-plus mr-2"></i> @L("Edit")</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex align-items-center link-muted py-2 px-3 delete-tenant" data-tenant-id="@tenant.Id" data-tenancy-name="@tenant.TenancyName">
+                                            <i class="fa fa-minus mr-2"></i>@L("Delete")</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TenantCreateModal">
+                @L("CreateNewTenant")
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="TenantCreateModal" tabindex="-1" role="dialog" data-backdrop="false" aria-labelledby="TenantCreateModalLabel" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <form name="tenantCreateForm" role="form" novalidate class="form-validation">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span>@L("CreateNewTenant")</span>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                    <div class="form-group ">
+                        <div class="form-line">
+                            <label >@L("TenancyName")</label>
+                            <input class="form-control" type="text" name="TenancyName" required maxlength="@AbpTenantBase.MaxTenancyNameLength" minlength="2">
+
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="form-line">
+                            <label>@L("Name")</label>
+                            <input type="text" name="Name" class="form-control" required maxlength="@Tenant.MaxNameLength">
+
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="form-line">
+                            <label >@L("DatabaseConnectionString") (@L("Optional"))</label>
+                            <input type="text" name="ConnectionString" class="form-control" maxlength="@AbpTenantBase.MaxConnectionStringLength">
+
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="form-line">
+                            <label>@L("AdminEmailAddress")</label>
+                            <input type="email" name="AdminEmailAddress" class="form-control" required maxlength="@AbpUserBase.MaxEmailAddressLength">
+
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="IsActive" value="true" id="CreateTenantIsActive" class="filled-in" checked/>
+                        <label for="CreateTenantIsActive">@L("IsActive")</label>
+                    </div>
+                    <p>@L("DefaultPasswordIs") @LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Users.User.DefaultPassword</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary  " data-dismiss="modal">@L("Cancel")</button>
+                    <button type="submit" class="btn btn-primary  ">@L("Save")</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="TenantEditModal" tabindex="-1" role="dialog" aria-labelledby="TenantEditModalLabel"  data-backdrop="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
