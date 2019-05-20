@@ -27,7 +27,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
     finishedCallback: Function,
   ): void {
     this.rolesService
-      .getAll(request.skipCount, request.maxResultCount)
+      .getAll('', request.skipCount, request.maxResultCount)
       .finally(() => {
         finishedCallback();
       })
@@ -38,7 +38,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
   }
   protected delete(entity: RoleDto): void {
     this.message.confirm(
-      'Remove Users from Role and delete Role \'' + entity.displayName + '\'?',
+      "Remove Users from Role and delete Role '" + entity.displayName + "'?",
       'Permanently delete this Role',
       (result: boolean) => {
         if (result) {
@@ -48,7 +48,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
               this.notify.info('Deleted Role: ' + entity.displayName);
               this.refresh();
             })
-            .subscribe(() => { });
+            .subscribe(() => {});
         }
       },
     );

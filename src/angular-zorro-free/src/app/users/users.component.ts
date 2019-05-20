@@ -27,7 +27,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
     finishedCallback: Function,
   ): void {
     this._userService
-      .getAll(request.skipCount, request.maxResultCount)
+      .getAll('', this.isActive, request.skipCount, request.maxResultCount)
       .finally(() => {
         finishedCallback();
       })
@@ -54,7 +54,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
   create(): void {
     this.modalHelper
       .open(CreateUserComponent, {}, 'md', {
-        nzMask: true
+        nzMask: true,
       })
       .subscribe(isSave => {
         if (isSave) {
@@ -66,7 +66,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
   edit(item: UserDto): void {
     this.modalHelper
       .open(EditUserComponent, { id: item.id }, 'md', {
-        nzMask: true
+        nzMask: true,
       })
       .subscribe(isSave => {
         if (isSave) {

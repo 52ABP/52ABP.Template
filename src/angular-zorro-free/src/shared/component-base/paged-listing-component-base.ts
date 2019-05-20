@@ -52,6 +52,7 @@ export abstract class PagedListingComponentBase<EntityDto>
    */
   public isTableLoading = true;
 
+  public isActive: boolean | undefined;
   /**
    * 是否全部选中
    */

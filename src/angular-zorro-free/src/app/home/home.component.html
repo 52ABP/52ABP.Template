@@ -1,62 +1,50 @@
-<page-header [content]="content" [extra]="extra">
+<page-header [content]="content" [extra]="extra" [title]="'52ABP-PRO工作控制台'">
   <ng-template #content>
-    <div class="avatar">
-      <img class="img" src=" https://upload-images.jianshu.io/upload_images/1979022-b6bb0a2dad6c7f3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-        width="100px" height="100px">
-      <br>
-      <span>微信扫一扫关注</span>
-    </div>
-    <div class="desc">
-      <div class="desc-title">有事没事就请访问
-        <a href="//www.52abp.com" target="_blank">52ABP社区</a>
-      </div>
-      <div>假砖家 | 我们是一群业余的搞一个专业的事情。</div>
-      <div> 点击加入交流QQ群：
-        <a href="https://jq.qq.com/?_wv=1027&k=5He28dh">633751348 【52ABP .NET CORE 实战群】</a>
-      </div>
+
+    <p>52ABP-PRO:是一个围绕中国特色的.NET 全栈开发社区，目前的重心是围绕.Net Core和Angular 两个生态，来搭建高可用的应用开发框架。
+    </p>
+    <p> 52abp pro 是一套为中小型企业准备的快速开发模板，按照平台的开发规范，您可以快速实现功能开发，而不用花费太多心思来处理基础设施的内容。</p>
+    <div class="d-flex pt-md">
+      <a class="d-flex pr-lg" target="_blank" href="https://www.52abp.com/Wiki/52abp/latest/docs/Introduction">
+        <img class="pr-sm" src="https://gw.alipayobjects.com/zos/rmsportal/MjEImQtenlyueSmVEfUD.svg" />快速开始
+      </a>
+      <a class="d-flex pr-lg" target="_blank" href="https://www.52abp.com/Wiki/52abp/latest/docs/Introduction">
+        <img class="pr-sm" src="https://gw.alipayobjects.com/zos/rmsportal/NbuDUAuBlIApFuDvWiND.svg" />产品简介
+      </a>
+      <a class="d-flex pr-lg" target="_blank" href="https://www.52abp.com/Wiki/52abp/latest/docs/Introduction">
+        <img class="pr-sm" src="https://gw.alipayobjects.com/zos/rmsportal/ohOEPSYdDTNnyMbGuyLb.svg" />产品文档
+      </a>
+      <a class="d-flex" target="_blank" href="https://www.52abp.com/Wiki/52abp/latest/docs/Introduction">
+        <img class="pr-sm" src="https://gw.alipayobjects.com/zos/rmsportal/ohOEPSYdDTNnyMbGuyLb.svg" />配套代码生成器
+      </a>
     </div>
   </ng-template>
   <ng-template #extra>
-    <div class="page-extra">
-      <div>
-        <p>项目数</p>
-        <p>56</p>
-      </div>
-      <div>
-        <p>团队内排名</p>
-        <p>8
-          <span> / 24</span>
-        </p>
-      </div>
-      <div>
-        <p>项目访问</p>
-        <p>2,223</p>
-      </div>
+    <div style="margin-top: -60px; text-align: center; width: 400px;">
+      <a href="https://dwz.cn/kQydQrTe"> <img class="img-fluid"
+          src="https://edu-image.nosdn.127.net/0300916b-24c4-491b-9665-a0d367ac0b9e.jpg?imageView&quality=100&crop=0_0_1920_1077&thumbnail=450y250"></a>
     </div>
   </ng-template>
 </page-header>
 
-<!-- <img src="https://edu-image.nosdn.127.net/0300916b-24c4-491b-9665-a0d367ac0b9e.jpg?imageView&quality=100&crop=0_0_1920_1077&thumbnail=450y250"
-alt="ASP.NETCore&angular6快速开发购买课程"> -->
-<!-- 演示卡片数据 -->
 <div nz-row nzGutter="16">
   <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
     <div nz-row nzType="flex" nzAlign="middle" class="bg-primary rounded-md">
       <div nz-col nzSpan="12" class="p-md text-white">
-        <div class="h2 mt0">在线Demo：<a style="color:whitesmoke" href="https://free.yoyocms.com">https://free.yoyocms.com</a></div>
-        <p class="text-nowrap mb0">账号：admin 密码：123qwe</p>
+        <div class="h2 mt0">在线Demo：<a style="color:whitesmoke" href="http://pro.52abp.com">https://pro.52abp.com</a>
+        </div>
+        <p class="text-nowrap mb0">通过租户注册按钮来实现全功能的预览</p>
       </div>
       <div nz-col nzSpan="12">
         <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]"></g2-mini-bar>
       </div>
     </div>
   </div>
-  <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
+  <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md" (click)="showAdvertising()">
     <div nz-row nzType="flex" nzAlign="middle" class="bg-success rounded-md">
-      <div nz-col nzSpan="18" class="p-md text-white">
-        <div class="h2 mt0">52ABP开发者中心</div>
-        <p class="text-nowrap mb0">传送门： <a href="https://www.52abp.com/Wiki/52abp/latest/docs/Introduction" target="_blank">52ABP官方文档内容-ASP.NET
-            COR</a> </p>
+      <div nz-col nzSpan="12" class="p-md text-white">
+        <div class="h2 mt0">惊爆!点一下,玩一年</div>
+        <p class="text-nowrap mb0">手动狗头</p>
       </div>
       <div nz-col nzSpan="12">
         <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]"></g2-mini-bar>
@@ -90,7 +78,8 @@ alt="ASP.NETCore&angular6快速开发购买课程"> -->
 
 <div nz-row [nzGutter]="24">
   <div nz-col nzXs="24" nzSm="24" nzMd="24">
-    <nz-card nzTitle="52ABP模板项目中的技术栈" [nzBordered]="false" [nzLoading]="loading" class="ant-card__body-nopadding mb-lg project-list">
+    <nz-card nzTitle="52ABP模板项目中的技术栈" [nzBordered]="false" [nzLoading]="loading"
+      class="ant-card__body-nopadding mb-lg project-list">
       <div *ngFor="let item of notice" nz-card-grid class="project-grid">
         <nz-card [nzBordered]="false" class="ant-card__body-nopadding mb0">
           <nz-card-meta [nzTitle]="noticeTitle" [nzDescription]="item.description">
@@ -103,9 +92,9 @@ alt="ASP.NETCore&angular6快速开发购买课程"> -->
           </nz-card-meta>
           <div class="project-item">
             <!-- <a (click)="msg.info('show user: ' + item.member)">{{item.member}}</a>
-              <span *ngIf="item.updatedAt" class="datetime" title="{{item.updatedAt}}">
-                {{item.updatedAt | _date: 'fn' }}
-              </span> -->
+                <span *ngIf="item.updatedAt" class="datetime" title="{{item.updatedAt}}">
+                  {{item.updatedAt | _date: 'fn' }}
+                </span> -->
           </div>
         </nz-card>
       </div>
@@ -120,7 +109,8 @@ alt="ASP.NETCore&angular6快速开发购买课程"> -->
 <!-- 更多资料  -->
 <nz-row nzGutter="24">
   <nz-col nzSpan="24">
-    <nz-card nzTitle="更多资料" [nzBordered]="false" [nzBodyStyle]="{'padding-top.px': 12, 'padding-bottom.px': 12 }" class="mb-lg">
+    <nz-card nzTitle="更多资料" [nzBordered]="false" [nzBodyStyle]="{'padding-top.px': 12, 'padding-bottom.px': 12 }"
+      class="mb-lg">
       <div class="members">
         <div nz-row [nzGutter]="48">
           <div nz-col [nzSpan]="12" *ngFor="let i of members">

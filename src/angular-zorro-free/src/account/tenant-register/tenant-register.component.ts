@@ -39,7 +39,7 @@ export class TenantRegisterComponent extends AppComponentBase
   save(): void {
     this.saving = true;
     this._tenantRegisterService
-      .registerTenantAsync(this.model)
+      .registerTenant(this.model)
       .pipe(
         finalize(() => {
           this.saving = false;
@@ -52,7 +52,7 @@ export class TenantRegisterComponent extends AppComponentBase
         abp.multiTenancy.setTenantIdCookie(result.id);
 
         this._loginService.authenticateModel.userNameOrEmailAddress = this.model.adminEmailAddress;
-        this._loginService.authenticateModel.password = this.model.tenantAdminPassword;
+        this._loginService.authenticateModel.password = this.model.adminPassword;
         this._loginService.authenticate(() => {
           this.saving = false;
         });
