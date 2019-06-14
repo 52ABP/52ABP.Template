@@ -43,7 +43,7 @@
  
 - 网易课程地址：[ASP.NET Core与Angular6快速开发](https://study.163.com/provider/400000000309007/index.htm?share=2&shareId=400000000309007)
  
-- 文档： [52ABP开发者中心](https://www.52abp.com/Wiki/52abp/latest/docs/Introduction)
+- 文档： [52ABP开发者中心](https://www.52abp.com/Wiki/52abp/latest/Getting-Started)
 
 
 [52ABP模板 ASP.Net Core 与 Angular的开源实例项目
