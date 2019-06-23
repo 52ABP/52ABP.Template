@@ -289,3 +289,4 @@ __pycache__/
 /src/aspnet-core/src/LTMCompanyNameFree.YoyoCmsTemplate.Web.MVC/wwwroot/lib
 /src/aspnet-core/src/LTMCompanyNameFree.YoyoCmsTemplate.Web.Host/App_Data/
 /src/aspnet-core/src/LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc/App_Data/
+/src/aspnet-core/src/LTMCompanyNameFree.YoyoCmsTemplate.Web.Mvc/Connected Services/Application Insights/ConnectedService.json

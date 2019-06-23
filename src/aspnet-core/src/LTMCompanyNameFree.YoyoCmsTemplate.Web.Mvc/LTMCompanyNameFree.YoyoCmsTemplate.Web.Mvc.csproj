@@ -57,4 +57,7 @@
       <DependentUpon>messages_zh_Hans.js</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
 </Project>
