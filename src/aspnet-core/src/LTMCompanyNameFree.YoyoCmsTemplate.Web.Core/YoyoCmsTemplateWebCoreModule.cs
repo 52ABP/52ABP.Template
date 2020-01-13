@@ -12,6 +12,8 @@ using Abp.Zero.Configuration;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authentication.JwtBearer;
 using LTMCompanyNameFree.YoyoCmsTemplate.Configuration;
 using LTMCompanyNameFree.YoyoCmsTemplate.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+using Abp.Configuration.Startup;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate
 {
@@ -37,6 +39,12 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate
             Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(
                 YoyoCmsTemplateConsts.ConnectionStringName
             );
+
+            //在开发环境下发送所有错误信息到前端
+            if (_env.IsDevelopment())
+            {
+                Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
+            }
 
             // Use database for language management
             Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();

@@ -19,6 +19,7 @@ using Abp.AspNetCore.Mvc.Antiforgery;
 using Newtonsoft.Json.Serialization;
 using Abp.Json;
 using Abp.Dependency;
+using Microsoft.OpenApi.Models;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
 {
@@ -73,26 +74,25 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
                 )
             );
 
-            // Swagger - Enable this line and the related lines in Configure method to enable
-            // swagger UI
+            // Swagger - 在Configure方法中启用这一行和相关的行，以启用swagger UI
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new Info { Title = "YoyoCmsTemplate API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo() { Title = "YoyoCmsTemplate API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);
 
-                // Define the BearerAuth scheme that's in use
-                options.AddSecurityDefinition("bearerAuth", new ApiKeyScheme()
+                // 定义正在使用的BearerAuth方案
+                options.AddSecurityDefinition("bearerAuth", new OpenApiSecurityScheme()
                 {
                     Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
                     Name = "Authorization",
-                    In = "header",
-                    Type = "apiKey"
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
                 });
             });
 
-            // Configure Abp and Dependency Injection
+            //配置Abp和依赖项注入
             return services.AddAbp<YoyoCmsTemplateWebHostModule>(
-                // Configure Log4Net logging
+                // 配置Log4Net日志
                 options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
                     f => f.UseAbpLog4Net().WithConfig("log4net.config")
                 )
@@ -106,7 +106,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Host.Startup
             app.UseCors(_defaultCorsPolicyName); // Enable CORS!
 
             app.UseStaticFiles();
-
+            app.UseRouting();
             app.UseAuthentication();
 
             app.UseAbpRequestLocalization();

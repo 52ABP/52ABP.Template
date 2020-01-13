@@ -13,6 +13,7 @@ using Abp.Linq.Extensions;
 using Abp.Localization;
 using Abp.Runtime.Session;
 using Abp.UI;
+using AutoMapper;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Accounts;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Roles;
@@ -129,8 +130,13 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Users
 
         protected override UserDto MapToEntityDto(User user)
         {
-            var roles = _roleManager.Roles.Where(r => user.Roles.Any(ur => ur.RoleId == r.Id)).Select(r => r.NormalizedName);
-            var userDto = base.MapToEntityDto(user);
+            var roleIds = user.Roles.Select(o => o.RoleId).ToList();
+
+            var roles = _roleManager.Roles.
+                Where(r => roleIds.Contains(r.Id)).Select(r => r.NormalizedName);
+
+            var userDto = ObjectMapper.Map<UserDto>(user);
+
             userDto.RoleNames = roles.ToArray();
             return userDto;
         }
