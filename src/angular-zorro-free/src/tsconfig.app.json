@@ -2,11 +2,10 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "types": [
-      "node"
-    ],
+    "module": "esnext",
+    "types": ["node"],
     "paths": {
-      "@abp/*": [ "../node_modules/abp-ng2-module/dist/src/*" ],
+      "@abp/*": ["../node_modules/abp-ng2-module/dist/src/*"],
       "@appshared/*": ["app/shared/*"],
       "@testing": ["testing"],
       "@testing/*": ["testing/*"],
@@ -14,12 +13,9 @@
       "@env/*": ["environments/*"],
       "@shared/*": ["shared/*"],
       "@app/*": ["./app/*"],
-      "@layout/*":["./layout/*"]
+      "@layout/*": ["./layout/*"]
     },
     "baseUrl": "./"
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["src/test.ts", "**/*.spec.ts"]
 }

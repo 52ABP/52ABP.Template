@@ -56,8 +56,6 @@ export function fnPageHeaderConfig(): PageHeaderConfig {
   return Object.assign(new PageHeaderConfig(), { homeI18n: '管理' });
 }
 
-
-
 export function fnSTConfig(): STConfig {
   return Object.assign(new STConfig(), <STConfig>{
     modal: { size: 'lg' },
@@ -75,11 +73,11 @@ const GLOBAL_CONFIG_PROVIDES = [
 @NgModule({
   imports: [
     AlainThemeModule.forRoot(),
-    DelonABCModule.forRoot(),
-    DelonChartModule.forRoot(),
+    DelonABCModule,
+    DelonChartModule,
     DelonACLModule.forRoot(),
-    DelonCacheModule.forRoot(),
-    DelonUtilModule.forRoot(),
+    DelonCacheModule,
+    DelonUtilModule,
     // mock
     //...MOCK_MODULES,
   ],

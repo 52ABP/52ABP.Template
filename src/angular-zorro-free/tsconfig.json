@@ -3,22 +3,16 @@
   "compilerOptions": {
     "baseUrl": "src/",
     "outDir": "./dist/out-tsc",
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": false,
-    "module": "es2015",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "paths": {
-      "@abp/*": [ "../node_modules/abp-ng2-module/dist/src/*" ],
+      "@abp/*": ["../node_modules/abp-ng2-module/dist/src/*"],
       "@appshared/*": ["app/shared/*"],
       "@testing": ["testing"],
       "@testing/*": ["testing/*"],
@@ -26,7 +20,12 @@
       "@env/*": ["environments/*"],
       "@shared/*": ["shared/*"],
       "@app/*": ["./app/*"],
-      "@layout/*":["./layout/*"]
-    }
+      "@layout/*": ["./layout/*"]
+    },
+    "plugins": [
+      {
+        "name": "typescript-lit-html-plugin"
+      }
+    ]
   }
 }

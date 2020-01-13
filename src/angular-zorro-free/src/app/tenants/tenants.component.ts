@@ -63,6 +63,7 @@ export class TenantsComponent extends PagedListingComponentBase<TenantDto> {
   delete(item: TenantDto): void {
     this.message.confirm(
       "Delete tenant '" + item.name + "'?",
+      undefined,
       (result: boolean) => {
         if (result) {
           this._tenantService

@@ -40,6 +40,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
   protected delete(entity: UserDto): void {
     this.message.confirm(
       "Delete user '" + entity.fullName + "'?",
+      undefined,
       (result: boolean) => {
         if (result) {
           this._userService.delete(entity.id).subscribe(() => {
