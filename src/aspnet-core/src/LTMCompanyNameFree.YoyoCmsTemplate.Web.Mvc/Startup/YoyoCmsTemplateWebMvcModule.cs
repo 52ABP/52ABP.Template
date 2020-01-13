@@ -9,10 +9,10 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
     [DependsOn(typeof(YoyoCmsTemplateWebCoreModule))]
     public class YoyoCmsTemplateWebMvcModule : AbpModule
     {
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private readonly IConfigurationRoot _appConfiguration;
 
-        public YoyoCmsTemplateWebMvcModule(IHostingEnvironment env)
+        public YoyoCmsTemplateWebMvcModule(IWebHostEnvironment env)
         {
             _env = env;
             _appConfiguration = env.GetAppConfiguration();

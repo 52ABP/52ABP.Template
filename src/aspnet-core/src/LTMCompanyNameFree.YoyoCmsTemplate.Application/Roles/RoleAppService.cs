@@ -30,7 +30,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Roles
             _userManager = userManager;
         }
 
-        public override async Task<RoleDto> Create(CreateRoleDto input)
+        public override async Task<RoleDto> CreateAsync(CreateRoleDto input)
         {
             CheckCreatePermission();
 
@@ -62,7 +62,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Roles
             return new ListResultDto<RoleListDto>(ObjectMapper.Map<List<RoleListDto>>(roles));
         }
 
-        public override async Task<RoleDto> Update(RoleDto input)
+        public override async Task<RoleDto> UpdateAsync(RoleDto input)
         {
             CheckUpdatePermission();
 
@@ -82,7 +82,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Roles
             return MapToEntityDto(role);
         }
 
-        public override async Task Delete(EntityDto<int> input)
+        public override async Task DeleteAsync(EntityDto<int> input)
         {
             CheckDeletePermission();
 
@@ -145,4 +145,3 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Roles
         }
     }
 }
-

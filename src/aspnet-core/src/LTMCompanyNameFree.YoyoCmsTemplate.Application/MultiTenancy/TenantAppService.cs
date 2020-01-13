@@ -43,7 +43,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy
             _abpZeroDbMigrator = abpZeroDbMigrator;
         }
 
-        public override async Task<TenantDto> Create(CreateTenantDto input)
+        public override async Task<TenantDto> CreateAsync(CreateTenantDto input)
         {
             CheckCreatePermission();
 
@@ -106,7 +106,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy
             entity.IsActive = updateInput.IsActive;
         }
 
-        public override async Task Delete(EntityDto<int> input)
+        public override async Task DeleteAsync(EntityDto<int> input)
         {
             CheckDeletePermission();
 
@@ -120,4 +120,3 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy
         }
     }
 }
-

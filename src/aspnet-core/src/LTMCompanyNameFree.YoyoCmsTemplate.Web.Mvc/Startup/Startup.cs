@@ -13,7 +13,7 @@ using LTMCompanyNameFree.YoyoCmsTemplate.Configuration;
 using LTMCompanyNameFree.YoyoCmsTemplate.Identity;
 using LTMCompanyNameFree.YoyoCmsTemplate.Web.Resources;
 using Abp.AspNetCore.SignalR.Hubs;
-
+using Microsoft.Extensions.Hosting;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
 {
@@ -21,7 +21,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
     {
         private readonly IConfigurationRoot _appConfiguration;
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IWebHostEnvironment env)
         {
             _appConfiguration = env.GetAppConfiguration();
         }
@@ -49,7 +49,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
             );
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseAbp(); // Initializes ABP framework.
 
@@ -68,20 +68,11 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
 
             app.UseJwtTokenMiddleware();
 
-            app.UseSignalR(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapHub<AbpCommonHub>("/signalr");
-            });
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "defaultWithArea",
-                    template: "{area}/{controller=Home}/{action=Index}/{id?}");
-
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<AbpCommonHub>("/signalr");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

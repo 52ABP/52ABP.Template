@@ -6,7 +6,7 @@ using LTMCompanyNameFree.YoyoCmsTemplate.Authorization;
 namespace LTMCompanyNameFree.YoyoCmsTemplate
 {
     [DependsOn(
-        typeof(YoyoCmsTemplateCoreModule), 
+        typeof(YoyoCmsTemplateCoreModule),
         typeof(AbpAutoMapperModule))]
     public class YoyoCmsTemplateApplicationModule : AbpModule
     {
@@ -23,7 +23,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate
 
             Configuration.Modules.AbpAutoMapper().Configurators.Add(
                 // Scan the assembly for classes which inherit from AutoMapper.Profile
-                cfg => cfg.AddProfiles(thisAssembly)
+                cfg => cfg.AddMaps(thisAssembly)
             );
         }
     }

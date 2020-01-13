@@ -19,14 +19,14 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate
          typeof(YoyoCmsTemplateApplicationModule),
          typeof(YoyoCmsTemplateEntityFrameworkModule),
          typeof(AbpAspNetCoreModule)
-        ,typeof(AbpAspNetCoreSignalRModule)
+        , typeof(AbpAspNetCoreSignalRModule)
      )]
     public class YoyoCmsTemplateWebCoreModule : AbpModule
     {
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private readonly IConfigurationRoot _appConfiguration;
 
-        public YoyoCmsTemplateWebCoreModule(IHostingEnvironment env)
+        public YoyoCmsTemplateWebCoreModule(IWebHostEnvironment env)
         {
             _env = env;
             _appConfiguration = env.GetAppConfiguration();
