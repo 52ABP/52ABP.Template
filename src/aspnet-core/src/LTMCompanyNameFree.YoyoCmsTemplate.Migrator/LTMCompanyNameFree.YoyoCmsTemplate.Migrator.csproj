@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AssemblyName>LTMCompanyNameFree.YoyoCmsTemplate.Migrator</AssemblyName>
     <OutputType>Exe</OutputType>
@@ -15,7 +15,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Abp.Castle.Log4Net" Version="4.5.0" />
+    <PackageReference Include="Abp.Castle.Log4Net" Version="5.1.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LTMCompanyNameFree.YoyoCmsTemplate.Core\LTMCompanyNameFree.YoyoCmsTemplate.Core.csproj" />

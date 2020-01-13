@@ -13,6 +13,7 @@ using Abp.Linq.Extensions;
 using Abp.Localization;
 using Abp.Runtime.Session;
 using Abp.UI;
+using AutoMapper;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Accounts;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Roles;
@@ -52,7 +53,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Users
             _logInManager = logInManager;
         }
 
-        public override async Task<UserDto> Create(CreateUserDto input)
+        public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
             CheckCreatePermission();
 
@@ -67,7 +68,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Users
 
             if (input.RoleNames != null)
             {
-                CheckErrors(await _userManager.SetRoles(user, input.RoleNames));
+                CheckErrors(await _userManager.SetRolesAsync(user, input.RoleNames));
             }
 
             CurrentUnitOfWork.SaveChanges();
@@ -75,7 +76,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Users
             return MapToEntityDto(user);
         }
 
-        public override async Task<UserDto> Update(UserDto input)
+        public override async Task<UserDto> UpdateAsync(UserDto input)
         {
             CheckUpdatePermission();
 
@@ -87,13 +88,13 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Users
 
             if (input.RoleNames != null)
             {
-                CheckErrors(await _userManager.SetRoles(user, input.RoleNames));
+                CheckErrors(await _userManager.SetRolesAsync(user, input.RoleNames));
             }
 
-            return await Get(input);
+            return await GetAsync(input);
         }
 
-        public override async Task Delete(EntityDto<long> input)
+        public override async Task DeleteAsync(EntityDto<long> input)
         {
             var user = await _userManager.GetUserByIdAsync(input.Id);
             await _userManager.DeleteAsync(user);
@@ -129,8 +130,13 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Users
 
         protected override UserDto MapToEntityDto(User user)
         {
-            var roles = _roleManager.Roles.Where(r => user.Roles.Any(ur => ur.RoleId == r.Id)).Select(r => r.NormalizedName);
-            var userDto = base.MapToEntityDto(user);
+            var roleIds = user.Roles.Select(o => o.RoleId).ToList();
+
+            var roles = _roleManager.Roles.
+                Where(r => roleIds.Contains(r.Id)).Select(r => r.NormalizedName);
+
+            var userDto = ObjectMapper.Map<UserDto>(user);
+
             userDto.RoleNames = roles.ToArray();
             return userDto;
         }
@@ -218,7 +224,5 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Users
 
             return true;
         }
-
     }
 }
-
