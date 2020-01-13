@@ -17,7 +17,8 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.TenantC
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var loginInfo = await _sessionAppService.GetCurrentLoginInformations();
-            var model = loginInfo.MapTo<TenantChangeViewModel>();
+            var model = ObjectMapper.Map<TenantChangeViewModel>(loginInfo);
+
             return View(model);
         }
     }

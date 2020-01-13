@@ -64,9 +64,13 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
 
             app.UseStaticFiles();
 
+            app.UseRouting();
+
             app.UseAuthentication();
 
             app.UseJwtTokenMiddleware();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
