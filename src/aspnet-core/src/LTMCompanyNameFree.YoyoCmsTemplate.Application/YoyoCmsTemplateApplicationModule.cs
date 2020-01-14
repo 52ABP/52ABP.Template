@@ -17,14 +17,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate
 
         public override void Initialize()
         {
-            var thisAssembly = typeof(YoyoCmsTemplateApplicationModule).GetAssembly();
-
-            IocManager.RegisterAssemblyByConvention(thisAssembly);
-
-            Configuration.Modules.AbpAutoMapper().Configurators.Add(
-                // Scan the assembly for classes which inherit from AutoMapper.Profile
-                cfg => cfg.AddMaps(thisAssembly)
-            );
+            IocManager.RegisterAssemblyByConvention(typeof(YoyoCmsTemplateApplicationModule).GetAssembly());
         }
     }
 }
