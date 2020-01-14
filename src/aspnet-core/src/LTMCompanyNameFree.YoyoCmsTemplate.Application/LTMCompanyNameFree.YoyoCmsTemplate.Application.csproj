@@ -11,6 +11,9 @@
     <RootNamespace>LTMCompanyNameFree.YoyoCmsTemplate</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="L.52ABP.Application" Version="2.0.138" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\LTMCompanyNameFree.YoyoCmsTemplate.Core\LTMCompanyNameFree.YoyoCmsTemplate.Core.csproj" />
   </ItemGroup>
 </Project>
