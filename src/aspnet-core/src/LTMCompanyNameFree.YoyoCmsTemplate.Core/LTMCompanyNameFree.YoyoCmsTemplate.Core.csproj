@@ -18,7 +18,7 @@
     <PackageReference Include="Abp.AutoMapper" Version="5.1.0" />
     <PackageReference Include="Abp.ZeroCore.EntityFrameworkCore" Version="5.1.0" />  
     <PackageReference Include="Castle.Windsor.MsDependencyInjection" Version="3.3.1" />  
-    <PackageReference Include="L.52ABP.Common" Version="2.0.138" />  
-    <PackageReference Include="L.52ABP.Core" Version="2.0.138" />
+    <PackageReference Include="L.52ABP.Common" Version="4.1.286.98" />  
+    <PackageReference Include="L.52ABP.Core" Version="4.1.286.98" />
   </ItemGroup>
 </Project>
