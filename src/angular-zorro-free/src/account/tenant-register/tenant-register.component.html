@@ -57,12 +57,12 @@
         <nz-form-item>
           <nz-form-control nzHasFeedback>
             <nz-input-group nzPrefixIcon="anticon anticon-lock">
-              <input nz-input type="password" name="tenantAdminPassword" #tenantAdminPassword="ngModel" [(ngModel)]="model.tenantAdminPassword"
+              <input nz-input type="password" name="adminPassword" #adminPassword="ngModel" [(ngModel)]="model.adminPassword"
                 [placeholder]="l('Password')" required maxlength="32" minlength="6">
             </nz-input-group>
-            <nz-form-explain *ngIf="tenantAdminPassword.control.dirty&&tenantAdminPassword.control.errors">
-              <ng-container *ngIf="tenantAdminPassword.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
-              <ng-container *ngIf="tenantAdminPassword.control.hasError('minlength')">{{l('MinLength')}}</ng-container>
+            <nz-form-explain *ngIf="adminPassword.control.dirty&&adminPassword.control.errors">
+              <ng-container *ngIf="adminPassword.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+              <ng-container *ngIf="adminPassword.control.hasError('minlength')">{{l('MinLength')}}</ng-container>
             </nz-form-explain>
           </nz-form-control>
         </nz-form-item>
