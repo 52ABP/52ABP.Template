@@ -1,8 +1,86 @@
-﻿@using LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
-@{
-    ViewBag.CurrentPageName = PageNames.About; // The menu item will be active for this page.
-}
+@using LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
+@{ ViewBag.CurrentPageName = PageNames.About;
+                ViewBag.Title = L("About"); }
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="m-0 text-dark">@L("About")</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        
+                        <h3>什么是   52ABP?</h3>
+                        <p>
 
-@Html.Partial("_AboutMe")
+                            52ABP是一个整合了前后端的强力框架， 后端是对.NET Core和ABP框架进行了二次的封装和整合 前端是在Angular的基础上整合了Ng-Zorro、Ng-alain等组件 架构层面也是一个基于DDD(领域驱动设计)的经典分层架构 目的是成为一个强大的基础设施符合国人开发习惯的框架现代WEB应用框架。
+
+                            这是一个基于ASP.NET Boilerplate框架和Module Zero的简单启动模板。本项目是由52ABP.COM创建，地址：<a href="https://www.52abp.com/Download" target="_blank">52ABP-项目创建</a>
+                        </p>
+
+                        <h3>什么是 ASP.NET Boilerplate 框架?</h3>
+
+                        <p>
+                            ASP.NET Boilerplate是一个建立在最新的<strong>ASP.NET Core</strong>框架上的应用程序框架。
+                            它使授权、依赖性注入、验证、异常处理、本地化、日志、缓存、后台作业等都变得容易使用。
+                            它建立在已经熟悉的工具上，如Entity Framework、AutoMapper、Castle Windsor...
+                        </p>
+
+                        <p>
+
+                            ASP.NET Boilerplate实现了<strong>多层架构体系架构</strong>（包含领域层、应用层、基础设施和表现层
+                            和<strong>领域驱动设计</strong>（实体、存储库、应用服务、DTO...）。
+                            还实现并提供了良好的基础设施，以实施常见的软件开发<strong>最佳实践</strong>。
 
 
+                        </p>
+
+                        <h3>什么是Module Zero模块？</h3>
+
+                        <p>
+                            ASP.NET Boilerplate框架被设计为独立于任何数据库模式，并尽可能的通用。
+                            架构，并尽可能做到通用。因此，它留下了一些
+                            <strong>抽象的概念</strong>和<strong>可选择的</strong>（如审计日志、权限和设置存储），功能实现。
+                            这些都需要进行<strong>数据存储</strong>保存到数据库中。
+                        </p>
+
+
+
+
+                        <p>
+
+
+                            <strong>Module Zero</strong>实现了ASP.NET Boilerplate框架的所有基本概念。
+                            ，如<a href="https://www.52abp.com/Wiki/abp-cn/latest/1.5ABP%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D-%E5%A4%9A%E7%A7%9F%E6%88%B7.md">租户管理</a>（<strong>多租户</strong>）。
+
+                            <a href="https://www.52abp.com/Wiki/abp-cn/latest/2.5ABP%E5%85%AC%E5%85%B1%E7%BB%93%E6%9E%84-%E8%AE%BE%E7%BD%AE%E7%AE%A1%E7%90%86.md">设置管理</a>,
+                            <a href="http://www.aspnetboilerplate.com/Pages/Documents/Zero/Language-Management">
+                                语言管理
+                            </a>，<a href="https://www.52abp.com/Wiki/abp-cn/latest/4.7ABP%E5%BA%94%E7%94%A8%E5%B1%82-%E5%AE%A1%E8%AE%A1%E6%97%A5%E5%BF%97.md">审计记录</a>。
+                            等等。
+
+
+
+
+                        </p>
+                        <p>
+                            Module-Zero定义了实体并实现了<strong>领域层的核心业务逻辑</strong>，它将应用服务层和表现层留给你，进行调用。
+                        </p>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

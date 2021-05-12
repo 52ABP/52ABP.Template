@@ -1,5 +1,5 @@
 {
-  "defaultProvider": "cdnjs",
+  "defaultProvider": "jsdelivr",
   "version": "1.0",
   "libraries": [
     //core libs start

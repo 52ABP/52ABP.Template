@@ -15,10 +15,18 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
             context.Manager.MainMenu
                 .AddItem(
                     new MenuItemDefinition(
+                        PageNames.About,
+                        L("About"),
+                        url: "About",
+                        icon: "fas fa-info-circle"
+                    )
+                )
+                .AddItem(
+                    new MenuItemDefinition(
                         PageNames.Home,
                         L("HomePage"),
                         url: "",
-                        icon: "fa-cubes",
+                        icon: "fas fa-home",
                         requiresAuthentication: true
                     )
                 ).AddItem(
@@ -26,7 +34,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
                         PageNames.Tenants,
                         L("Tenants"),
                         url: "Tenants",
-                        icon: "fa-newspaper",
+                        icon: "fas fa-building",
                         permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Tenants)
                     )
                 ).AddItem(
@@ -34,7 +42,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
                         PageNames.Users,
                         L("Users"),
                         url: "Users",
-                        icon: "fa-people-carry ",
+                        icon: "fas fa-users",
                         permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Users)
                     )
                 ).AddItem(
@@ -42,38 +50,57 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
                         PageNames.Roles,
                         L("Roles"),
                         url: "Roles",
-                        icon: "fa-power-off",
+                        icon: "fas fa-theater-masks",
                         permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Roles)
                     )
                 )
-                .AddItem(
-                    new MenuItemDefinition(
-                        PageNames.About,
-                        L("About"),
-                        url: "/About",
-                        icon: "fa-address-book"
-                    )
-                ).AddItem( // Menu items below is just for demonstration!
+                .AddItem( // Menu items below is just for demonstration!
                     new MenuItemDefinition(
                         "MultiLevelMenu",
                         L("MultiLevelMenu"),
-                        icon: "menu"
+                        icon: "fas fa-circle"
                     ).AddItem(
                         new MenuItemDefinition(
                             "AspNetBoilerplate",
-                            new FixedLocalizableString("从零开始学Asp.Net Core"),
-                             url: "https://study.163.com/course/courseMain.htm?courseId=1209215803&share=2&shareId=400000000309007"
+                            new FixedLocalizableString("52ABP"),
+                            icon: "far fa-circle"
+                        ).AddItem(
+                            new MenuItemDefinition(
+                                "AspNetBoilerplateHome",
+                                new FixedLocalizableString("首页"),
+                                url: "https://www.52abp.com?ref=abptmpl",
+                                icon: "far fa-dot-circle"
+                            )
+                        ).AddItem(
+                            new MenuItemDefinition(
+                                "AspNetBoilerplateTemplates",
+                                new FixedLocalizableString("项目模板"),
+                                url: "https://www.52abp.com/Download",
+                                icon: "far fa-dot-circle"
+                            )
+                        ).AddItem(
+                            new MenuItemDefinition(
+                                "AspNetBoilerplateSamples",
+                                new FixedLocalizableString("52ABP-PRO"),
+                                url: "https://www.52abp.com/Wiki/52abp/latest/Abp-Template-vs-52ABP-Pro",
+                                icon: "far fa-dot-circle"
+                            )
+                        ).AddItem(
+                            new MenuItemDefinition(
+                                "AspNetBoilerplateDocuments",
+                                new FixedLocalizableString("文档"),
+                                url: "https://www.52abp.com/Wiki/52abp/latest/Index-Angular.md",
+                                icon: "far fa-dot-circle"
+                            )
+                        ).AddItem(
+                            new MenuItemDefinition(
+                                "AspNetBoilerplateDocuments",
+                                new FixedLocalizableString("源代码"),
+                                url: "https://github.com/52ABP/YoyoCmsFree.Template",
+                                icon: "far fa-dot-circle"
+                            )
                         )
-                        
-                    ).AddItem(
-                        new MenuItemDefinition(
-                            "AspNetZero",
-                            new FixedLocalizableString("52ABPASP.NET Core与Angular开发"),
-                             url: "https://study.163.com/course/courseMain.htm?courseId=1006191011&share=2&shareId=400000000309007"
-
-                        )
-
-                    )
+                    ) 
                 );
         }
 

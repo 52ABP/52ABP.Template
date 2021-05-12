@@ -28,7 +28,7 @@ using LTMCompanyNameFree.YoyoCmsTemplate.Controllers;
 using LTMCompanyNameFree.YoyoCmsTemplate.Identity;
 using LTMCompanyNameFree.YoyoCmsTemplate.MultiTenancy;
 using LTMCompanyNameFree.YoyoCmsTemplate.Sessions;
-using LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Account;
+using LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Account;
 using LTMCompanyNameFree.YoyoCmsTemplate.Web.Views.Shared.Components.TenantChange;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
@@ -77,12 +77,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 
         public ActionResult Login(string userNameOrEmailAddress = "", string returnUrl = "", string successMessage = "")
         {
-            if (AbpSession.UserId.HasValue)
-            {
-                return Redirect(GetAppHomeUrl());
-            }
-
-                if (string.IsNullOrWhiteSpace(returnUrl))
+            if (string.IsNullOrWhiteSpace(returnUrl))
             {
                 returnUrl = GetAppHomeUrl();
             }
@@ -191,7 +186,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
                     model.EmailAddress,
                     model.UserName,
                     model.Password,
-                    false // Assumed email address is always confirmed. Change this if you want to implement email confirmation.
+                    true // Assumed email address is always confirmed. Change this if you want to implement email confirmation.
                 );
 
                 // Getting tenant-specific settings
@@ -381,7 +376,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 
         public string GetAppHomeUrl()
         {
-            return Url.Action("Index", "Home");
+            return Url.Action("Index", "About");
         }
 
         #endregion

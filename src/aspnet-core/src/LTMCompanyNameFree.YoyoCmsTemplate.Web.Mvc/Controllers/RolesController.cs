@@ -5,8 +5,7 @@ using Abp.AspNetCore.Mvc.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Controllers;
 using LTMCompanyNameFree.YoyoCmsTemplate.Roles;
-using LTMCompanyNameFree.YoyoCmsTemplate.Roles.Dto;
-using LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Roles;
+using LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Roles;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 {
@@ -22,23 +21,21 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var roles = (await _roleAppService.GetRolesAsync(new GetRolesInput())).Items;
             var permissions = (await _roleAppService.GetAllPermissions()).Items;
             var model = new RoleListViewModel
             {
-                Roles = roles,
                 Permissions = permissions
             };
 
             return View(model);
         }
 
-        public async Task<ActionResult> EditRoleModal(int roleId)
+        public async Task<ActionResult> EditModal(int roleId)
         {
             var output = await _roleAppService.GetRoleForEdit(new EntityDto(roleId));
-            var model = new EditRoleModalViewModel(output);
+            var model = ObjectMapper.Map<EditRoleModalViewModel>(output);
 
-            return View("_EditRoleModal", model);
+            return PartialView("_EditModal", model);
         }
     }
 }
