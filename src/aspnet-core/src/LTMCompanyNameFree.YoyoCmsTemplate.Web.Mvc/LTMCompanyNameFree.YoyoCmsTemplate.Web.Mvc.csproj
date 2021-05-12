@@ -38,6 +38,7 @@
   
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="wwwroot\Common\Styles\" />
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
   </ItemGroup>
   <ItemGroup>
