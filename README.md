@@ -2,7 +2,7 @@
 
 本模板是基于ASP.NET Core 和Angular 提供给52ABP进行下载的模板项目。
 
-- 快速启动教程： [创建ASP.NET Core 和Angular免费项目模版搭建教程(单页面模板)](https://www.52abp.com/BlogDetails/1)
+- 快速启动教程： [ABP框架入门教程](https://52abp.ke.qq.com)
 
 
 ## 下载地址
