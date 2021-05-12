@@ -1,0 +1,9 @@
+<Project>
+
+  <PropertyGroup>
+    <AbpVersion>6.1.1</AbpVersion>
+    <L52abpVersion>4.5.0</L52abpVersion>
+    
+  </PropertyGroup>
+
+</Project> 

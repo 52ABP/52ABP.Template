@@ -1,4 +1,5 @@
-﻿using Abp.Application.Navigation;
+using Abp.Application.Navigation;
+using Abp.Authorization;
 using Abp.Localization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization;
 
@@ -26,7 +27,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
                         L("Tenants"),
                         url: "Tenants",
                         icon: "fa-newspaper",
-                        requiredPermissionName: PermissionNames.Pages_Tenants
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Tenants)
                     )
                 ).AddItem(
                     new MenuItemDefinition(
@@ -34,7 +35,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
                         L("Users"),
                         url: "Users",
                         icon: "fa-people-carry ",
-                        requiredPermissionName: PermissionNames.Pages_Users
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Users)
                     )
                 ).AddItem(
                     new MenuItemDefinition(
@@ -42,7 +43,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Startup
                         L("Roles"),
                         url: "Roles",
                         icon: "fa-power-off",
-                        requiredPermissionName: PermissionNames.Pages_Roles
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Roles)
                     )
                 )
                 .AddItem(
