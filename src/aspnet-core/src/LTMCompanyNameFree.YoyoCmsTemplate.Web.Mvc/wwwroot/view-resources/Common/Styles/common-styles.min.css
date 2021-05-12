@@ -1,0 +1,99 @@
+/* General */
+.clickable-item {
+  cursor: pointer;
+}
+.text-bold {
+  font-weight: bold;
+}
+/* Portlet */
+.portlet.light > .portlet-title .inputs.inputs-full-width {
+  display: block;
+  float: none;
+}
+/* Tree */
+.tree-item-icon-color {
+  color: #dfba49;
+}
+.page-sidebar .page-sidebar-menu > li > a > i.fa,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i.fa {
+  margin-left: 1px;
+  margin-right: 4px;
+  top: 3px;
+}
+/* Forms */
+.form-group.form-md-line-input.no-hint {
+  margin-bottom: 15px;
+}
+.form-group.form-md-line-input.has-error .form-control {
+  border-bottom-color: red;
+}
+.form-group.form-md-line-input.has-error .help-block-info {
+  display: none;
+}
+/* DateRangePicker */
+.daterangepicker_input .input-mini {
+  width: 120px !important;
+}
+/* Portlets */
+.portlet.light > .portlet-title.portlet-title-filter {
+  border: none;
+  margin-bottom: 0;
+}
+/* Buttons */
+button i {
+  margin-right: 5px;
+}
+.btn + .btn {
+  margin-left: 5px;
+}
+/* FamFamFam Flags */
+.famfamfam-flags {
+  display: inline-block;
+}
+.margin-bottom-0 {
+  margin-bottom: 0 !important;
+}
+/* Make user menu wider */
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu {
+  width: 250px;
+}
+/* Fix for issue #407 */
+br {
+  font-family: Verdana;
+}
+span.phone-number-verified {
+  border-bottom: #36c6d3 2px solid !important;
+}
+.margin-top-20 {
+  margin-top: 20px;
+}
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+/* Sweet alert */
+.swal-title {
+  overflow-wrap: break-word;
+}
+.swal-footer {
+  text-align: center;
+}
+@keyframes glowing {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+.glowing {
+  animation: glowing 2s infinite;
+}
+.toast-error {
+  background-color: red !important;
+}
+.bootstrap-datetimepicker-widget {
+  width: 275px !important;
+}

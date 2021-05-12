@@ -5,9 +5,9 @@
       "input": [
 
         "node_modules/jquery/dist/jquery.js",
+        "node_modules/bootstrap/dist/js/bootstrap.js",
 
-        "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
-        "node_modules/admin-lte/dist/js/adminlte.js",
+         "node_modules/admin-lte/dist/js/adminlte.js",
 
         "node_modules/jquery-validation/dist/jquery.validate.js",
         "node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js",
@@ -37,14 +37,21 @@
   ],
   "styles": [
     {
-      "output": "Common/front-mvc/common-styles.min.css",
+      "output": "view-resources/Common/Styles/common-styles.min.css",
       "input": [
         "wwwroot/Common/Styles/**/*.css",
         "wwwroot/Common/Styles/**/*.less",
         "!wwwroot/Common/Styles/**/*min.css"
       ]
+    },
+    {
+      "output": "wwwroot/view-resources/Views/_Bundles/shared-layout.min.css",
+      "input": [
+        "node_modules/bootstrap/dist/js/bootstrap.bundle.css",
+        "node_modules/admin-lte/dist/css/adminlte.css"
+      ]
     }
-    
+
   ],
   "scriptMappings": []
 }
