@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\abpversion.props"></Import>
+
   <PropertyGroup>
     <VersionPrefix>1.0.0.0</VersionPrefix>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AssemblyName>LTMCompanyNameFree.YoyoCmsTemplate.Web.Core</AssemblyName>
     <PackageId>LTMCompanyNameFree.YoyoCmsTemplate.Web.Core</PackageId>
@@ -20,11 +22,10 @@
     <ProjectReference Include="..\LTMCompanyNameFree.YoyoCmsTemplate.EntityFrameworkCore\LTMCompanyNameFree.YoyoCmsTemplate.EntityFrameworkCore.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="L.52ABP.Web.Core" Version="4.1.286.98" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.18" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
-    <PackageReference Include="Abp.AspNetCore" Version="5.1.0" />
-    <PackageReference Include="Abp.ZeroCore" Version="5.1.0" />
-    <PackageReference Include="Abp.AspNetCore.SignalR" Version="5.1.0" />
+    <PackageReference Include="L.52ABP.Web.Core" Version="$(L52abpVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
+
+    <PackageReference Include="Abp.AspNetCore.SignalR" Version="$(AbpVersion)" />
   </ItemGroup>
 </Project>

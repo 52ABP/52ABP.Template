@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Views
 {
@@ -12,7 +12,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Views
             {
                 return true;
             }
-            
+
             if (UrlWithProtocolRegex.IsMatch(url))
             {
                 return true;

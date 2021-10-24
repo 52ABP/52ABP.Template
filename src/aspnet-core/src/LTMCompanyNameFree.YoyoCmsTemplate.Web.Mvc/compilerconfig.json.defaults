@@ -42,9 +42,8 @@
     },
     "javascript": {
       "enabled": true,
-      "gzip": true,
       "termSemicolons": true,
-
+      "gzip": false
     }
   }
 }

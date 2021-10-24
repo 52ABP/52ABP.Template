@@ -5,8 +5,7 @@ using Abp.AspNetCore.Mvc.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization;
 using LTMCompanyNameFree.YoyoCmsTemplate.Controllers;
 using LTMCompanyNameFree.YoyoCmsTemplate.Users;
-using LTMCompanyNameFree.YoyoCmsTemplate.Users.Dto;
-using LTMCompanyNameFree.YoyoCmsTemplate.Web.ViewModels.Users;
+using LTMCompanyNameFree.YoyoCmsTemplate.Web.Models.Users;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 {
@@ -22,17 +21,15 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var users = (await _userAppService.GetAllAsync(new PagedUserResultRequestDto { MaxResultCount = int.MaxValue })).Items; // Paging not implemented yet
             var roles = (await _userAppService.GetRoles()).Items;
             var model = new UserListViewModel
             {
-                Users = users,
                 Roles = roles
             };
             return View(model);
         }
 
-        public async Task<ActionResult> EditUserModal(long userId)
+        public async Task<ActionResult> EditModal(long userId)
         {
             var user = await _userAppService.GetAsync(new EntityDto<long>(userId));
             var roles = (await _userAppService.GetRoles()).Items;
@@ -41,7 +38,12 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Web.Controllers
                 User = user,
                 Roles = roles
             };
-            return View("_EditUserModal", model);
+            return PartialView("_EditModal", model);
+        }
+
+        public ActionResult ChangePassword()
+        {
+            return View();
         }
     }
 }
