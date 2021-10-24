@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Application.Services;
@@ -41,7 +41,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Roles
 
             var grantedPermissions = PermissionManager
                 .GetAllPermissions()
-                .Where(p => input.Permissions.Contains(p.Name))
+                .Where(p => input.GrantedPermissions.Contains(p.Name))
                 .ToList();
 
             await _roleManager.SetGrantedPermissionsAsync(role, grantedPermissions);
@@ -74,7 +74,7 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Roles
 
             var grantedPermissions = PermissionManager
                 .GetAllPermissions()
-                .Where(p => input.Permissions.Contains(p.Name))
+                .Where(p => input.GrantedPermissions.Contains(p.Name))
                 .ToList();
 
             await _roleManager.SetGrantedPermissionsAsync(role, grantedPermissions);
@@ -132,6 +132,8 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Roles
         public async Task<GetRoleForEditOutput> GetRoleForEdit(EntityDto input)
         {
             var permissions = PermissionManager.GetAllPermissions();
+
+      //    var persl= await GetAllPermissions();
             var role = await _roleManager.GetRoleByIdAsync(input.Id);
             var grantedPermissions = (await _roleManager.GetGrantedPermissionsAsync(role)).ToArray();
             var roleEditDto = ObjectMapper.Map<RoleEditDto>(role);

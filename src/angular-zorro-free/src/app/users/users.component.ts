@@ -4,7 +4,7 @@ import {
   PagedRequestDto,
 } from '@shared/component-base/paged-listing-component-base';
 import {
-  PagedResultDtoOfUserDto,
+  UserDtoPagedResultDto,
   UserServiceProxy,
   UserDto,
 } from '@shared/service-proxies/service-proxies';
@@ -31,7 +31,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
       .finally(() => {
         finishedCallback();
       })
-      .subscribe((result: PagedResultDtoOfUserDto) => {
+      .subscribe((result: UserDtoPagedResultDto) => {
         this.dataList = result.items;
         this.totalItems = result.totalCount;
       });

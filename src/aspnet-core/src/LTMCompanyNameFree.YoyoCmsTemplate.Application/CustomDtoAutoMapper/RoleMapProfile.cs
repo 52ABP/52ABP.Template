@@ -1,9 +1,10 @@
-﻿using AutoMapper;
 using Abp.Authorization;
 using Abp.Authorization.Roles;
+using AutoMapper;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Roles;
+using LTMCompanyNameFree.YoyoCmsTemplate.Roles.Dto;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Roles.Dto
+namespace LTMCompanyNameFree.YoyoCmsTemplate.CustomDtoAutoMapper
 {
     public class RoleMapProfile : Profile
     {

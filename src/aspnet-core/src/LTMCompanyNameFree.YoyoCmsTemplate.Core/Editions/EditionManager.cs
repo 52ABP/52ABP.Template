@@ -1,6 +1,7 @@
-﻿using Abp.Application.Editions;
+using Abp.Application.Editions;
 using Abp.Application.Features;
 using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
 
 namespace LTMCompanyNameFree.YoyoCmsTemplate.Editions
 {
@@ -8,12 +9,8 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Editions
     {
         public const string DefaultEditionName = "Standard";
 
-        public EditionManager(
-            IRepository<Edition> editionRepository, 
-            IAbpZeroFeatureValueStore featureValueStore)
-            : base(
-                editionRepository,
-                featureValueStore)
+
+        public EditionManager(IRepository<Edition> editionRepository, IAbpZeroFeatureValueStore featureValueStore, IUnitOfWorkManager unitOfWorkManager) : base(editionRepository, featureValueStore, unitOfWorkManager)
         {
         }
     }
