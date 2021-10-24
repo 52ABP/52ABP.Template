@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     var _roleService = abp.services.app.role,
         l = abp.localization.getSource('YoyoCmsTemplate'),
         _$modal = $('#RoleCreateModal'),
@@ -88,6 +88,7 @@
                 role.grantedPermissions.push(_$permissionCheckbox.val());
             }
         }
+        console.log(role);
 
         abp.ui.setBusy(_$modal);
         _roleService

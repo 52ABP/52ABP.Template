@@ -22,6 +22,6 @@ namespace LTMCompanyNameFree.YoyoCmsTemplate.Roles.Dto
         [StringLength(Role.MaxDescriptionLength)]
         public string Description { get; set; }
 
-        public List<string> Permissions { get; set; }
+        public List<string> GrantedPermissions { get; set; }
     }
 }

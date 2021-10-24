@@ -1,7 +1,8 @@
-﻿using AutoMapper;
+using AutoMapper;
 using LTMCompanyNameFree.YoyoCmsTemplate.Authorization.Users;
+using LTMCompanyNameFree.YoyoCmsTemplate.Users.Dto;
 
-namespace LTMCompanyNameFree.YoyoCmsTemplate.Users.Dto
+namespace LTMCompanyNameFree.YoyoCmsTemplate.CustomDtoAutoMapper
 {
     public class UserMapProfile : Profile
     {
