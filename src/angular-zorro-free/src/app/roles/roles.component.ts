@@ -6,7 +6,7 @@ import {
 import {
   RoleDto,
   RoleServiceProxy,
-  PagedResultDtoOfRoleDto,
+  RoleDtoPagedResultDto,
 } from '@shared/service-proxies/service-proxies';
 import { EditRoleComponent } from '@app/roles/edit-role/edit-role.component';
 import { CreateRoleComponent } from '@app/roles/create-role/create-role.component';
@@ -31,7 +31,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
       .finally(() => {
         finishedCallback();
       })
-      .subscribe((result: PagedResultDtoOfRoleDto) => {
+      .subscribe((result: RoleDtoPagedResultDto) => {
         this.dataList = result.items;
         this.totalItems = result.totalCount;
       });
