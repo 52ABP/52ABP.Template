@@ -6,13 +6,20 @@
   </div>
 
 
-  <form nz-form #validateForm="ngForm" (ngSubmit)="save()" *ngIf="user">
+  <form nz-form
+    #validateForm="ngForm"
+    (ngSubmit)="save()"
+    *ngIf="user">
     <nz-tabset>
       <nz-tab [nzTitle]="l('UserDetails')">
         <!-- 用户账号 -->
         <nz-form-item>
           <nz-form-control nzHasFeedback>
-            <input nz-input name="userName" #userName="ngModel" [(ngModel)]="user.userName" [placeholder]="l('UserName')">
+            <input nz-input
+              name="userName"
+              #userName="ngModel"
+              [(ngModel)]="user.userName"
+              [placeholder]="l('UserName')">
             <nz-form-explain *ngIf="userName.control.dirty&&userName.control.errors">
               <ng-container *ngIf="userName.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
             </nz-form-explain>
@@ -23,8 +30,13 @@
         <nz-form-item>
           <nz-col [nzSpan]="12">
             <nz-form-control nzHasFeedback>
-              <input nz-input name="name" #name="ngModel" [(ngModel)]="user.name" [placeholder]="l('name')"
-                autocomplete="name" required>
+              <input nz-input
+                name="name"
+                #name="ngModel"
+                [(ngModel)]="user.name"
+                [placeholder]="l('Name')"
+                autocomplete="name"
+                required>
               <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
                 <ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
               </nz-form-explain>
@@ -32,7 +44,11 @@
           </nz-col>
           <nz-col [nzSpan]="12">
             <nz-form-control nzHasFeedback>
-              <input nz-input name="surname" #surname="ngModel" [(ngModel)]="user.surname" [placeholder]="l('Surname')"
+              <input nz-input
+                name="surname"
+                #surname="ngModel"
+                [(ngModel)]="user.surname"
+                [placeholder]="l('Surname')"
                 required>
               <nz-form-explain *ngIf="surname.control.dirty&&surname.control.errors">
                 <ng-container *ngIf="surname.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
@@ -44,8 +60,14 @@
         <!-- 邮箱 -->
         <nz-form-item>
           <nz-form-control nzHasFeedback>
-            <input nz-input name="emailAddress" #emailAddress="ngModel" [(ngModel)]="user.emailAddress" [placeholder]="l('EmailAddress')"
-              autocomplete="email" required email>
+            <input nz-input
+              name="emailAddress"
+              #emailAddress="ngModel"
+              [(ngModel)]="user.emailAddress"
+              [placeholder]="l('EmailAddress')"
+              autocomplete="email"
+              required
+              email>
             <nz-form-explain *ngIf="emailAddress.control.dirty&&emailAddress.control.errors">
               <ng-container *ngIf="emailAddress.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
               <ng-container *ngIf="emailAddress.control.hasError('email')">{{l('NotEmail')}}</ng-container>
@@ -56,9 +78,18 @@
         <!-- 密码 -->
         <nz-form-item>
           <nz-form-control nzHasFeedback>
-            <input nz-input name="password" #password="ngModel" [(ngModel)]="user.password" [placeholder]="l('Password')"
-              type="password" autocomplete="current-password" validateEqual="confirmPassword" reverse="true" required
-              minlength="6" maxlength="32">
+            <input nz-input
+              name="password"
+              #password="ngModel"
+              [(ngModel)]="user.password"
+              [placeholder]="l('Password')"
+              type="password"
+              autocomplete="current-password"
+              validateEqual="confirmPassword"
+              reverse="true"
+              required
+              minlength="6"
+              maxlength="32">
             <nz-form-explain *ngIf="password.control.dirty&&password.control.errors">
               <ng-container *ngIf="password.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
               <ng-container *ngIf="password.control.hasError('minlength')">{{l('MinLength')}}</ng-container>
@@ -70,25 +101,36 @@
         <!-- 确认密码 -->
         <nz-form-item>
           <nz-form-control nzHasFeedback>
-            <input nz-input name="confirmPassword" #confirmPasswordInput='ngModel' [(ngModel)]="confirmPassword"
-              [placeholder]="l('ConfirmPassword')" type="password" validateEqual="password" reverse="false"
-              autocomplete="current-password" required>
+            <input nz-input
+              name="confirmPassword"
+              #confirmPasswordInput='ngModel'
+              [(ngModel)]="confirmPassword"
+              [placeholder]="l('ConfirmPassword')"
+              type="password"
+              validateEqual="password"
+              reverse="false"
+              autocomplete="current-password"
+              required>
             <nz-form-explain *ngIf="confirmPasswordInput.control.dirty&&confirmPasswordInput.control.errors">
               <ng-container *ngIf="confirmPasswordInput.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
-              <ng-container *ngIf="confirmPasswordInput.control.hasError('validateEqual')">{{l('PasswordInconsistent')}}</ng-container>
+              <ng-container *ngIf="confirmPasswordInput.control.hasError('validateEqual')">{{l('PasswordInconsistent')}}
+              </ng-container>
             </nz-form-explain>
           </nz-form-control>
         </nz-form-item>
 
         <!-- 激活 -->
         <nz-form-item>
-          <label nz-checkbox name="isActive" [(ngModel)]="user.isActive">{{l('IsActive')}}</label>
+          <label nz-checkbox
+            name="isActive"
+            [(ngModel)]="user.isActive">{{l('IsActive')}}</label>
         </nz-form-item>
       </nz-tab>
 
 
       <nz-tab [nzTitle]="l('UserRoles')">
-        <nz-checkbox-group name="roles" [(ngModel)]="roleList"></nz-checkbox-group>
+        <nz-checkbox-group name="roles"
+          [(ngModel)]="roleList"></nz-checkbox-group>
       </nz-tab>
 
 
@@ -98,10 +140,16 @@
 
     <!-- 功能按钮 -->
     <div class="modal-footer">
-      <button nz-button type="button" [disabled]="saving" (click)="close()">
+      <button nz-button
+        type="button"
+        [disabled]="saving"
+        (click)="close()">
         {{l("Cancel")}}
       </button>
-      <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid||saving">
+      <button nz-button
+        [nzType]="'primary'"
+        type="submit"
+        [disabled]="!validateForm.valid||saving">
         {{l("Save")}}
       </button>
     </div>
