@@ -1,0 +1,239 @@
+<page-header [title]="l('AuditLogs')"></page-header>
+
+<nz-card [nzBordered]="false">
+
+  <div class="mb-md">
+    <div nz-row nzGutter="24">
+
+
+      <div nz-col nzSm="24">
+        <nz-form-item>
+          <nz-form-label [nzSm]="24">用户名</nz-form-label>
+          <nz-form-control [nzSm]="24">
+            <input type="text" nz-input [(ngModel)]="username" name="username" placeholder="用户名">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzSm="24">
+        <nz-form-item>
+          <nz-form-label [nzSm]="24">服务名称</nz-form-label>
+          <nz-form-control [nzSm]="24">
+            <input type="text" nz-input [(ngModel)]="serviceName" name="serviceName" placeholder="服务名称">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzSm="24">
+        <nz-form-item>
+          <nz-form-label [nzSm]="24">是否异常</nz-form-label>
+          <nz-form-control [nzSm]="24">
+            <nz-select [(ngModel)]="hasException" nzPlaceHolder="是否有异常" style="width:200px">
+              <nz-option [nzValue]="" nzLabel="全部"></nz-option>
+              <nz-option [nzValue]="false" nzLabel="否"></nz-option>
+              <nz-option [nzValue]="true" nzLabel="是"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzSpan="10" nzMd="12" nzXs="24" nzSm="24">
+        <button nz-button nzType="primary" type="submit" (click)="refreshGoFirstPage()">
+          <i class="anticon anticon-search"></i>
+        </button>
+
+
+        <span (click)="isShowMoreSearch=!isShowMoreSearch" style="padding-left:10px;cursor:pointer">
+          <span *ngIf="isShowMoreSearch">隐藏</span>
+          <span *ngIf="!isShowMoreSearch">显示</span>更多筛选
+          <i *ngIf="isShowMoreSearch" nz-icon nzType="up"></i>
+          <i *ngIf="!isShowMoreSearch" nz-icon nzType="down"></i>
+        </span>
+      </div>
+
+    </div>
+    <div nz-row nzGutter="24" [hidden]="!isShowMoreSearch">
+
+      <div nz-col nzSm="24">
+        <nz-form-item>
+          <nz-form-label [nzSm]="24">方法名称</nz-form-label>
+          <nz-form-control [nzSm]="24">
+            <input type="text" nz-input [(ngModel)]="methodName" name="methodName" placeholder="方法名称">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzSm="24">
+        <nz-form-item>
+          <nz-form-label [nzSm]="24">参数</nz-form-label>
+          <nz-form-control [nzSm]="24">
+            <input type="text" nz-input [(ngModel)]="parameters" name="parameters" placeholder="参数">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzSm="24">
+        <nz-form-item>
+          <nz-form-label [nzSm]="24">浏览器</nz-form-label>
+          <nz-form-control [nzSm]="24">
+            <input type="text" nz-input [(ngModel)]="browserInfo" name="browserInfo" placeholder="浏览器">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row nzGutter="24" [hidden]="!isShowMoreSearch">
+      <div nz-col nzSm="24">
+        <nz-form-item>
+          <nz-form-label [nzSm]="24">持续时长</nz-form-label>
+          <nz-form-control [nzSm]="24">
+            <nz-input-group>
+              <input type="text" nz-input placeholder="单位(ms)" [(ngModel)]="minExecutionDuration"
+                name="minExecutionDuration" style="width:40%; text-align: center;" />
+              <input type="text" disabled nz-input placeholder="~" class="demo-input-split"
+                style="width: 20%; border-left: 0px; border-right: 0px; pointer-events: none; background-color: rgb(255, 255, 255);" />
+              <input type="text" nz-input placeholder="单位(ms)" [(ngModel)]="maxExecutionDuration"
+                name="maxExecutionDuration" style="width:40%; text-align: center;" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzSm="24">
+        <nz-form-item>
+          <nz-form-label [nzSm]="24">操作时间</nz-form-label>
+          <nz-form-control [nzSm]="24">
+            <nz-range-picker nzShowTime nzFormat="yyyy-MM-dd HH:mm:ss" [(ngModel)]="creationTimeRang"></nz-range-picker>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- 实体的表格内容 -->
+  <nz-row class="my-md">
+    <nz-table #ajaxTable [nzData]="dataList" [nzTotal]="totalItems" [(nzPageIndex)]="pageNumber"
+      [(nzPageSize)]="pageSize" [nzLoading]="isTableLoading" (nzPageIndexChange)="pageNumberChange()"
+      (nzPageSizeChange)="refresh()" [nzShowSizeChanger]="true" [nzShowQuickJumper]="true" [nzNoResult]="noDataTemplate"
+      [nzShowTotal]="showTotalTemplate" [nzFrontPagination]="false" [nzLoading]="isTableLoading">
+      <!-- 暂无数据组件 -->
+      <ng-template #noDataTemplate>
+        <no-data></no-data>
+      </ng-template>
+      <!-- 分页信息显示 当前 1 页/共 3 页，共 5 条/显示 1-2 条 -->
+      <ng-template #showTotalTemplate let-total let-range="range">
+        {{l('GridFooterDisplayText',pageNumber,totalPages,total,range[0],range[1])}}
+      </ng-template>
+      <!-- 表头 -->
+      <thead (nzSortChange)="gridSort($event)">
+        <tr>
+          <th nz-th nzShowSort nzSortKey="userName" nzWidth="100px">
+            <span>用户名</span>
+          </th>
+          <th nz-th nzShowSort nzSortKey="serviceName" nzWidth="150px">
+            <span>服务名</span>
+          </th>
+          <th nz-th nzShowSort nzSortKey="methodName" nzWidth="100px">
+            <span>方法名</span>
+          </th>
+          <th nz-th nzShowSort nzSortKey="parameters" nzWidth="150px">
+            <span>参数</span>
+          </th>
+          <th nz-th nzShowSort nzSortKey="browserInfo" nzWidth="200px">
+            <span>浏览器</span>
+          </th>
+          <th nz-th nzShowSort nzSortKey="clientIpAddress" nzWidth="150px">
+            <span>IP</span>
+          </th>
+          <th nz-th nzShowSort nzSortKey="executionDuration" nzWidth="100px">
+            <span>时长</span>
+          </th>
+          <th nz-th nzShowSort nzSortKey="exception" nzWidth="200px">
+            <span>异常</span>
+          </th>
+          <th nz-th nzShowSort nzSortKey="executionTime" nzWidth="200px">
+            <span>时间</span>
+          </th>
+          <!-- <th nzWidth="230px" class="text-center" nzWidth="100px">
+            <span>{{l('Actions')}}</span>
+          </th> -->
+        </tr>
+      </thead>
+      <!-- 表格内容 -->
+      <tbody>
+        <tr *ngFor="let item of ajaxTable.data">
+          <!-- 全选框 -->
+          <td nz-td>
+            <ellipsis lines="1" tooltip>
+              <span>
+                {{item.userName}}
+              </span>
+            </ellipsis>
+          </td>
+          <td nz-td>
+            <ellipsis lines="2" tooltip>
+              <span>
+                {{item.serviceName}}
+              </span>
+            </ellipsis>
+          </td>
+          <td nz-td>
+            <ellipsis lines="1" tooltip>
+              <span>
+                {{item.methodName}}
+              </span>
+            </ellipsis>
+          </td>
+
+          <td nz-td>
+            <ellipsis lines="1" tooltip>
+              <span>
+                {{item.parameters}}
+              </span>
+            </ellipsis>
+          </td>
+          <td nz-td>
+            <ellipsis lines="1" tooltip>
+              <span>
+                {{item.browserInfo}}
+              </span>
+            </ellipsis>
+          </td>
+          <td nz-td>
+            <ellipsis lines="1" tooltip>
+              <span>
+                {{item.clientIpAddress}}
+              </span>
+            </ellipsis>
+          </td>
+          <td nz-td>
+            <ellipsis lines="1" tooltip>
+              <span>
+                {{item.executionDuration}}
+              </span>
+            </ellipsis>
+          </td>
+          <td nz-td>
+            <ellipsis lines="2" (click)="showDetail(item.exception)">
+              <a>
+                {{item.exception}}
+              </a>
+            </ellipsis>
+          </td>
+          <td nz-td>
+            <ellipsis lines="1" tooltip>
+              <span nz-tooltip [nzTitle]="item.executionTime.format('llll')">
+                {{item.executionTime |_date}}
+              </span>
+            </ellipsis>
+          </td>
+          <!-- <td>
+          </td> -->
+        </tr>
+      </tbody>
+    </nz-table>
+
+  </nz-row>
+</nz-card>

@@ -247,6 +247,7 @@
         <text name="RoleDescription" value="角色描述" />
         <text name="SystemStatic" value="系统内置" />
         <text name="ConfirmPassword" value="确认密码" />
+        <text name="GridFooterDisplayText" value="当前 {0} 页/共 {1} 页，当前 第 {3} - {4} 条/共 {2} 条" />
 
 
     </texts>

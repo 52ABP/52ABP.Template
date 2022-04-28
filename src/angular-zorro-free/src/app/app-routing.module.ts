@@ -8,6 +8,7 @@ import { AboutComponent } from '@app/about/about.component';
 import { TenantsComponent } from '@app/tenants/tenants.component';
 import { RolesComponent } from '@app/roles/roles.component';
 import { UsersComponent } from '@app/users/users.component';
+import { AuditlogComponent } from './auditlog/auditlog.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,11 @@ const routes: Routes = [
       {
         path: 'users',
         component: UsersComponent,
+        canActivate: [AppRouteGuard],
+      },
+      {
+        path: 'auditlogs',
+        component: AuditlogComponent,
         canActivate: [AppRouteGuard],
       },
       {

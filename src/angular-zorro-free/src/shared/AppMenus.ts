@@ -37,6 +37,13 @@ export class AppMenus {
         },
         {
             text: "",
+            i18n: "AuditLogs",
+            acl: "Pages.AuditLogs",
+            icon: { type: "icon", value: "file-text" },
+            link: "/app/auditlogs",
+        },
+        {
+            text: "",
             i18n: "About",
             icon: { type: "icon", value: "info-circle" },
             link: "/app/about",
