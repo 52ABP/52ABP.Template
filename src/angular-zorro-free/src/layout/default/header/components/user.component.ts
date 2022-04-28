@@ -10,7 +10,7 @@ import { AppAuthService } from '@shared/auth/app-auth.service';
   template: `
   <nz-dropdown nzPlacement="bottomRight">
     <div class="alain-default__nav-item d-flex align-items-center px-sm" nz-dropdown>
-      <nz-avatar  nzSize="small" class="mr-sm"></nz-avatar>
+    <nz-avatar nzIcon="user"></nz-avatar>
       
     </div>
     <div nz-menu class="width-sm">
