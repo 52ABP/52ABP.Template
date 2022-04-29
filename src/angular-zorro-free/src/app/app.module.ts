@@ -18,6 +18,11 @@ import { EditRoleComponent } from '@app/roles/edit-role/edit-role.component';
 import { CreateUserComponent } from '@app/users/create-user/create-user.component';
 import { EditUserComponent } from '@app/users/edit-user/edit-user.component';
 import { AdvertisingComponent } from './advertising/advertising.component';
+import { AuditlogComponent } from './auditlog/auditlog.component';
+import { registerLocaleData } from '@angular/common';
+import zh from '@angular/common/locales/zh';
+
+registerLocaleData(zh);
 
 @NgModule({
   imports: [
@@ -42,6 +47,7 @@ import { AdvertisingComponent } from './advertising/advertising.component';
     CreateUserComponent,
     EditUserComponent,
     AdvertisingComponent,
+    AuditlogComponent,
   ],
   entryComponents: [
     CreateTenantComponent,
